@@ -28,38 +28,38 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="flex flex-col flex-grow min-h-screen font-inter text-white_warm">
-	<p class="text-4xl font-bold text-center p-8">Leaderboard</p>
-	<div class="card bg-purple_highlight">
-		<div class="flex justify-center">
-			<table class="text-center bg-space_light">
-				<thead>
-					<tr>
-						<th></th>
-						<th class="">Name</th>
-						<th class="">Level</th>
-						<th class="">Signature</th>
-						<th class="">Number of Achievements</th>
+<div class="flex-grow flex justify-center">
+<div class="flex flex-col text-white_warm">
+	<p class="text-2xl font-bold text-center p-4">Leaderboard</p>
+	<div class="bg-space_light rounded-lg shadow-lg p-6 m-4 border-2 border-purple_highlight">
+		<table class="text-left truncate">
+			<thead>
+				<tr>
+					<th />
+					<th class="">Name</th>
+					<th class="">Signature</th>
+					<th class="">Level</th>
+					<th class="">Achievements</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each data.leaderboardData as player (player.uid)}
+					<tr
+						class="even:bg-space_dark"
+						on:mouseenter={(event) => handleMouseEnter(event, player)}
+						on:mousemove={handleMouseMove}
+						on:mouseleave={handleMouseLeave}
+					>
+						<td />
+						<td class="">{player.name}</td>
+						<td class="">{player.signature}</td>
+						<td class="">{player.level}</td>
+						<td class="text-right">{player.achievement_count}</td>
 					</tr>
-				</thead>
-				<tbody>
-					{#each data.leaderboardData as player (player.uid)}
-						<tr
-							class="[&:nth-child(2n)]:bg-space_dark"
-							on:mouseenter={(event) => handleMouseEnter(event, player)}
-							on:mousemove={handleMouseMove}
-							on:mouseleave={handleMouseLeave}
-						>
-							<td></td>
-							<td class="">{player.name}</td>
-							<td class="">{player.level}</td>
-							<td class="text-left">{player.signature}</td>
-							<td class="">{player.achievement_count}</td>
-						</tr>
-					{/each}
-				</tbody>
-			</table>
-		</div>
+				{/each}
+			</tbody>
+		</table>
+    </div>
 	</div>
 </div>
 

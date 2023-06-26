@@ -1,9 +1,12 @@
 <script>
+	import Header from './Header.svelte';
 	import Sidebar from './Sidebar.svelte';
 	import './app.css';
 </script>
 
-<main class="bg-space_dark">
+<main class="flex flex-col bg-space_dark">
+	<Header />
+
 	<div class="flex">
 		<Sidebar />
 		<slot />
