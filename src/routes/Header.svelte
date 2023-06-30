@@ -1,10 +1,12 @@
 <script>
-	import { Icon, Star } from 'svelte-hero-icons';
+	import { isSidebarExpanded } from './store.js';
+	import SearchBar from './SearchBar.svelte';
 </script>
 
-<header class="sticky top-0 flex bg-space_light border-b-2 border-purple_highlight h-16">
-    <div class="w-16 flex justify-center items-center bg-purple_highlight">
-        <Icon src={Star} solid class="w-6 h-6 text-white_warm animate-spin-slow" />
-    </div>
-</header> 
-
+<header
+	class="fixed left-0 top-0 flex h-16 w-full items-center justify-center border-b-2 border-purple_highlight bg-space_light duration-300 {$isSidebarExpanded
+		? 'pl-48'
+		: 'pl-16'}"
+>
+	<SearchBar />
+</header>

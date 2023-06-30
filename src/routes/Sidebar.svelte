@@ -1,22 +1,48 @@
 <script>
-	import { Icon, ChartBar, FaceSmile, BookOpen } from 'svelte-hero-icons';
-	let isExpanded = false;
+	import { Icon, Star, ChartBar, FaceSmile, DocumentCheck, BookOpen } from 'svelte-hero-icons';
+	import { isSidebarExpanded } from './store.js';
+	import { page } from '$app/stores';
+
 	let hoveredItem = null;
+	const MD_BREAKPOINT = 768; // Tailwind CSS md breakpoint
 </script>
 
+<!-- Prevent sidebar from expanding when viewport is too small -->
 <div
+	class="flex flex-col"
 	aria-hidden="true"
-	class="sticky top-0 h-screen bg-space_light font-bold overflow-hidden duration-300 border-r-2 border-purple_highlight {isExpanded
-		? 'w-48'
-		: 'w-16'}"
-	on:mouseenter={() => (isExpanded = true)}
-	on:mouseleave={() => (isExpanded = false)}
+	on:mouseenter={() => {
+		if (window.innerWidth >= MD_BREAKPOINT) isSidebarExpanded.set(true);
+	}}
+	on:mouseleave={() => {
+		if (window.innerWidth >= MD_BREAKPOINT) isSidebarExpanded.set(false);
+	}}
 >
-	<div class="flex flex-col pt-48 space-y-4 text-space_gray whitespace-nowrap">
-		<!-- Leaderboard section-->
-		<a href="/leaderboard">
+	<!-- Logo -->
+    <a href="/" class="flex">
+	<div
+		class="static z-20 flex h-16 items-center space-x-4 overflow-x-hidden whitespace-nowrap bg-purple_highlight px-5 py-2 duration-300 {$isSidebarExpanded
+			? 'w-48'
+			: 'w-16'}"
+	>
+		<div>
+			<Icon src={Star} solid class="h-6 w-6 animate-spin-slow text-white_warm" />
+		</div>
+		<div class="transition-opacity duration-200 {$isSidebarExpanded ? 'opacity-100' : 'opacity-0'}">
+			<p class="text-2xl font-bold tracking-wide text-white_warm">db.gg</p>
+		</div>
+	</div>
+    </a>
+	<!-- Sidebar -->
+	<div
+		class="fixed left-0 top-0 z-10 flex h-full flex-col space-y-4 overflow-x-hidden whitespace-nowrap border-r-2 border-purple_highlight bg-space_light pt-48 font-bold text-space_gray duration-300 {$isSidebarExpanded
+			? 'w-48'
+			: 'w-16'}"
+	>
+		<!-- Leaderboard icon-->
+		<a href="/leaderboard" class:text-white_warm={$page.url.pathname === '/leaderboard'}>
 			<div
-				class="flex items-center px-5 py-2 space-x-4 cursor-pointer {hoveredItem === 'leaderboard'
+				class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem === 'leaderboard'
 					? 'bg-purple_highlight text-white_warm'
 					: ''}"
 				aria-hidden="true"
@@ -24,17 +50,19 @@
 				on:mouseleave={() => (hoveredItem = null)}
 			>
 				<div>
-					<Icon src={ChartBar} solid class="w-6 h-6" />
+					<Icon src={ChartBar} solid class="h-6 w-6" />
 				</div>
-				<div class="transition-opacity duration-200 {isExpanded ? 'opacity-100' : 'opacity-0'}">
+				<div
+					class="transition-opacity duration-200 {$isSidebarExpanded ? 'opacity-100' : 'opacity-0'}"
+				>
 					<p>Leaderboard</p>
 				</div>
 			</div>
 		</a>
-		<!-- Profile card section-->
-		<a href="/profile-card">
+		<!-- Profile icon-->
+		<a href="/profile-card" class:text-white_warm={$page.url.pathname === '/profile-card'}>
 			<div
-				class="flex items-center px-5 py-2 space-x-4 cursor-pointer {hoveredItem === 'profileCard'
+				class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem === 'profileCard'
 					? 'bg-purple_highlight text-white_warm'
 					: ''}"
 				aria-hidden="true"
@@ -42,17 +70,43 @@
 				on:mouseleave={() => (hoveredItem = null)}
 			>
 				<div>
-					<Icon src={FaceSmile} solid class="w-6 h-6" />
+					<Icon src={FaceSmile} solid class="h-6 w-6" />
 				</div>
-				<div class="transition-opacity duration-200 {isExpanded ? 'opacity-100' : 'opacity-0'}">
+				<div
+					class="transition-opacity duration-200 {$isSidebarExpanded ? 'opacity-100' : 'opacity-0'}"
+				>
 					<p>Profile Card</p>
 				</div>
 			</div>
 		</a>
-		<!-- Articles section-->
-		<a href="/articles">
+		<!-- Achievement tracker icon -->
+		<a
+			href="/achievement-tracker"
+			class:text-white_warm={$page.url.pathname === '/achievement-tracker'}
+		>
 			<div
-				class="flex items-center px-5 py-2 space-x-4 cursor-pointer {hoveredItem === 'articles'
+				class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem ===
+				'achievementTracker'
+					? 'bg-purple_highlight text-white_warm'
+					: ''}"
+				aria-hidden="true"
+				on:mouseenter={() => (hoveredItem = 'achievementTracker')}
+				on:mouseleave={() => (hoveredItem = null)}
+			>
+				<div>
+					<Icon src={DocumentCheck} solid class="h-6 w-6" />
+				</div>
+				<div
+					class="transition-opacity duration-200 {$isSidebarExpanded ? 'opacity-100' : 'opacity-0'}"
+				>
+					<p>Tracker</p>
+				</div>
+			</div>
+		</a>
+		<!-- Articles icon-->
+		<a href="/articles" class:text-white_warm={$page.url.pathname === '/articles'}>
+			<div
+				class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem === 'articles'
 					? 'bg-purple_highlight text-white_warm'
 					: ''}"
 				aria-hidden="true"
@@ -60,9 +114,11 @@
 				on:mouseleave={() => (hoveredItem = null)}
 			>
 				<div>
-					<Icon src={BookOpen} solid class="w-6 h-6" />
+					<Icon src={BookOpen} solid class="h-6 w-6" />
 				</div>
-				<div class="transition-opacity duration-200 {isExpanded ? 'opacity-100' : 'opacity-0'}">
+				<div
+					class="transition-opacity duration-200 {$isSidebarExpanded ? 'opacity-100' : 'opacity-0'}"
+				>
 					<p>Articles</p>
 				</div>
 			</div>
