@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-    const apiURL = import.meta.env.VITE_API_URL;
+    const apiURL = import.meta.env.VITE_SERVER_API_URL;
 </script>
 
 <svelte:head>

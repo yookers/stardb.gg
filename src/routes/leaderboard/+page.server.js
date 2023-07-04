@@ -1,4 +1,4 @@
-const apiURL = import.meta.env.VITE_API_URL;
+const apiURL = import.meta.env.VITE_SERVER_API_URL;
 
 export const load = async ({ fetch }) => {
 	const response = await fetch(apiURL);
