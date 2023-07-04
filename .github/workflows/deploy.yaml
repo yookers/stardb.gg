@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           source: stardb
-          target: ~
+          target: /root/
 
       - name: Start Service
         uses: appleboy/ssh-action@v0.1.10
