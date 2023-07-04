@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: rm -rf stardb/*
+          script: rm -rf stardb
 
       - name: Copy New Files
         uses: appleboy/scp-action@v0.1.4
@@ -38,8 +38,8 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: 'build/*'
-          target: stardb/
+          source: build
+          target: stardb
 
       - name: Start Service
         uses: appleboy/ssh-action@v0.1.10
