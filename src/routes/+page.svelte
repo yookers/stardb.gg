@@ -5,7 +5,7 @@
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="About this app" />
+	<meta name="description" content="StarDB.gg - Home page" />
 </svelte:head>
 
 <div

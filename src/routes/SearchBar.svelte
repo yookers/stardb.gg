@@ -1,6 +1,5 @@
 <script>
-    //const apiURL = import.meta.env.VITE_API_URL;
-    const apiURL = 'https://stardb.gg/api/scores';
+    import { PUBLIC_CLIENT_API_URL } from '$env/static/public';
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
 	import { searchResults } from './store.js';
 
@@ -16,8 +15,8 @@
 		const isUID = /^\d{9}$/.test(query);
 
 		const requestURL = isUID
-			? `${apiURL}/${query}`
-			: `${apiURL}?query=${query}`;
+			? `${PUBLIC_CLIENT_API_URL}/${query}`
+			: `${PUBLIC_CLIENT_API_URL}?query=${query}`;
 		try {
 			const response = await fetch(requestURL);
 			if (!response.ok) {
@@ -25,7 +24,6 @@
 				return null;
 			}
 			const data = await response.json();
-			console.log(data);
 			if (isUID) {
 				searchResults.set([data]); // Wrap in array because it is a single player data
 			} else {

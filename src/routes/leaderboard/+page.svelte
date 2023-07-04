@@ -2,27 +2,30 @@
 	export let data;
 	import { Icon, Bars3BottomLeft, ChevronUp, ChevronDown } from 'svelte-hero-icons';
 	import LeaderboardCard from './LeaderboardCard.svelte';
+	import AddPlayer from './AddPlayer.svelte';
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+	import { navigating } from '$app/stores';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { searchResults } from '../store.js';
 
+	// Player card variables
 	let showCard = false;
 	let selectedPlayer = null;
 	let selectedRegion = 'all';
 	let cardPosition = { x: 0, y: 0 };
-
 	let mouseThrottle = false;
 
-	let searchData;
-	let filteredData;
-	let leaderboardSlice;
-	let totalPlayers;
-	let rowCount;
-	let startRank;
-	let endRank;
+	// Add player notification variables
+	let showNotification = false;
+	let notificationType = '';
 
+	// Leaderboard variables
+	let searchData, filteredData, leaderboardSlice, totalPlayers, rowCount, startRank, endRank;
 	let currentLeaderboardPage = 1;
+	let maxLeaderboardPage;
 	const rowsPerPage = 20;
 
 	function navigateToPlayerProfile(uid) {
@@ -81,13 +84,36 @@
 		showCard = false;
 	}
 
+	function resetLeaderboardView() {
+		selectedRegion = 'all';
+		currentLeaderboardPage = 1;
+	}
+
+	function updateAddPlayerNotification(event) {
+		if (event.detail.notificationType === 'success') {
+			notificationType = 'success';
+			showNotification = true;
+			resetLeaderboardView();
+			searchData = event.detail.data;
+		} else if (event.detail.notificationType === 'error') {
+			notificationType = 'error';
+			showNotification = true;
+		}
+		setTimeout(() => {
+			showNotification = false;
+		}, 3000);
+	}
+
 	searchResults.subscribe((results) => {
 		if (results !== null) {
 			searchData = results;
 		} else {
 			searchData = data.leaderboardData;
 		}
-		currentLeaderboardPage = 1;
+		resetLeaderboardView();
+	});
+
+	onMount(() => {
 	});
 
 	$: {
@@ -112,59 +138,62 @@
 
 <svelte:head>
 	<title>Achievement Leaderboard</title>
-	<meta name="description" content="About this app" />
+	<meta name="description" content="StarDB.gg - Achievement Leaderboard" />
 </svelte:head>
 
 <div class="flex w-full justify-center">
 	<div class="flex flex-col text-white_warm">
 		<!-- Region filter section -->
-		<div class="flex space-x-2 py-6 pl-28">
-			<Icon src={Bars3BottomLeft} class="h-8 w-8 text-white_warm" />
-			<button
-				class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-purple_highlight text-lg font-extrabold hover:bg-purple_highlight hover:text-space_dark {selectedRegion ===
-				'all'
-					? 'bg-purple_highlight text-space_dark'
-					: 'text-purple_highlight'}"
-				on:click={() => setRegionFilter('all')}
-			>
-				<p>ALL</p>
-			</button>
-			<button
-				class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_yellow text-lg font-extrabold hover:bg-neon_yellow hover:text-space_dark {selectedRegion ===
-				'na'
-					? 'bg-neon_yellow text-space_dark'
-					: 'text-neon_yellow'}"
-				on:click={() => setRegionFilter('na')}
-			>
-				<p>NA</p>
-			</button>
-			<button
-				class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_pink text-lg font-extrabold hover:bg-neon_pink hover:text-space_dark {selectedRegion ===
-				'eu'
-					? 'bg-neon_pink text-space_dark'
-					: 'text-neon_pink'}"
-				on:click={() => setRegionFilter('eu')}
-			>
-				<p>EU</p>
-			</button>
-			<button
-				class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_green text-lg font-extrabold hover:bg-neon_green hover:text-space_dark {selectedRegion ===
-				'asia'
-					? 'bg-neon_green text-space_dark'
-					: 'text-neon_green'}"
-				on:click={() => setRegionFilter('asia')}
-			>
-				<p>ASIA</p>
-			</button>
-			<button
-				class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_blue text-lg font-extrabold hover:bg-neon_blue hover:text-space_dark {selectedRegion ===
-				'cn'
-					? 'bg-neon_blue text-space_dark'
-					: 'text-neon_blue'}"
-				on:click={() => setRegionFilter('cn')}
-			>
-				<p>CN</p>
-			</button>
+		<div class="flex justify-between px-28 py-6">
+			<div class="invisible space-x-2 md:visible md:flex">
+				<Icon src={Bars3BottomLeft} class="h-8 w-8 text-white_warm" />
+				<button
+					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-purple_highlight text-lg font-extrabold hover:bg-purple_highlight hover:text-space_dark {selectedRegion ===
+					'all'
+						? 'bg-purple_highlight text-space_dark'
+						: 'text-purple_highlight'}"
+					on:click={() => setRegionFilter('all')}
+				>
+					<p>ALL</p>
+				</button>
+				<button
+					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_yellow text-lg font-extrabold hover:bg-neon_yellow hover:text-space_dark {selectedRegion ===
+					'na'
+						? 'bg-neon_yellow text-space_dark'
+						: 'text-neon_yellow'}"
+					on:click={() => setRegionFilter('na')}
+				>
+					<p>NA</p>
+				</button>
+				<button
+					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_pink text-lg font-extrabold hover:bg-neon_pink hover:text-space_dark {selectedRegion ===
+					'eu'
+						? 'bg-neon_pink text-space_dark'
+						: 'text-neon_pink'}"
+					on:click={() => setRegionFilter('eu')}
+				>
+					<p>EU</p>
+				</button>
+				<button
+					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_green text-lg font-extrabold hover:bg-neon_green hover:text-space_dark {selectedRegion ===
+					'asia'
+						? 'bg-neon_green text-space_dark'
+						: 'text-neon_green'}"
+					on:click={() => setRegionFilter('asia')}
+				>
+					<p>ASIA</p>
+				</button>
+				<button
+					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_blue text-lg font-extrabold hover:bg-neon_blue hover:text-space_dark {selectedRegion ===
+					'cn'
+						? 'bg-neon_blue text-space_dark'
+						: 'text-neon_blue'}"
+					on:click={() => setRegionFilter('cn')}
+				>
+					<p>CN</p>
+				</button>
+			</div>
+			<AddPlayer on:addplayer={updateAddPlayerNotification} />
 		</div>
 		<!-- Leaderboard section -->
 		<div class="flex pl-6">
@@ -188,12 +217,12 @@
 					>
 						<thead>
 							<tr>
-								<th class="w-6 md:w-12" />
 								<!-- Region indicator -->
-								<th class="w-20 px-2 pb-2 md:w-32">Name</th>
-								<th class="hidden w-auto truncate px-2 pb-2 md:table-cell">Signature</th>
-								<th class="hidden w-24 truncate px-2 pb-2 text-center lg:table-cell">Level</th>
-								<th class="w-20 truncate px-2 pb-2 text-center md:w-32">Achievements</th>
+								<th class="w-6" />
+								<th class="w-auto px-4 pb-2 md:w-16 md:pl-0">Name</th>
+								<th class="hidden w-auto truncate px-2 pb-2 md:table-cell md:w-48">Signature</th>
+								<th class="hidden w-12 truncate px-2 pb-2 text-center lg:table-cell">Level</th>
+								<th class="w-auto truncate px-2 pb-2 text-center md:w-16">Achievements</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -205,12 +234,11 @@
 									class:hover:bg-neon_green={player.region === 'asia'}
 									class:hover:bg-neon_blue={player.region === 'cn'}
 									in:fly={{ y: 40, easing: cubicInOut, duration: 400 }}
+									on:click={() => navigateToPlayerProfile(player.uid)}
+									on:mouseenter={(event) => handleMouseEnter(event, player)}
+									on:mousemove={handleMouseMove}
+									on:mouseleave={handleMouseLeave}
 								>
-									<!-- 	on:click={() => navigateToPlayerProfile(player.uid)}
-									    on:mouseenter={(event) => handleMouseEnter(event, player)}
-									    on:mousemove={handleMouseMove}
-									    on:mouseleave={handleMouseLeave} -->
-
 									<td class="pl-5">
 										<!-- Region indicator -->
 										<div
@@ -221,7 +249,7 @@
 											class:bg-neon_blue={player.region === 'cn'}
 										/>
 									</td>
-									<td class="truncate px-2 py-4 font-bold">{player.name}</td>
+									<td class="truncate px-4 py-4 font-bold md:pl-0">{player.name}</td>
 									<td class="hidden truncate px-2 py-4 italic md:table-cell">{player.signature}</td>
 									<td class="hidden px-2 py-4 text-center font-bold lg:table-cell"
 										>{player.level}</td
@@ -267,6 +295,24 @@
 		</div>
 	</div>
 </div>
+
+{#if showNotification}
+	<div class="flex justify-center">
+		<div
+			class="fixed bottom-20 flex w-64 justify-center rounded-lg border-2 border-purple_highlight p-2 font-bold text-space_dark md:w-96 {notificationType ===
+			'success'
+				? 'bg-neon_green'
+				: 'bg-neon_pink'}"
+			transition:fly={{ y: 40, easing: cubicInOut, duration: 400 }}
+		>
+			{#if notificationType === 'success'}
+				Sucessfully added player to leaderboard!
+			{:else}
+				Failed to add player to leaderboard.
+			{/if}
+		</div>
+	</div>
+{/if}
 
 {#if showCard}
 	<div
