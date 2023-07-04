@@ -1,5 +1,5 @@
 <script>
-    import { PUBLIC_CLIENT_API_URL } from '$env/static/public';
+	import { PUBLIC_CLIENT_API_URL } from '$env/static/public';
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
 	import { searchResults } from './store.js';
 
@@ -42,8 +42,11 @@
 	}
 </script>
 
-<div class="flex h-8 w-60 justify-center overflow-hidden rounded-lg bg-purple_highlight md:w-80">
-	<button class="flex items-center justify-center" on:click={() => searchPlayer(searchQuery)}>
+<div class="flex h-8 w-60 justify-center overflow-hidden rounded-lg md:w-80">
+	<button
+		class="flex items-center justify-center bg-purple_highlight"
+		on:click={() => searchPlayer(searchQuery)}
+	>
 		<Icon src={MagnifyingGlass} solid class="m-2 h-5 w-5 text-white_warm" />
 	</button>
 

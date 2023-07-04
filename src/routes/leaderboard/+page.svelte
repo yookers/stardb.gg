@@ -101,7 +101,7 @@
 		}
 		setTimeout(() => {
 			showNotification = false;
-		}, 3000);
+		}, 2500);
 	}
 
 	searchResults.subscribe((results) => {
@@ -114,6 +114,14 @@
 	});
 
 	onMount(() => {
+		// Get the page number from the URL query string
+		const urlParams = new URLSearchParams(window.location.search);
+		const page = urlParams.get('page');
+		if (page) {
+			maxLeaderboardPage = Math.ceil(totalPlayers / rowsPerPage);
+			const pageNumber = parseInt(page, 10);
+			currentLeaderboardPage = Math.min(maxLeaderboardPage, Math.max(1, pageNumber));
+		}
 	});
 
 	$: {
@@ -141,64 +149,107 @@
 	<meta name="description" content="StarDB.gg - Achievement Leaderboard" />
 </svelte:head>
 
-<div class="flex w-full justify-center">
+<div class="flex justify-center">
 	<div class="flex flex-col text-white_warm">
 		<!-- Region filter section -->
-		<div class="flex justify-between px-28 py-6">
-			<div class="invisible space-x-2 md:visible md:flex">
-				<Icon src={Bars3BottomLeft} class="h-8 w-8 text-white_warm" />
-				<button
-					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-purple_highlight text-lg font-extrabold hover:bg-purple_highlight hover:text-space_dark {selectedRegion ===
-					'all'
-						? 'bg-purple_highlight text-space_dark'
-						: 'text-purple_highlight'}"
-					on:click={() => setRegionFilter('all')}
-				>
-					<p>ALL</p>
-				</button>
-				<button
-					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_yellow text-lg font-extrabold hover:bg-neon_yellow hover:text-space_dark {selectedRegion ===
-					'na'
-						? 'bg-neon_yellow text-space_dark'
-						: 'text-neon_yellow'}"
-					on:click={() => setRegionFilter('na')}
-				>
-					<p>NA</p>
-				</button>
-				<button
-					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_pink text-lg font-extrabold hover:bg-neon_pink hover:text-space_dark {selectedRegion ===
-					'eu'
-						? 'bg-neon_pink text-space_dark'
-						: 'text-neon_pink'}"
-					on:click={() => setRegionFilter('eu')}
-				>
-					<p>EU</p>
-				</button>
-				<button
-					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_green text-lg font-extrabold hover:bg-neon_green hover:text-space_dark {selectedRegion ===
-					'asia'
-						? 'bg-neon_green text-space_dark'
-						: 'text-neon_green'}"
-					on:click={() => setRegionFilter('asia')}
-				>
-					<p>ASIA</p>
-				</button>
-				<button
-					class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_blue text-lg font-extrabold hover:bg-neon_blue hover:text-space_dark {selectedRegion ===
-					'cn'
-						? 'bg-neon_blue text-space_dark'
-						: 'text-neon_blue'}"
-					on:click={() => setRegionFilter('cn')}
-				>
-					<p>CN</p>
-				</button>
+		<div class="flex justify-between space-x-6 py-6 pl-16 pr-24">
+			<div class="flex flex-col space-y-2">
+				<p class="line-clamp-1 pl-1 text-sm font-bold">Region Filter</p>
+				<div class="hidden space-x-2 md:flex">
+					<button
+						class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-purple_highlight text-lg font-extrabold hover:bg-purple_highlight hover:text-space_dark {selectedRegion ===
+						'all'
+							? 'bg-purple_highlight text-space_dark'
+							: 'text-purple_highlight'}"
+						on:click={() => setRegionFilter('all')}
+					>
+						<p>ALL</p>
+					</button>
+					<button
+						class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_yellow text-lg font-extrabold hover:bg-neon_yellow hover:text-space_dark {selectedRegion ===
+						'na'
+							? 'bg-neon_yellow text-space_dark'
+							: 'text-neon_yellow'}"
+						on:click={() => setRegionFilter('na')}
+					>
+						<p>NA</p>
+					</button>
+					<button
+						class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_pink text-lg font-extrabold hover:bg-neon_pink hover:text-space_dark {selectedRegion ===
+						'eu'
+							? 'bg-neon_pink text-space_dark'
+							: 'text-neon_pink'}"
+						on:click={() => setRegionFilter('eu')}
+					>
+						<p>EU</p>
+					</button>
+					<button
+						class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_green text-lg font-extrabold hover:bg-neon_green hover:text-space_dark {selectedRegion ===
+						'asia'
+							? 'bg-neon_green text-space_dark'
+							: 'text-neon_green'}"
+						on:click={() => setRegionFilter('asia')}
+					>
+						<p>ASIA</p>
+					</button>
+					<button
+						class="flex h-8 w-16 items-center justify-center rounded-lg border-2 border-neon_blue text-lg font-extrabold hover:bg-neon_blue hover:text-space_dark {selectedRegion ===
+						'cn'
+							? 'bg-neon_blue text-space_dark'
+							: 'text-neon_blue'}"
+						on:click={() => setRegionFilter('cn')}
+					>
+						<p>CN</p>
+					</button>
+				</div>
+				<div class="md:hidden">
+					<select
+						class="h-8 w-full rounded-lg pl-2 text-lg font-extrabold text-space_light"
+						bind:value={selectedRegion}
+						class:bg-purple_highlight={selectedRegion === 'all'}
+						class:bg-neon_yellow={selectedRegion === 'na'}
+						class:bg-neon_pink={selectedRegion === 'eu'}
+						class:bg-neon_green={selectedRegion === 'asia'}
+						class:bg-neon_blue={selectedRegion === 'cn'}
+					>
+						<option
+							value="all"
+							class="bg-purple_highlight font-extrabold"
+							selected={selectedRegion === 'all'}>ALL</option
+						>
+						<option
+							value="na"
+							class="bg-neon_yellow font-extrabold"
+							selected={selectedRegion === 'na'}>NA</option
+						>
+						<option
+							value="eu"
+							class="bg-neon_pink font-extrabold"
+							selected={selectedRegion === 'eu'}>EU</option
+						>
+						<option
+							value="asia"
+							class="bg-neon_green font-extrabold"
+							selected={selectedRegion === 'asia'}>ASIA</option
+						>
+						<option
+							value="cn"
+							class="bg-neon_blue font-extrabold"
+							selected={selectedRegion === 'cn'}>CN</option
+						>
+					</select>
+				</div>
 			</div>
-			<AddPlayer on:addplayer={updateAddPlayerNotification} />
+			<!-- Add player by UID section -->
+			<div class="flex flex-col space-y-2">
+				<p class="pl-1 text-sm font-bold">Add Player UID</p>
+				<AddPlayer on:addplayer={updateAddPlayerNotification} />
+			</div>
 		</div>
 		<!-- Leaderboard section -->
-		<div class="flex pl-6">
+		<div class="flex justify-center">
 			<div class="mt-0.5 flex flex-col py-6 text-sm font-bold">
-				<p class="pb-2.5">Rank</p>
+				<p class="pb-2">Rank</p>
 				{#each leaderboardSlice as player (player.uid)}
 					<div class="py-4 text-right" in:fly={{ y: 40, easing: cubicInOut, duration: 400 }}>
 						{#if selectedRegion !== 'all'}
@@ -210,19 +261,20 @@
 				{/each}
 			</div>
 			<!-- Main leaderboard content -->
-			<div class="just flex-col px-6">
-				<div class="rounded-lg border-2 border-purple_highlight bg-space_light p-6">
-					<table
-						class="w-full max-w-xl table-fixed overflow-visible text-left text-sm md:max-w-4xl"
-					>
+			<div class="just flex-col px-4 md:px-6">
+				<div class="rounded-lg border-2 border-purple_highlight bg-space_light px-4 py-6 md:px-6">
+					<table class="w-52 table-fixed text-left text-sm sm:w-[410px] md:w-[510px] lg:w-[800px]">
 						<thead>
 							<tr>
 								<!-- Region indicator -->
-								<th class="w-6" />
-								<th class="w-auto px-4 pb-2 md:w-16 md:pl-0">Name</th>
-								<th class="hidden w-auto truncate px-2 pb-2 md:table-cell md:w-48">Signature</th>
-								<th class="hidden w-12 truncate px-2 pb-2 text-center lg:table-cell">Level</th>
-								<th class="w-auto truncate px-2 pb-2 text-center md:w-16">Achievements</th>
+								<th class="w-3 md:w-5" />
+								<th class="w-6 pb-2 md:w-12">Name</th>
+								<th class="hidden truncate px-2 pb-2 sm:table-cell sm:w-8 md:w-28 lg:w-36"
+									>Signature</th
+								>
+								<th class="hidden w-8 truncate px-2 pb-2 text-center lg:table-cell">Level</th>
+								<th class="w-6 truncate px-2 pb-2 text-left md:w-14 md:text-center">Achievements</th
+								>
 							</tr>
 						</thead>
 						<tbody>
@@ -239,7 +291,7 @@
 									on:mousemove={handleMouseMove}
 									on:mouseleave={handleMouseLeave}
 								>
-									<td class="pl-5">
+									<td class="px-5">
 										<!-- Region indicator -->
 										<div
 											class="h-2 w-2 rounded-full"
@@ -249,8 +301,8 @@
 											class:bg-neon_blue={player.region === 'cn'}
 										/>
 									</td>
-									<td class="truncate px-4 py-4 font-bold md:pl-0">{player.name}</td>
-									<td class="hidden truncate px-2 py-4 italic md:table-cell">{player.signature}</td>
+									<td class="truncate py-4 font-bold md:pl-0">{player.name}</td>
+									<td class="hidden truncate px-2 py-4 italic sm:table-cell">{player.signature}</td>
 									<td class="hidden px-2 py-4 text-center font-bold lg:table-cell"
 										>{player.level}</td
 									>
@@ -261,7 +313,7 @@
 					</table>
 				</div>
 				<!-- Footer information -->
-				<div class="py-4 pl-6 text-sm">
+				<div class="py-4 pl-4 text-sm md:pl-6">
 					<p>
 						Showing <span class="font-bold">{startRank}</span> -
 						<span class="font-bold">{endRank}</span>
@@ -270,9 +322,9 @@
 				</div>
 			</div>
 			<!-- Pagination buttons -->
-			<div class="flex flex-col space-y-3 pr-8 pt-10">
+			<div class="flex-col space-y-3 pt-10">
 				<button
-					class="flex h-12 w-12 items-center justify-center rounded-lg border-2 border-purple_highlight bg-space_light text-white hover:bg-purple_highlight"
+					class="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-purple_highlight bg-space_light text-white hover:bg-purple_highlight md:h-12 md:w-12"
 					on:click={() => {
 						if (currentLeaderboardPage > 1) currentLeaderboardPage--;
 					}}
@@ -283,7 +335,7 @@
 					<p>{currentLeaderboardPage}</p>
 				</div>
 				<button
-					class="flex h-12 w-12 items-center justify-center rounded-lg border-2 border-purple_highlight bg-space_light text-white hover:bg-purple_highlight"
+					class="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-purple_highlight bg-space_light text-white hover:bg-purple_highlight md:h-12 md:w-12"
 					on:click={() => {
 						if (currentLeaderboardPage * rowsPerPage < filteredData.length)
 							currentLeaderboardPage++;
@@ -296,10 +348,11 @@
 	</div>
 </div>
 
+<!-- Player add notification -->
 {#if showNotification}
 	<div class="flex justify-center">
 		<div
-			class="fixed bottom-20 flex w-64 justify-center rounded-lg border-2 border-purple_highlight p-2 font-bold text-space_dark md:w-96 {notificationType ===
+			class="fixed bottom-20 flex w-64 justify-center rounded-lg p-2 font-bold text-space_dark md:w-96 {notificationType ===
 			'success'
 				? 'bg-neon_green'
 				: 'bg-neon_pink'}"
@@ -314,6 +367,7 @@
 	</div>
 {/if}
 
+<!-- Leaderboard hover profile card -->
 {#if showCard}
 	<div
 		class="fixed left-0 top-0"

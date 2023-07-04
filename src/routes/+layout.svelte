@@ -6,10 +6,11 @@
 </script>
 
 <main class="flex h-screen flex-col overflow-auto">
-	<Sidebar />
-
+	<div class="hidden md:flex">
+		<Sidebar />
+	</div>
 	<Header />
-	<div class="flex-grow duration-300 pt-16 {$isSidebarExpanded ? 'pl-48' : 'pl-16'}">
+	<div class="flex-grow pt-16 duration-300 {$isSidebarExpanded ? 'md:pl-48' : 'md:pl-16'}">
 		<!-- Main content needs to account for header height and sidebar width. -->
 		<slot />
 	</div>
