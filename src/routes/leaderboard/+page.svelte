@@ -161,6 +161,7 @@
 						'all'
 							? 'bg-purple_highlight text-space_dark'
 							: 'text-purple_highlight'}"
+						aria-label="Filter by ALL regions"
 						on:click={() => setRegionFilter('all')}
 					>
 						<p>ALL</p>
@@ -170,6 +171,7 @@
 						'na'
 							? 'bg-neon_yellow text-space_dark'
 							: 'text-neon_yellow'}"
+						aria-label="Filter by NA region"
 						on:click={() => setRegionFilter('na')}
 					>
 						<p>NA</p>
@@ -179,6 +181,7 @@
 						'eu'
 							? 'bg-neon_pink text-space_dark'
 							: 'text-neon_pink'}"
+						aria-label="Filter by EU region"
 						on:click={() => setRegionFilter('eu')}
 					>
 						<p>EU</p>
@@ -188,6 +191,7 @@
 						'asia'
 							? 'bg-neon_green text-space_dark'
 							: 'text-neon_green'}"
+						aria-label="Filter by ASIA region"
 						on:click={() => setRegionFilter('asia')}
 					>
 						<p>ASIA</p>
@@ -197,6 +201,7 @@
 						'cn'
 							? 'bg-neon_blue text-space_dark'
 							: 'text-neon_blue'}"
+						aria-label="Filter by CN region"
 						on:click={() => setRegionFilter('cn')}
 					>
 						<p>CN</p>
@@ -206,37 +211,18 @@
 					<select
 						class="h-8 w-full rounded-lg pl-2 text-lg font-extrabold text-space_light"
 						bind:value={selectedRegion}
+						on:change={(e) => setRegionFilter(e.currentTarget.value)}
 						class:bg-purple_highlight={selectedRegion === 'all'}
 						class:bg-neon_yellow={selectedRegion === 'na'}
 						class:bg-neon_pink={selectedRegion === 'eu'}
 						class:bg-neon_green={selectedRegion === 'asia'}
 						class:bg-neon_blue={selectedRegion === 'cn'}
 					>
-						<option
-							value="all"
-							class="bg-purple_highlight font-extrabold"
-							selected={selectedRegion === 'all'}>ALL</option
-						>
-						<option
-							value="na"
-							class="bg-neon_yellow font-extrabold"
-							selected={selectedRegion === 'na'}>NA</option
-						>
-						<option
-							value="eu"
-							class="bg-neon_pink font-extrabold"
-							selected={selectedRegion === 'eu'}>EU</option
-						>
-						<option
-							value="asia"
-							class="bg-neon_green font-extrabold"
-							selected={selectedRegion === 'asia'}>ASIA</option
-						>
-						<option
-							value="cn"
-							class="bg-neon_blue font-extrabold"
-							selected={selectedRegion === 'cn'}>CN</option
-						>
+						<option value="all" class="bg-purple_highlight font-extrabold">ALL</option>
+						<option value="na" class="bg-neon_yellow font-extrabold">NA</option>
+						<option value="eu" class="bg-neon_pink font-extrabold">EU</option>
+						<option value="asia" class="bg-neon_green font-extrabold">ASIA</option>
+						<option value="cn" class="bg-neon_blue font-extrabold">CN</option>
 					</select>
 				</div>
 			</div>
@@ -325,6 +311,7 @@
 			<div class="flex-col space-y-3 pt-10">
 				<button
 					class="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-purple_highlight bg-space_light text-white hover:bg-purple_highlight md:h-12 md:w-12"
+					aria-label="Previous page on leaderboard"
 					on:click={() => {
 						if (currentLeaderboardPage > 1) currentLeaderboardPage--;
 					}}
@@ -336,6 +323,7 @@
 				</div>
 				<button
 					class="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-purple_highlight bg-space_light text-white hover:bg-purple_highlight md:h-12 md:w-12"
+					aria-label="Next page on leaderboard"
 					on:click={() => {
 						if (currentLeaderboardPage * rowsPerPage < filteredData.length)
 							currentLeaderboardPage++;

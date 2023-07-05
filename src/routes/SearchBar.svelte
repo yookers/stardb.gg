@@ -45,6 +45,7 @@
 <div class="flex h-8 w-60 justify-center overflow-hidden rounded-lg md:w-80">
 	<button
 		class="flex items-center justify-center bg-purple_highlight"
+		aria-label="Search for Player Name or UID"
 		on:click={() => searchPlayer(searchQuery)}
 	>
 		<Icon src={MagnifyingGlass} solid class="m-2 h-5 w-5 text-white_warm" />

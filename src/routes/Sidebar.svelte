@@ -10,7 +10,8 @@
 <!-- Prevent sidebar from expanding when viewport is too small -->
 <div
 	class="flex flex-col"
-	aria-hidden="true"
+	role="navigation"
+	aria-label="Sidebar"
 	on:mouseenter={() => {
 		if (window.innerWidth >= MD_BREAKPOINT) isSidebarExpanded.set(true);
 	}}
@@ -43,14 +44,16 @@
 		</a>
 		<div class="flex flex-col space-y-4 pt-48">
 			<!-- Leaderboard icon-->
-			<a href="/leaderboard" class:text-white_warm={$page.url.pathname === '/leaderboard'}>
+			<a
+				href="/leaderboard"
+				class:text-white_warm={$page.url.pathname === '/leaderboard'}
+				on:mouseenter={() => (hoveredItem = 'leaderboard')}
+				on:mouseleave={() => (hoveredItem = null)}
+			>
 				<div
 					class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem === 'leaderboard'
 						? 'bg-purple_highlight text-white_warm'
 						: ''}"
-					aria-hidden="true"
-					on:mouseenter={() => (hoveredItem = 'leaderboard')}
-					on:mouseleave={() => (hoveredItem = null)}
 				>
 					<div>
 						<Icon src={ChartBar} solid class="h-6 w-6" />
@@ -65,14 +68,16 @@
 				</div>
 			</a>
 			<!-- Profile icon-->
-			<a href="/profile-card" class:text-white_warm={$page.url.pathname === '/profile-card'}>
+			<a
+				href="/profile-card"
+				class:text-white_warm={$page.url.pathname === '/profile-card'}
+				on:mouseenter={() => (hoveredItem = 'profileCard')}
+				on:mouseleave={() => (hoveredItem = null)}
+			>
 				<div
 					class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem === 'profileCard'
 						? 'bg-purple_highlight text-white_warm'
 						: ''}"
-					aria-hidden="true"
-					on:mouseenter={() => (hoveredItem = 'profileCard')}
-					on:mouseleave={() => (hoveredItem = null)}
 				>
 					<div>
 						<Icon src={FaceSmile} solid class="h-6 w-6" />
@@ -90,15 +95,14 @@
 			<a
 				href="/achievement-tracker"
 				class:text-white_warm={$page.url.pathname === '/achievement-tracker'}
+				on:mouseenter={() => (hoveredItem = 'achievementTracker')}
+				on:mouseleave={() => (hoveredItem = null)}
 			>
 				<div
 					class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem ===
 					'achievementTracker'
 						? 'bg-purple_highlight text-white_warm'
 						: ''}"
-					aria-hidden="true"
-					on:mouseenter={() => (hoveredItem = 'achievementTracker')}
-					on:mouseleave={() => (hoveredItem = null)}
 				>
 					<div>
 						<Icon src={DocumentCheck} solid class="h-6 w-6" />
@@ -113,14 +117,16 @@
 				</div>
 			</a>
 			<!-- Articles icon-->
-			<a href="/articles" class:text-white_warm={$page.url.pathname === '/articles'}>
+			<a
+				href="/articles"
+				class:text-white_warm={$page.url.pathname === '/articles'}
+				on:mouseenter={() => (hoveredItem = 'articles')}
+				on:mouseleave={() => (hoveredItem = null)}
+			>
 				<div
 					class="flex cursor-pointer items-center space-x-4 px-5 py-2 {hoveredItem === 'articles'
 						? 'bg-purple_highlight text-white_warm'
 						: ''}"
-					aria-hidden="true"
-					on:mouseenter={() => (hoveredItem = 'articles')}
-					on:mouseleave={() => (hoveredItem = null)}
 				>
 					<div>
 						<Icon src={BookOpen} solid class="h-6 w-6" />

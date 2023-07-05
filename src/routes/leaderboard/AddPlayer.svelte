@@ -51,6 +51,7 @@
 		class="h-8 w-28 overflow-hidden rounded-l-lg border-2 border-transparent bg-space_light pl-4 text-sm text-white_warm outline-none focus:border-purple_highlight sm:w-40 md:w-52"
 		placeholder="Player UID"
 		type="text"
+		aria-label="Add Player UID to leaderboard"
 		on:keydown={handleKeyDown}
 		bind:value={uid}
 	/>

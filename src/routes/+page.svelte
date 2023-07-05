@@ -12,5 +12,5 @@
 	class="flex h-full flex-col items-center justify-center space-x-8 space-y-8 text-white_warm md:flex-row md:space-y-0"
 >
 	<p class="text-center text-7xl font-bold md:text-9xl">Hi there!</p>
-	<img src="/images/march-happy.png" alt="" class="h-40 w-40" />
+	<img src="/images/march-happy-small.webp" alt="" class="h-40 w-40" />
 </div>
