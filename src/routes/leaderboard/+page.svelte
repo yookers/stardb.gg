@@ -152,7 +152,7 @@
 <div class="flex justify-center">
 	<div class="flex flex-col text-white_warm">
 		<!-- Region filter section -->
-		<div class="flex justify-between space-x-6 py-6 pl-16 pr-24">
+		<div class="flex justify-between space-x-6 py-6 pl-16 pr-16 md:pr-24">
 			<div class="flex flex-col space-y-2">
 				<p class="line-clamp-1 pl-1 text-sm font-bold">Region Filter</p>
 				<div class="hidden space-x-2 md:flex">
@@ -209,7 +209,7 @@
 				</div>
 				<div class="md:hidden">
 					<select
-						class="h-8 w-full rounded-lg pl-2 text-lg font-extrabold text-space_light"
+						class="h-8 w-full rounded-lg pl-2 text-lg font-extrabold text-space_dark"
 						bind:value={selectedRegion}
 						on:change={(e) => setRegionFilter(e.currentTarget.value)}
 						class:bg-purple_highlight={selectedRegion === 'all'}
