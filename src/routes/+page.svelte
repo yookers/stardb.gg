@@ -1,11 +1,9 @@
 <script>
-	import { page } from '$app/stores';
-	const apiURL = import.meta.env.VITE_SERVER_API_URL;
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="StarDB.gg - Home page" />
+	<title>StarDB.gg - Leaderboards and Tools for Honkai Star Rail</title>
+	<meta name="description" content="View the top ranked players and builds in Honkai Star Rail. Featuring a leaderboard, smart achievement tracker, and player card generator." />
 </svelte:head>
 
 <div

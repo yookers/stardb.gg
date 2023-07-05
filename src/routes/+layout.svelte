@@ -5,7 +5,7 @@
 	import { isSidebarExpanded } from './store.js';
 </script>
 
-<main class="flex h-screen flex-col overflow-auto">
+<main class="flex h-screen flex-col">
 	<div class="hidden md:flex">
 		<Sidebar />
 	</div>

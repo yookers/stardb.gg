@@ -1,12 +1,10 @@
 <script>
 	export let data;
-	import { Icon, Bars3BottomLeft, ChevronUp, ChevronDown } from 'svelte-hero-icons';
+	import { Icon, ChevronUp, ChevronDown } from 'svelte-hero-icons';
 	import LeaderboardCard from './LeaderboardCard.svelte';
 	import AddPlayer from './AddPlayer.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { browser } from '$app/environment';
-	import { navigating } from '$app/stores';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { searchResults } from '../store.js';
@@ -54,28 +52,43 @@
 	}
 
 	function updateCardPosition(cursorX, cursorY) {
-		const halfViewportWidth = window.innerWidth / 2;
-		const halfViewportHeight = window.innerHeight / 2;
+		const viewportWidth = window.innerWidth;
+		const viewportHeight = window.innerHeight;
+		const MD_BREAKPOINT = 768; // Tailwind CSS md breakpoint
 		const cardWidth = 300;
 		const cardHeight = 200;
 		const offsetX = 10;
 		const offsetY = 10;
 		let positionX, positionY;
-		// Determine horizontal position of the card
-		if (cursorX >= halfViewportWidth) {
-			// Display the card to the left of the cursor if the cursor is on the right half of the viewport
-			positionX = cursorX - cardWidth - offsetX;
+
+		// Check if the viewport is smaller than the mobile breakpoint
+		if (viewportWidth < MD_BREAKPOINT) {
+			// Center the card horizontally
+			positionX = (viewportWidth - cardWidth) / 2;
+			// Adjust the vertical position for small viewports
+			if (cursorY >= viewportHeight / 2) {
+				positionY = cursorY - cardHeight - offsetY;
+			} else {
+				positionY = cursorY + offsetY;
+			}
 		} else {
-			// Display the card to the right of the cursor if the cursor is on the left half of the viewport
-			positionX = cursorX + offsetX;
-		}
-		// Determine vertical position of the card
-		if (cursorY >= halfViewportHeight) {
-			// Display the card above the cursor if the cursor is on the bottom half of the viewport
-			positionY = cursorY - cardHeight - offsetY;
-		} else {
-			// Display the card below the cursor if the cursor is on the top half of the viewport
-			positionY = cursorY + offsetY;
+			// For larger viewports, keep the existing logic
+			// Determine horizontal position of the card
+			if (cursorX >= viewportWidth / 2) {
+				// Display the card to the left of the cursor if the cursor is on the right half of the viewport
+				positionX = cursorX - cardWidth - offsetX;
+			} else {
+				// Display the card to the right of the cursor if the cursor is on the left half of the viewport
+				positionX = cursorX + offsetX;
+			}
+			// Determine vertical position of the card
+			if (cursorY >= viewportHeight / 2) {
+				// Display the card above the cursor if the cursor is on the bottom half of the viewport
+				positionY = cursorY - cardHeight - offsetY;
+			} else {
+				// Display the card below the cursor if the cursor is on the top half of the viewport
+				positionY = cursorY + offsetY;
+			}
 		}
 		cardPosition = { x: positionX, y: positionY };
 	}
@@ -145,8 +158,11 @@
 </script>
 
 <svelte:head>
-	<title>Achievement Leaderboard</title>
-	<meta name="description" content="StarDB.gg - Achievement Leaderboard" />
+	<title>Achievement Leaderboard - Honkai Star Rail - StarDB.gg</title>
+	<meta
+		name="description"
+		content="StarDB.gg's leaderboard tracks the highest ranked Honkai Star Rail players across every region. View their player profiles."
+	/>
 </svelte:head>
 
 <div class="flex justify-center">
@@ -209,7 +225,7 @@
 				</div>
 				<div class="md:hidden">
 					<select
-						class="h-8 w-full rounded-lg pl-2 text-lg font-extrabold text-space_dark"
+						class="h-8 w-full rounded-lg pl-3 text-lg font-extrabold text-space_dark"
 						bind:value={selectedRegion}
 						on:change={(e) => setRegionFilter(e.currentTarget.value)}
 						class:bg-purple_highlight={selectedRegion === 'all'}
@@ -277,7 +293,7 @@
 									on:mousemove={handleMouseMove}
 									on:mouseleave={handleMouseLeave}
 								>
-									<td class="px-5">
+									<td class="px-4">
 										<!-- Region indicator -->
 										<div
 											class="h-2 w-2 rounded-full"
@@ -299,7 +315,7 @@
 					</table>
 				</div>
 				<!-- Footer information -->
-				<div class="py-4 pl-4 text-sm md:pl-6">
+				<div class="pb-8 pl-4 pt-4 text-sm md:pl-6">
 					<p>
 						Showing <span class="font-bold">{startRank}</span> -
 						<span class="font-bold">{endRank}</span>
@@ -308,7 +324,7 @@
 				</div>
 			</div>
 			<!-- Pagination buttons -->
-			<div class="flex-col space-y-3 pt-10">
+			<div class="flex-col space-y-3 pt-14">
 				<button
 					class="flex h-10 w-10 items-center justify-center rounded-lg border-2 border-purple_highlight bg-space_light text-white hover:bg-purple_highlight md:h-12 md:w-12"
 					aria-label="Previous page on leaderboard"
@@ -340,7 +356,7 @@
 {#if showNotification}
 	<div class="flex justify-center">
 		<div
-			class="fixed bottom-20 flex w-64 justify-center rounded-lg p-2 font-bold text-space_dark md:w-96 {notificationType ===
+			class="fixed bottom-20 flex w-96 justify-center rounded-lg p-2 text-base font-bold text-space_dark {notificationType ===
 			'success'
 				? 'bg-neon_green'
 				: 'bg-neon_pink'}"
