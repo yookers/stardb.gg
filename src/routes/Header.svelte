@@ -15,6 +15,7 @@
 >
 	<button
 		class="ml-4 flex h-8 w-8 items-center justify-center rounded-lg border-2 border-transparent focus:border-white_warm md:invisible"
+		aria-label="Toggle Sidebar"
 		on:click={() => toggleMobileSidebar()}
 	>
 		<Icon src={Bars3} solid class="h-5 w-5 text-white_warm" />
@@ -22,8 +23,12 @@
 	<div class="text-center">
 		<SearchBar />
 	</div>
-	<a href="/login" class="mr-4 flex h-8 w-8 items-center justify-center space-x-2 rounded-lg border-2 border-transparent bg-purple_highlight text-white_warm hover:border-white_warm md:mr-8 md:w-20">
-			<Icon src={User} solid class="h-4 w-4 " />
-			<p class="hidden text-sm font-bold md:flex">Login</p>
+	<a
+		href="/login"
+		aria-label="Login Page"
+		class="mr-4 flex h-8 w-8 items-center justify-center space-x-2 rounded-lg border-2 border-transparent bg-purple_highlight text-white_warm hover:border-white_warm md:mr-8 md:w-20"
+	>
+		<Icon src={User} solid class="h-4 w-4 " />
+		<p class="hidden text-sm font-bold md:flex">Login</p>
 	</a>
 </header>

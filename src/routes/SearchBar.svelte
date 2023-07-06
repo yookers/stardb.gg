@@ -11,7 +11,7 @@
 			return null;
 		}
 
-		// check if it's an UID (9 digits) else it's a name
+		// Check if it's an UID (9 digits) else it's a name
 		const isUID = /^\d{9}$/.test(query);
 
 		const requestURL = isUID
