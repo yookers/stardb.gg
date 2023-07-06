@@ -16,8 +16,16 @@ export default defineConfig({
 	},
 	server: {
 		proxy: {
-			'/api': 'https://stardb.gg',
-			'/gtm.js': 'https://www.googletagmanager.com'
+            '/api': {
+                target: 'https://stardb.gg',
+                changeOrigin: true,
+                secure: true
+            },
+            '/gtm.js': {
+                target: 'https://www.googletagmanager.com',
+                changeOrigin: true,
+                secure: true
+            }
 		}
-	}
+	},
 });
