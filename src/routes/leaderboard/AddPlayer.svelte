@@ -54,9 +54,11 @@
 		on:keydown={handleKeyDown}
 		bind:value={uid}
 	/>
-	<button class="rounded-r-lg bg-purple_highlight px-1.5"
-    aria-label="Add Player UID to leaderboard"
-    on:click={addPlayerUID}>
+	<button
+		class="rounded-r-lg bg-purple_highlight px-1.5"
+		aria-label="Add Player UID to leaderboard"
+		on:click={addPlayerUID}
+	>
 		<Icon src={Plus} solid class="h-5 w-5 text-white_warm" />
 	</button>
 </div>

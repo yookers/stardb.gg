@@ -3,7 +3,10 @@
 
 <svelte:head>
 	<title>StarDB.gg - Leaderboards and Tools for Honkai Star Rail</title>
-	<meta name="description" content="View the top ranked players and builds in Honkai Star Rail. Featuring a leaderboard, smart achievement tracker, and player card generator." />
+	<meta
+		name="description"
+		content="View the top ranked players and builds in Honkai Star Rail. Featuring a leaderboard, smart achievement tracker, and player card generator."
+	/>
 </svelte:head>
 
 <div

@@ -30,7 +30,6 @@
 		</div>
 	</div>
 	<div class="mt-2">
-		<div>Achievements: {player.achievement_count}</div>
 		<div>Characters Owned: {player.character_count}</div>
 		<div>Last Updated: {formattedDate}</div>
 	</div>

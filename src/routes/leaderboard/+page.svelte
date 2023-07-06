@@ -225,9 +225,9 @@
 				</div>
 				<div class="md:hidden">
 					<select
-						class="h-8 w-full rounded-lg pl-3 text-lg font-extrabold text-space_dark"
+						class="h-8 w-20 rounded-lg pl-3 text-lg font-extrabold text-space_dark"
 						bind:value={selectedRegion}
-						on:change={(e) => setRegionFilter(e.currentTarget.value)}
+						on:change={(event) => setRegionFilter(event.currentTarget.value)}
 						class:bg-purple_highlight={selectedRegion === 'all'}
 						class:bg-neon_yellow={selectedRegion === 'na'}
 						class:bg-neon_pink={selectedRegion === 'eu'}
@@ -265,7 +265,7 @@
 			<!-- Main leaderboard content -->
 			<div class="just flex-col px-4 md:px-6">
 				<div class="rounded-lg border-2 border-purple_highlight bg-space_light px-4 py-6 md:px-6">
-					<table class="w-52 table-fixed text-left text-sm sm:w-[410px] md:w-[510px] lg:w-[800px]">
+					<table class="w-52 table-fixed text-left text-sm sm:w-[410px] md:w-[510px] lg:w-[780px]">
 						<thead>
 							<tr>
 								<!-- Region indicator -->
