@@ -1,4 +1,4 @@
-const apiURL = import.meta.env.VITE_SERVER_API_URL;
+const apiURL = '/api/scores';
 
 export const load = async ({ fetch }) => {
 	const response = await fetch(apiURL);

@@ -1,5 +1,4 @@
 <script>
-	import { PUBLIC_CLIENT_API_URL } from '$env/static/public';
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
 	import { searchResults } from './store.js';
 
@@ -10,13 +9,10 @@
 			searchResults.set(null);
 			return null;
 		}
-
 		// Check if it's an UID (9 digits) else it's a name
 		const isUID = /^\d{9}$/.test(query);
 
-		const requestURL = isUID
-			? `${PUBLIC_CLIENT_API_URL}/${query}`
-			: `${PUBLIC_CLIENT_API_URL}?query=${query}`;
+		const requestURL = isUID ? `/api/scores/${query}` : `/api/scores?query=${query}`;
 		try {
 			const response = await fetch(requestURL);
 			if (!response.ok) {
@@ -42,9 +38,9 @@
 	}
 </script>
 
-<div class="flex h-8 w-52 justify-center overflow-hidden rounded-lg md:w-80">
+<div class="flex justify-center overflow-hidden">
 	<button
-		class="flex items-center justify-center bg-purple_highlight"
+		class="flex h-8 items-center justify-center rounded-l-lg bg-purple_highlight"
 		aria-label="Search for Player Name or UID"
 		on:click={() => searchPlayer(searchQuery)}
 	>
@@ -54,7 +50,7 @@
 	<input
 		bind:value={searchQuery}
 		on:keydown={handleKeyDown}
-		class="h-full w-full rounded-r-lg border-2 border-purple_highlight border-transparent bg-space_dark pl-4 text-sm text-white_warm outline-none focus:border-purple_highlight"
+		class="h-8 w-52 rounded-r-lg border-2 border-purple_highlight border-transparent bg-space_dark pl-4 text-sm text-white_warm outline-none focus:border-purple_highlight md:w-80"
 		type="text"
 		id="search"
 		placeholder="Search UID or Name"
