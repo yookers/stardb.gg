@@ -8,6 +8,15 @@
 	let uid = '';
 
 	async function addPlayerUID() {
+		// Check if UID is 9 digits number
+		if (!/^\d{9}$/.test(uid)) {
+			notificationType = 'error';
+			dispatch('addplayer', {
+				notificationType
+			});
+			return;
+		}
+
 		const requestOptions = {
 			method: 'PUT',
 			headers: {

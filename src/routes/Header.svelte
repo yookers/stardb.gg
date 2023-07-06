@@ -22,10 +22,12 @@
 	<div class="text-center">
 		<SearchBar />
 	</div>
-	<button
-		class="mr-4 flex h-8 w-8 items-center justify-center space-x-2 rounded-lg border-2 border-transparent bg-purple_highlight text-white_warm hover:border-white_warm md:mr-8 md:w-20"
-	>
-		<Icon src={User} solid class="h-4 w-4 " />
-		<p class="hidden text-sm font-bold md:flex">Login</p>
-	</button>
+	<a href="/login">
+		<button
+			class="mr-4 flex h-8 w-8 items-center justify-center space-x-2 rounded-lg border-2 border-transparent bg-purple_highlight text-white_warm hover:border-white_warm md:mr-8 md:w-20"
+		>
+			<Icon src={User} solid class="h-4 w-4 " />
+			<p class="hidden text-sm font-bold md:flex">Login</p>
+		</button>
+	</a>
 </header>
