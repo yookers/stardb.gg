@@ -165,7 +165,7 @@
 	/>
 </svelte:head>
 
-<div class="flex justify-center">
+<div class="flex justify-center bg-space_dark">
 	<div class="flex flex-col text-white_warm">
 		<!-- Region filter section -->
 		<div class="flex justify-between space-x-6 py-6 pl-16 pr-16 md:pr-24">
