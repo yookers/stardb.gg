@@ -265,7 +265,7 @@
 			<!-- Main leaderboard content -->
 			<div class="just flex-col px-4 md:px-6">
 				<div class="rounded-lg border-2 border-purple_highlight bg-space_light px-4 py-6 md:px-6">
-					<table class="w-52 table-fixed text-left text-sm sm:w-[410px] md:w-[510px] lg:w-[780px]">
+					<table class="w-52 table-fixed text-left text-sm sm:w-[410px] md:w-[510px] lg:w-[780px] text-white_warm">
 						<thead>
 							<tr>
 								<!-- Region indicator -->
