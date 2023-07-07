@@ -36,7 +36,7 @@
 					return proxyUrl;
 				}
 				return url;
-			}
+			},
 		};
 	</script>
 

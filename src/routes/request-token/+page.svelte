@@ -1,6 +1,9 @@
 <svelte:head>
 	<title>Request Login Token - StarDB.gg</title>
-	<meta name="description" content="Request a recovery login token in case you forgot your password on StarDB.gg" />
+	<meta
+		name="description"
+		content="Request a recovery login token in case you forgot your password on StarDB.gg"
+	/>
 </svelte:head>
 
 <div

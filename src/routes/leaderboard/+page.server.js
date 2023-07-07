@@ -9,5 +9,3 @@ export const load = async ({ fetch }) => {
 		leaderboardData
 	};
 };
-
-export const prerender = false;

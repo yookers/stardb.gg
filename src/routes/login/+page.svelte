@@ -24,7 +24,7 @@
 			if (response.ok) {
 				messageType = 'success';
 				updateRegisterPlayerNotification();
-                goto('/leaderboard');
+				goto('/leaderboard');
 			} else {
 				messageType = 'error';
 				updateRegisterPlayerNotification();

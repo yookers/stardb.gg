@@ -225,7 +225,7 @@
 				</div>
 				<div class="md:hidden">
 					<select
-						class="h-8 w-20 rounded-lg pl-3 text-lg focus:outline-none font-extrabold text-space_dark"
+						class="h-8 w-20 rounded-lg pl-3 text-lg font-extrabold text-space_dark focus:outline-none"
 						bind:value={selectedRegion}
 						on:change={(event) => setRegionFilter(event.currentTarget.value)}
 						class:bg-purple_highlight={selectedRegion === 'all'}
