@@ -165,7 +165,7 @@
 	/>
 </svelte:head>
 
-<div class="flex justify-center bg-space_dark">
+<div class="flex justify-center">
 	<div class="flex flex-col text-white_warm">
 		<!-- Region filter section -->
 		<div class="flex justify-between space-x-6 py-6 pl-16 pr-16 md:pr-24">
@@ -225,7 +225,7 @@
 				</div>
 				<div class="md:hidden">
 					<select
-						class="h-8 w-20 rounded-lg pl-3 text-lg font-extrabold text-space_dark"
+						class="h-8 w-20 rounded-lg pl-3 text-lg focus:outline-none font-extrabold text-space_dark"
 						bind:value={selectedRegion}
 						on:change={(event) => setRegionFilter(event.currentTarget.value)}
 						class:bg-purple_highlight={selectedRegion === 'all'}
