@@ -15,8 +15,9 @@ jobs:
         run: |
           npm i
           npm run build
+          mv node_modules/ build/
+          echo '{"type": "module"}' > build/package.json
           mv build stardb
-          echo '{"type": "module"}' > stardb/package.json
 
       - name: Stop Service
         uses: appleboy/ssh-action@v0.1.10
