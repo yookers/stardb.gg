@@ -1,4 +1,5 @@
 <script>
+	import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 	import { createEventDispatcher } from 'svelte';
 	import { Icon, Plus } from 'svelte-hero-icons';
 
@@ -24,7 +25,7 @@
 		};
 
 		try {
-			const response = await fetch(`/api/scores/${uid}`, requestOptions);
+			const response = await fetch(`${PUBLIC_SERVER_API_URL}/scores/${uid}`, requestOptions);
 			const data = await response.json();
 			if (response.ok) {
 				notificationType = 'success';

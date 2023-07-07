@@ -13,19 +13,5 @@ export default defineConfig({
 	],
 	ssr: {
 		noExternal: ['svelte-hero-icons']
-	},
-	server: {
-		proxy: {
-            '/api': {
-                target: 'https://stardb.gg',
-                changeOrigin: true,
-                secure: true
-            },
-            '/gtm.js': {
-                target: 'https://www.googletagmanager.com',
-                changeOrigin: true,
-                secure: true
-            }
-		}
-	},
+	}
 });

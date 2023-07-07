@@ -23,17 +23,17 @@
 		partytown = {
 			forward: ['dataLayer.push'],
 			resolveUrl: (url) => {
-				const siteUrl = 'https://stardb.gg/gtm.js';
+				const siteUrl = 'https://stardb.gg/gtm.js?';
 				if (url.hostname === 'www.googletagmanager.com') {
-					const proxyUrl = new URL(siteUrl);
+					const proxyUrl = new URL(`${siteUrl}`);
 
 					const gtmId = new URL(url).searchParams.get('id');
-					if (gtmId) {
-						proxyUrl.searchParams.append('id', gtmId);
-					}
+					gtmId && proxyUrl.searchParams.append('id', gtmId);
+
 					return proxyUrl;
 				} else if (url.hostname === 'www.google-analytics.com') {
 					const proxyUrl = new URL(`${siteUrl}`);
+
 					return proxyUrl;
 				}
 				return url;
