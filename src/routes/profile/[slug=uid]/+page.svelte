@@ -12,6 +12,6 @@
 	/>
 </svelte:head>
 
-<div class="flex justify-center text-white_warm">
+<div class="flex justify-center text-off_white">
 	<h1>{data.profileData.name}</h1>
 </div>

@@ -57,7 +57,7 @@
 
 <div class="flex">
 	<input
-		class="h-8 w-28 overflow-hidden rounded-l-lg border-2 border-transparent bg-space_light pl-4 text-sm text-white_warm outline-none focus:border-purple_highlight sm:w-40 md:w-52"
+		class="h-8 w-40 overflow-hidden rounded-l-lg border-2 border-transparent bg-space_light pl-4 text-sm text-off_white outline-none focus:border-purple_highlight md:w-52"
 		placeholder="Player UID"
 		type="text"
 		on:keydown={handleKeyDown}
@@ -68,6 +68,6 @@
 		aria-label="Add Player UID to leaderboard"
 		on:click={addPlayerUID}
 	>
-		<Icon src={Plus} solid class="h-5 w-5 text-white_warm" />
+		<Icon src={Plus} solid class="h-5 w-5 text-off_white" />
 	</button>
 </div>

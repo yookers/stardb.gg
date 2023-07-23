@@ -1,4 +1,11 @@
 <script>
+	import Logo from './Logo.svelte';
+	let m = { x: 0, y: 0 };
+
+	function handleMove(event) {
+		m.x = (window.innerWidth / 2 - event.clientX) / 30;
+		m.y = (window.innerHeight / 2 - event.clientY) / 30;
+	}
 </script>
 
 <svelte:head>
@@ -10,8 +17,23 @@
 </svelte:head>
 
 <div
-	class="flex h-full flex-col items-center justify-center space-x-8 space-y-8 text-white_warm md:flex-row md:space-y-0"
+	class="flex h-full flex-col items-center justify-center text-off_white"
+	on:pointermove={handleMove}
 >
-	<p class="text-center text-7xl font-bold md:text-9xl">Hi there!</p>
-	<img src="/images/march-happy-small.webp" alt="" class="h-40 w-40" />
+	<div
+		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-8 font-dm_sans text-5xl md:text-8xl tracking-tighter text-galaxy_purple-250"
+	>
+		<Logo class="w-12 md:w-24 overflow-visible fill-none stroke-[8]" />
+		<p class="select-none">stardb.gg</p>
+	</div>
+	<div
+		class="relative flex h-36 w-64 md:w-[600px] justify-center overflow-clip rounded-2xl border-2 border-galaxy_purple-250"
+	>
+		<img
+			src="images/galaxy/galaxy-1.png"
+			alt="Galaxy background"
+			class="absolute -top-16 opacity-20 blur-sm"
+			style="transform: translate3d({m.x}px, {m.y}px, 0) scale(1.2);"
+		/>
+	</div>
 </div>

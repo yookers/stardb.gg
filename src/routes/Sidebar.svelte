@@ -1,141 +1,205 @@
 <script>
-	import { Icon, Star, ChartBar, FaceSmile, DocumentCheck, BookOpen } from 'svelte-hero-icons';
-	import { isSidebarExpanded, mobileSidebarToggle } from './store.js';
+	import {
+		Icon,
+		ChartBar,
+		DocumentCheck,
+		CircleStack,
+		FaceSmile,
+		BookOpen
+	} from 'svelte-hero-icons';
+	import { sidebarState, currentInterface } from './store.js';
 	import { page } from '$app/stores';
+	import { slide } from 'svelte/transition';
 
-	const MD_BREAKPOINT = 768; // Tailwind CSS md breakpoint
-	let windowWidth;
+	// Functions to toggle sidebar state
+	const expandSidebar = () => {
+		if ($sidebarState === 'collapsed') {
+			sidebarState.set('expanded');
+		}
+	};
+
+	const collapseSidebar = () => {
+		if ($sidebarState === 'expanded') {
+			sidebarState.set('collapsed');
+		}
+	};
+
+	function handleKeyDown(event) {
+		if (event.key === 'Escape') {
+			collapseSidebar();
+		}
+	}
+
+	// Handle mobile view
+	let isMobileView;
+	$: {
+		if ($currentInterface === 'mobile') {
+			sidebarState.set('closed');
+			isMobileView = true;
+		} else {
+			sidebarState.set('collapsed');
+			isMobileView = false;
+		}
+	}
 </script>
 
-<!-- Prevent sidebar from expanding when viewport is too small -->
-<div
-	bind:clientWidth={windowWidth}
-	class="flex flex-col"
-	role="navigation"
-	aria-label="Sidebar"
-	on:mouseenter={() => {
-		if (window.innerWidth >= MD_BREAKPOINT) isSidebarExpanded.set(true);
-	}}
-	on:mouseleave={() => {
-		if (window.innerWidth >= MD_BREAKPOINT) isSidebarExpanded.set(false);
-		else mobileSidebarToggle.set(false);
-	}}
->
-	<!-- Sidebar -->
+{#if isMobileView && $sidebarState === 'expanded'}
 	<div
-		class="fixed left-0 top-0 z-10 hidden h-full overflow-x-hidden whitespace-nowrap border-r-2 border-purple_highlight bg-space_light font-bold text-space_gray duration-300"
-		class:md:w-16={!$isSidebarExpanded}
-		class:md:w-48={$isSidebarExpanded}
-		class:hidden={windowWidth < MD_BREAKPOINT && !$mobileSidebarToggle}
-		class:w-48={$mobileSidebarToggle}
+		class="fixed left-0 top-0 z-[9] h-full w-full bg-black opacity-50"
+		on:click={() => {
+			sidebarState.set('closed');
+		}}
+		on:keydown={handleKeyDown}
+	/>
+{/if}
+
+{#if !isMobileView || $sidebarState === 'expanded'}
+	<!-- Prevent sidebar from expanding when viewport is too small -->
+	<div
+		class="fixed left-0 top-0 z-10 flex h-full w-16 items-center whitespace-nowrap pt-16 font-bold duration-300"
+		class:w-16={$sidebarState === 'collapsed'}
+		class:w-48={$sidebarState === 'expanded'}
+		transition:slide={{ axis: 'x', duration: 300 }}
 	>
-		<!-- Logo -->
-		<a href="/" class="flex">
-			<button
-				class="flex h-16 w-full items-center space-x-4 whitespace-nowrap bg-purple_highlight px-5 py-2 duration-300"
-				on:click={() => {
-					mobileSidebarToggle.set(false);
-				}}
-			>
-				<div>
-					<Icon src={Star} solid class="h-6 w-6 animate-spin-slow text-white_warm" />
-				</div>
-				<div
-					class="transition-opacity duration-200 {$isSidebarExpanded || $mobileSidebarToggle
-						? 'opacity-100'
-						: 'opacity-0'}"
-				>
-					<p class="text-2xl font-light tracking-wider text-white_warm">db.gg</p>
-				</div>
-			</button>
-		</a>
-		<div class="flex flex-col space-y-4 pt-48">
-			<!-- Leaderboard icon-->
-			<a href="/leaderboard" class:text-white_warm={$page.url.pathname === '/leaderboard'}>
-				<button
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-purple_highlight hover:text-white_warm"
+		<!-- Sidebar content -->
+		<div
+			class="flex h-full w-full flex-col border-r-2 border-galaxy_purple-750 bg-space_dark pb-4 pt-20 text-galaxy_purple-300/80 hover:border-galaxy_purple-650 md:h-4/5 md:rounded-r-2xl md:border-b-2 md:border-t-2"
+			role="navigation"
+			aria-label="Sidebar"
+			on:mouseenter={() => {
+				if (!isMobileView) expandSidebar();
+			}}
+			on:mouseleave={() => {
+				if (!isMobileView) collapseSidebar();
+			}}
+		>
+			<div class="flex flex-col space-y-4 overflow-y-auto overflow-x-hidden">
+				<!-- Leaderboard icon-->
+				<a
+					href="/leaderboard"
+					class:text-off_white={$page.url.pathname === '/leaderboard'}
 					on:click={() => {
-						mobileSidebarToggle.set(false);
+						if (isMobileView) {
+							sidebarState.set('closed');
+						}
 					}}
 				>
-					<div>
-						<Icon src={ChartBar} solid class="h-6 w-6" />
-					</div>
-					<div
-						class="transition-opacity duration-200 {$isSidebarExpanded || $mobileSidebarToggle
-							? 'opacity-100'
-							: 'opacity-0'}"
+					<button
+						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					>
-						<p>Leaderboard</p>
-					</div>
-				</button>
-			</a>
-			<!-- Profile icon-->
-			<a href="/profile-card" class:text-white_warm={$page.url.pathname === '/profile-card'}>
-				<button
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-purple_highlight hover:text-white_warm"
+						<div>
+							<Icon src={ChartBar} solid class="h-6 w-6" />
+						</div>
+						<div
+							class="transition-opacity duration-200 {$sidebarState === 'expanded'
+								? 'opacity-100'
+								: 'opacity-0'}"
+						>
+							<p>Leaderboard</p>
+						</div>
+					</button>
+				</a>
+				<!-- Achievement tracker icon -->
+				<a
+					href="/achievement-tracker"
+					class:text-off_white={$page.url.pathname === '/achievement-tracker'}
 					on:click={() => {
-						mobileSidebarToggle.set(false);
+						if (isMobileView) {
+							sidebarState.set('closed');
+						}
 					}}
 				>
-					<div>
-						<Icon src={FaceSmile} solid class="h-6 w-6" />
-					</div>
-					<div
-						class="transition-opacity duration-200 {$isSidebarExpanded || $mobileSidebarToggle
-							? 'opacity-100'
-							: 'opacity-0'}"
+					<button
+						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					>
-						<p>Profile Card</p>
-					</div>
-				</button>
-			</a>
-			<!-- Achievement tracker icon -->
-			<a
-				href="/achievement-tracker"
-				class:text-white_warm={$page.url.pathname === '/achievement-tracker'}
-			>
-				<button
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-purple_highlight hover:text-white_warm"
+						<div>
+							<Icon src={DocumentCheck} solid class="h-6 w-6" />
+						</div>
+						<div
+							class="transition-opacity duration-200 {$sidebarState === 'expanded'
+								? 'opacity-100'
+								: 'opacity-0'}"
+						>
+							<p>Tracker</p>
+						</div>
+					</button>
+				</a>
+				<!-- Database icon -->
+				<a
+					href="/database"
+					class:text-off_white={$page.url.pathname === '/database'}
 					on:click={() => {
-						mobileSidebarToggle.set(false);
+						if (isMobileView) {
+							sidebarState.set('closed');
+						}
 					}}
 				>
-					<div>
-						<Icon src={DocumentCheck} solid class="h-6 w-6" />
-					</div>
-					<div
-						class="transition-opacity duration-200 {$isSidebarExpanded || $mobileSidebarToggle
-							? 'opacity-100'
-							: 'opacity-0'}"
+					<button
+						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					>
-						<p>Tracker</p>
-					</div>
-				</button>
-			</a>
-			<!-- Articles icon-->
-			<a
-				href="/articles"
-				class:text-white_warm={$page.url.pathname === '/articles'}
-				on:click={() => {
-					mobileSidebarToggle.set(false);
-				}}
-			>
-				<div
-					class="flex cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-purple_highlight hover:text-white_warm"
+						<div>
+							<Icon src={CircleStack} solid class="h-6 w-6" />
+						</div>
+						<div
+							class="transition-opacity duration-200 {$sidebarState === 'expanded'
+								? 'opacity-100'
+								: 'opacity-0'}"
+						>
+							<p>Database</p>
+						</div>
+					</button>
+				</a>
+				<!-- Profile icon-->
+				<a
+					href="/profile-card"
+					class:text-off_white={$page.url.pathname === '/profile-card'}
+					on:click={() => {
+						if (isMobileView) {
+							sidebarState.set('closed');
+						}
+					}}
 				>
-					<div>
-						<Icon src={BookOpen} solid class="h-6 w-6" />
-					</div>
-					<div
-						class="transition-opacity duration-200 {$isSidebarExpanded || $mobileSidebarToggle
-							? 'opacity-100'
-							: 'opacity-0'}"
+					<button
+						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					>
-						<p>Articles</p>
+						<div>
+							<Icon src={FaceSmile} solid class="h-6 w-6" />
+						</div>
+						<div
+							class="transition-opacity duration-200 {$sidebarState === 'expanded'
+								? 'opacity-100'
+								: 'opacity-0'}"
+						>
+							<p>Profile Card</p>
+						</div>
+					</button>
+				</a>
+				<!-- Articles icon-->
+				<a
+					href="/articles"
+					class:text-off_white={$page.url.pathname === '/articles'}
+					on:click={() => {
+						if (isMobileView) {
+							sidebarState.set('closed');
+						}
+					}}
+				>
+					<div
+						class="flex cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
+					>
+						<div>
+							<Icon src={BookOpen} solid class="h-6 w-6" />
+						</div>
+						<div
+							class="transition-opacity duration-200 {$sidebarState === 'expanded'
+								? 'opacity-100'
+								: 'opacity-0'}"
+						>
+							<p>Articles</p>
+						</div>
 					</div>
-				</div>
-			</a>
+				</a>
+			</div>
 		</div>
 	</div>
-</div>
+{/if}

@@ -2,11 +2,14 @@
 	import Header from './Header.svelte';
 	import Sidebar from './Sidebar.svelte';
 	import './app.css';
-	import { isSidebarExpanded, mobileSidebarToggle } from './store.js';
+	import { sidebarState, currentInterface } from './store.js';
+	import { fly } from 'svelte/transition';
 
 	import { onMount } from 'svelte';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 
+	export let data;
+	let deviceWidth;
 	// Add the Partytown script to the DOM head
 	let scriptEl;
 	onMount(() => {
@@ -14,7 +17,21 @@
 			scriptEl.textContent = partytownSnippet();
 		}
 	});
+
+	$: if (deviceWidth > 1536) {
+		currentInterface.set('desktop-2xl');
+	} else if (deviceWidth > 1280) {
+		currentInterface.set('desktop-xl');
+	} else if (deviceWidth > 1024) {
+		currentInterface.set('desktop');
+	} else if (deviceWidth > 768) {
+		currentInterface.set('tablet');
+	} else {
+		currentInterface.set('mobile');
+	}
 </script>
+
+<svelte:window bind:innerWidth={deviceWidth} />
 
 <svelte:head>
 	<script>
@@ -36,7 +53,7 @@
 					return proxyUrl;
 				}
 				return url;
-			},
+			}
 		};
 	</script>
 
@@ -58,14 +75,18 @@
 
 <main class="flex h-screen flex-col font-inter">
 	<Sidebar />
-	<div
-		class="flex-grow bg-space_dark pt-16 duration-300 {$isSidebarExpanded
-			? 'md:pl-48'
-			: 'md:pl-16'}"
-		on:touchstart={() => mobileSidebarToggle && mobileSidebarToggle.set(false)}
-	>
-		<Header />
-		<!-- Main content needs to account for header height and sidebar width. -->
-		<slot />
-	</div>
+	<Header />
+
+	<!-- Main content needs to account for header height and sidebar width. -->
+	{#key data.currentPath}
+		<div
+			class="flex-grow bg-space_dark pt-16 duration-300 {$sidebarState === 'expanded'
+				? 'md:pl-48'
+				: 'md:pl-16'}"
+			in:fly={{ y: -30, duration: 200, delay: 100 }}
+		>
+			<slot />
+
+		</div>
+	{/key}
 </main>

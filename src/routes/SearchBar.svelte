@@ -1,5 +1,5 @@
 <script>
-	import { PUBLIC_SERVER_API_URL } from '$env/static/public';
+    const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
 	import { searchResults } from './store.js';
 
@@ -14,8 +14,8 @@
 		const isUID = /^\d{9}$/.test(query);
 
 		const requestURL = isUID
-			? `${PUBLIC_SERVER_API_URL}/scores/${query}`
-			: `${PUBLIC_SERVER_API_URL}/scores?query=${query}`;
+			? `${apiURL}/scores/${query}`
+			: `${apiURL}/scores?query=${query}`;
 		try {
 			const response = await fetch(requestURL);
 			if (!response.ok) {
@@ -47,13 +47,13 @@
 		aria-label="Search for Player Name or UID"
 		on:click={() => searchPlayer(searchQuery)}
 	>
-		<Icon src={MagnifyingGlass} solid class="m-2 h-5 w-5 text-white_warm" />
+		<Icon src={MagnifyingGlass} solid class="m-2 h-5 w-5 text-off_white" />
 	</button>
 
 	<input
 		bind:value={searchQuery}
 		on:keydown={handleKeyDown}
-		class="h-8 w-52 rounded-r-lg border-2 border-purple_highlight border-transparent bg-space_dark pl-4 text-sm text-white_warm outline-none focus:border-purple_highlight md:w-80"
+		class="h-8 w-52 rounded-r-lg border-2 border-purple_highlight border-transparent bg-space_dark pl-4 text-sm text-off_white outline-none focus:border-purple_highlight md:w-80"
 		type="text"
 		id="search"
 		placeholder="Search UID or Name"

@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class="rounded-lg border-2 border-purple_highlight bg-space_dark p-4 text-white_warm shadow-lg"
+	class="rounded-lg border-2 border-purple_highlight bg-space_dark p-4 text-off_white shadow-lg"
 >
 	<div class="flex items-center">
 		<img class="h-12 w-12 rounded-full" src={ASSETS_URL + player.avatar_icon} alt={player.name} />

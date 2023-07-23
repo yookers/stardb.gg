@@ -1,8 +1,8 @@
 <script>
-	import { PUBLIC_SERVER_API_URL } from '$env/static/public';
-	import { goto } from '$app/navigation';
+	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+	import { invalidateAll } from '$app/navigation';
 
 	let username = '';
 	let password = '';
@@ -20,16 +20,17 @@
 			payload.email = email;
 		}
 		try {
-			const response = await fetch(`${PUBLIC_SERVER_API_URL}/users/register`, {
+			const response = await fetch(`${apiURL}/users/register`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload)
+				body: JSON.stringify(payload),
+				credentials: 'include'
 			});
 
 			if (response.ok) {
 				messageType = 'success';
 				updateRegisterPlayerNotification();
-				goto('/leaderboard');
+				invalidateAll();
 			} else {
 				messageType = 'error';
 				updateRegisterPlayerNotification();
@@ -59,22 +60,22 @@
 
 <div class="flex h-full flex-col items-center justify-center pb-8">
 	<div class="flex flex-col space-y-4">
-		<p class="pl-2 text-3xl font-bold text-white_warm">Register an account</p>
+		<p class="pl-2 text-3xl font-bold text-off_white">Register an account</p>
 		<div
-			class="w-full max-w-lg rounded-lg border-2 border-purple_highlight bg-space_light p-10 text-sm md:text-base"
+			class="w-full max-w-lg rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 p-10 text-sm hover:border-galaxy_purple-600 md:text-base"
 		>
-			<form class="flex flex-col items-center text-white_warm" on:submit|preventDefault={register}>
-				<div class="space-y-6 rounded-md shadow-sm">
+			<form class="flex flex-col items-center text-off_white" on:submit|preventDefault={register}>
+				<div class="space-y-6 rounded-md">
 					<div>
 						{#if username.length > 32}
 							<p class="font-bold text-neon_pink">Username exceeds limit</p>
 						{/if}
-						<div class="flex w-64 justify-between pb-2 md:w-96">
+						<div class="flex w-64 items-center justify-between pb-2 md:w-96">
 							<p>Username</p>
-							<p>Max 32 characters</p>
+							<p class="text-xs italic">Max 32 characters</p>
 						</div>
 						<input
-							class="h-10 w-64 rounded-md border-2 border-space_gray bg-space_dark px-3 text-sm text-white_warm focus:border-purple_highlight focus:outline-none md:w-96 md:text-base"
+							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
 							type="text"
 							name="username"
 							id="username"
@@ -87,12 +88,12 @@
 						{#if password.length > 64}
 							<p class=" font-bold text-neon_pink">Password exceeds limit</p>
 						{/if}
-						<div class="flex w-64 justify-between pb-2 md:w-96">
+						<div class="flex w-64 items-center justify-between pb-2 md:w-96">
 							<p>Password</p>
-							<p>Max 64 characters</p>
+							<p class="text-xs italic">Max 64 characters</p>
 						</div>
 						<input
-							class="h-10 w-64 rounded-md border-2 border-space_gray bg-space_dark px-3 text-sm text-white_warm focus:border-purple_highlight focus:outline-none md:w-96 md:text-base"
+							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
 							type="password"
 							name="password"
 							id="password"
@@ -106,7 +107,7 @@
 						{/if}
 						<p class="pb-2">Confirm Password</p>
 						<input
-							class="h-10 w-64 rounded-md border-2 border-space_gray bg-space_dark px-3 text-sm text-white_warm focus:border-purple_highlight focus:outline-none md:w-96 md:text-base"
+							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
 							type="password"
 							name="confirm-password"
 							id="confirm-password"
@@ -118,12 +119,12 @@
 						{#if email.length > 64}
 							<p class=" font-bold text-neon_pink">Email exceeds limit</p>
 						{/if}
-						<div class="flex w-64 justify-between pb-2 md:w-96">
+						<div class="flex w-64 items-center justify-between pb-2 md:w-96">
 							<p>Email (Optional)</p>
-							<p>Max 64 characters</p>
+							<p class="text-xs italic">Max 64 characters</p>
 						</div>
 						<input
-							class="h-10 w-64 rounded-md border-2 border-space_gray bg-space_dark px-3 text-sm text-white_warm focus:border-purple_highlight focus:outline-none md:w-96 md:text-base"
+							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
 							type="email"
 							name="email"
 							id="email"
@@ -137,7 +138,7 @@
 
 				<div>
 					<button
-						class="mt-6 h-8 w-64 rounded-md bg-purple_highlight text-sm font-bold hover:bg-dim_purple md:w-96"
+						class="mt-6 h-8 w-64 rounded-md bg-purple_highlight text-sm font-bold hover:bg-galaxy_purple-500 md:w-96"
 						type="submit"
 						aria-label="Register"
 					>
@@ -146,6 +147,14 @@
 				</div>
 			</form>
 		</div>
+		<a href="/login">
+			<p class="pl-2 text-off_white">
+				Have an account already? <span
+					class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
+					>Login here!</span
+				>
+			</p>
+		</a>
 	</div>
 </div>
 
