@@ -50,6 +50,8 @@
 			sidebarState.set('closed');
 		}}
 		on:keydown={handleKeyDown}
+		role="button"
+		tabindex="0"
 	/>
 {/if}
 

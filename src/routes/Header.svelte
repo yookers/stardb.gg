@@ -1,10 +1,8 @@
 <script>
 	import { page } from '$app/stores';
-	import SearchBar from './SearchBar.svelte';
-    import Logo from './Logo.svelte';
-	import { Icon, Bars3, User } from 'svelte-hero-icons';
-    import { Menu } from 'lucide-svelte';
-	import { Sparkles } from 'lucide-svelte';
+	import Logo from './Logo.svelte';
+	import { Icon, User } from 'svelte-hero-icons';
+	import { Menu } from 'lucide-svelte';
 	import { sidebarState } from './store';
 
 	function toggleSidebar() {
@@ -30,10 +28,10 @@
 		<a
 			href="/"
 			aria-label="Home Page"
-			class="flex items-center space-x-2 pl-3 md:pl-5 text-off_white hover:translate-y-0.5 stroke-off_white hover:stroke-galaxy_purple-250 hover:text-galaxy_purple-250"
+			class="flex items-center space-x-2 stroke-off_white pl-3 text-off_white hover:translate-y-0.5 hover:stroke-galaxy_purple-250 hover:text-galaxy_purple-250 md:pl-5"
 		>
-            <Logo class="w-5 fill-off_white stroke-[7] overflow-visible" />
-			<p class="hidden text-2xl font-dm_sans tracking-tighter md:block">stardb.gg</p>
+			<Logo class="w-5 overflow-visible fill-off_white stroke-[7]" />
+			<p class="hidden font-dm_sans text-2xl tracking-tighter md:block">stardb.gg</p>
 		</a>
 	</div>
 
@@ -45,7 +43,7 @@
 		<Icon src={User} solid class="h-4 w-4 " />
 
 		{#if $page.data.user}
-			<p class="text-sm font-bold truncate">{$page.data.user.username}</p>
+			<p class="truncate text-sm font-bold">{$page.data.user.username}</p>
 		{:else}
 			<p class="text-sm font-bold">Login</p>
 		{/if}

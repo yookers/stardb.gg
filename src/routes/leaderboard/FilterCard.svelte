@@ -5,36 +5,34 @@
 
 	export let regionFilter;
 	export let rankingFilter;
-	export let onSetRegion;
-	export let onSetRanking;
+	export let setRegion;
+	export let setRanking;
 
 	let showCard = true;
-
-	const setRegion = (region) => {
-		onSetRegion(region);
-	};
-
-	const setRanking = (ranking) => {
-		onSetRanking(ranking);
-	};
 </script>
 
-<div class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3 transition-all duration-300 hover:translate-y-0.5 hover:bg-galaxy_purple-700/95">
-	<div class="flex items-center justify-between px-5 pb-3">
-		<div class="flex items-center space-x-4">
-			<ListFilter class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
-			<p class="text-xl font-bold lg:text-2xl">Filter</p>
-		</div>
-		<button on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+<div
+	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3 transition-all duration-300 hover:scale-103 hover:bg-galaxy_purple-700/95"
+>
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+		<div class="flex items-center justify-between px-5 pb-3">
+			<div class="flex items-center space-x-4">
+				<ListFilter class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+				<p class="text-xl font-bold lg:text-2xl">Filter</p>
+			</div>
 			{#if showCard}
 				<ChevronUp class="h-6 w-6 text-off_white lg:h-7 lg:w-7" />
 			{:else}
 				<ChevronDown class="h-6 w-6 text-off_white lg:h-7 lg:w-7" />
 			{/if}
-		</button>
-	</div>
+		</div>
+	</button>
+
 	{#if showCard}
-		<div class="px-6 pb-3 pt-2 overflow-auto select-none" transition:slide={{ duration: 300, easing: cubicInOut }}>
+		<div
+			class="select-none overflow-auto px-6 pb-3 pt-2"
+			transition:slide={{ duration: 300, easing: cubicInOut }}
+		>
 			<div
 				class="flex flex-col space-y-4 text-base md:flex-row md:justify-between md:space-y-0 lg:text-lg"
 			>
@@ -99,8 +97,8 @@
 						on:click={() => setRanking('Region')}>Region</button
 					>
 					<span
-						class="absolute flex h-8 w-20 items-center justify-center rounded-full bg-galaxy_purple-650 text-galaxy_purple-300 duration-300"
-						style="left: {rankingFilter === 'World' ? '4px' : 'calc(50% - 4px)'}"
+						class="absolute flex h-8 w-20 items-center justify-center rounded-full bg-galaxy_purple-650 text-galaxy_purple-300 duration-300
+                        {rankingFilter === 'World' ? 'left-1' : 'left-[calc(50%-4px)]'}"
 					>
 						{rankingFilter}
 					</span>

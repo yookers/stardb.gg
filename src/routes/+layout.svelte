@@ -86,7 +86,6 @@
 			in:fly={{ y: -30, duration: 200, delay: 100 }}
 		>
 			<slot />
-
 		</div>
 	{/key}
 </main>

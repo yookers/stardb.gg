@@ -28,29 +28,23 @@
 			});
 
 			if (response.ok) {
-				messageType = 'success';
-				updateRegisterPlayerNotification();
+				notifyUser('success');
 				invalidateAll();
 			} else {
-				messageType = 'error';
-				updateRegisterPlayerNotification();
+				notifyUser('error');
 			}
-		} catch (err) {
-			messageType = 'error';
-			updateRegisterPlayerNotification();
+		} catch (error) {
+			notifyUser('error');
 		}
 	}
 
-	function updateRegisterPlayerNotification() {
-		if (messageType === 'success') {
-			showNotification = true;
-		} else if (messageType === 'error') {
-			showNotification = true;
-		}
+	const notifyUser = (type) => {
+		messageType = type;
+		showNotification = true;
 		setTimeout(() => {
 			showNotification = false;
 		}, 2500);
-	}
+	};
 </script>
 
 <svelte:head>
@@ -71,7 +65,7 @@
 							<p class="font-bold text-neon_pink">Username exceeds limit</p>
 						{/if}
 						<div class="flex w-64 items-center justify-between pb-2 md:w-96">
-							<p>Username</p>
+							<p>Username <span class="text-neon_pink" class:hidden={username !== ''}>*</span></p>
 							<p class="text-xs italic">Max 32 characters</p>
 						</div>
 						<input
@@ -89,7 +83,7 @@
 							<p class=" font-bold text-neon_pink">Password exceeds limit</p>
 						{/if}
 						<div class="flex w-64 items-center justify-between pb-2 md:w-96">
-							<p>Password</p>
+							<p>Password <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
 							<p class="text-xs italic">Max 64 characters</p>
 						</div>
 						<input
@@ -105,7 +99,11 @@
 						{#if password !== confirmPassword}
 							<p class=" font-bold text-neon_pink">Passwords do not match</p>
 						{/if}
-						<p class="pb-2">Confirm Password</p>
+						<p class="pb-2">
+							Confirm Password <span class="text-neon_pink" class:hidden={confirmPassword !== ''}
+								>*</span
+							>
+						</p>
 						<input
 							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
 							type="password"

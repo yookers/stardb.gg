@@ -8,21 +8,20 @@
 ::-webkit-scrollbar {
 	width: 6px; /* For vertical scrollbars */
 	height: 6px; /* For horizontal scrollbars */
-
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: #060D1C;
-    margin-right: 6px;
-    margin-left: 6px;
-    border-radius: 5px;
+	background: #060d1c;
+	margin-right: 6px;
+	margin-left: 6px;
+	border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	background: #9a9cf0;
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 /* Handle on hover */

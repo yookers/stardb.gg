@@ -23,29 +23,23 @@
 			});
 
 			if (response.ok) {
-				messageType = 'success';
-				updateRegisterPlayerNotification();
-                invalidateAll();
+				notifyUser('success');
+				invalidateAll();
 			} else {
-				messageType = 'error';
-				updateRegisterPlayerNotification();
+				notifyUser('error');
 			}
 		} catch (err) {
-			messageType = 'error';
-			updateRegisterPlayerNotification();
+			notifyUser('error');
 		}
 	}
 
-	function updateRegisterPlayerNotification() {
-		if (messageType === 'success') {
-			showNotification = true;
-		} else if (messageType === 'error') {
-			showNotification = true;
-		}
+	const notifyUser = (type) => {
+		messageType = type;
+		showNotification = true;
 		setTimeout(() => {
 			showNotification = false;
 		}, 2500);
-	}
+	};
 </script>
 
 <svelte:head>
@@ -57,15 +51,17 @@
 	<div class="flex flex-col space-y-4">
 		<p class="pl-2 text-3xl font-bold text-off_white">Login to account</p>
 		<div
-			class="w-full max-w-lg rounded-xl border-2 border-galaxy_purple-650 hover:border-galaxy_purple-600 bg-galaxy_purple-750 p-10 text-sm md:text-base"
+			class="w-full max-w-lg rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 p-10 text-sm hover:border-galaxy_purple-600 md:text-base"
 		>
 			<form class="flex flex-col items-center text-off_white" on:submit|preventDefault={login}>
-				<div class="space-y-6 ">
+				<div class="space-y-6">
 					<div>
 						{#if username.length > 32}
 							<p class="font-bold text-neon_pink">Username exceeds limit</p>
 						{/if}
-						<p class="flex justify-between pb-2">Username</p>
+						<p class="pb-2">
+							Username <span class="text-neon_pink" class:hidden={username !== ''}>*</span>
+						</p>
 						<input
 							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
 							type="text"
@@ -81,7 +77,7 @@
 							<p class="font-bold text-neon_pink">Password exceeds limit</p>
 						{/if}
 						<div class="flex justify-between pb-2">
-							<p>Password</p>
+							<p>Password <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
 							<a href="/request-token">
 								<p class="font-bold text-dim_green hover:text-neon_green">Forgot Password?</p>
 							</a>
@@ -110,7 +106,8 @@
 		</div>
 		<a href="/register">
 			<p class="pl-2 text-off_white">
-				Don't have an account? <span class="font-bold text-galaxy_purple-400 hover:text-galaxy_purple-300 underline"
+				Don't have an account? <span
+					class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
 					>Register here!</span
 				>
 			</p>

@@ -1,5 +1,5 @@
 <script>
-    const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
+	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
 	import { searchResults } from './store.js';
 
@@ -13,9 +13,7 @@
 		// Check if it's an UID (9 digits) else it's a name
 		const isUID = /^\d{9}$/.test(query);
 
-		const requestURL = isUID
-			? `${apiURL}/scores/${query}`
-			: `${apiURL}/scores?query=${query}`;
+		const requestURL = isUID ? `${apiURL}/scores/${query}` : `${apiURL}/scores?query=${query}`;
 		try {
 			const response = await fetch(requestURL);
 			if (!response.ok) {

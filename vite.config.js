@@ -15,13 +15,13 @@ export default defineConfig({
 	ssr: {
 		noExternal: ['svelte-hero-icons']
 	},
-    server: {
-        https: {
-            key: fs.readFileSync(`${__dirname}/cert/key.pem`),
-            cert: fs.readFileSync(`${__dirname}/cert/cert.pem`)
-        },
-        proxy: {
-            '/api': 'https://stardb.gg',
-        }
-    }
+	server: {
+		https: {
+			key: fs.readFileSync(`${__dirname}/cert/key.pem`),
+			cert: fs.readFileSync(`${__dirname}/cert/cert.pem`)
+		},
+		proxy: {
+			'/api': 'https://stardb.gg'
+		}
+	}
 });

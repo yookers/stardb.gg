@@ -1,29 +1,85 @@
 <script>
-    import { flip } from "svelte/animate";
-    import { cubicInOut } from "svelte/easing";
+	import { LineChart, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-svelte';
+	import { slide, fly } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 
-	export let carouselData;
+	let showCard = false;
+	export let statisticsData;
 
 	// Statistics carousel
 	let index = 0;
 
-	function next() {
-		if (index < carouselData.length - 1) index++;
+	function nextCard() {
+		if (index < statisticsData.length - 1) index++;
 		else index = 0;
 	}
 
-	function prev() {
+	function prevCard() {
 		if (index > 0) index--;
-		else index = carouselData.length - 1;
+		else index = statisticsData.length - 1;
 	}
 </script>
 
-<div class="flex items-center justify-center">
-	<button class="rounded" on:click={prev}> Previous </button>
-	<div class="mb-4">
-		<p class="text-base text-gray-700">
-			Player count: {carouselData[index].count}
-		</p>
-	</div>
-	<button class="" on:click={next}> Next </button>
+<div
+	class="rounded-2xl border-2 border-galaxy_purple-600 bg-galaxy_purple-650 pt-3
+    transition-all duration-300 hover:scale-103 hover:bg-galaxy_purple-650/95"
+>
+	<!-- Card Title -->
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+		<div class="flex items-center justify-between px-5 pb-3">
+			<div class="flex items-center space-x-4">
+				<LineChart class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+				<p class="text-xl font-bold lg:text-2xl">Statistics</p>
+			</div>
+			{#if showCard}
+				<ChevronUp class="h-6 w-6 text-off_white lg:h-7 lg:w-7" />
+			{:else}
+				<ChevronDown class="h-6 w-6 text-off_white lg:h-7 lg:w-7" />
+			{/if}
+		</div>
+	</button>
+	<!-- Card Content-->
+	{#if showCard}
+		<div
+			class="flex items-center justify-center px-5 pb-3 pt-2"
+			transition:slide={{ duration: 300, easing: cubicInOut }}
+		>
+			<div class="relative flex w-full items-center justify-center rounded-xl">
+				<button
+					class="absolute left-10 flex h-10 w-10 items-center justify-center"
+					on:click={prevCard}
+				>
+					<ChevronLeft class="h-6 w-6 text-off_white lg:h-8 lg:w-8" />
+				</button>
+
+				<div
+					class="flex flex-col text-center font-bold"
+					class:text-galaxy_purple-350={statisticsData[index].region === 'Total'}
+					class:text-neon_yellow={statisticsData[index].region === 'NA'}
+					class:text-neon_pink={statisticsData[index].region === 'EU'}
+					class:text-neon_green={statisticsData[index].region === 'ASIA'}
+					class:text-neon_blue={statisticsData[index].region === 'CN'}
+				>
+					{#key statisticsData[index].region}
+						<p
+							class="pb-1 text-6xl md:text-7xl"
+							in:fly={{ y: 10, duration: 300, easing: cubicInOut }}
+						>
+							{statisticsData[index].count}
+						</p>
+					{/key}
+					<p class="line-clamp-1 text-xl">
+						{statisticsData[index].region} <span class="font-medium text-off_white">players</span>
+					</p>
+				</div>
+
+				<button
+					class="absolute right-10 flex h-10 w-10 items-center justify-center"
+					on:click={nextCard}
+				>
+					<ChevronRight class="h-6 w-6 text-off_white lg:h-8 lg:w-8" />
+				</button>
+			</div>
+		</div>
+	{/if}
 </div>
