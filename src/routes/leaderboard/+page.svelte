@@ -138,7 +138,7 @@
 
 		<!-- Pagination buttons -->
 		<div
-			class="fixed bottom-16 right-8 z-[2] flex select-none flex-col items-center space-y-2 rounded-xl"
+			class="fixed bottom-16 right-8 z-[3] flex select-none flex-col items-center space-y-2 rounded-xl"
 		>
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
@@ -163,9 +163,12 @@
 				</div>
 				<div class="flex space-x-4">
 					<button class="hover:scale-110" on:click={() => resetLeaderboard()}>
-						<RefreshCw class="h-5 w-5 text-off_white lg:h-6 lg:w-6 hover:animate-spin" />
+						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
 					</button>
-					<button class="hidden xl:block hover:scale-110" on:click={() => (isScreenExpanded = !isScreenExpanded)}>
+					<button
+						class="hidden hover:scale-110 xl:block"
+						on:click={() => (isScreenExpanded = !isScreenExpanded)}
+					>
 						{#if isScreenExpanded}
 							<Minimize2 class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 						{:else}
