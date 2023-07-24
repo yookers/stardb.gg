@@ -15,7 +15,7 @@
 	}
 </script>
 
-<div class="flex justify-center">
+<div class="flex justify-center z-[2]">
 	{#if messageType === 'loading'}
 		<div
 			class="fixed bottom-24 flex h-14 w-96 items-center justify-center space-x-4 rounded-full bg-galaxy_purple-250 text-galaxy_purple-550 md:w-[500px] lg:w-[800px]"

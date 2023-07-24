@@ -116,20 +116,6 @@
 	/>
 </svelte:head>
 
-{#if data.error}
-	<PopupMessage messageType={'fail'} messageContent={`Error Searching for Player.`} />
-{/if}
-
-{#if addPlayerPromise}
-	{#await addPlayerPromise}
-		<PopupMessage messageType={'loading'} messageContent={`Attempting to Add ${playerUID} ...`} />
-	{:then}
-		<PopupMessage messageType={'success'} messageContent={`Successfully Added ${playerUID}!`} />
-	{:catch}
-		<PopupMessage messageType={'fail'} messageContent={`Failed to Add Player.`} />
-	{/await}
-{/if}
-
 <div
 	class="flex w-full flex-col justify-center space-x-0 px-6 text-off_white lg:px-24
     {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
@@ -176,14 +162,14 @@
 					<p class="text-xl font-bold lg:text-2xl">Leaderboard</p>
 				</div>
 				<div class="flex space-x-4">
-					<button on:click={() => resetLeaderboard()}>
-						<RefreshCw class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+					<button class="hover:scale-110" on:click={() => resetLeaderboard()}>
+						<RefreshCw class="h-5 w-5 text-off_white lg:h-6 lg:w-6 hover:animate-spin" />
 					</button>
-					<button class="hidden xl:block" on:click={() => (isScreenExpanded = !isScreenExpanded)}>
+					<button class="hidden xl:block hover:scale-110" on:click={() => (isScreenExpanded = !isScreenExpanded)}>
 						{#if isScreenExpanded}
-							<Minimize2 class="h-5 w-5 text-off_white hover:scale-110 lg:h-6 lg:w-6" />
+							<Minimize2 class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 						{:else}
-							<Maximize2 class="h-5 w-5 text-off_white hover:scale-110 lg:h-6 lg:w-6" />
+							<Maximize2 class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 						{/if}
 					</button>
 				</div>
@@ -251,3 +237,17 @@
 		</div>
 	</div>
 </div>
+
+{#if data.error}
+	<PopupMessage messageType={'fail'} messageContent={`Error Searching for Player.`} />
+{/if}
+
+{#if addPlayerPromise}
+	{#await addPlayerPromise}
+		<PopupMessage messageType={'loading'} messageContent={`Attempting to Add ${playerUID} ...`} />
+	{:then}
+		<PopupMessage messageType={'success'} messageContent={`Successfully Added ${playerUID}!`} />
+	{:catch}
+		<PopupMessage messageType={'fail'} messageContent={`Failed to Add Player.`} />
+	{/await}
+{/if}
