@@ -7,10 +7,19 @@
 
 	let showCard = true;
 	let playerUID = '';
+	let errorMessage = '';
+
+	function handleAddPlayer(playerUID) {
+        // Check if UID is 9 digits
+		/^\d{9}$/.test(playerUID) 
+        ? addPlayerUID(playerUID) 
+        : (errorMessage = 'UID must be 9 digits.');
+	}
 
 	function handleKeyDown(e) {
+		errorMessage = ''; // Reset error message
 		if (e.key === 'Enter') {
-			addPlayerUID(playerUID);
+			handleAddPlayer(playerUID);
 		}
 	}
 </script>
@@ -47,6 +56,7 @@
 				<div class="flex">
 					<input
 						class="h-10 w-full rounded-l-full border-y-2 border-l-2 border-transparent bg-galaxy_purple-700 px-4 text-sm font-semibold outline-none placeholder:font-normal placeholder:text-galaxy_purple-300 focus:border-galaxy_purple-450 sm:text-base"
+						class:focus:border-neon_pink={errorMessage}
 						type="text"
 						placeholder="Add Player UID"
 						bind:value={playerUID}
@@ -54,11 +64,14 @@
 					/>
 					<button
 						class="rounded-r-full bg-galaxy_purple-300 px-2.5 text-galaxy_purple-700 hover:scale-105 hover:bg-galaxy_purple-350 hover:text-galaxy_purple-750"
-						on:click={() => addPlayerUID(playerUID)}
+						on:click={() => handleAddPlayer(playerUID)}
 					>
 						<Plus class="h-6 w-6 lg:h-7 lg:w-7" />
 					</button>
 				</div>
+				{#if errorMessage}
+					<p class="pl-4 text-xs font-bold text-neon_pink">{errorMessage}</p>
+				{/if}
 			</div>
 		</div>
 	{/if}
