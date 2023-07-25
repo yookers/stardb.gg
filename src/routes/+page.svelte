@@ -21,7 +21,7 @@
 	on:pointermove={handleMove}
 >
 	<div
-		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-8 font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 md:text-8xl"
+		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-12 font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 md:text-8xl"
 	>
 		<Logo class="w-12 overflow-visible fill-none stroke-[8] md:w-24" />
 		<p class="select-none">stardb.gg</p>
@@ -33,7 +33,7 @@
 			src="images/galaxy/galaxy-small.webp"
 			alt="Galaxy background"
 			class="absolute -top-16 opacity-20 blur-sm"
-			style="transform: translate3d({m.x}px, {m.y}px, 0) scale(1.2);"
+			style="transform: translate3d({m.x}px, {m.y}px, 0) scale(1.8);"
 		/>
 	</div>
 </div>

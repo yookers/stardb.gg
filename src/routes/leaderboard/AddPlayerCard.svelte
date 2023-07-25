@@ -10,10 +10,8 @@
 	let errorMessage = '';
 
 	function handleAddPlayer(playerUID) {
-        // Check if UID is 9 digits
-		/^\d{9}$/.test(playerUID) 
-        ? addPlayerUID(playerUID) 
-        : (errorMessage = 'UID must be 9 digits.');
+		// Check if UID is 9 digits
+		/^\d{9}$/.test(playerUID) ? addPlayerUID(playerUID) : (errorMessage = 'UID must be 9 digits.');
 	}
 
 	function handleKeyDown(e) {
@@ -64,7 +62,8 @@
 					/>
 					<button
 						class="rounded-r-full bg-galaxy_purple-300 px-2.5 text-galaxy_purple-700 hover:scale-105 hover:bg-galaxy_purple-350 hover:text-galaxy_purple-750"
-						on:click={() => handleAddPlayer(playerUID)}
+						aria-label="Add Player UID"
+                        on:click={() => handleAddPlayer(playerUID)}
 					>
 						<Plus class="h-6 w-6 lg:h-7 lg:w-7" />
 					</button>

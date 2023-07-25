@@ -84,7 +84,7 @@
 					</button>
 				</div>
 				<div
-					class="relative flex h-10 w-40 select-none items-center rounded-full bg-galaxy_purple-300 text-sm font-bold text-galaxy_purple-650"
+					class="relative flex h-10 w-40 select-none items-center rounded-full bg-galaxy_purple-200 text-sm font-bold text-galaxy_purple-700"
 				>
 					<button
 						class="h-full w-20 px-4"
@@ -97,7 +97,7 @@
 						on:click={() => setRanking('Region')}>Region</button
 					>
 					<span
-						class="absolute flex h-8 w-20 items-center justify-center rounded-full bg-galaxy_purple-650 text-galaxy_purple-300 duration-300
+						class="absolute flex h-8 w-20 items-center justify-center rounded-full bg-galaxy_purple-700 text-galaxy_purple-200 duration-300
                         {rankingFilter === 'World' ? 'left-1' : 'left-[calc(50%-4px)]'}"
 					>
 						{rankingFilter}

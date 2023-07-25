@@ -20,11 +20,10 @@
 				? searchByUID(searchQuery)
 				: (errorMessage = 'UID must be 9 digits.');
 		}
-		return;
 	}
 
 	function handleKeyDown(e) {
-        errorMessage = ''; // Reset error message
+		errorMessage = ''; // Reset error message
 		if (e.key === 'Enter') {
 			searchPlayer(searchQuery);
 		}
@@ -61,7 +60,7 @@
 			transition:slide={{ duration: 300, easing: cubicInOut }}
 		>
 			<div
-				class="relative flex h-10 w-32 select-none items-center rounded-full bg-galaxy_purple-650 text-center font-bold"
+				class="relative flex h-10 w-32 select-none items-center rounded-full text-galaxy_purple-200 bg-galaxy_purple-700 text-center font-bold"
 			>
 				<button
 					class="h-full w-16 px-4"
@@ -74,7 +73,7 @@
 					on:click={() => changeSearchType()}>UID</button
 				>
 				<span
-					class="absolute flex h-8 w-16 items-center justify-center rounded-full bg-galaxy_purple-400 text-galaxy_purple-650 duration-300
+					class="absolute flex h-8 w-16 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
                     {searchType === 'Name' ? 'left-1' : 'left-[calc(50%-4px)]'}"
 				>
 					{searchType}
@@ -91,9 +90,10 @@
 						bind:value={searchQuery}
 						on:keydown={handleKeyDown}
 					/>
-                    <button
+					<button
 						class="rounded-r-full bg-galaxy_purple-300 px-3 text-galaxy_purple-700 hover:scale-105 hover:bg-galaxy_purple-350 hover:text-galaxy_purple-750"
-						on:click={() => searchPlayer(searchQuery)}
+						aria-label="Search for Player {searchType}"
+                        on:click={() => searchPlayer(searchQuery)}
 					>
 						<Search class="h-5 w-5 lg:h-6 lg:w-6" />
 					</button>

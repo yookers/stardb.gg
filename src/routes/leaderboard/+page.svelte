@@ -142,13 +142,15 @@
 		>
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
-				on:click={prevPage}
+				aria-label="Previous Page"
+                on:click={prevPage}
 				><ChevronUp class="h-8 w-8 md:h-10 md:w-10" />
 			</button>
 			<p class="text-center text-2xl font-bold md:text-3xl">{currentPage}</p>
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
-				on:click={nextPage}><ChevronDown class="h-8 w-8 md:h-10 md:w-10" /></button
+				aria-label="Next Page"
+                on:click={nextPage}><ChevronDown class="h-8 w-8 md:h-10 md:w-10" /></button
 			>
 		</div>
 
@@ -162,11 +164,14 @@
 					<p class="text-xl font-bold lg:text-2xl">Leaderboard</p>
 				</div>
 				<div class="flex space-x-4">
-					<button class="hover:scale-110" on:click={() => resetLeaderboard()}>
+					<button class="hover:scale-110"
+                    aria-label="Reset Leaderboard Filters"
+                    on:click={() => resetLeaderboard()}>
 						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
 					</button>
 					<button
 						class="hidden hover:scale-110 xl:block"
+                        aria-label="Expand/Minimize Leaderboard"
 						on:click={() => (isScreenExpanded = !isScreenExpanded)}
 					>
 						{#if isScreenExpanded}
@@ -182,9 +187,9 @@
 					<thead class="sticky top-[62px] z-[2] bg-galaxy_purple-750 text-galaxy_purple-250">
 						<th class="w-9 py-2 pl-4 text-center md:w-14 md:pl-6">Rank</th>
 						<!-- Region indicator -->
-						<th class="hidden w-8 py-2 sm:w-10 md:table-cell" />
+						<th class="hidden w-8 py-2 sm:w-10 md:table-cell" scope="col" abbr="Region Indicator" />
 						<!-- Player avatar -->
-						<th class="w-8 py-2 sm:w-10" />
+						<th class="w-8 py-2 sm:w-10" scope="col" abbr="Player Avatar" />
 						<th class="w-20 py-2 md:w-28 md:pl-3 lg:w-32 xl:w-40">Name</th>
 						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">Signature</th>
 						<th class="hidden w-16 truncate px-2 py-2 text-center xl:table-cell">Level</th>
