@@ -154,7 +154,7 @@
 
 		<!-- Leaderboard-->
 		<div
-			class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 pt-3 transition-all duration-300 hover:bg-galaxy_purple-750/95"
+			class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 pt-3 transition-all duration-300"
 		>
 			<div class="flex items-center justify-between px-5 pb-3">
 				<div class="flex items-center space-x-4">
@@ -225,7 +225,7 @@
 										class:border-neon_pink={player.region === 'eu'}
 										class:border-neon_green={player.region === 'asia'}
 										class:border-neon_blue={player.region === 'cn'}
-										src={`${PUBLIC_RES_API_URL}${player.avatar_icon}`}
+										src={`${PUBLIC_RES_API_URL}/StarRailRes/${player.avatar_icon}`}
 										alt="{player.name}'s Avatar Icon"
 									/>
 								</td><td class="truncate py-4 font-bold md:pl-3">{player.name}</td>

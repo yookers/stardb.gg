@@ -28,7 +28,7 @@
 		<a
 			href="/"
 			aria-label="Home Page"
-			class="flex items-center space-x-2 stroke-off_white ml-3 text-off_white hover:translate-y-0.5 hover:stroke-galaxy_purple-250 hover:text-galaxy_purple-250 md:pl-5"
+			class="flex items-center space-x-1.5 stroke-off_white ml-3 text-off_white hover:translate-y-0.5 hover:stroke-galaxy_purple-250 hover:text-galaxy_purple-250 md:pl-5"
 		>
 			<Logo class="w-5 overflow-visible fill-off_white stroke-[7]" />
 			<p class="hidden font-dm_sans text-2xl tracking-tighter md:block">stardb.gg</p>
