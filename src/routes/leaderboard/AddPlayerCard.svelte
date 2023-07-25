@@ -49,7 +49,7 @@
 			<div class="w-full space-y-2">
 				<div class="flex items-center space-x-2 pl-2">
 					<Info class="h-4 w-4 text-off_white" />
-					<p class="text-sm">Can't find a player? Add their UID below!</p>
+					<p class="text-xs sm:text-sm">Can't find a player? Add their UID below!</p>
 				</div>
 				<div class="flex">
 					<input

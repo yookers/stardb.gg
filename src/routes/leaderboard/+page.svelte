@@ -117,7 +117,7 @@
 </svelte:head>
 
 <div
-	class="flex w-full flex-col justify-center space-x-0 px-6 text-off_white lg:px-24
+	class="flex w-full flex-col justify-center space-x-0 px-4 sm:px-6 text-off_white lg:px-24
     {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
 >
 	<!-- Column 1 -->
@@ -183,17 +183,17 @@
 				</div>
 			</div>
 			<div class="flex px-2 pb-3 pt-2 md:px-6">
-				<table class="w-full table-fixed border-collapse text-left text-sm">
+				<table class="w-full table-fixed border-collapse text-left overflow-auto text-xs sm:text-sm">
 					<thead class="sticky top-[62px] z-[2] bg-galaxy_purple-750 text-galaxy_purple-250">
-						<th class="w-9 py-2 pl-4 text-center md:w-14 md:pl-6">Rank</th>
+						<th class="w-10 py-2 pl-4 text-center md:w-16 md:pl-6">Rank</th>
 						<!-- Region indicator -->
 						<th class="hidden w-8 py-2 sm:w-10 md:table-cell" scope="col" abbr="Region Indicator" />
 						<!-- Player avatar -->
 						<th class="w-8 py-2 sm:w-10" scope="col" abbr="Player Avatar" />
-						<th class="w-20 py-2 md:w-28 md:pl-3 lg:w-32 xl:w-40">Name</th>
+						<th class="w-12 sm:w-20 py-2 md:w-28 md:pl-3 lg:w-32 xl:w-40">Name</th>
 						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">Signature</th>
 						<th class="hidden w-16 truncate px-2 py-2 text-center xl:table-cell">Level</th>
-						<th class="w-24 truncate px-4 py-2 text-center sm:w-40">Achievements</th>
+						<th class="w-20 truncate px-4 py-2 text-center sm:w-30 md:w-40">Achievements</th>
 					</thead>
 					<tbody>
 						{#each playerScores as player (player.uid)}
@@ -225,7 +225,7 @@
 								<td class="overflow-auto pl-1 pr-1 sm:pl-2 md:px-0">
 									<!-- Player avatar -->
 									<img
-										class="h-8 w-8 rounded-full border-2 md:h-9 md:w-9 md:border-galaxy_purple-750"
+										class="h-7 w-7 rounded-full border-2 md:h-9 md:w-9 md:border-galaxy_purple-750"
 										class:border-neon_yellow={player.region === 'na'}
 										class:border-neon_pink={player.region === 'eu'}
 										class:border-neon_green={player.region === 'asia'}

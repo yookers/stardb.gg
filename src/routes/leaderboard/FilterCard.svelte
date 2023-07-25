@@ -34,7 +34,7 @@
 			transition:slide={{ duration: 300, easing: cubicInOut }}
 		>
 			<div
-				class="flex flex-col space-y-4 text-base md:flex-row md:justify-between md:space-y-0 lg:text-lg"
+				class="flex flex-col space-y-3 text-base md:flex-row md:justify-between md:space-y-0 lg:text-lg"
 			>
 				<div class="flex space-x-2">
 					<button

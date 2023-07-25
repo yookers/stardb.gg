@@ -49,7 +49,6 @@
 					return proxyUrl;
 				} else if (url.hostname === 'www.google-analytics.com') {
 					const proxyUrl = new URL(`${siteUrl}/ga`);
-
 					return proxyUrl;
 				}
 				return url;
