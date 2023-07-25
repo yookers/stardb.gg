@@ -30,7 +30,7 @@
 		class="relative flex h-36 w-64 justify-center overflow-clip rounded-2xl border-2 border-galaxy_purple-250 md:w-[600px]"
 	>
 		<img
-			src="images/galaxy/galaxy-1.png"
+			src="images/galaxy/galaxy-small.webp"
 			alt="Galaxy background"
 			class="absolute -top-16 opacity-20 blur-sm"
 			style="transform: translate3d({m.x}px, {m.y}px, 0) scale(1.2);"
