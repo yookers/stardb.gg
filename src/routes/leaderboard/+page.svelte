@@ -117,7 +117,7 @@
 </svelte:head>
 
 <div
-	class="flex w-full flex-col justify-center space-x-0 px-4 sm:px-6 text-off_white lg:px-24
+	class="flex w-full flex-col justify-center space-x-0 px-4 text-off_white sm:px-6 lg:px-24
     {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
 >
 	<!-- Column 1 -->
@@ -143,14 +143,14 @@
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
 				aria-label="Previous Page"
-                on:click={prevPage}
+				on:click={prevPage}
 				><ChevronUp class="h-8 w-8 md:h-10 md:w-10" />
 			</button>
 			<p class="text-center text-2xl font-bold md:text-3xl">{currentPage}</p>
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
 				aria-label="Next Page"
-                on:click={nextPage}><ChevronDown class="h-8 w-8 md:h-10 md:w-10" /></button
+				on:click={nextPage}><ChevronDown class="h-8 w-8 md:h-10 md:w-10" /></button
 			>
 		</div>
 
@@ -164,14 +164,16 @@
 					<p class="text-xl font-bold lg:text-2xl">Leaderboard</p>
 				</div>
 				<div class="flex space-x-4">
-					<button class="hover:scale-110"
-                    aria-label="Reset Leaderboard Filters"
-                    on:click={() => resetLeaderboard()}>
+					<button
+						class="hover:scale-110"
+						aria-label="Reset Leaderboard Filters"
+						on:click={() => resetLeaderboard()}
+					>
 						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
 					</button>
 					<button
 						class="hidden hover:scale-110 xl:block"
-                        aria-label="Expand/Minimize Leaderboard"
+						aria-label="Expand/Minimize Leaderboard"
 						on:click={() => (isScreenExpanded = !isScreenExpanded)}
 					>
 						{#if isScreenExpanded}
@@ -183,17 +185,16 @@
 				</div>
 			</div>
 			<div class="flex px-2 pb-3 pt-2 md:px-6">
-				<table class="w-full table-fixed border-collapse text-left overflow-auto text-xs sm:text-sm">
+				<table class="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
 					<thead class="sticky top-[62px] z-[2] bg-galaxy_purple-750 text-galaxy_purple-250">
-						<th class="w-10 py-2 pl-4 text-center md:w-16 md:pl-6">Rank</th>
+						<th class="w-8 py-2 pl-4 text-center md:w-16 md:pl-6">Rank</th>
 						<!-- Region indicator -->
-						<th class="hidden w-8 py-2 sm:w-10 md:table-cell" scope="col" abbr="Region Indicator" />
+						<th class="hidden w-6 py-2 md:table-cell" scope="col" abbr="Region Indicator" />
 						<!-- Player avatar -->
-						<th class="w-8 py-2 sm:w-10" scope="col" abbr="Player Avatar" />
-						<th class="w-12 sm:w-20 py-2 md:w-28 md:pl-3 lg:w-32 xl:w-40">Name</th>
+						<th class="w-14 py-2 pl-10 sm:w-20 sm:pl-11 md:w-40 md:pl-16 xl:w-44">Name</th>
 						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">Signature</th>
 						<th class="hidden w-16 truncate px-2 py-2 text-center xl:table-cell">Level</th>
-						<th class="w-20 truncate px-4 py-2 text-center sm:w-30 md:w-40">Achievements</th>
+						<th class="sm:w-30 w-10 truncate px-4 py-2 text-center md:w-40">Achievements</th>
 					</thead>
 					<tbody>
 						{#each playerScores as player (player.uid)}
@@ -222,10 +223,9 @@
 										class:bg-neon_blue={player.region === 'cn'}
 									/>
 								</td>
-								<td class="overflow-auto pl-1 pr-1 sm:pl-2 md:px-0">
-									<!-- Player avatar -->
+								<td class="flex items-center py-4 font-bold md:pl-3">
 									<img
-										class="h-7 w-7 rounded-full border-2 md:h-9 md:w-9 md:border-galaxy_purple-750"
+										class="mr-3 h-7 w-7 rounded-full border-2 sm:mr-4 md:h-9 md:w-9 md:border-galaxy_purple-750"
 										class:border-neon_yellow={player.region === 'na'}
 										class:border-neon_pink={player.region === 'eu'}
 										class:border-neon_green={player.region === 'asia'}
@@ -233,7 +233,8 @@
 										src={`${PUBLIC_RES_API_URL}/StarRailRes/${player.avatar_icon}`}
 										alt="{player.name}'s Avatar Icon"
 									/>
-								</td><td class="truncate py-4 font-bold md:pl-3">{player.name}</td>
+									<p class="truncate">{player.name}</p></td
+								>
 								<td class="hidden truncate px-2 py-4 italic sm:table-cell">{player.signature}</td>
 								<td class="hidden px-2 py-4 text-center font-bold xl:table-cell">{player.level}</td>
 								<td class="px-2 py-4 text-center font-bold">{player.achievement_count}</td>
