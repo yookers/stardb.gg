@@ -101,7 +101,7 @@
 		if (!data.error) {
 			currentPage = Number($page.url.searchParams.get('page')) || 1;
 			playerScores = data.playerScores;
-			statisticsData = data.regionCount ? data.regionCount : [];
+			statisticsData = data.regionCount ? data.regionCount : statisticsData;
 			regionFilter = $page.url.searchParams.get('region') || 'all';
 			query = $page.url.searchParams.get('query') || '';
 		}

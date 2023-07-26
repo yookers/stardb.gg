@@ -39,7 +39,7 @@
 		</div>
 	</button>
 	<!-- Card Content-->
-	{#if showCard}
+	{#if showCard && statisticsData}
 		<div
 			class="flex items-center justify-center px-5 pb-3 pt-2"
 			transition:slide={{ duration: 300, easing: cubicInOut }}

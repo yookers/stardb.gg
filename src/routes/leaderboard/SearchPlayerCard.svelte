@@ -93,7 +93,7 @@
 					<button
 						class="rounded-r-full bg-galaxy_purple-300 px-3 text-galaxy_purple-700 hover:scale-105 hover:bg-galaxy_purple-350 hover:text-galaxy_purple-750"
 						aria-label="Search for Player {searchType}"
-                        on:click={() => searchPlayer(searchQuery)}
+						on:click={() => searchPlayer(searchQuery)}
 					>
 						<Search class="h-5 w-5 lg:h-6 lg:w-6" />
 					</button>

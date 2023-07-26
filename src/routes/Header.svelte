@@ -36,7 +36,13 @@
 	</div>
 
 	<div class="flex items-center">
-		<a href="https://discord.gg/chives" aria-label="Discord Invite Link" target="_blank" rel="noopener noreferrer" class="mr-4 h-8 w-8 flex justify-center items-center">
+		<a
+			href="https://discord.gg/chives"
+			aria-label="Discord Invite Link"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="mr-4 h-8 w-8 flex justify-center items-center"
+		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 127.14 96.36"

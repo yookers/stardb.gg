@@ -63,7 +63,7 @@
 					<button
 						class="rounded-r-full bg-galaxy_purple-300 px-2.5 text-galaxy_purple-700 hover:scale-105 hover:bg-galaxy_purple-350 hover:text-galaxy_purple-750"
 						aria-label="Add Player UID"
-                        on:click={() => handleAddPlayer(playerUID)}
+						on:click={() => handleAddPlayer(playerUID)}
 					>
 						<Plus class="h-6 w-6 lg:h-7 lg:w-7" />
 					</button>
