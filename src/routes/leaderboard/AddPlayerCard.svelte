@@ -1,20 +1,20 @@
-<script>
+<script lang="ts">
 	import { UserPlus, Plus, ChevronDown, ChevronUp, Info } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 
-	export let addPlayerUID;
+	export let addPlayerUID: (uid: string) => Promise<void>;
 
 	let showCard = true;
 	let playerUID = '';
 	let errorMessage = '';
 
-	function handleAddPlayer(playerUID) {
+	function handleAddPlayer(playerUID: string) {
 		// Check if UID is 9 digits
 		/^\d{9}$/.test(playerUID) ? addPlayerUID(playerUID) : (errorMessage = 'UID must be 9 digits.');
 	}
 
-	function handleKeyDown(e) {
+	function handleKeyDown(e: KeyboardEvent) {
 		errorMessage = ''; // Reset error message
 		if (e.key === 'Enter') {
 			handleAddPlayer(playerUID);

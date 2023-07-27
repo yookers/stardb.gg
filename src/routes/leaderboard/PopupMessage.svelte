@@ -1,22 +1,23 @@
-<script>
+<script lang="ts">
 	import { Loader2, Check, X } from 'lucide-svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+	import { MessageType } from '$types';
 
-	export let messageType; // 'loading', 'success', 'fail'
-	export let messageContent;
+	export let messageType: MessageType; // 'LOADING', 'SUCCESS', 'FAIL'
+	export let messageContent: string;
 
 	$: {
-		if (messageType === 'success' || messageType === 'fail') {
+		if (messageType === MessageType.SUCCESS || messageType === MessageType.FAIL) {
 			setTimeout(() => {
-				messageType = null;
+				messageType = MessageType.NONE;
 			}, 2000);
 		}
 	}
 </script>
 
 <div class="flex justify-center">
-	{#if messageType === 'loading'}
+	{#if messageType === MessageType.LOADING}
 		<div
 			class="fixed bottom-24 z-[4] flex h-14 w-96 items-center justify-center space-x-4 rounded-full bg-galaxy_purple-250 text-galaxy_purple-550 md:w-[500px] lg:w-[800px]"
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}
@@ -26,7 +27,7 @@
 				{messageContent}
 			</p>
 		</div>
-	{:else if messageType === 'success'}
+	{:else if messageType === MessageType.SUCCESS}
 		<div
 			class="fixed bottom-24 z-[4] flex h-14 w-96 items-center justify-center space-x-4 rounded-full bg-[#87FCE0] text-[#039A82] md:w-[500px] lg:w-[800px]"
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}
@@ -36,7 +37,7 @@
 				{messageContent}
 			</p>
 		</div>
-	{:else if messageType === 'fail'}
+	{:else if messageType === MessageType.FAIL}
 		<div
 			class="fixed bottom-24 z[4] flex h-14 w-96 items-center justify-center space-x-4 rounded-full bg-[#FF8ECF] text-[#9E3073] md:w-[500px] lg:w-[800px]"
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}

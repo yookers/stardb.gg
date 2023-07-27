@@ -1,17 +1,17 @@
-<script>
+<script lang="ts">
 	import { Search, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { cubicInOut } from 'svelte/easing';
 	import { slide } from 'svelte/transition';
 
-	export let searchByName;
-	export let searchByUID;
+	export let searchByName: (query: string) => void;
+	export let searchByUID: (query: string) => void;
 
 	let showCard = true;
 	let searchType = 'Name'; // 'Name' or 'UID'
 	let searchQuery = '';
 	let errorMessage = '';
 
-	function searchPlayer(searchQuery) {
+	function searchPlayer(searchQuery: string) {
 		if (searchType === 'Name') {
 			searchByName(searchQuery);
 		} else if (searchType === 'UID') {
@@ -22,7 +22,7 @@
 		}
 	}
 
-	function handleKeyDown(e) {
+	function handleKeyDown(e: KeyboardEvent) {
 		errorMessage = ''; // Reset error message
 		if (e.key === 'Enter') {
 			searchPlayer(searchQuery);

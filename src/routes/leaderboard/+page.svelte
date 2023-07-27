@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 	import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { goto } from '$app/navigation';
@@ -11,18 +11,19 @@
 	import StatisticsCard from './StatisticsCard.svelte';
 	import FilterCard from './FilterCard.svelte';
 	import PopupMessage from './PopupMessage.svelte';
+	import { MessageType } from '$types';
 
 	export let data;
 	let currentPage = 1;
-	let playerScores = [];
-	let statisticsData;
+	let playerScores: any[] = [];
+	let statisticsData: any[] = [];
 	let regionFilter = 'all'; // 'all', 'na', 'eu', 'asia', 'cn'
 	let rankingFilter = 'World'; // 'World' or 'Region'
 	let query = '';
 	let playerUID = '';
 	let isScreenExpanded = true;
 
-	function setRegion(region) {
+	function setRegion(region: string) {
 		regionFilter = region;
 		let queryParams = `page=1`;
 		if (regionFilter && regionFilter !== 'all') queryParams += `&region=${regionFilter}`;
@@ -32,11 +33,11 @@
 	}
 
 	// World or Region ranking
-	function setRanking(ranking) {
+	function setRanking(ranking: string) {
 		rankingFilter = ranking;
 	}
 
-	function searchByName(query) {
+	function searchByName(query: string) {
 		let queryParams = `page=1`;
 		if (regionFilter && regionFilter !== 'all') queryParams += `&region=${regionFilter}`;
 		if (query) queryParams += `&query=${query}`;
@@ -44,18 +45,18 @@
 		goto(`/leaderboard?${queryParams}`, { noScroll: true });
 	}
 
-	function searchByUID(query) {
+	function searchByUID(query: string) {
 		goto(`/leaderboard?uid=${query}`, { noScroll: true });
 	}
 
 	// Await block display
-	let addPlayerPromise;
-	function handleAddPlayer(uid) {
+	let addPlayerPromise: Promise<void>;
+	async function handleAddPlayer(uid: string) {
 		playerUID = uid;
 		addPlayerPromise = addPlayerUID(uid);
 	}
 
-	async function addPlayerUID(uid) {
+	async function addPlayerUID(uid: string) {
 		const url = `${PUBLIC_SERVER_API_URL}/scores/${uid}`;
 		try {
 			const response = await fetch(url, {
@@ -248,15 +249,21 @@
 </div>
 
 {#if data.error}
-	<PopupMessage messageType={'fail'} messageContent={`Error Searching for Player.`} />
+	<PopupMessage messageType={MessageType.FAIL} messageContent={`Error Searching for Player.`} />
 {/if}
 
 {#if addPlayerPromise}
 	{#await addPlayerPromise}
-		<PopupMessage messageType={'loading'} messageContent={`Attempting to Add ${playerUID} ...`} />
+		<PopupMessage
+			messageType={MessageType.LOADING}
+			messageContent={`Attempting to Add ${playerUID} ...`}
+		/>
 	{:then}
-		<PopupMessage messageType={'success'} messageContent={`Successfully Added ${playerUID}!`} />
+		<PopupMessage
+			messageType={MessageType.SUCCESS}
+			messageContent={`Successfully Added ${playerUID}!`}
+		/>
 	{:catch}
-		<PopupMessage messageType={'fail'} messageContent={`Failed to Add Player.`} />
+		<PopupMessage messageType={MessageType.FAIL} messageContent={`Failed to Add Player.`} />
 	{/await}
 {/if}

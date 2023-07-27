@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
 	import { ListFilter, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 
-	export let regionFilter;
-	export let rankingFilter;
-	export let setRegion;
-	export let setRanking;
+	export let regionFilter: string;
+	export let rankingFilter: string;
+	export let setRegion: (region: string) => void;
+	export let setRanking: (ranking: string) => void;
 
 	let showCard = true;
 </script>

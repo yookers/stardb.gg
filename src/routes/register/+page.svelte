@@ -1,18 +1,19 @@
-<script>
+<script lang="ts">
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { invalidateAll } from '$app/navigation';
+	import { MessageType } from '$types';
 
 	let username = '';
 	let password = '';
 	let confirmPassword = '';
 	let email = '';
 	let showNotification = false;
-	let messageType = 'error'; // 'success' or 'error'
+	let messageType: MessageType;
 
 	async function register() {
-		const payload = {
+		const payload: { username: string; password: string; email?: string } = {
 			username,
 			password
 		};
@@ -28,17 +29,17 @@
 			});
 
 			if (response.ok) {
-				notifyUser('success');
+				notifyUser(MessageType.SUCCESS);
 				invalidateAll();
 			} else {
-				notifyUser('error');
+				notifyUser(MessageType.ERROR);
 			}
 		} catch (error) {
-			notifyUser('error');
+			notifyUser(MessageType.ERROR);
 		}
 	}
 
-	const notifyUser = (type) => {
+	const notifyUser = (type: MessageType) => {
 		messageType = type;
 		showNotification = true;
 		setTimeout(() => {
@@ -161,12 +162,12 @@
 	<div class="flex justify-center">
 		<div
 			class="fixed bottom-20 flex w-96 justify-center rounded-lg p-2 text-base font-bold text-space_dark {messageType ===
-			'success'
+			MessageType.SUCCESS
 				? 'bg-neon_green'
 				: 'bg-neon_pink'}"
 			transition:fly={{ y: 40, easing: cubicInOut, duration: 400 }}
 		>
-			{#if messageType === 'success'}
+			{#if messageType === MessageType.SUCCESS}
 				Sucessfully registered user!
 			{:else}
 				Failed to register user.

@@ -1,17 +1,19 @@
-<script>
+<script lang="ts">
 	import Header from './Header.svelte';
 	import Sidebar from './Sidebar.svelte';
 	import './app.css';
-	import { sidebarState, currentInterface } from './store.js';
+	import { DeviceInterface } from '$types';
+	import { sidebarState, currentInterface } from './store';
+	import { SidebarState } from '$types';
 	import { fly } from 'svelte/transition';
 
 	import { onMount } from 'svelte';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 
 	export let data;
-	let deviceWidth;
+	let deviceWidth: number;
 	// Add the Partytown script to the DOM head
-	let scriptEl;
+	let scriptEl: HTMLScriptElement;
 	onMount(() => {
 		if (scriptEl) {
 			scriptEl.textContent = partytownSnippet();
@@ -19,15 +21,15 @@
 	});
 
 	$: if (deviceWidth > 1536) {
-		currentInterface.set('desktop-2xl');
+		currentInterface.set(DeviceInterface.DESKTOP_2XL);
 	} else if (deviceWidth > 1280) {
-		currentInterface.set('desktop-xl');
+		currentInterface.set(DeviceInterface.DESKTOP_XL);
 	} else if (deviceWidth > 1024) {
-		currentInterface.set('desktop');
+		currentInterface.set(DeviceInterface.DESKTOP);
 	} else if (deviceWidth > 768) {
-		currentInterface.set('tablet');
+		currentInterface.set(DeviceInterface.TABLET);
 	} else {
-		currentInterface.set('mobile');
+		currentInterface.set(DeviceInterface.MOBILE);
 	}
 </script>
 
@@ -79,7 +81,7 @@
 	<!-- Main content needs to account for header height and sidebar width. -->
 	{#key data.currentPath}
 		<div
-			class="flex-grow bg-space_dark pt-16 duration-300 {$sidebarState === 'expanded'
+			class="flex-grow bg-space_dark pt-16 duration-300 {$sidebarState === SidebarState.EXPANDED
 				? 'md:pl-48'
 				: 'md:pl-16'}"
 			in:fly={{ y: -30, duration: 200, delay: 100 }}

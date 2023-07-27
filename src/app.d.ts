@@ -18,3 +18,46 @@ declare global {
 }
 
 export {};
+
+export type Achievement = {
+	id: number;
+	series: string;
+	title: string;
+	description: string;
+	jades: number;
+	hidden: boolean;
+	version: string;
+	comment?: string;
+	difficulty?: string;
+	related: number[];
+	percent: number;
+	completed?: boolean;
+	completedByRelation?: boolean;
+};
+
+export type Series = {
+	series: string;
+	achievements: Achievement[];
+};
+
+export enum DeviceInterface {
+	MOBILE = 'MOBILE',
+	TABLET = 'TABLET',
+	DESKTOP = 'DESKTOP',
+	DESKTOP_XL = 'DESKTOP_XL',
+	DESKTOP_2XL = 'DESKTOP_2XL'
+}
+
+export enum SidebarState {
+	CLOSED = 'CLOSED',
+	COLLAPSED = 'COLLAPSED',
+	EXPANDED = 'EXPANDED'
+}
+
+export enum MessageType {
+	NONE = 'NONE',
+	SUCCESS = 'SUCCESS',
+	ERROR = 'ERROR',
+	LOADING = 'LOADING',
+	FAIL = 'FAIL'
+}

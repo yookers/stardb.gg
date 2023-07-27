@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import Logo from './Logo.svelte';
 	let m = { x: 0, y: 0 };
 
-	function handleMove(event) {
+	function handleMove(event: MouseEvent) {
 		m.x = (window.innerWidth / 2 - event.clientX) / 30;
 		m.y = (window.innerHeight / 2 - event.clientY) / 30;
 	}

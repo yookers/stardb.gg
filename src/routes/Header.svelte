@@ -4,12 +4,13 @@
 	import { Icon, User } from 'svelte-hero-icons';
 	import { Menu } from 'lucide-svelte';
 	import { sidebarState } from './store';
+	import { SidebarState } from '$types';
 
 	function toggleSidebar() {
-		if ($sidebarState === 'closed' || $sidebarState === 'collapsed') {
-			sidebarState.set('expanded');
+		if ($sidebarState === SidebarState.CLOSED || $sidebarState === SidebarState.COLLAPSED) {
+			sidebarState.set(SidebarState.EXPANDED);
 		} else {
-			sidebarState.set('closed');
+			sidebarState.set(SidebarState.CLOSED);
 		}
 	}
 </script>

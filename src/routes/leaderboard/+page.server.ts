@@ -1,6 +1,7 @@
+import type { PageServerLoad } from './$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 
-export async function load({ fetch, url }) {
+export const load = (async ({ fetch, url }) => {
 	// Parse the page query parameter
 	let pageNumber = Number(url.searchParams.get('page'));
 	if (isNaN(pageNumber) || pageNumber < 1) {
@@ -51,7 +52,7 @@ export async function load({ fetch, url }) {
 	} catch (error) {
 		return { error: { status: 400, message: 'Oops! Something went wrong.' } };
 	}
-}
+}) satisfies PageServerLoad;
 
 /* export const load = async ({ fetch }) => {
     const response = await fetch(`scores-sample.json`);

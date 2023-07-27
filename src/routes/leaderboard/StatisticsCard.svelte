@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	import { LineChart, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-svelte';
 	import { slide, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 
 	let showCard = false;
-	export let statisticsData;
+	export let statisticsData: any[];
 
 	// Statistics carousel
 	let index = 0;

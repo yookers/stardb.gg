@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
-	import { searchResults } from './store.js';
+	import { searchResults } from './store';
 
 	let searchQuery = '';
 
-	async function searchPlayer(query) {
+	async function searchPlayer(query: string) {
 		if (query === '') {
-			searchResults.set(null);
+			searchResults.set([]);
 			return null;
 		}
 		// Check if it's an UID (9 digits) else it's a name
@@ -32,7 +32,7 @@
 		return null;
 	}
 
-	function handleKeyDown(event) {
+	function handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'Enter') {
 			searchPlayer(searchQuery);
 		}

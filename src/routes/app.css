@@ -4,6 +4,11 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource/dm-sans/700.css';
 
+a,
+button {
+	-webkit-tap-highlight-color: transparent;
+}
+
 /* This applies to all scrollable elements */
 ::-webkit-scrollbar {
 	width: 6px; /* For vertical scrollbars */
