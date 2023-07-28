@@ -29,15 +29,16 @@ export type Achievement = {
 	version: string;
 	comment?: string;
 	difficulty?: string;
+    set?: number;
 	related: number[];
 	percent: number;
 	completed?: boolean;
 	completedByRelation?: boolean;
 };
 
-export type Series = {
+export type AchievementGroupedSeries = {
 	series: string;
-	achievements: Achievement[];
+	achievements: Achievement[][];
 };
 
 export enum DeviceInterface {

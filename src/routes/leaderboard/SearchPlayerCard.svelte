@@ -60,7 +60,7 @@
 			transition:slide={{ duration: 300, easing: cubicInOut }}
 		>
 			<div
-				class="relative flex h-10 w-32 select-none items-center rounded-full text-galaxy_purple-200 bg-galaxy_purple-700 text-center font-bold"
+				class="relative flex-shrink-0 flex h-10 w-32 select-none items-center rounded-full text-galaxy_purple-200 bg-galaxy_purple-700 text-center font-bold"
 			>
 				<button
 					class="h-full w-16 px-4"

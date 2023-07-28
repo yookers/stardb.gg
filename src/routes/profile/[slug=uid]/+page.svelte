@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let data;
 	const upperCaseRegion = data.profileData.region.toUpperCase();
 </script>

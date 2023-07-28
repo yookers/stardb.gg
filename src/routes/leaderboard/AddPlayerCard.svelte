@@ -5,7 +5,7 @@
 
 	export let addPlayerUID: (uid: string) => Promise<void>;
 
-	let showCard = true;
+	let showCard = false;
 	let playerUID = '';
 	let errorMessage = '';
 

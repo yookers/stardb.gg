@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { Search, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';

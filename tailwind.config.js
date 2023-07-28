@@ -1,5 +1,3 @@
-import colors from 'tailwindcss/colors';
-
 /** @type {import('tailwindcss').Config} */
 export default {
 	mode: 'jit',
@@ -8,9 +6,6 @@ export default {
 		colors: {
 			transparent: 'transparent',
 			current: 'currentColor',
-			black: colors.black,
-			white: colors.white,
-			gray: colors.gray,
 			space_dark: '#0F0A1F',
 			space_light: '#0B1531',
 			space_gray: '#3A4B75',
