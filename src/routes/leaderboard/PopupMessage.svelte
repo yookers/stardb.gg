@@ -23,7 +23,7 @@
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}
 		>
 			<Loader2 class="h-7 w-7 animate-spin  md:h-8 md:w-8" />
-			<p class="text-base font-bold md:text-lg">
+			<p class="text-sm sm:text-base font-bold md:text-lg">
 				{messageContent}
 			</p>
 		</div>
@@ -33,7 +33,7 @@
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}
 		>
 			<Check class="h-7 w-7 md:h-8 md:w-8" />
-			<p class="text-base font-bold md:text-lg">
+			<p class="text-sm sm:text-base font-bold md:text-lg">
 				{messageContent}
 			</p>
 		</div>
@@ -43,7 +43,7 @@
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}
 		>
 			<X class="h-7 w-7  md:h-8 md:w-8" />
-			<p class="text-base font-bold md:text-lg">
+			<p class="text-sm sm:text-base font-bold md:text-lg">
 				{messageContent}
 			</p>
 		</div>

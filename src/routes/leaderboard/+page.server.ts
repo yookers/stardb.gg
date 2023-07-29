@@ -15,7 +15,7 @@ export const load = (async ({ fetch, url }) => {
 
 	// Create a new URL object
 	const apiURL = new URL(
-		uid ? `${PUBLIC_SERVER_API_URL}/scores/${uid}` : `${PUBLIC_SERVER_API_URL}/scores`
+		uid ? `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}` : `${PUBLIC_SERVER_API_URL}/scores/achievements`
 	);
 
 	if (!uid) {

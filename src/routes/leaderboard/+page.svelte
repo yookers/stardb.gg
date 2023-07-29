@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PUBLIC_SERVER_API_URL } from '$env/static/public';
+	const PUBLIC_SERVER_API_URL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -57,7 +57,7 @@
 	}
 
 	async function addPlayerUID(uid: string) {
-		const url = `${PUBLIC_SERVER_API_URL}/scores/${uid}`;
+		const url = `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}`;
 		try {
 			const response = await fetch(url, {
 				method: 'PUT'

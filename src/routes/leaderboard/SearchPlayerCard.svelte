@@ -6,7 +6,7 @@
 	export let searchByName: (query: string) => void;
 	export let searchByUID: (query: string) => void;
 
-	let showCard = true;
+	let showCard = false;
 	let searchType = 'Name'; // 'Name' or 'UID'
 	let searchQuery = '';
 	let errorMessage = '';

@@ -16,7 +16,7 @@
 			password
 		};
 		try {
-			const response = await fetch(`${apiURL}/users/login`, {
+			const response = await fetch(`${apiURL}/users/auth/login`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(payload),
@@ -69,6 +69,7 @@
 							name="username"
 							id="username"
 							autocomplete="nickname"
+                            aria-label="Username"
 							required
 							bind:value={username}
 						/>
@@ -88,6 +89,7 @@
 							type="password"
 							name="password"
 							id="password"
+                            aria-label="Password"
 							required
 							bind:value={password}
 						/>
