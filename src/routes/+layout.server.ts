@@ -6,4 +6,4 @@ export const load = (async ({ locals, url }) => {
 	};
 }) satisfies LayoutServerLoad;
 
-export const prerender = true;
+//export const prerender = true;

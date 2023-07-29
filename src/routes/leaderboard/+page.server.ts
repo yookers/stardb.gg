@@ -61,5 +61,3 @@ export const load = (async ({ fetch, url }) => {
         achievementsData: data,
     };
 }; */
-
-export const prerender = false;

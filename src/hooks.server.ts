@@ -1,7 +1,7 @@
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
+import type { Handle, HandleFetch } from '@sveltejs/kit';
 
-/** @type {import('@sveltejs/kit').HandleFetch} */
-export const handleFetch = async ({ request, fetch }) => {
+export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 	const mode = import.meta.env.MODE;
 	if (mode !== 'development') {
 		if (request.url.startsWith(PUBLIC_SERVER_API_URL)) {
@@ -15,7 +15,7 @@ export const handleFetch = async ({ request, fetch }) => {
 	return fetch(request);
 };
 
-export const handle = async ({ event, resolve }) => {
+export const handle: Handle = async ({ event, resolve }) => {
 	// If there is a session, load the user and pass it to the page
 	const id = event.cookies.get('id');
 
