@@ -44,7 +44,7 @@
 						</p>
 					{/key}
 					<img
-						class="h-6 md:h-full mt-1 md:mt-2"
+						class="h-6 w-6 md:h-8 md:w-8 mt-1 md:mt-2"
 						src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
 						alt="Jade Icon"
 					/>

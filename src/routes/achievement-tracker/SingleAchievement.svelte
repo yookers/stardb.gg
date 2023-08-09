@@ -81,7 +81,7 @@
 				>
 					<p>{achievement.jades}</p>
 					<img
-						class="h-4"
+						class="h-4 w-4"
 						src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
 						alt="Jade Icon"
 					/>

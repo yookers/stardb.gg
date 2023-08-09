@@ -356,6 +356,7 @@
 >
 	<button
 		class="w-12 h-12 md:h-14 md:w-14 rounded-lg flex justify-center items-center"
+        aria-label="Scroll to Top"
 		on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 	>
 		<ArrowUpFromLine class="h-7 w-7 md:h-9 md:w-9 text-off_white" />
