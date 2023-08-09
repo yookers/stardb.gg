@@ -14,7 +14,7 @@
 >
 	<div
 		class="absolute -z-[1] h-full {achievement.completed
-			? 'bg-galaxy_purple-600/30'
+			? 'bg-galaxy_purple-550/30'
 			: 'bg-galaxy_purple-700/30'}"
 		style="width: {achievement.percent * 100}%"
 	></div>

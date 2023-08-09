@@ -11,7 +11,7 @@
 	import SingleAchievement from './SingleAchievement.svelte';
 	import GroupAchievement from './GroupAchievement.svelte';
 	import { lazyScroll } from './LazyScroll';
-	import { Award, ArrowUpFromLine, Loader2, RefreshCw } from 'lucide-svelte';
+	import { Award, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import type {
 		Achievement,
 		AchievementGroup,
@@ -289,7 +289,7 @@
 	class="flex w-full flex-col justify-center space-x-0 px-4 sm:px-6 lg:px-24 xl:px-6 text-off_white xl:flex-row xl:space-x-6 overflow-y"
 >
 	<!-- Column 1 -->
-	<div class="w-full text-lg xl:w-[550px] xl:pt-36 xl:text-xl">
+	<div class="w-full text-lg xl:w-[550px] xl:pt-28 xl:text-xl">
 		<UserInfo user={data.user?.username} />
 		<div class="xl:sticky top-16 space-y-6 pt-6">
 			<SearchAchievementCard bind:searchQuery />
@@ -359,6 +359,6 @@
         aria-label="Scroll to Top"
 		on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 	>
-		<ArrowUpFromLine class="h-7 w-7 md:h-9 md:w-9 text-off_white" />
+		<ArrowUp class="h-7 w-7 md:h-9 md:w-9 text-off_white" />
 	</button>
 </div>

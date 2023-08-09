@@ -43,8 +43,8 @@
 						<button
 							class="w-20 h-8 rounded-full border-2 flex-shrink-0 items-center justify-center
                             {selectedDifficulty === AchievementDifficulty.ALL
-								? 'bg-galaxy_purple-500 text-galaxy_purple-750 border-transparent'
-								: 'bg-galaxy_purple-750 text-galaxy_purple-400 border-galaxy_purple-400'}"
+								? 'bg-galaxy_purple-400 text-galaxy_purple-750 border-transparent'
+								: 'bg-galaxy_purple-750 text-galaxy_purple-400 border-galaxy_purple-400 hover:text-galaxy_purple-750 hover:bg-galaxy_purple-400'}"
 							on:click={() => (selectedDifficulty = AchievementDifficulty.ALL)}
 						>
 							<p>All</p>
