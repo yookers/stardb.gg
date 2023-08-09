@@ -1,17 +1,20 @@
 <script lang="ts">
+	import ProfileCard from './ProfileCard.svelte';
+	import CharactersCard from './CharactersCard.svelte';
+
 	export let data;
-	const upperCaseRegion = data.profileData.region.toUpperCase();
+	const playerData = data.playerData;
+	const charactersData = data.charactersData;
 </script>
 
 <svelte:head>
-	<title>{data.profileData.name} HSR Profile ({upperCaseRegion}) - StarDB.gg</title>
+	<title>{playerData.nickname} HSR Profile - StarDB.gg</title>
 	<meta
 		name="description"
-		content="Player profile of {data.profileData
-			.name} ({upperCaseRegion}) for Honkai Star Rail. View their player ranking and unit builds."
+		content="Player profile of {playerData.nickname} for Honkai Star Rail. View their player ranking and unit builds."
 	/>
 </svelte:head>
 
 <div class="flex justify-center text-off_white">
-	<h1>{data.profileData.name}</h1>
+	<h1>{playerData.nickname}</h1>
 </div>

@@ -8,10 +8,8 @@ declare global {
 		// interface Platform {}
 		interface Locals {
 			user: {
-				username: string;
-				email: string;
 				admin: boolean;
-				uids: string[];
+				username: string;
 			};
 		}
 	}
@@ -21,25 +19,65 @@ export {};
 
 export type Achievement = {
 	id: number;
-	series: string;
-	title: string;
+	series: number;
+	series_tag: string;
+	series_name: string;
+	tag: string;
+	name: string;
 	description: string;
 	jades: number;
 	hidden: boolean;
 	version: string;
 	comment?: string;
+	reference?: string;
 	difficulty?: string;
-    set?: number;
-	related: number[];
+	gacha: boolean;
 	percent: number;
 	completed?: boolean;
-	completedByRelation?: boolean;
 };
 
-export type AchievementGroupedSeries = {
-	series: string;
-	achievements: Achievement[][];
+export type AchievementGroup = {
+	achievements: Achievement[];
+	completed_group_id?: number | undefined;
 };
+
+export type Series = {
+	series: string;
+	achievement_count: number;
+	jade_count: number;
+	achievements: AchievementGroup[];
+};
+
+export type AchievementsGroupedData = {
+	achievement_count: number;
+	jade_count: number;
+	series: Series[];
+};
+
+export type SeriesSummary = {
+	name: string;
+	total_achievement_count: number;
+	current_achievement_count: number;
+	total_jade_count: number;
+	current_jade_count: number;
+};
+
+export type SeriesData = {
+	series: SeriesSummary[];
+	total_achievement_count: number;
+	current_achievement_count: number;
+	total_jade_count: number;
+	current_jade_count: number;
+};
+
+export type SelectedSeries = SeriesSummary | 'Show All';
+
+export enum AchievementDifficulty {
+	ALL = 'all',
+	EASY = 'easy',
+	MEDIUM = 'medium',
+	HARD = 'hard'
+}
 
 export enum DeviceInterface {
 	MOBILE = 'MOBILE',

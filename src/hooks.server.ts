@@ -29,10 +29,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 			const user = await res.json();
 			if (user) {
 				event.locals.user = {
-					username: user.username,
-					email: user.email,
 					admin: user.admin,
-					uids: user.uids
+					username: user.username
 				};
 			}
 		}

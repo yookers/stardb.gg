@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3 transition-all duration-300 hover:scale-103 hover:bg-galaxy_purple-700/95"
+	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3 transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
 		<div class="flex items-center justify-between px-5 pb-3">
@@ -36,10 +36,11 @@
 			<div
 				class="flex flex-col space-y-3 text-base md:flex-row md:justify-between md:space-y-0 lg:text-lg"
 			>
-				<div class="flex space-x-2">
+				<div class="flex space-x-2 pr-2">
 					<button
 						class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-galaxy_purple-400 font-extrabold text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-space_dark md:w-20"
 						class:bg-galaxy_purple-400={regionFilter === 'all'}
+						class:bg-galaxy_purple-750={regionFilter !== 'all'}
 						class:text-space_dark={regionFilter === 'all'}
 						aria-label="Filter by ALL regions"
 						on:click={() => setRegion('all')}
@@ -47,7 +48,7 @@
 						<p>ALL</p>
 					</button>
 					<button
-						class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_yellow font-extrabold text-neon_yellow hover:bg-neon_yellow hover:text-space_dark md:w-20"
+						class="flex h-10 w-16 flex-shrink-0 items-center justify-center bg-galaxy_purple-750 rounded-full border-2 border-neon_yellow font-extrabold text-neon_yellow hover:bg-neon_yellow hover:text-space_dark md:w-20"
 						class:bg-neon_yellow={regionFilter === 'na'}
 						class:text-space_dark={regionFilter === 'na'}
 						aria-label="Filter by NA region"
@@ -56,7 +57,7 @@
 						<p>NA</p>
 					</button>
 					<button
-						class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_pink font-extrabold text-neon_pink hover:bg-neon_pink hover:text-space_dark md:w-20"
+						class="flex h-10 w-16 flex-shrink-0 items-center justify-center bg-galaxy_purple-750 rounded-full border-2 border-neon_pink font-extrabold text-neon_pink hover:bg-neon_pink hover:text-space_dark md:w-20"
 						class:bg-neon_pink={regionFilter === 'eu'}
 						class:text-space_dark={regionFilter === 'eu'}
 						aria-label="Filter by EU region"
@@ -65,7 +66,7 @@
 						<p>EU</p>
 					</button>
 					<button
-						class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_green font-extrabold text-neon_green hover:bg-neon_green hover:text-space_dark md:w-20"
+						class="flex h-10 w-16 flex-shrink-0 items-center justify-center bg-galaxy_purple-750 rounded-full border-2 border-neon_green font-extrabold text-neon_green hover:bg-neon_green hover:text-space_dark md:w-20"
 						class:bg-neon_green={regionFilter === 'asia'}
 						class:text-space_dark={regionFilter === 'asia'}
 						aria-label="Filter by ASIA region"
@@ -74,7 +75,7 @@
 						<p>ASIA</p>
 					</button>
 					<button
-						class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_blue font-extrabold text-neon_blue hover:bg-neon_blue hover:text-space_dark md:w-20"
+						class="flex h-10 w-16 flex-shrink-0 items-center justify-center bg-galaxy_purple-750 rounded-full border-2 border-neon_blue font-extrabold text-neon_blue hover:bg-neon_blue hover:text-space_dark md:w-20"
 						class:bg-neon_blue={regionFilter === 'cn'}
 						class:text-space_dark={regionFilter === 'cn'}
 						aria-label="Filter by CN region"

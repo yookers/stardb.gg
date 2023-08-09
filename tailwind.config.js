@@ -53,7 +53,7 @@ export default {
 				dm_sans: ['DM Sans', 'sans-serif']
 			},
 			scale: {
-				103: '1.03'
+				102: '1.02'
 			}
 		}
 	},

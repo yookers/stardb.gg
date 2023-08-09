@@ -24,7 +24,7 @@
 
 <div
 	class="rounded-2xl border-2 border-galaxy_purple-550 bg-galaxy_purple-600 pt-3
-    transition-all duration-300 hover:scale-103 hover:bg-galaxy_purple-600/95"
+    transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-600/95"
 >
 	<!-- Card Title -->
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">

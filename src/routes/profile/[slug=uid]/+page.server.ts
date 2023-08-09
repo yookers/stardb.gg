@@ -9,7 +9,8 @@ export const load = (async ({ fetch, params }) => {
 	}
 	const profileData = await response.json();
 	return {
-		profileData
+		playerData: profileData.player,
+		charactersData: profileData.characters
 	};
 }) satisfies PageServerLoad;
 

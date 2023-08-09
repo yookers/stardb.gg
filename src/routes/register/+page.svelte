@@ -24,8 +24,7 @@
 			const response = await fetch(`${apiURL}/users/auth/register`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload),
-				credentials: 'include'
+				body: JSON.stringify(payload)
 			});
 
 			if (response.ok) {
@@ -75,7 +74,7 @@
 							name="username"
 							id="username"
 							autocomplete="username"
-                            aria-label="Username"
+							aria-label="Username"
 							required
 							bind:value={username}
 						/>
@@ -93,7 +92,7 @@
 							type="password"
 							name="password"
 							id="password"
-                            aria-label="Password"
+							aria-label="Password"
 							required
 							bind:value={password}
 						/>
@@ -112,7 +111,7 @@
 							type="password"
 							name="confirm-password"
 							id="confirm-password"
-                            aria-label="Confirm Password"
+							aria-label="Confirm Password"
 							required
 							bind:value={confirmPassword}
 						/>
@@ -130,7 +129,7 @@
 							type="email"
 							name="email"
 							id="email"
-                            aria-label="Email Address"
+							aria-label="Email Address"
 							bind:value={email}
 						/>
 						<p class="w-64 pt-2 text-xs font-bold md:w-96">

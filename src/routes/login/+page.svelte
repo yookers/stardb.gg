@@ -19,8 +19,7 @@
 			const response = await fetch(`${apiURL}/users/auth/login`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload),
-				credentials: 'include'
+				body: JSON.stringify(payload)
 			});
 
 			if (response.ok) {
@@ -69,7 +68,7 @@
 							name="username"
 							id="username"
 							autocomplete="nickname"
-                            aria-label="Username"
+							aria-label="Username"
 							required
 							bind:value={username}
 						/>
@@ -89,7 +88,7 @@
 							type="password"
 							name="password"
 							id="password"
-                            aria-label="Password"
+							aria-label="Password"
 							required
 							bind:value={password}
 						/>
