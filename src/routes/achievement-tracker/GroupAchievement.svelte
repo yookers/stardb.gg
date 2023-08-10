@@ -38,8 +38,8 @@
 						{achievement.name}
 					</p>
 
-					<div class="flex space-x-3 items-center justify-center">
-						<p class="font-bold textsm md:text-base">{achievement.percent * 100}%</p>
+					<div class="flex space-x-4 items-center justify-center">
+						<p class="font-bold textsm md:text-base">{(achievement.percent * 100).toFixed(2)}%</p>
 						<div
 							class="h-6 w-6 rounded-lg border-2 shrink-0 border-galaxy_purple-900/70"
 							class:bg-neon_green={achievement.completed}

@@ -87,8 +87,8 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 			});
 			seriesData.series.push(seriesSummary);
 		});
-		console.log(seriesData);
 		return { achievementsData: achievementsData.series, seriesData };
+        
 	} catch (error) {
 		console.log(error);
 		return { error: { status: 400, message: 'Oops! Something went wrong.' } };
