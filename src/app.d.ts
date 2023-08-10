@@ -64,6 +64,7 @@ export type SeriesSummary = {
 
 export type SeriesData = {
 	series: SeriesSummary[];
+	user_count: number;
 	total_achievement_count: number;
 	current_achievement_count: number;
 	total_jade_count: number;

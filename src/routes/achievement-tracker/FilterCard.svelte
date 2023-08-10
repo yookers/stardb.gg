@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ListFilter, ChevronDown, ChevronUp } from 'lucide-svelte';
+	import { ListFilter, ChevronDown, ChevronUp, ArrowDownWideNarrow } from 'lucide-svelte';
 	import { slide, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { AchievementDifficulty } from '$types';
@@ -9,7 +9,18 @@
 	export let showHidden: boolean;
 	export let selectedDifficulty: AchievementDifficulty;
 	export let filterLength: number;
+	export let sortOrder: 'default' | 'ascending' | 'descending';
 	let showCard = true;
+
+	function toggleSortOrder() {
+		if (sortOrder === 'default') {
+			sortOrder = 'ascending';
+		} else if (sortOrder === 'ascending') {
+			sortOrder = 'descending';
+		} else {
+			sortOrder = 'default';
+		}
+	}
 </script>
 
 <div
@@ -33,12 +44,11 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard}
-		<div
-			class="flex flex-col pt-2 overflow-auto"
-			transition:slide={{ duration: 300, easing: cubicInOut }}
-		>
+		<div class="flex flex-col pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="flex flex-col space-y-3 px-5 pb-3 text-sm md:text-base">
-				<div class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:items-center font-bold">
+				<div
+					class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:items-center font-bold overflow-auto"
+				>
 					<div class="flex space-x-2">
 						<button
 							class="w-20 h-8 rounded-full border-2 flex-shrink-0 items-center justify-center
@@ -109,22 +119,41 @@
 						</button>
 						<p class="pr-4">Completed</p>
 					</div>
-					<div class="flex items-center space-x-2.5">
-						<button
-							class="relative flex-shrink-0 flex h-8 w-14 border-2 select-none items-center rounded-full text-center font-bold
+					<div class="flex justify-between flex-col space-y-3 sm:space-y-0 sm:flex-row w-full">
+						<div class="flex items-center space-x-2.5">
+							<button
+								class="relative flex-shrink-0 flex h-8 w-14 border-2 select-none items-center rounded-full text-center font-bold
                             {showIncomplete
-								? 'bg-galaxy_purple-550 border-galaxy_purple-300'
-								: 'bg-galaxy_purple-700 border-galaxy_purple-300'}"
-							aria-label="Toggle Show Incomplete Achievements"
-							on:click={() => (showIncomplete = !showIncomplete)}
-						>
-							<span
-								class="absolute flex h-6 w-6 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
-                            {showIncomplete ? 'left-[26px]' : 'left-0.5'}"
+									? 'bg-galaxy_purple-550 border-galaxy_purple-300'
+									: 'bg-galaxy_purple-700 border-galaxy_purple-300'}"
+								aria-label="Toggle Show Incomplete Achievements"
+								on:click={() => (showIncomplete = !showIncomplete)}
 							>
-							</span>
+								<span
+									class="absolute flex h-6 w-6 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
+                            {showIncomplete ? 'left-[26px]' : 'left-0.5'}"
+								>
+								</span>
+							</button>
+							<p>Incomplete</p>
+						</div>
+						<button
+							class="relative w-44 h-8 rounded-full bg-galaxy_purple-800"
+							aria-label="Toggle Sort Order"
+							on:click={() => toggleSortOrder()}
+						>
+							<div class="flex items-center justify-center">
+								<ArrowDownWideNarrow class="absolute left-4 w-4 h-4" />
+								{#key sortOrder}
+									<p
+										class="pl-4 capitalize"
+										in:slide={{ axis: 'y', duration: 200, easing: cubicInOut }}
+									>
+										{sortOrder}
+									</p>
+								{/key}
+							</div>
 						</button>
-						<p>Incomplete</p>
 					</div>
 				</div>
 			</div>

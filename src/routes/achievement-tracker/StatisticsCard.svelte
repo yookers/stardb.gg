@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { LineChart, ChevronDown, ChevronUp } from 'lucide-svelte';
-	import { slide, fly } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import type { SeriesData } from '$types';
 
@@ -34,23 +33,10 @@
 			class="flex items-center justify-center px-6 pb-3 pt-2"
 			transition:slide={{ duration: 300, easing: cubicInOut }}
 		>
-			<div class="flex flex-col justify-center items-center">
-				<div class="flex justify-center items-center space-x-2">
-					{#key seriesData.current_jade_count}
-						<p class="font-bold text-3xl md:text-4xl">
-							<span class="text-galaxy_purple-300" in:fly={{ y: -20, duration: 300 }}
-								>{seriesData.current_jade_count}</span
-							> <span class="text-2xl md:text-3xl">/ {seriesData.total_jade_count}</span>
-						</p>
-					{/key}
-					<img
-						class="h-6 w-6 md:h-8 md:w-8 mt-1 md:mt-2"
-						src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
-						alt="Jade Icon"
-					/>
-				</div>
-				<p class="text-base font-bold">
-					<span class="text-galaxy_purple-300">Jades</span> Obtained
+			<div class="flex flex-col justify-center items-center font-bold">
+				<p class="pb-1 text-6xl md:text-7xl text-galaxy_purple-350">{seriesData.user_count}</p>
+				<p class="line-clamp-1 text-xl font-medium">
+					<span class="text-galaxy_purple-350 font-bold">Tracked</span> accounts
 				</p>
 			</div>
 		</div>

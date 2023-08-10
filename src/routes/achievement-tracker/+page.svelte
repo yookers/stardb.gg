@@ -27,6 +27,7 @@
 	let achievementsData: Series[] = data.achievementsData ?? [];
 	let seriesData: SeriesData = data.seriesData ?? {
 		series: [],
+		user_count: 0,
 		total_achievement_count: 0,
 		current_achievement_count: 0,
 		total_jade_count: 0,
@@ -39,6 +40,7 @@
 	let showHidden = true;
 	let selectedDifficulty = AchievementDifficulty.ALL;
 	let searchQuery = '';
+	let sortOrder: 'default' | 'ascending' | 'descending' = 'default';
 
 	// Lazy loading
 	let filteredAchievements: AchievementGroup[];
@@ -68,7 +70,10 @@
 					group.achievements.forEach((achievement: Achievement) => {
 						if (completedAchievements.includes(achievement.id)) {
 							achievement.completed = true;
-							group.completed_group_id = achievement.id;
+							if (group.achievements.length > 1) {
+								// If the achievement is part of a group
+								group.completed_group_id = achievement.id;
+							}
 							seriesSummary.current_achievement_count++;
 							seriesSummary.current_jade_count += achievement.jades;
 							seriesData.current_achievement_count++;
@@ -198,6 +203,34 @@
 		achievementsData = [...achievementsData];
 	}
 
+	function sortByPercent(
+		achievementGroups: AchievementGroup[],
+		sortOrder: 'default' | 'ascending' | 'descending'
+	) {
+		if (sortOrder === 'default') {
+			return achievementGroups;
+		}
+
+		return achievementGroups.sort((groupA, groupB) => {
+			if (!groupA.achievements[0] || !groupB.achievements[0]) {
+				return 0;
+			}
+
+			const totalPercentA = groupA.achievements.reduce(
+				(sum, achievement) => sum + achievement.percent,
+				0
+			);
+			const totalPercentB = groupB.achievements.reduce(
+				(sum, achievement) => sum + achievement.percent,
+				0
+			);
+
+			return sortOrder === 'ascending'
+				? totalPercentA - totalPercentB
+				: totalPercentB - totalPercentA;
+		});
+	}
+
 	function flattenAchievements(data: Series[]): AchievementGroup[] {
 		let flatList: AchievementGroup[] = [];
 		data.forEach((item) => {
@@ -244,18 +277,22 @@
 		showHidden = true;
 		selectedDifficulty = AchievementDifficulty.ALL;
 		searchQuery = '';
+		sortOrder = 'default';
 	}
 
-	$: filteredAchievements = flattenAchievements(
-		combinedFilters(
-			achievementsData,
-			showCompleted,
-			showIncomplete,
-			selectedSeries,
-			searchQuery,
-			selectedDifficulty,
-			showHidden
-		)
+	$: filteredAchievements = sortByPercent(
+		flattenAchievements(
+			combinedFilters(
+				achievementsData,
+				showCompleted,
+				showIncomplete,
+				selectedSeries,
+				searchQuery,
+				selectedDifficulty,
+				showHidden
+			)
+		),
+		sortOrder
 	);
 
 	$: shownAchievements = filteredAchievements.slice(0, shownCount);
@@ -305,6 +342,7 @@
 			bind:showIncomplete
 			bind:showHidden
 			bind:selectedDifficulty
+			bind:sortOrder
 			filterLength={filteredAchievements.length}
 		/>
 
@@ -324,13 +362,13 @@
 			</div>
 			<div class="px-8 sticky flex justify-between text-sm font-bold top-16 z-[2]"></div>
 
-			<div class="px-8 text-sm pb-2 flex justify-between font-bold">
+			<div class="px-8 md:px-12 text-sm pb-2 flex justify-between font-bold">
 				<p>Name</p>
 				<p>% Players Obtained</p>
 			</div>
 			<div class="px-3 pb-3 md:px-6 md:pb-6 space-y-2 md:space-y-3 min-h-[96px]">
 				{#each shownAchievements as achievementGroup (achievementGroup.achievements[0]?.id)}
-					<div transition:fly={{ y: 40, duration: 300, easing: cubicInOut }}>
+					<div transition:fly={{ y: 40, duration: 350, easing: cubicInOut }}>
 						{#if achievementGroup.achievements.length === 1 && achievementGroup.achievements[0]}
 							<SingleAchievement
 								achievement={achievementGroup.achievements[0]}
@@ -356,7 +394,7 @@
 >
 	<button
 		class="w-12 h-12 md:h-14 md:w-14 rounded-lg flex justify-center items-center"
-        aria-label="Scroll to Top"
+		aria-label="Scroll to Top"
 		on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 	>
 		<ArrowUp class="h-7 w-7 md:h-9 md:w-9 text-off_white" />

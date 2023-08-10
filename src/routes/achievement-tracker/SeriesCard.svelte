@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { Scroll, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { slide, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
@@ -41,12 +42,12 @@
 	<!-- Card Content-->
 	{#if showCard}
 		<div
-			class="flex flex-col justify-center pt-2 pb-3"
+			class="flex flex-col justify-center pt-2"
 			transition:slide={{ duration: 350, easing: cubicInOut }}
 		>
 			<div class="flex flex-col">
 				<button
-					class="font-bold text-sm md:text-base items-center py-2 px-5 flex justify-between hover:bg-galaxy_purple-700"
+					class="font-bold text-sm border-b-2 border-galaxy_purple-550/70 md:text-base items-center py-2 px-5 flex justify-between hover:bg-galaxy_purple-700"
 					class:bg-galaxy_purple-700={selectedSeries === 'Show All'}
 					on:click={() => (selectedSeries = 'Show All')}
 				>
@@ -71,7 +72,7 @@
 
 				{#each seriesData.series as series}
 					<button
-						class="font-bold text-sm items-center md:text-base py-2 px-5 flex border-t-2 border-galaxy_purple-550/70 justify-between text-left hover:bg-galaxy_purple-700"
+						class="font-bold text-sm items-center md:text-base py-2 px-5 flex border-b-2 border-galaxy_purple-550/70 justify-between text-left hover:bg-galaxy_purple-700"
 						class:bg-galaxy_purple-700={isSelectedSeriesSummary(selectedSeries) &&
 							selectedSeries.name === series.name}
 						on:click={() => (selectedSeries = series)}
@@ -98,6 +99,23 @@
 						</div>
 					</button>
 				{/each}
+
+				<div class="flex text-sm items-center px-6 py-2 space-x-1">
+					{#key seriesData.current_jade_count}
+						<p class="font-medium">
+							<span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>
+								{seriesData.current_jade_count}</span
+							>
+							/ {seriesData.total_jade_count}
+						</p>
+					{/key}
+					<img
+						class="h-4 w-4"
+						src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
+						alt="Jade Icon"
+					/>
+					<p>Total</p>
+				</div>
 			</div>
 		</div>
 	{/if}

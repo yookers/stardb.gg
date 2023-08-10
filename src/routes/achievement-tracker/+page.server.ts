@@ -36,6 +36,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 
 		const seriesData: SeriesData = {
 			series: [],
+			user_count: rawAchievementsData.user_count,
 			total_achievement_count: rawAchievementsData.achievement_count,
 			current_achievement_count: 0,
 			total_jade_count: rawAchievementsData.jade_count,
@@ -72,7 +73,10 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 					(achievement: Achievement) => {
 						if (completedAchievements.includes(achievement.id)) {
 							achievement.completed = true;
-							completedGroupID = achievement.id;
+							if (achievementGroup.achievements.length > 1) {
+								// If the achievement is part of a group
+								completedGroupID = achievement.id;
+							}
 							seriesSummary.current_achievement_count++;
 							seriesSummary.current_jade_count += achievement.jades;
 							seriesData.current_achievement_count++;
@@ -88,7 +92,6 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 			seriesData.series.push(seriesSummary);
 		});
 		return { achievementsData: achievementsData.series, seriesData };
-        
 	} catch (error) {
 		console.log(error);
 		return { error: { status: 400, message: 'Oops! Something went wrong.' } };
