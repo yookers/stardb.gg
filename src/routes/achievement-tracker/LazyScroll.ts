@@ -11,7 +11,7 @@ export function lazyScroll(fetch: () => void, element: HTMLElement | null) {
 			},
 			// threshold is the percentage of the element that must be visible before the callback is invoked
 			// rootMargin is the margin around the root (viewport, in this case) that must be visible before the callback is invoked
-			{ threshold: 0.8, rootMargin: '20px' }
+			{ threshold: 0.8, rootMargin: '50px' }
 		);
 		observer.observe(element);
 	}

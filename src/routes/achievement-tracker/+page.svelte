@@ -368,7 +368,7 @@
 			</div>
 			<div class="px-3 pb-3 md:px-6 md:pb-6 space-y-2 md:space-y-3 min-h-[96px]">
 				{#each shownAchievements as achievementGroup (achievementGroup.achievements[0]?.id)}
-					<div transition:fly={{ y: 40, duration: 350, easing: cubicInOut }}>
+					<div in:fly={{ y: 40, duration: 400, easing: cubicInOut }}>
 						{#if achievementGroup.achievements.length === 1 && achievementGroup.achievements[0]}
 							<SingleAchievement
 								achievement={achievementGroup.achievements[0]}

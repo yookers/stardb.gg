@@ -4,10 +4,11 @@
 	import { cubicInOut } from 'svelte/easing';
 
 	export let searchQuery = '';
-	let timer: NodeJS.Timeout;
 	let showCard = false;
 
-	function handleKeyUp(e: Event) {
+	/* let timer: ReturnType<typeof setTimeout>;
+
+		function handleKeyUp(e: Event) {
 		debounce((e.target as HTMLInputElement).value);
 	}
 
@@ -16,8 +17,8 @@
 		clearTimeout(timer);
 		timer = setTimeout(() => {
 			searchQuery = query;
-		}, 250);
-	}
+		}, 50);
+	} */
 </script>
 
 <div
@@ -50,7 +51,7 @@
 					<input
 						class="h-10 w-full rounded-l-full border-y-2 border-l-2 border-transparent bg-galaxy_purple-650 px-4 text-sm font-bold outline-none placeholder:font-normal placeholder:text-galaxy_purple-250 focus:border-galaxy_purple-400 sm:text-base"
 						type="text"
-						on:keyup={handleKeyUp}
+						bind:value={searchQuery}
 						placeholder="Search Achievement ..."
 					/>
 					<button
