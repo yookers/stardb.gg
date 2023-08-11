@@ -59,13 +59,20 @@
 	async function addPlayerUID(uid: string) {
 		const url = `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}`;
 		try {
-			const response = await fetch(url, {
+			var response = await fetch(url, {
 				method: 'PUT'
 			});
 
 			if (!response.ok) {
 				throw new Error();
 			}
+
+			response = await fetch(url);
+
+			if (!response.ok) {
+				throw new Error();
+			}
+
 			const data = await response.json();
 			playerScores = [data];
 			return;
