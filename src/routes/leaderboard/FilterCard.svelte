@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { ListFilter, ChevronDown, ChevronUp } from 'lucide-svelte';
-	import { slide } from 'svelte/transition';
+	import { slide, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 
 	export let regionFilter: string;
 	export let rankingFilter: string;
 	export let setRegion: (region: string) => void;
 	export let setRanking: (ranking: string) => void;
+	export let scoreLength: number;
+	export let currentPage: number;
 
 	let showCard = true;
 </script>
@@ -30,13 +32,13 @@
 
 	{#if showCard}
 		<div
-			class="select-none overflow-auto px-6 pb-3 pt-2"
+			class="select-none overflow-auto pt-2"
 			transition:slide={{ duration: 300, easing: cubicInOut }}
 		>
 			<div
-				class="flex flex-col space-y-3 text-base md:flex-row md:justify-between md:space-y-0 lg:text-lg"
+				class="flex flex-col px-5 pb-3 space-y-3 text-base md:flex-row md:justify-between md:space-y-0 lg:text-lg"
 			>
-				<div class="flex space-x-2 pr-2">
+				<div class="flex space-x-2">
 					<button
 						class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-galaxy_purple-400 font-extrabold text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-space_dark md:w-20"
 						class:bg-galaxy_purple-400={regionFilter === 'all'}
@@ -104,6 +106,15 @@
 						{rankingFilter}
 					</span>
 				</div>
+			</div>
+			<div class="border-t-2 border-galaxy_purple-650/95">
+				{#key scoreLength}
+					<p class="px-6 py-2 text-sm">
+						Filtering <span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}
+							>{scoreLength}</span
+						> Players
+					</p>
+				{/key}
 			</div>
 		</div>
 	{/if}

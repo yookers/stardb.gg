@@ -39,6 +39,7 @@ export const load = (async ({ fetch, url }) => {
 		if (!response.ok) {
 			return { error: { status: 400, message: 'Oops! Something went wrong.' } };
 		}
+
 		if (uid) {
 			return { playerScores: [data] };
 		} else {

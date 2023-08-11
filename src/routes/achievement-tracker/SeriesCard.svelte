@@ -11,20 +11,19 @@
 
 	let showCard = true;
 
-    function handleChangeSeries(series: SelectedSeries) {
-        selectedSeries = series;
-        resetLazyScroll();
-    }
+	function handleChangeSeries(series: SelectedSeries) {
+		selectedSeries = series;
+		resetLazyScroll();
+	}
 
 	const isSelectedSeriesSummary = (item: SelectedSeries): item is SeriesSummary => {
 		return typeof item !== 'string'; // 'Show All' is a string
 	};
-    
 
-    $:  if (isSelectedSeriesSummary(selectedSeries)) {
-        const seriesName = selectedSeries.name;
-        selectedSeries = seriesData.series.find(s => s.name === seriesName) || selectedSeries;
-    }
+	$: if (isSelectedSeriesSummary(selectedSeries)) {
+		const seriesName = selectedSeries.name;
+		selectedSeries = seriesData.series.find((s) => s.name === seriesName) || selectedSeries;
+	}
 </script>
 
 <div

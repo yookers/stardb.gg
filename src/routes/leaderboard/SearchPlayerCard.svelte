@@ -56,7 +56,7 @@
 	<!-- Card Content-->
 	{#if showCard}
 		<div
-			class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 overflow-auto px-6 pb-3 pt-2 text-sm"
+			class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 overflow-auto px-5 pb-3 pt-2 text-sm"
 			transition:slide={{ duration: 300, easing: cubicInOut }}
 		>
 			<div

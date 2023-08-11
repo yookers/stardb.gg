@@ -57,7 +57,7 @@
 		<a
 			href="/login"
 			aria-label="Login Page"
-			class="mr-4 flex h-8 items-center justify-center space-x-2 rounded-lg border-2 border-transparent bg-galaxy_purple-550 px-2 text-off_white hover:border-off_white"
+			class="relative mr-4 flex h-8 items-center justify-center space-x-2 rounded-lg border-2 border-transparent bg-galaxy_purple-550 px-2 text-off_white hover:border-off_white"
 		>
 			<Icon src={User} solid class="h-4 w-4 " />
 
@@ -66,6 +66,7 @@
 			{:else}
 				<p class="text-sm font-bold">Login</p>
 			{/if}
+			<div class="absolute w-full h-48 bg-galaxy_purple-500 hidden"></div>
 		</a>
 	</div>
 </header>

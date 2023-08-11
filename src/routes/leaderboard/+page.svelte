@@ -59,20 +59,13 @@
 	async function addPlayerUID(uid: string) {
 		const url = `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}`;
 		try {
-			var response = await fetch(url, {
+			const response = await fetch(url, {
 				method: 'PUT'
 			});
 
 			if (!response.ok) {
 				throw new Error();
 			}
-
-			response = await fetch(url);
-
-			if (!response.ok) {
-				throw new Error();
-			}
-
 			const data = await response.json();
 			playerScores = [data];
 			return;
@@ -117,10 +110,10 @@
 </script>
 
 <svelte:head>
-	<title>Achievement Leaderboard - Honkai Star Rail - StarDB.gg</title>
+	<title>Achievement Leaderboard - Honkai: Star Rail - stardb.gg</title>
 	<meta
 		name="description"
-		content="StarDB.gg's leaderboard tracks the highest ranked Honkai Star Rail players across every region. View their player profiles."
+		content="Discover the top players of Honkai: Star Rail at stardb.gg. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
 	/>
 </svelte:head>
 
@@ -142,7 +135,14 @@
 
 	<!-- Column 2 -->
 	<div class="flex w-full flex-col space-y-6 py-6 xl:w-[1100px]">
-		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} />
+		<FilterCard
+			{regionFilter}
+			{rankingFilter}
+			{setRegion}
+			{setRanking}
+			scoreLength={playerScores.length}
+			{currentPage}
+		/>
 
 		<!-- Pagination buttons -->
 		<div

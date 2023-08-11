@@ -318,8 +318,11 @@
 </script>
 
 <svelte:head>
-	<title>Achievement Tracker - StarDB.gg</title>
-	<meta name="description" content="About this app" />
+	<title>Achievement Tracker - Honkai: Star Rail - stardb.gg</title>
+	<meta
+		name="description"
+		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."
+	/>
 </svelte:head>
 
 <div
