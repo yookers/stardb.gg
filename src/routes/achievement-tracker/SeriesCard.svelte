@@ -11,13 +11,20 @@
 
 	let showCard = true;
 
+    function handleChangeSeries(series: SelectedSeries) {
+        selectedSeries = series;
+        resetLazyScroll();
+    }
+
 	const isSelectedSeriesSummary = (item: SelectedSeries): item is SeriesSummary => {
 		return typeof item !== 'string'; // 'Show All' is a string
 	};
+    
 
-	$: if (selectedSeries) {
-		resetLazyScroll();
-	}
+    $:  if (isSelectedSeriesSummary(selectedSeries)) {
+        const seriesName = selectedSeries.name;
+        selectedSeries = seriesData.series.find(s => s.name === seriesName) || selectedSeries;
+    }
 </script>
 
 <div
@@ -49,7 +56,7 @@
 				<button
 					class="font-bold text-sm border-b-2 border-galaxy_purple-550/70 md:text-base items-center py-2 px-5 flex justify-between hover:bg-galaxy_purple-700"
 					class:bg-galaxy_purple-700={selectedSeries === 'Show All'}
-					on:click={() => (selectedSeries = 'Show All')}
+					on:click={() => handleChangeSeries('Show All')}
 				>
 					<div class="flex justify-center items-center space-x-3">
 						<div
@@ -61,7 +68,7 @@
 					<div class="flex rounded-full bg-galaxy_purple-300 items-center justify-center w-24 h-6">
 						{#key seriesData.current_achievement_count}
 							<p class="text-xs md:text-sm font-extrabold text-galaxy_purple-750">
-								<span in:fly={{ y: -20, duration: 300, easing: cubicInOut }}
+								<span in:fly={{ y: -20, duration: 400, easing: cubicInOut }}
 									>{seriesData.current_achievement_count}</span
 								>
 								/ {seriesData.total_achievement_count}
@@ -75,7 +82,7 @@
 						class="font-bold text-sm items-center md:text-base py-2 px-5 flex border-b-2 border-galaxy_purple-550/70 justify-between text-left hover:bg-galaxy_purple-700"
 						class:bg-galaxy_purple-700={isSelectedSeriesSummary(selectedSeries) &&
 							selectedSeries.name === series.name}
-						on:click={() => (selectedSeries = series)}
+						on:click={() => handleChangeSeries(series)}
 					>
 						<div class="flex justify-center items-center space-x-3">
 							<div
@@ -100,21 +107,41 @@
 					</button>
 				{/each}
 
-				<div class="flex text-sm items-center px-6 py-2 space-x-1">
-					{#key seriesData.current_jade_count}
-						<p class="font-medium">
-							<span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>
-								{seriesData.current_jade_count}</span
-							>
-							/ {seriesData.total_jade_count}
-						</p>
-					{/key}
-					<img
-						class="h-4 w-4"
-						src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
-						alt="Jade Icon"
-					/>
-					<p>Total</p>
+				<div class="flex text-sm items-center justify-between px-6 py-2">
+					<div class="flex space-x-1 items-center">
+						{#if selectedSeries !== 'Show All'}
+							{#key selectedSeries.current_jade_count}
+								<p class="font-medium">
+									<span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>
+										{selectedSeries.current_jade_count}</span
+									>
+									/ {selectedSeries.total_jade_count}
+								</p>
+							{/key}
+							<img
+								class="h-4 w-4"
+								src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
+								alt="Jade Icon"
+							/>
+							<p>Series</p>
+						{/if}
+					</div>
+					<div class="flex space-x-1 items-center">
+						{#key seriesData.current_jade_count}
+							<p class="font-medium">
+								<span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>
+									{seriesData.current_jade_count}</span
+								>
+								/ {seriesData.total_jade_count}
+							</p>
+						{/key}
+						<img
+							class="h-4 w-4"
+							src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
+							alt="Jade Icon"
+						/>
+						<p>Total</p>
+					</div>
 				</div>
 			</div>
 		</div>
