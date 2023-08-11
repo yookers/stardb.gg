@@ -11,7 +11,7 @@
 	import SingleAchievement from './SingleAchievement.svelte';
 	import GroupAchievement from './GroupAchievement.svelte';
 	import { lazyScroll } from './LazyScroll';
-	import { Award, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
+	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import type {
 		Achievement,
 		AchievementGroup,
@@ -41,6 +41,8 @@
 	let selectedDifficulty = AchievementDifficulty.ALL;
 	let searchQuery = '';
 	let sortOrder: 'default' | 'ascending' | 'descending' = 'default';
+	let isScreenExpanded = true;
+	let userInfoShown = true;
 
 	// Lazy loading
 	let filteredAchievements: AchievementGroup[];
@@ -326,11 +328,17 @@
 </svelte:head>
 
 <div
-	class="flex w-full flex-col justify-center space-x-0 px-4 sm:px-6 lg:px-24 xl:px-6 text-off_white xl:flex-row xl:space-x-6 overflow-y"
+	class="flex w-full flex-col justify-center space-x-0 px-4 sm:px-6 lg:px-24 text-off_white
+    {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
 >
 	<!-- Column 1 -->
-	<div class="w-full text-lg xl:w-[550px] xl:pt-28 xl:text-xl">
-		<UserInfo user={data.user?.username} />
+	<div
+		class="w-full text-lg xl:text-xl
+    {isScreenExpanded ? 'xl:w-[550px] xl:pt-28' : 'xl:w-[1100px]'}"
+	>
+		<div class={userInfoShown && !isScreenExpanded ? 'xl:pt-6' : ''}>
+			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />
+		</div>
 		<div class="xl:sticky top-16 space-y-6 pt-6">
 			<SearchAchievementCard bind:searchQuery />
 			<SeriesCard {seriesData} {resetLazyScroll} bind:selectedSeries />
@@ -355,15 +363,27 @@
 					<Award class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 					<p class="text-xl font-bold lg:text-2xl">Achievements</p>
 				</div>
-				<button
-					class="hover:scale-110"
-					aria-label="Reset Achievement Filters"
-					on:click={() => resetFilters()}
-				>
-					<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
-				</button>
+				<div class="flex space-x-4">
+					<button
+						class="hover:scale-110"
+						aria-label="Reset Achievement Filters"
+						on:click={() => resetFilters()}
+					>
+						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
+					</button>
+					<button
+						class="hidden hover:scale-110 xl:block"
+						aria-label="Expand/Minimize Leaderboard"
+						on:click={() => (isScreenExpanded = !isScreenExpanded)}
+					>
+						{#if isScreenExpanded}
+							<Minimize2 class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+						{:else}
+							<Maximize2 class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+						{/if}
+					</button>
+				</div>
 			</div>
-			<div class="px-8 sticky flex justify-between text-sm font-bold top-16 z-[2]"></div>
 
 			<div class="px-8 md:px-12 text-sm pb-2 flex justify-between font-bold">
 				<p>Name</p>

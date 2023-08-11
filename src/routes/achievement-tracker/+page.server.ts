@@ -18,7 +18,6 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 		}
 
 		const rawAchievementsData = await achievementResponse.json();
-
 		const achievementsData: AchievementsGroupedData = {
 			achievement_count: rawAchievementsData.achievement_count,
 			jade_count: rawAchievementsData.jade_count,

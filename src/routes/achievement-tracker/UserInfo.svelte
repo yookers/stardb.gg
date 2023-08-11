@@ -2,9 +2,16 @@
 	import { X } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+    import { createEventDispatcher } from 'svelte';
 
 	let showCard = true;
 	export let user: string | undefined;
+    const dispatch = createEventDispatcher();
+
+    function closedInfo() {
+        showCard = false;
+        dispatch('closedInfo');
+    }
 </script>
 
 {#if showCard}
@@ -18,7 +25,7 @@
 		<!-- Card Title -->
 		<button
 			class="w-full"
-			on:click={() => (showCard = !showCard)}
+			on:click={closedInfo}
 			aria-label="Show/Hide Card Toggle"
 		>
 			<div class="flex items-center justify-between px-5">
