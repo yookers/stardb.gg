@@ -263,7 +263,10 @@
 							achievement.completed || achievementGroup.completed_group_id
 								? showCompleted
 								: showIncomplete;
-						const matchesQuery = !query || achievement.name.toLowerCase().includes(lowercaseQuery);
+						const matchesQuery =
+							!query ||
+							achievement.name.toLowerCase().includes(lowercaseQuery) ||
+							achievement.description.toLowerCase().includes(lowercaseQuery);
 						const matchesDifficulty =
 							difficulty === AchievementDifficulty.ALL || achievement.difficulty === difficulty;
 						const matchesHidden = showHidden || !achievement.hidden;
