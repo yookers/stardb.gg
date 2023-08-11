@@ -2,7 +2,7 @@
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import { invalidateAll } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { MessageType } from '$types';
 
 	let username = '';
@@ -29,7 +29,7 @@
 
 			if (response.ok) {
 				notifyUser(MessageType.SUCCESS);
-				invalidateAll();
+				goto('achievement-tracker', { invalidateAll: true });
 			} else {
 				notifyUser(MessageType.ERROR);
 			}
