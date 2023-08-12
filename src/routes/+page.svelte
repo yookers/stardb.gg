@@ -39,7 +39,7 @@
 	/>
 </svelte:head>
 
-<div class="flex flex-col items-center pt-80 text-off_white" on:pointermove={handleMove}>
+<div class="flex h-full flex-col items-center justify-center text-off_white" on:pointermove={handleMove}>
 	<div
 		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-16 font-dm_sans text-6xl tracking-tighter text-galaxy_purple-250 md:text-8xl"
 	>

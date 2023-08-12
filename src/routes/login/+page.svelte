@@ -48,7 +48,7 @@
 </svelte:head>
 
 <div class="flex h-full flex-col items-center justify-center py-8">
-	<div class="flex w-full flex-col space-y-4 px-4 md:w-[600px]">
+	<div class="flex w-full flex-col space-y-4 px-4 sm:px-12 md:w-[600px] md:px-0">
 		<p class="pl-2 text-3xl font-bold text-off_white">Login to account</p>
 		<div
 			class="w-full rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 text-sm hover:border-galaxy_purple-600 md:text-base"
