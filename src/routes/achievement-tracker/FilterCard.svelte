@@ -149,7 +149,7 @@
 										class="pl-4 capitalize"
 										in:slide={{ axis: 'y', duration: 200, easing: cubicInOut }}
 									>
-										{sortOrder}
+										{sortOrder} %
 									</p>
 								{/key}
 							</div>

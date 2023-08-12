@@ -1,39 +1,73 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { Search } from 'lucide-svelte';
 	import Logo from './Logo.svelte';
+	let searchQuery = '';
+	let errorMessage = '';
 	let m = { x: 0, y: 0 };
 
 	function handleMove(event: MouseEvent) {
 		m.x = (window.innerWidth / 2 - event.clientX) / 30;
 		m.y = (window.innerHeight / 2 - event.clientY) / 30;
 	}
+
+	function searchPlayer(UID: string) {
+		// Check if it's an UID (9 digits)
+		const isUID = /^\d{9}$/.test(UID);
+
+		if (!isUID) {
+			errorMessage = 'UID must be 9 digits.';
+			return;
+		}
+
+		goto(`/profile/${UID}`);
+	}
+
+	function handleKeyDown(e: KeyboardEvent) {
+		errorMessage = ''; // Reset error message
+		if (e.key === 'Enter') {
+			searchPlayer(searchQuery);
+		}
+	}
 </script>
 
 <svelte:head>
-	<title>StarDB.gg - Leaderboards and Tools for Honkai Star Rail</title>
+	<title>stardb.gg - Honkai: Star Rail Tools and Leaderboard</title>
 	<meta
 		name="description"
-		content="View the top ranked players and builds in Honkai Star Rail. Featuring a leaderboard, smart achievement tracker, and player card generator."
+		content="The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists."
 	/>
 </svelte:head>
 
-<div
-	class="flex h-full flex-col items-center justify-center text-off_white"
-	on:pointermove={handleMove}
->
+<div class="flex flex-col items-center pt-80 text-off_white" on:pointermove={handleMove}>
 	<div
-		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-12 font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 md:text-8xl"
+		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-16 font-dm_sans text-6xl tracking-tighter text-galaxy_purple-250 md:text-8xl"
 	>
-		<Logo class="w-12 overflow-visible fill-none stroke-[8] md:w-24" />
+		<Logo class="w-14 overflow-visible fill-none stroke-[8] md:w-24" />
 		<p class="select-none">stardb.gg</p>
 	</div>
-	<div
-		class="relative flex h-36 w-64 justify-center overflow-clip rounded-2xl border-2 border-galaxy_purple-250 md:w-[600px]"
-	>
-		<img
-			src="images/galaxy/galaxy-small.webp"
-			alt="Galaxy background"
-			class="absolute -top-16 opacity-20 blur-sm"
-			style="transform: translate3d({m.x}px, {m.y}px, 0) scale(1.8);"
-		/>
+
+	<div class="flex flex-col mb-24">
+		<div class="flex justify-center items-center">
+			<input
+				class="w-80 md:w-[600px] h-14 md:h-16 px-5 rounded-l-xl border-l-2 border-y-2 border-transparent hover:border-galaxy_purple-250 outline-none text-lg font-bold text-galaxy_purple-600 bg-galaxy_purple-150 placeholder:text-galaxy_purple-600
+                {errorMessage ? 'focus:border-neon_pink' : 'focus:border-galaxy_purple-250'}"
+				type="text"
+				id="search"
+				placeholder="Search for a UID ..."
+				bind:value={searchQuery}
+				on:keydown={handleKeyDown}
+			/>
+
+			<button
+				class="rounded-r-xl bg-galaxy_purple-250 h-14 md:h-16 px-4 text-galaxy_purple-600 hover:scale-105"
+				on:click={() => searchPlayer(searchQuery)}
+			>
+				<Search class="w-7 h-7" />
+			</button>
+		</div>
+		{#if errorMessage}
+			<p class="pl-5 py-2 font-bold text-neon_pink">{errorMessage}</p>
+		{/if}
 	</div>
 </div>
