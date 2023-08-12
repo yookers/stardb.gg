@@ -47,10 +47,10 @@
 		<p class="select-none">stardb.gg</p>
 	</div>
 
-	<div class="flex flex-col mb-24">
-		<div class="flex justify-center items-center">
+	<div class="mb-24 flex flex-col">
+		<div class="flex items-center justify-center">
 			<input
-				class="w-80 md:w-[600px] h-14 md:h-16 px-5 rounded-l-xl border-l-2 border-y-2 border-transparent hover:border-galaxy_purple-250 outline-none text-lg font-bold text-galaxy_purple-600 bg-galaxy_purple-150 placeholder:text-galaxy_purple-600
+				class="h-14 w-80 rounded-l-xl border-y-2 border-l-2 border-transparent bg-galaxy_purple-150 px-5 text-lg font-bold text-galaxy_purple-600 outline-none placeholder:text-galaxy_purple-600 hover:border-galaxy_purple-250 md:h-16 md:w-[600px]
                 {errorMessage ? 'focus:border-neon_pink' : 'focus:border-galaxy_purple-250'}"
 				type="text"
 				id="search"
@@ -60,14 +60,14 @@
 			/>
 
 			<button
-				class="rounded-r-xl bg-galaxy_purple-250 h-14 md:h-16 px-4 text-galaxy_purple-600 hover:scale-105"
+				class="h-14 rounded-r-xl bg-galaxy_purple-250 px-4 text-galaxy_purple-600 hover:scale-105 md:h-16"
 				on:click={() => searchPlayer(searchQuery)}
 			>
-				<Search class="w-7 h-7" />
+				<Search class="h-7 w-7" />
 			</button>
 		</div>
 		{#if errorMessage}
-			<p class="pl-5 py-2 font-bold text-neon_pink">{errorMessage}</p>
+			<p class="py-2 pl-5 font-bold text-neon_pink">{errorMessage}</p>
 		{/if}
 	</div>
 </div>

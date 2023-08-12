@@ -30,7 +30,7 @@
 		<div class="flex items-center justify-between px-5 pb-3">
 			<div class="flex items-center space-x-4 overflow-hidden pr-2">
 				<Search class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
-				<p class="text-xl font-bold lg:text-2xl truncate">Search Achievement</p>
+				<p class="truncate text-xl font-bold lg:text-2xl">Search Achievement</p>
 			</div>
 
 			{#if showCard}
@@ -42,10 +42,7 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard}
-		<div
-			class="flex items-center justify-center px-6 pb-3 pt-2"
-			transition:slide={{ duration: 300, easing: cubicInOut }}
-		>
+		<div class="flex items-center justify-center px-6 pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="flex w-full flex-col">
 				<div class="flex">
 					<input

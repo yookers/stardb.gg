@@ -40,15 +40,9 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard && statisticsData}
-		<div
-			class="flex items-center justify-center px-5 pb-3 pt-2"
-			transition:slide={{ duration: 300, easing: cubicInOut }}
-		>
+		<div class="flex items-center justify-center px-5 pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="relative flex w-full items-center justify-center rounded-xl">
-				<button
-					class="absolute left-10 flex h-10 w-10 items-center justify-center"
-					on:click={prevCard}
-				>
+				<button class="absolute left-10 flex h-10 w-10 items-center justify-center" on:click={prevCard}>
 					<ChevronLeft class="h-6 w-6 text-off_white lg:h-8 lg:w-8" />
 				</button>
 
@@ -61,10 +55,7 @@
 					class:text-neon_blue={statisticsData[index].region === 'CN'}
 				>
 					{#key statisticsData[index].region}
-						<p
-							class="pb-1 text-6xl md:text-7xl"
-							in:fly={{ y: 10, duration: 300, easing: cubicInOut }}
-						>
+						<p class="pb-1 text-6xl md:text-7xl" in:fly={{ y: 10, duration: 300, easing: cubicInOut }}>
 							{statisticsData[index].count}
 						</p>
 					{/key}
@@ -73,10 +64,7 @@
 					</p>
 				</div>
 
-				<button
-					class="absolute right-10 flex h-10 w-10 items-center justify-center"
-					on:click={nextCard}
-				>
+				<button class="absolute right-10 flex h-10 w-10 items-center justify-center" on:click={nextCard}>
 					<ChevronRight class="h-6 w-6 text-off_white lg:h-8 lg:w-8" />
 				</button>
 			</div>

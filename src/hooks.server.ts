@@ -6,10 +6,7 @@ export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 	if (mode !== 'development') {
 		if (request.url.startsWith(PUBLIC_SERVER_API_URL)) {
 			// Clone the original request, but change the URL
-			request = new Request(
-				request.url.replace(PUBLIC_SERVER_API_URL, 'http://localhost:8000/api'),
-				request
-			);
+			request = new Request(request.url.replace(PUBLIC_SERVER_API_URL, 'http://localhost:8000/api'), request);
 		}
 	}
 	return fetch(request);

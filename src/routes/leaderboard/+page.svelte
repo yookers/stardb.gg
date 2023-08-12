@@ -135,19 +135,10 @@
 
 	<!-- Column 2 -->
 	<div class="flex w-full flex-col space-y-6 py-6 xl:w-[1100px]">
-		<FilterCard
-			{regionFilter}
-			{rankingFilter}
-			{setRegion}
-			{setRanking}
-			scoreLength={playerScores.length}
-			{currentPage}
-		/>
+		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} scoreLength={playerScores.length} {currentPage} />
 
 		<!-- Pagination buttons -->
-		<div
-			class="fixed bottom-16 right-8 z-[3] flex select-none flex-col items-center space-y-2 rounded-xl"
-		>
+		<div class="fixed bottom-16 right-8 z-[3] flex select-none flex-col items-center space-y-2 rounded-xl">
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
 				aria-label="Previous Page"
@@ -163,20 +154,14 @@
 		</div>
 
 		<!-- Leaderboard-->
-		<div
-			class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 pt-3 transition-all duration-300"
-		>
+		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 pt-3 transition-all duration-300">
 			<div class="flex items-center justify-between px-5 pb-3">
 				<div class="flex items-center space-x-4">
 					<Trophy class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 					<p class="text-xl font-bold lg:text-2xl">Leaderboard</p>
 				</div>
 				<div class="flex space-x-4">
-					<button
-						class="hover:scale-110"
-						aria-label="Reset Leaderboard Filters"
-						on:click={() => resetLeaderboard()}
-					>
+					<button class="hover:scale-110" aria-label="Reset Leaderboard Filters" on:click={() => resetLeaderboard()}>
 						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
 					</button>
 					<button
@@ -261,15 +246,9 @@
 
 {#if addPlayerPromise}
 	{#await addPlayerPromise}
-		<PopupMessage
-			messageType={MessageType.LOADING}
-			messageContent={`Attempting to Add ${playerUID} ...`}
-		/>
+		<PopupMessage messageType={MessageType.LOADING} messageContent={`Attempting to Add ${playerUID} ...`} />
 	{:then}
-		<PopupMessage
-			messageType={MessageType.SUCCESS}
-			messageContent={`Successfully Added ${playerUID}!`}
-		/>
+		<PopupMessage messageType={MessageType.SUCCESS} messageContent={`Successfully Added ${playerUID}!`} />
 	{:catch}
 		<PopupMessage messageType={MessageType.FAIL} messageContent={`Failed to Add Player.`} />
 	{/await}

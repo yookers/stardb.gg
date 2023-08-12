@@ -47,29 +47,21 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard}
-		<div
-			class="flex flex-col justify-center pt-2"
-			transition:slide={{ duration: 350, easing: cubicInOut }}
-		>
+		<div class="flex flex-col justify-center pt-2" transition:slide={{ duration: 350, easing: cubicInOut }}>
 			<div class="flex flex-col">
 				<button
-					class="font-bold text-sm border-b-2 border-galaxy_purple-550/70 md:text-base items-center py-2 px-5 flex justify-between hover:bg-galaxy_purple-700"
+					class="flex items-center justify-between border-b-2 border-galaxy_purple-550/70 px-5 py-2 text-sm font-bold hover:bg-galaxy_purple-700 md:text-base"
 					class:bg-galaxy_purple-700={selectedSeries === 'Show All'}
 					on:click={() => handleChangeSeries('Show All')}
 				>
-					<div class="flex justify-center items-center space-x-3">
-						<div
-							class="w-2 h-2 rounded-full bg-galaxy_purple-650"
-							class:bg-neon_green={selectedSeries === 'Show All'}
-						></div>
+					<div class="flex items-center justify-center space-x-3">
+						<div class="h-2 w-2 rounded-full bg-galaxy_purple-650" class:bg-neon_green={selectedSeries === 'Show All'}></div>
 						<p>Show All</p>
 					</div>
-					<div class="flex rounded-full bg-galaxy_purple-300 items-center justify-center w-24 h-6">
+					<div class="flex h-6 w-24 items-center justify-center rounded-full bg-galaxy_purple-300">
 						{#key seriesData.current_achievement_count}
-							<p class="text-xs md:text-sm font-extrabold text-galaxy_purple-750">
-								<span in:fly={{ y: -20, duration: 400, easing: cubicInOut }}
-									>{seriesData.current_achievement_count}</span
-								>
+							<p class="text-xs font-extrabold text-galaxy_purple-750 md:text-sm">
+								<span in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>{seriesData.current_achievement_count}</span>
 								/ {seriesData.total_achievement_count}
 							</p>
 						{/key}
@@ -78,27 +70,21 @@
 
 				{#each seriesData.series as series}
 					<button
-						class="font-bold text-sm items-center md:text-base py-2 px-5 flex border-b-2 border-galaxy_purple-550/70 justify-between text-left hover:bg-galaxy_purple-700"
-						class:bg-galaxy_purple-700={isSelectedSeriesSummary(selectedSeries) &&
-							selectedSeries.name === series.name}
+						class="flex items-center justify-between border-b-2 border-galaxy_purple-550/70 px-5 py-2 text-left text-sm font-bold hover:bg-galaxy_purple-700 md:text-base"
+						class:bg-galaxy_purple-700={isSelectedSeriesSummary(selectedSeries) && selectedSeries.name === series.name}
 						on:click={() => handleChangeSeries(series)}
 					>
-						<div class="flex justify-center items-center space-x-3">
+						<div class="flex items-center justify-center space-x-3">
 							<div
-								class="w-2 h-2 rounded-full bg-galaxy_purple-650"
-								class:bg-neon_green={isSelectedSeriesSummary(selectedSeries) &&
-									selectedSeries.name === series.name}
+								class="h-2 w-2 rounded-full bg-galaxy_purple-650"
+								class:bg-neon_green={isSelectedSeriesSummary(selectedSeries) && selectedSeries.name === series.name}
 							></div>
 							<p>{series.name}</p>
 						</div>
-						<div
-							class="flex rounded-full bg-galaxy_purple-300 items-center justify-center w-24 h-6"
-						>
+						<div class="flex h-6 w-24 items-center justify-center rounded-full bg-galaxy_purple-300">
 							{#key series.current_achievement_count}
-								<p class="text-xs font-extrabold md:text-sm text-galaxy_purple-750">
-									<span in:fly={{ y: -20, duration: 400, easing: cubicInOut }}
-										>{series.current_achievement_count}</span
-									>
+								<p class="text-xs font-extrabold text-galaxy_purple-750 md:text-sm">
+									<span in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>{series.current_achievement_count}</span>
 									/ {series.total_achievement_count}
 								</p>
 							{/key}
@@ -106,8 +92,8 @@
 					</button>
 				{/each}
 
-				<div class="flex text-sm items-center justify-between px-6 py-2">
-					<div class="flex space-x-1 items-center">
+				<div class="flex items-center justify-between px-6 py-2 text-sm">
+					<div class="flex items-center space-x-1">
 						{#if selectedSeries !== 'Show All'}
 							{#key selectedSeries.current_jade_count}
 								<p class="font-medium">
@@ -117,15 +103,11 @@
 									/ {selectedSeries.total_jade_count}
 								</p>
 							{/key}
-							<img
-								class="h-4 w-4"
-								src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
-								alt="Jade Icon"
-							/>
+							<img class="h-4 w-4" src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
 							<p>Series</p>
 						{/if}
 					</div>
-					<div class="flex space-x-1 items-center">
+					<div class="flex items-center space-x-1">
 						{#key seriesData.current_jade_count}
 							<p class="font-medium">
 								<span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>
@@ -134,11 +116,7 @@
 								/ {seriesData.total_jade_count}
 							</p>
 						{/key}
-						<img
-							class="h-4 w-4"
-							src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
-							alt="Jade Icon"
-						/>
+						<img class="h-4 w-4" src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
 						<p>Total</p>
 					</div>
 				</div>

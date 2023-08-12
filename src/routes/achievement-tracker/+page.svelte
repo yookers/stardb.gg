@@ -12,14 +12,7 @@
 	import GroupAchievement from './GroupAchievement.svelte';
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
-	import type {
-		Achievement,
-		AchievementGroup,
-		Series,
-		SeriesSummary,
-		SeriesData,
-		SelectedSeries
-	} from '$types';
+	import type { Achievement, AchievementGroup, Series, SeriesSummary, SeriesData, SelectedSeries } from '$types';
 	import { AchievementDifficulty } from '$types';
 
 	// `data` also contains the same information as $page.data
@@ -55,14 +48,10 @@
 	onMount(() => {
 		// If user is not logged in, get the completed achievements from local storage
 		if (!data.user) {
-			const completedAchievements: number[] = JSON.parse(
-				localStorage.getItem('completed_achievements') || '[]'
-			);
+			const completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') || '[]');
 
 			achievementsData.forEach((series: Series) => {
-				const seriesSummary = seriesData.series.find(
-					(s: SeriesSummary) => s.name === series.series
-				);
+				const seriesSummary = seriesData.series.find((s: SeriesSummary) => s.name === series.series);
 
 				if (!seriesSummary) {
 					return;
@@ -93,10 +82,7 @@
 	async function storeServerData(achievement: Achievement) {
 		try {
 			const method = achievement.completed ? 'PUT' : 'DELETE';
-			const response = await fetch(
-				`${PUBLIC_SERVER_API_URL}/users/me/achievements/${achievement.id}`,
-				{ method }
-			);
+			const response = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements/${achievement.id}`, { method });
 
 			if (!response.ok) {
 				throw new Error('Failed to update achievement');
@@ -107,9 +93,7 @@
 	}
 
 	function storeLocalData(achievement: Achievement, previouslyCompleted: boolean) {
-		let completedAchievements: number[] = JSON.parse(
-			localStorage.getItem('completed_achievements') || '[]'
-		);
+		let completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') || '[]');
 
 		if (achievement.completed) {
 			completedAchievements.push(achievement.id);
@@ -170,9 +154,7 @@
 		} else {
 			// If there is a completed achievement in the group, set it to incomplete
 			if (group.completed_group_id) {
-				const completedAchievement = group.achievements.find(
-					(a) => a.id === group.completed_group_id
-				);
+				const completedAchievement = group.achievements.find((a) => a.id === group.completed_group_id);
 
 				if (completedAchievement) {
 					completedAchievement.completed = false;
@@ -205,10 +187,7 @@
 		achievementsData = [...achievementsData];
 	}
 
-	function sortByPercent(
-		achievementGroups: AchievementGroup[],
-		sortOrder: 'default' | 'ascending' | 'descending'
-	) {
+	function sortByPercent(achievementGroups: AchievementGroup[], sortOrder: 'default' | 'ascending' | 'descending') {
 		if (sortOrder === 'default') {
 			return achievementGroups;
 		}
@@ -218,18 +197,10 @@
 				return 0;
 			}
 
-			const totalPercentA = groupA.achievements.reduce(
-				(sum, achievement) => sum + achievement.percent,
-				0
-			);
-			const totalPercentB = groupB.achievements.reduce(
-				(sum, achievement) => sum + achievement.percent,
-				0
-			);
+			const totalPercentA = groupA.achievements.reduce((sum, achievement) => sum + achievement.percent, 0);
+			const totalPercentB = groupB.achievements.reduce((sum, achievement) => sum + achievement.percent, 0);
 
-			return sortOrder === 'ascending'
-				? totalPercentA - totalPercentB
-				: totalPercentB - totalPercentA;
+			return sortOrder === 'ascending' ? totalPercentA - totalPercentB : totalPercentB - totalPercentA;
 		});
 	}
 
@@ -260,15 +231,12 @@
 				achievements: item.achievements.filter((achievementGroup) =>
 					achievementGroup.achievements.some((achievement) => {
 						const matchesCompletion =
-							achievement.completed || achievementGroup.completed_group_id
-								? showCompleted
-								: showIncomplete;
+							achievement.completed || achievementGroup.completed_group_id ? showCompleted : showIncomplete;
 						const matchesQuery =
 							!query ||
 							achievement.name.toLowerCase().includes(lowercaseQuery) ||
 							achievement.description.toLowerCase().includes(lowercaseQuery);
-						const matchesDifficulty =
-							difficulty === AchievementDifficulty.ALL || achievement.difficulty === difficulty;
+						const matchesDifficulty = difficulty === AchievementDifficulty.ALL || achievement.difficulty === difficulty;
 						const matchesHidden = showHidden || !achievement.hidden;
 						return matchesCompletion && matchesQuery && matchesDifficulty && matchesHidden;
 					})
@@ -331,7 +299,7 @@
 </svelte:head>
 
 <div
-	class="flex w-full flex-col justify-center space-x-0 px-4 sm:px-6 lg:px-24 text-off_white
+	class="flex w-full flex-col justify-center space-x-0 px-4 text-off_white sm:px-6 lg:px-24
     {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
 >
 	<!-- Column 1 -->
@@ -342,7 +310,7 @@
 		<div class={userInfoShown && !isScreenExpanded ? 'xl:pt-6' : ''}>
 			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />
 		</div>
-		<div class="xl:sticky top-16 space-y-6 pt-6">
+		<div class="top-16 space-y-6 pt-6 xl:sticky">
 			<SearchAchievementCard bind:searchQuery />
 			<SeriesCard {seriesData} {resetLazyScroll} bind:selectedSeries />
 			<StatisticsCard {seriesData} />
@@ -367,11 +335,7 @@
 					<p class="text-xl font-bold lg:text-2xl">Achievements</p>
 				</div>
 				<div class="flex space-x-4">
-					<button
-						class="hover:scale-110"
-						aria-label="Reset Achievement Filters"
-						on:click={() => resetFilters()}
-					>
+					<button class="hover:scale-110" aria-label="Reset Achievement Filters" on:click={() => resetFilters()}>
 						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
 					</button>
 					<button
@@ -388,26 +352,23 @@
 				</div>
 			</div>
 
-			<div class="px-8 md:px-12 text-sm pb-2 flex justify-between font-bold">
+			<div class="flex justify-between px-8 pb-2 text-sm font-bold md:px-12">
 				<p>Name</p>
 				<p>% Players Obtained</p>
 			</div>
-			<div class="px-3 pb-3 md:px-6 md:pb-6 space-y-2 md:space-y-3 min-h-[96px]">
+			<div class="min-h-[96px] space-y-2 px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
 				{#each shownAchievements as achievementGroup (achievementGroup.achievements[0]?.id)}
 					<div in:fly={{ y: 40, duration: 400, easing: cubicInOut }}>
 						{#if achievementGroup.achievements.length === 1 && achievementGroup.achievements[0]}
-							<SingleAchievement
-								achievement={achievementGroup.achievements[0]}
-								{handleSingleToggleCompletion}
-							/>
+							<SingleAchievement achievement={achievementGroup.achievements[0]} {handleSingleToggleCompletion} />
 						{:else}
 							<GroupAchievement {achievementGroup} {handleGroupToggleCompletion} />
 						{/if}
 					</div>
 				{/each}
 				{#if shownCount < filteredAchievements.length}
-					<div bind:this={loadMoreElement} class="flex justify-center items-center">
-						<Loader2 class="w-7 h-7 text-galaxy_purple-600 animate-spin" />
+					<div bind:this={loadMoreElement} class="flex items-center justify-center">
+						<Loader2 class="h-7 w-7 animate-spin text-galaxy_purple-600" />
 					</div>
 				{/if}
 			</div>
@@ -416,13 +377,13 @@
 </div>
 
 <div
-	class="fixed bottom-16 right-8 z-[3] hover:scale-105 bg-galaxy_purple-550 border-2 border-galaxy_purple-500 rounded-xl hover:bg-galaxy_purple-450"
+	class="fixed bottom-16 right-8 z-[3] rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450"
 >
 	<button
-		class="w-12 h-12 md:h-14 md:w-14 rounded-lg flex justify-center items-center"
+		class="flex h-12 w-12 items-center justify-center rounded-lg md:h-14 md:w-14"
 		aria-label="Scroll to Top"
 		on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 	>
-		<ArrowUp class="h-7 w-7 md:h-9 md:w-9 text-off_white" />
+		<ArrowUp class="h-7 w-7 text-off_white md:h-9 md:w-9" />
 	</button>
 </div>

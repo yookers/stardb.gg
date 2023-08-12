@@ -27,9 +27,6 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard}
-		<div
-			class="flex items-center justify-center px-6 pb-3 pt-2"
-			transition:slide={{ duration: 300, easing: cubicInOut }}
-		/>
+		<div class="flex items-center justify-center px-6 pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }} />
 	{/if}
 </div>

@@ -1,12 +1,5 @@
 import type { PageServerLoad } from './$types';
-import type {
-	Achievement,
-	AchievementsGroupedData,
-	Series,
-	SeriesSummary,
-	SeriesData,
-	AchievementGroup
-} from '$types';
+import type { Achievement, AchievementsGroupedData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 
 export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
@@ -68,24 +61,22 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 
 			series.achievements = series.achievements.map((achievementGroup: AchievementGroup) => {
 				let completedGroupID: number | undefined;
-				const updatedAchievements = achievementGroup.achievements.map(
-					(achievement: Achievement) => {
-						if (completedAchievements.includes(achievement.id)) {
-							achievement.completed = true;
-							if (achievementGroup.achievements.length > 1) {
-								// If the achievement is part of a group
-								completedGroupID = achievement.id;
-							}
-							seriesSummary.current_achievement_count++;
-							seriesSummary.current_jade_count += achievement.jades;
-							seriesData.current_achievement_count++;
-							seriesData.current_jade_count += achievement.jades;
-						} else {
-							achievement.completed = false;
+				const updatedAchievements = achievementGroup.achievements.map((achievement: Achievement) => {
+					if (completedAchievements.includes(achievement.id)) {
+						achievement.completed = true;
+						if (achievementGroup.achievements.length > 1) {
+							// If the achievement is part of a group
+							completedGroupID = achievement.id;
 						}
-						return achievement;
+						seriesSummary.current_achievement_count++;
+						seriesSummary.current_jade_count += achievement.jades;
+						seriesData.current_achievement_count++;
+						seriesData.current_jade_count += achievement.jades;
+					} else {
+						achievement.completed = false;
 					}
-				);
+					return achievement;
+				});
 				return { achievements: updatedAchievements, completed_group_id: completedGroupID };
 			});
 			seriesData.series.push(seriesSummary);

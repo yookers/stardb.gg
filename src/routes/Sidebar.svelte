@@ -1,12 +1,5 @@
 <script lang="ts">
-	import {
-		Icon,
-		ChartBar,
-		DocumentCheck,
-		CircleStack,
-		FaceSmile,
-		BookOpen
-	} from 'svelte-hero-icons';
+	import { Icon, ChartBar, DocumentCheck, CircleStack, FaceSmile, BookOpen } from 'svelte-hero-icons';
 	import { sidebarState, currentInterface } from './store';
 	import { SidebarState, DeviceInterface } from '$types';
 	import { page } from '$app/stores';
@@ -46,7 +39,7 @@
 
 {#if isMobileView && $sidebarState === SidebarState.EXPANDED}
 	<div
-		class="fixed left-0 top-0 z-[9] h-full w-full bg-black opacity-50"
+		class="bg-black fixed left-0 top-0 z-[9] h-full w-full opacity-50"
 		on:click={() => {
 			sidebarState.set(SidebarState.CLOSED);
 		}}
@@ -94,9 +87,7 @@
 							<Icon src={ChartBar} solid class="h-6 w-6" />
 						</div>
 						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED
-								? 'opacity-100'
-								: 'opacity-0'}"
+							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
 						>
 							<p>Leaderboard</p>
 						</div>
@@ -119,9 +110,7 @@
 							<Icon src={DocumentCheck} solid class="h-6 w-6" />
 						</div>
 						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED
-								? 'opacity-100'
-								: 'opacity-0'}"
+							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
 						>
 							<p>Tracker</p>
 						</div>
@@ -144,9 +133,7 @@
 							<Icon src={CircleStack} solid class="h-6 w-6" />
 						</div>
 						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED
-								? 'opacity-100'
-								: 'opacity-0'}"
+							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
 						>
 							<p>Database</p>
 						</div>
@@ -169,9 +156,7 @@
 							<Icon src={FaceSmile} solid class="h-6 w-6" />
 						</div>
 						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED
-								? 'opacity-100'
-								: 'opacity-0'}"
+							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
 						>
 							<p>Profile Card</p>
 						</div>
@@ -187,16 +172,12 @@
 						}
 					}}
 				>
-					<div
-						class="flex cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					>
+					<div class="flex cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white">
 						<div>
 							<Icon src={BookOpen} solid class="h-6 w-6" />
 						</div>
 						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED
-								? 'opacity-100'
-								: 'opacity-0'}"
+							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
 						>
 							<p>Articles</p>
 						</div>

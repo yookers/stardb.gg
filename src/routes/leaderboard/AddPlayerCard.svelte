@@ -42,10 +42,7 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard}
-		<div
-			class="flex items-center justify-center px-5 pb-3 pt-2"
-			transition:slide={{ duration: 300, easing: cubicInOut }}
-		>
+		<div class="flex items-center justify-center px-5 pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="w-full space-y-2">
 				<div class="flex items-center space-x-2 pl-2">
 					<Info class="h-4 w-4 text-off_white" />

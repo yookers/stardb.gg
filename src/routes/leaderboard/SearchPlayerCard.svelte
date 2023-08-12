@@ -16,9 +16,7 @@
 			searchByName(searchQuery);
 		} else if (searchType === 'UID') {
 			// Check if UID is 9 digits
-			/^\d{9}$/.test(searchQuery)
-				? searchByUID(searchQuery)
-				: (errorMessage = 'UID must be 9 digits.');
+			/^\d{9}$/.test(searchQuery) ? searchByUID(searchQuery) : (errorMessage = 'UID must be 9 digits.');
 		}
 	}
 
@@ -56,22 +54,14 @@
 	<!-- Card Content-->
 	{#if showCard}
 		<div
-			class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 overflow-auto px-5 pb-3 pt-2 text-sm"
+			class="flex flex-col space-y-3 overflow-auto px-5 pb-3 pt-2 text-sm sm:flex-row sm:space-x-4 sm:space-y-0"
 			transition:slide={{ duration: 300, easing: cubicInOut }}
 		>
 			<div
-				class="relative flex-shrink-0 flex h-10 w-32 select-none items-center rounded-full text-galaxy_purple-200 bg-galaxy_purple-700 text-center font-bold"
+				class="relative flex h-10 w-32 flex-shrink-0 select-none items-center rounded-full bg-galaxy_purple-700 text-center font-bold text-galaxy_purple-200"
 			>
-				<button
-					class="h-full w-16 px-4"
-					aria-label="Set Search Type to Name"
-					on:click={() => changeSearchType()}>Name</button
-				>
-				<button
-					class="h-full w-16 px-4"
-					aria-label="Set Search Type to UID"
-					on:click={() => changeSearchType()}>UID</button
-				>
+				<button class="h-full w-16 px-4" aria-label="Set Search Type to Name" on:click={() => changeSearchType()}>Name</button>
+				<button class="h-full w-16 px-4" aria-label="Set Search Type to UID" on:click={() => changeSearchType()}>UID</button>
 				<span
 					class="absolute flex h-8 w-16 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
                     {searchType === 'Name' ? 'left-1' : 'left-[calc(50%-4px)]'}"

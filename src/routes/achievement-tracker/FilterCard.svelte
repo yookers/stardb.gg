@@ -46,68 +46,64 @@
 	{#if showCard}
 		<div class="flex flex-col pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="flex flex-col space-y-3 px-5 pb-3 text-sm md:text-base">
-				<div
-					class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:items-center font-bold overflow-auto"
-				>
+				<div class="flex flex-col space-y-3 overflow-auto font-bold md:flex-row md:items-center md:space-y-0">
 					<div class="flex space-x-2">
 						<button
-							class="w-20 h-8 rounded-full border-2 flex-shrink-0 items-center justify-center
+							class="h-8 w-20 flex-shrink-0 items-center justify-center rounded-full border-2
                             {selectedDifficulty === AchievementDifficulty.ALL
-								? 'bg-galaxy_purple-400 text-galaxy_purple-750 border-transparent'
-								: 'bg-galaxy_purple-750 text-galaxy_purple-400 border-galaxy_purple-400 hover:text-galaxy_purple-750 hover:bg-galaxy_purple-400'}"
+								? 'border-transparent bg-galaxy_purple-400 text-galaxy_purple-750'
+								: 'border-galaxy_purple-400 bg-galaxy_purple-750 text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-galaxy_purple-750'}"
 							on:click={() => (selectedDifficulty = AchievementDifficulty.ALL)}
 						>
 							<p>All</p>
 						</button>
 						<button
-							class="w-20 h-8 rounded-full border-2 flex-shrink-0 items-center justify-center
+							class="h-8 w-20 flex-shrink-0 items-center justify-center rounded-full border-2
                         {selectedDifficulty === AchievementDifficulty.EASY
-								? 'bg-neon_green text-galaxy_purple-750 border-transparent'
-								: 'bg-galaxy_purple-750 text-neon_green border-neon_green hover:text-galaxy_purple-750 hover:bg-neon_green'}"
+								? 'border-transparent bg-neon_green text-galaxy_purple-750'
+								: 'border-neon_green bg-galaxy_purple-750 text-neon_green hover:bg-neon_green hover:text-galaxy_purple-750'}"
 							on:click={() => (selectedDifficulty = AchievementDifficulty.EASY)}
 						>
 							<p>Easy</p>
 						</button>
 						<button
-							class="w-20 h-8 rounded-full border-2 flex-shrink-0 items-center justify-center
+							class="h-8 w-20 flex-shrink-0 items-center justify-center rounded-full border-2
                         {selectedDifficulty === AchievementDifficulty.MEDIUM
-								? 'bg-neon_yellow text-galaxy_purple-750 border-transparent'
-								: 'bg-galaxy_purple-750 text-neon_yellow border-neon_yellow hover:text-galaxy_purple-750 hover:bg-neon_yellow'}"
+								? 'border-transparent bg-neon_yellow text-galaxy_purple-750'
+								: 'border-neon_yellow bg-galaxy_purple-750 text-neon_yellow hover:bg-neon_yellow hover:text-galaxy_purple-750'}"
 							on:click={() => (selectedDifficulty = AchievementDifficulty.MEDIUM)}
 						>
 							<p>Med.</p>
 						</button>
 						<button
-							class="w-20 h-8 rounded-full border-2 flex-shrink-0 items-center justify-center
+							class="h-8 w-20 flex-shrink-0 items-center justify-center rounded-full border-2
                         {selectedDifficulty === AchievementDifficulty.HARD
-								? 'bg-neon_pink text-galaxy_purple-750 border-transparent'
-								: 'bg-galaxy_purple-750 text-neon_pink border-neon_pink hover:text-galaxy_purple-750 hover:bg-neon_pink'}"
+								? 'border-transparent bg-neon_pink text-galaxy_purple-750'
+								: 'border-neon_pink bg-galaxy_purple-750 text-neon_pink hover:bg-neon_pink hover:text-galaxy_purple-750'}"
 							on:click={() => (selectedDifficulty = AchievementDifficulty.HARD)}
 						>
 							<p>Hard</p>
 						</button>
 					</div>
-					<div class="text-galaxy_purple-650 text-lg px-3 hidden md:block">|</div>
+					<div class="hidden px-3 text-lg text-galaxy_purple-650 md:block">|</div>
 					<button
-						class="w-24 h-8 rounded-full border-2 flex-shrink-0 items-center justify-center
+						class="h-8 w-24 flex-shrink-0 items-center justify-center rounded-full border-2
                         {showHidden
-							? 'bg-galaxy_purple-300 text-galaxy_purple-750 border-transparent'
-							: 'bg-galaxy_purple-750 text-galaxy_purple-300 border-galaxy_purple-300'}"
+							? 'border-transparent bg-galaxy_purple-300 text-galaxy_purple-750'
+							: 'border-galaxy_purple-300 bg-galaxy_purple-750 text-galaxy_purple-300'}"
 						on:click={() => (showHidden = !showHidden)}
 					>
 						<p>Hidden</p>
 					</button>
 				</div>
 
-				<div
-					class="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-2.5 font-bold"
-				>
+				<div class="flex flex-col space-y-3 font-bold sm:flex-row sm:items-center sm:space-x-2.5 sm:space-y-0">
 					<div class="flex items-center space-x-2.5">
 						<button
-							class="relative flex-shrink-0 flex h-8 w-14 border-2 select-none items-center rounded-full text-center font-bold
+							class="relative flex h-8 w-14 flex-shrink-0 select-none items-center rounded-full border-2 text-center font-bold
                             {showCompleted
-								? 'bg-galaxy_purple-550 border-galaxy_purple-300'
-								: 'bg-galaxy_purple-700 border-galaxy_purple-300'}"
+								? 'border-galaxy_purple-300 bg-galaxy_purple-550'
+								: 'border-galaxy_purple-300 bg-galaxy_purple-700'}"
 							aria-label="Toggle Show Completed Achievements"
 							on:click={() => (showCompleted = !showCompleted)}
 						>
@@ -119,13 +115,13 @@
 						</button>
 						<p class="pr-4">Completed</p>
 					</div>
-					<div class="flex justify-between flex-col space-y-3 sm:space-y-0 sm:flex-row w-full">
+					<div class="flex w-full flex-col justify-between space-y-3 sm:flex-row sm:space-y-0">
 						<div class="flex items-center space-x-2.5">
 							<button
-								class="relative flex-shrink-0 flex h-8 w-14 border-2 select-none items-center rounded-full text-center font-bold
+								class="relative flex h-8 w-14 flex-shrink-0 select-none items-center rounded-full border-2 text-center font-bold
                             {showIncomplete
-									? 'bg-galaxy_purple-550 border-galaxy_purple-300'
-									: 'bg-galaxy_purple-700 border-galaxy_purple-300'}"
+									? 'border-galaxy_purple-300 bg-galaxy_purple-550'
+									: 'border-galaxy_purple-300 bg-galaxy_purple-700'}"
 								aria-label="Toggle Show Incomplete Achievements"
 								on:click={() => (showIncomplete = !showIncomplete)}
 							>
@@ -138,17 +134,14 @@
 							<p>Incomplete</p>
 						</div>
 						<button
-							class="relative w-44 h-8 rounded-full bg-galaxy_purple-800"
+							class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
 							aria-label="Toggle Sort Order"
 							on:click={() => toggleSortOrder()}
 						>
 							<div class="flex items-center justify-center">
-								<ArrowDownWideNarrow class="absolute left-4 w-4 h-4" />
+								<ArrowDownWideNarrow class="absolute left-4 h-4 w-4" />
 								{#key sortOrder}
-									<p
-										class="pl-4 capitalize"
-										in:slide={{ axis: 'y', duration: 200, easing: cubicInOut }}
-									>
+									<p class="pl-4 capitalize" in:slide={{ axis: 'y', duration: 200, easing: cubicInOut }}>
 										{sortOrder} %
 									</p>
 								{/key}
@@ -160,9 +153,7 @@
 			<div class="border-t-2 border-galaxy_purple-650/95">
 				{#key filterLength}
 					<p class="px-6 py-2 text-sm">
-						Filtering <span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}
-							>{filterLength}</span
-						> Achievements
+						Filtering <span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>{filterLength}</span> Achievements
 					</p>
 				{/key}
 			</div>

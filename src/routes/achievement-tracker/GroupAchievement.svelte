@@ -3,24 +3,19 @@
 	import type { Achievement, AchievementGroup } from '$types';
 
 	export let achievementGroup: AchievementGroup;
-	export let handleGroupToggleCompletion: (
-		group: AchievementGroup,
-		achievement: Achievement
-	) => void;
+	export let handleGroupToggleCompletion: (group: AchievementGroup, achievement: Achievement) => void;
 </script>
 
-<div
-	class="p-2 rounded-xl border-2 space-y-2 border-galaxy_purple-650 transition-all duration-300 hover:scale-102"
->
+<div class="space-y-2 rounded-xl border-2 border-galaxy_purple-650 p-2 transition-all duration-300 hover:scale-102">
 	{#each achievementGroup.achievements as achievement}
 		<div
-			class="relative rounded-xl z-[1] text-xs sm:text-sm overflow-hidden border-2 border-transparent
+			class="relative z-[1] overflow-hidden rounded-xl border-2 border-transparent text-xs sm:text-sm
     {achievement.completed
-				? 'bg-galaxy_purple-650 hover:bg-galaxy_purple-750 hover:border-galaxy_purple-650'
-				: 'bg-galaxy_purple-800 hover:bg-galaxy_purple-750 hover:border-galaxy_purple-650'}"
+				? 'bg-galaxy_purple-650 hover:border-galaxy_purple-650 hover:bg-galaxy_purple-750'
+				: 'bg-galaxy_purple-800 hover:border-galaxy_purple-650 hover:bg-galaxy_purple-750'}"
 		>
 			<div
-				class="absolute -z-[1] bg-galaxy_purple-600/30 h-full {achievement.completed
+				class="absolute -z-[1] h-full bg-galaxy_purple-600/30 {achievement.completed
 					? 'bg-galaxy_purple-550/30'
 					: 'bg-galaxy_purple-700/30'}"
 				style="width: {achievement.percent * 100}%"
@@ -31,17 +26,14 @@
 				aria-label="Toggle Achievement Completion"
 			>
 				<div class="flex justify-between px-5">
-					<p
-						class="text-left font-bold text-sm md:text-base pr-2"
-						class:line-through={achievement.completed}
-					>
+					<p class="pr-2 text-left text-sm font-bold md:text-base" class:line-through={achievement.completed}>
 						{achievement.name}
 					</p>
 
-					<div class="flex space-x-4 items-center justify-center">
-						<p class="font-bold textsm md:text-base">{(achievement.percent * 100).toFixed(2)}%</p>
+					<div class="flex items-center justify-center space-x-4">
+						<p class="textsm font-bold md:text-base">{(achievement.percent * 100).toFixed(2)}%</p>
 						<div
-							class="h-6 w-6 rounded-lg border-2 shrink-0 border-galaxy_purple-900/70"
+							class="h-6 w-6 shrink-0 rounded-lg border-2 border-galaxy_purple-900/70"
 							class:bg-neon_green={achievement.completed}
 						></div>
 					</div>
@@ -51,18 +43,14 @@
 			<div class="px-4 pb-3 pt-2">
 				<p class="px-1">{achievement.description}</p>
 
-				<div class="flex space-x-2 md:space-x-3 pt-4 font-extrabold">
+				<div class="flex space-x-2 pt-4 font-extrabold md:space-x-3">
 					{#if achievement.version}
-						<div
-							class="flex items-center justify-center rounded-full h-6 w-14 bg-galaxy_purple-750 text-off_white"
-						>
+						<div class="flex h-6 w-14 items-center justify-center rounded-full bg-galaxy_purple-750 text-off_white">
 							<p>V{achievement.version}</p>
 						</div>
 					{/if}
 					{#if achievement.hidden}
-						<div
-							class="flex h-6 w-16 items-center justify-center rounded-full bg-galaxy_purple-300 text-galaxy_purple-700"
-						>
+						<div class="flex h-6 w-16 items-center justify-center rounded-full bg-galaxy_purple-300 text-galaxy_purple-700">
 							<p>Hidden</p>
 						</div>
 					{/if}
@@ -87,11 +75,7 @@
 							class="flex h-6 w-16 items-center justify-center space-x-1.5 rounded-full bg-galaxy_purple-800 text-galaxy_purple-150"
 						>
 							<p>{achievement.jades}</p>
-							<img
-								class="h-4 w-4"
-								src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`}
-								alt="Jade Icon"
-							/>
+							<img class="h-4 w-4" src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
 						</div>
 					{/if}
 				</div>

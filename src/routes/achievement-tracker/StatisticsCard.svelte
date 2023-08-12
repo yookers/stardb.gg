@@ -29,14 +29,11 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard}
-		<div
-			class="flex items-center justify-center px-6 pb-3 pt-2"
-			transition:slide={{ duration: 300, easing: cubicInOut }}
-		>
-			<div class="flex flex-col justify-center items-center font-bold">
-				<p class="pb-1 text-6xl md:text-7xl text-galaxy_purple-350">{seriesData.user_count}</p>
+		<div class="flex items-center justify-center px-6 pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
+			<div class="flex flex-col items-center justify-center font-bold">
+				<p class="pb-1 text-6xl text-galaxy_purple-350 md:text-7xl">{seriesData.user_count}</p>
 				<p class="line-clamp-1 text-xl font-medium">
-					<span class="text-galaxy_purple-350 font-bold">Tracked</span> accounts
+					<span class="font-bold text-galaxy_purple-350">Tracked</span> accounts
 				</p>
 			</div>
 		</div>

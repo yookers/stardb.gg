@@ -81,9 +81,7 @@
 	<!-- Main content needs to account for header height and sidebar width. -->
 	{#key data.currentPath}
 		<div
-			class="flex-grow bg-space_dark pt-16 duration-300 {$sidebarState === SidebarState.EXPANDED
-				? 'md:pl-48'
-				: 'md:pl-16'}"
+			class="flex-grow bg-space_dark pt-16 duration-300 {$sidebarState === SidebarState.EXPANDED ? 'md:pl-48' : 'md:pl-16'}"
 			in:fly={{ y: -30, duration: 200, delay: 100 }}
 		>
 			<slot />

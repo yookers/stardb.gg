@@ -1,9 +1,9 @@
 <script lang="ts">
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
-	import { fly } from 'svelte/transition';
-	import { cubicInOut } from 'svelte/easing';
 	import { goto } from '$app/navigation';
 	import { MessageType } from '$types';
+	import { cubicInOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 
 	let username = '';
 	let password = '';
@@ -102,9 +102,7 @@
 							<p class=" font-bold text-neon_pink">Passwords do not match</p>
 						{/if}
 						<p class="pb-2">
-							Confirm Password <span class="text-neon_pink" class:hidden={confirmPassword !== ''}
-								>*</span
-							>
+							Confirm Password <span class="text-neon_pink" class:hidden={confirmPassword !== ''}>*</span>
 						</p>
 						<input
 							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
@@ -132,9 +130,7 @@
 							aria-label="Email Address"
 							bind:value={email}
 						/>
-						<p class="w-64 pt-2 text-xs font-bold md:w-96">
-							The optional email is used for resetting password
-						</p>
+						<p class="w-64 pt-2 text-xs font-bold md:w-96">The optional email is used for resetting password</p>
 					</div>
 				</div>
 
@@ -151,8 +147,7 @@
 		</div>
 		<a href="/login">
 			<p class="pl-2 text-off_white">
-				Have an account already? <span
-					class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
+				Have an account already? <span class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
 					>Login here!</span
 				>
 			</p>

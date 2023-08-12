@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
-	import { cubicInOut } from 'svelte/easing';
 	import { goto } from '$app/navigation';
 	import { MessageType } from '$types';
+	import { cubicInOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	let username = '';
@@ -108,8 +108,7 @@
 		</div>
 		<a href="/register">
 			<p class="pl-2 text-off_white">
-				Don't have an account? <span
-					class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
+				Don't have an account? <span class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
 					>Register here!</span
 				>
 			</p>
