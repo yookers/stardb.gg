@@ -291,7 +291,7 @@
 </script>
 
 <svelte:head>
-	<title>Achievement Tracker - Honkai: Star Rail - stardb.gg</title>
+	<title>Achievement Tracker - Honkai: Star Rail - StarDB.GG</title>
 	<meta
 		name="description"
 		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."

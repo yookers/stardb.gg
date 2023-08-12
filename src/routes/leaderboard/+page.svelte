@@ -110,10 +110,10 @@
 </script>
 
 <svelte:head>
-	<title>Achievement Leaderboard - Honkai: Star Rail - stardb.gg</title>
+	<title>Achievement Leaderboard - Honkai: Star Rail - StarDB.GG</title>
 	<meta
 		name="description"
-		content="Discover the top players of Honkai: Star Rail at stardb.gg. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
+		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
 	/>
 </svelte:head>
 
@@ -198,6 +198,7 @@
 								class:hover:bg-neon_green={player.region === 'asia'}
 								class:hover:bg-neon_blue={player.region === 'cn'}
 								in:fly={{ y: 30, easing: cubicInOut, duration: 400 }}
+								on:click={() => goto(`/profile/${player.uid}`)}
 							>
 								<td class="py-4 pl-4 text-center font-bold md:pl-6">
 									{#if rankingFilter === 'World'}

@@ -46,7 +46,8 @@ export default {
 		},
 		extend: {
 			animation: {
-				'spin-slow': 'spin 10s linear infinite'
+				'spin-slow': 'spin 10s linear infinite',
+				wiggle: 'wiggle 1s ease-in-out'
 			},
 			fontFamily: {
 				inter: ['Inter Variable', 'sans-serif'],
@@ -54,6 +55,13 @@ export default {
 			},
 			scale: {
 				102: '1.02'
+			},
+			keyframes: {
+				wiggle: {
+					'0%, 100$': { transform: 'translateX(0)' },
+					'15%, 45%, 75%': { transform: 'translateX(-5px)' },
+					'30%, 60%': { transform: 'translateX(5px)' }
+				}
 			}
 		}
 	},

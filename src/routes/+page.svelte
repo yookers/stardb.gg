@@ -32,7 +32,7 @@
 </script>
 
 <svelte:head>
-	<title>stardb.gg - Honkai: Star Rail Tools and Leaderboard</title>
+	<title>StarDB.GG - Honkai: Star Rail Tools and Leaderboard</title>
 	<meta
 		name="description"
 		content="The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists."
@@ -61,6 +61,7 @@
 
 			<button
 				class="h-14 rounded-r-xl bg-galaxy_purple-250 px-4 text-galaxy_purple-600 hover:scale-105 md:h-16"
+				aria-label="Search Player UID"
 				on:click={() => searchPlayer(searchQuery)}
 			>
 				<Search class="h-7 w-7" />

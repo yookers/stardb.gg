@@ -43,18 +43,18 @@
 </script>
 
 <svelte:head>
-	<title>Login - StarDB.gg</title>
+	<title>Login - StarDB.GG</title>
 	<meta name="description" content="Login Page for StarDB.gg" />
 </svelte:head>
 
-<div class="flex h-full flex-col items-center justify-center pb-16">
-	<div class="flex flex-col space-y-4">
+<div class="flex h-full flex-col items-center justify-center py-8">
+	<div class="flex w-full flex-col space-y-4 px-4 md:w-[600px]">
 		<p class="pl-2 text-3xl font-bold text-off_white">Login to account</p>
 		<div
-			class="w-full max-w-lg rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 p-10 text-sm hover:border-galaxy_purple-600 md:text-base"
+			class="w-full rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 text-sm hover:border-galaxy_purple-600 md:text-base"
 		>
 			<form class="flex flex-col items-center text-off_white" on:submit|preventDefault={login}>
-				<div class="space-y-6">
+				<div class="flex w-full flex-col space-y-6 px-8 pb-8 pt-8 md:px-10">
 					<div>
 						{#if username.length > 32}
 							<p class="font-bold text-neon_pink">Username exceeds limit</p>
@@ -63,11 +63,11 @@
 							Username <span class="text-neon_pink" class:hidden={username !== ''}>*</span>
 						</p>
 						<input
-							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
+							class="h-10 w-full rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:text-base"
 							type="text"
 							name="username"
 							id="username"
-							autocomplete="nickname"
+							autocomplete="username"
 							aria-label="Username"
 							required
 							bind:value={username}
@@ -84,35 +84,33 @@
 							</a>
 						</div>
 						<input
-							class="h-10 w-64 rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:w-96 md:text-base"
+							class="h-10 w-full rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:text-base"
 							type="password"
 							name="password"
 							id="password"
+							autocomplete="current-password"
 							aria-label="Password"
 							required
 							bind:value={password}
 						/>
 					</div>
-				</div>
-
-				<div>
-					<button
-						class="mt-6 h-8 w-64 rounded-md bg-purple_highlight text-sm font-bold hover:bg-galaxy_purple-500 md:w-96"
-						type="submit"
-						aria-label="Login"
-					>
-						Login
-					</button>
+					<div>
+						<button
+							class="mt-1 h-8 w-full rounded-md bg-purple_highlight text-sm font-bold hover:bg-galaxy_purple-500"
+							type="submit"
+							aria-label="Login"
+						>
+							Login
+						</button>
+					</div>
 				</div>
 			</form>
 		</div>
-		<a href="/register">
-			<p class="pl-2 text-off_white">
-				Don't have an account? <span class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
-					>Register here!</span
-				>
-			</p>
-		</a>
+		<p class="pl-2 text-off_white">
+			Don't have an account? <a href="/register" class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
+				>Register here!</a
+			>
+		</p>
 	</div>
 </div>
 

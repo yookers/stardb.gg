@@ -73,6 +73,11 @@ export type SeriesData = {
 
 export type SelectedSeries = SeriesSummary | 'Show All';
 
+export type ErrorResponse = {
+	status: number;
+	message: string;
+};
+
 export enum AchievementDifficulty {
 	ALL = 'all',
 	EASY = 'easy',
