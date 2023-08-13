@@ -113,7 +113,7 @@
 							>
 							</span>
 						</button>
-						<p class="pr-4">Completed</p>
+						<p class="pr-4" class:text-galaxy_purple-300={!showCompleted}>Completed</p>
 					</div>
 					<div class="flex w-full flex-col justify-between space-y-3 sm:flex-row sm:space-y-0">
 						<div class="flex items-center space-x-2.5">
@@ -131,7 +131,7 @@
 								>
 								</span>
 							</button>
-							<p>Incomplete</p>
+							<p class:text-galaxy_purple-300={!showIncomplete}>Incomplete</p>
 						</div>
 						<button
 							class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"

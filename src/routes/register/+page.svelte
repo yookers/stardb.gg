@@ -91,7 +91,7 @@
 
 <svelte:head>
 	<title>Register Account - StarDB.GG</title>
-	<meta name="description" content="Register an account for StarDB.gg" />
+	<meta name="description" content="Register for an account on StarDB.GG in order to track your achievements." />
 </svelte:head>
 
 <main class="flex h-full flex-col items-center justify-center py-8">

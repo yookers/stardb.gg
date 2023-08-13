@@ -4,12 +4,6 @@
 	import Logo from './Logo.svelte';
 	let searchQuery = '';
 	let errorMessage = '';
-	let m = { x: 0, y: 0 };
-
-	function handleMove(event: MouseEvent) {
-		m.x = (window.innerWidth / 2 - event.clientX) / 30;
-		m.y = (window.innerHeight / 2 - event.clientY) / 30;
-	}
 
 	function searchPlayer(UID: string) {
 		// Check if it's an UID (9 digits)
@@ -39,7 +33,7 @@
 	/>
 </svelte:head>
 
-<div class="flex h-full flex-col items-center justify-center text-off_white" on:pointermove={handleMove}>
+<main class="flex h-full flex-col items-center justify-center text-off_white">
 	<div
 		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-16 font-dm_sans text-6xl tracking-tighter text-galaxy_purple-250 md:text-8xl"
 	>
@@ -48,7 +42,7 @@
 	</div>
 
 	<div class="mb-24 flex flex-col">
-		<div class="flex items-center justify-center">
+		<div class="flex items-center justify-center pb-12">
 			<input
 				class="h-14 w-80 rounded-l-xl border-y-2 border-l-2 border-transparent bg-galaxy_purple-150 px-5 text-lg font-bold text-galaxy_purple-600 outline-none placeholder:text-galaxy_purple-600 hover:border-galaxy_purple-250 md:h-16 md:w-[600px]
                 {errorMessage ? 'focus:border-neon_pink' : 'focus:border-galaxy_purple-250'}"
@@ -71,4 +65,4 @@
 			<p class="py-2 pl-5 font-bold text-neon_pink">{errorMessage}</p>
 		{/if}
 	</div>
-</div>
+</main>

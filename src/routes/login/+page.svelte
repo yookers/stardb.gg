@@ -44,7 +44,7 @@
 
 <svelte:head>
 	<title>Login - StarDB.GG</title>
-	<meta name="description" content="Login Page for StarDB.gg" />
+	<meta name="description" content="Login to your account on StarDB.GG" />
 </svelte:head>
 
 <div class="flex h-full flex-col items-center justify-center py-8">

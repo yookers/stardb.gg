@@ -16,7 +16,7 @@
 
 {#if showCard}
 	<div
-		class="mt-6 rounded-2xl border-2 pb-3 pt-2 text-galaxy_purple-800 transition-all
+		class="rounded-2xl border-2 pb-3 pt-2 text-galaxy_purple-800 transition-all
     duration-300 xl:mt-0 {user
 			? 'border-dim_green bg-neon_green hover:bg-dim_green'
 			: 'border-dim_pink bg-neon_pink hover:bg-dim_pink'}"

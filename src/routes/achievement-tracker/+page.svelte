@@ -298,7 +298,7 @@
 	/>
 </svelte:head>
 
-<div
+<main
 	class="flex w-full flex-col justify-center space-x-0 px-4 text-off_white sm:px-6 lg:px-24
     {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
 >
@@ -307,10 +307,12 @@
 		class="w-full text-lg xl:text-xl
     {isScreenExpanded ? 'xl:w-[550px] xl:pt-28' : 'xl:w-[1100px]'}"
 	>
-		<div class={userInfoShown && !isScreenExpanded ? 'xl:pt-6' : ''}>
+		<h1 class="pb-3 pt-6 text-2xl font-bold md:text-3xl">Achievement Tracker</h1>
+		<!-- Sticky top-16 + pt-6 = top-[88px]-->
+		<div class={userInfoShown ? 'pb-6' : ''}>
 			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />
 		</div>
-		<div class="top-16 space-y-6 pt-6 xl:sticky">
+		<div class="top-[88px] space-y-6 xl:sticky">
 			<SearchAchievementCard bind:searchQuery />
 			<SeriesCard {seriesData} {resetLazyScroll} bind:selectedSeries />
 			<StatisticsCard {seriesData} />
@@ -356,7 +358,10 @@
 				<p>Name</p>
 				<p>% Players Obtained</p>
 			</div>
-			<div class="min-h-[96px] space-y-2 px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
+			<div class="space-y-2 px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
+				{#if filteredAchievements.length === 0}
+					<p class="py-4 text-center text-4xl font-bold">(◕︿◕✿)</p>
+				{/if}
 				{#each shownAchievements as achievementGroup (achievementGroup.achievements[0]?.id)}
 					<div in:fly={{ y: 40, duration: 400, easing: cubicInOut }}>
 						{#if achievementGroup.achievements.length === 1 && achievementGroup.achievements[0]}
@@ -374,7 +379,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</main>
 
 <div
 	class="fixed bottom-16 right-8 z-[3] rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450"
