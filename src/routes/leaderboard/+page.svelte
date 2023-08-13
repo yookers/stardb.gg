@@ -25,9 +25,9 @@
 	let regionFilter = 'all'; // 'all', 'na', 'eu', 'asia', 'cn'
 	let rankingFilter = 'World'; // 'World' or 'Region'
 	let query = '';
-
 	let playerUID = '';
 	let isScreenExpanded = true;
+	let addPlayerDisplay = false; // Display the return value from addPlayerUID() without triggering reactivity
 
 	function setRegion(region: string) {
 		regionFilter = region;
@@ -73,7 +73,10 @@
 				throw new Error();
 			}
 			const data = await response.json();
+			addPlayerDisplay = true;
 			playerScores = [data];
+            currentPage = 1;
+			queryCount = 1;
 			return;
 		} catch (error) {
 			throw new Error();
@@ -108,19 +111,22 @@
 
 	$: {
 		if (!data.error) {
-			currentPage = Number($page.url.searchParams.get('page')) || 1;
-			queryCount = data.queryCount || 1;
-			playerScores = data.playerScores;
-			statisticsData = data.regionCount ? data.regionCount : statisticsData;
-			regionFilter = $page.url.searchParams.get('region') || 'all';
-			query = $page.url.searchParams.get('query') || '';
-
+			if (!addPlayerDisplay) {
+                currentPage = Number($page.url.searchParams.get('page')) || 1;
+				playerScores = data.playerScores;
+				queryCount = data.queryCount || playerScores.length;
+				statisticsData = data.regionCount ? data.regionCount : statisticsData;
+				regionFilter = $page.url.searchParams.get('region') || 'all';
+				query = $page.url.searchParams.get('query') || '';
+			}
 			// Calculate max pages
 			maxPages = Math.ceil(queryCount / paginationLimit);
 
 			// Calculate items currently displaying
-			displayStart = (currentPage - 1) * paginationLimit + 1;
+			displayStart = queryCount > 0 ? (currentPage - 1) * paginationLimit + 1 : 0;
 			displayEnd = Math.min(currentPage * paginationLimit, queryCount);
+
+			addPlayerDisplay = false;
 		}
 	}
 </script>
