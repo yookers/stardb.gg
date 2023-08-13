@@ -48,7 +48,7 @@ export const load = (async ({ fetch, url }) => {
 				{ region: 'ASIA', count: data.count_asia },
 				{ region: 'CN', count: data.count_cn }
 			];
-			return { playerScores: data.scores, regionCount };
+			return { playerScores: data.scores, regionCount, queryCount: data.count_query };
 		}
 	} catch (error) {
 		return { error: { status: 400, message: 'Oops! Something went wrong.' } };

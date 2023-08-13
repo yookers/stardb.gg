@@ -15,11 +15,17 @@
 
 	export let data;
 	let currentPage = 1;
+	const paginationLimit = 25;
+	let queryCount = 1;
+	let maxPages = 1;
+	let displayStart = 1;
+	let displayEnd = 1;
 	let playerScores: any[] = [];
 	let statisticsData: any[] = [];
 	let regionFilter = 'all'; // 'all', 'na', 'eu', 'asia', 'cn'
 	let rankingFilter = 'World'; // 'World' or 'Region'
 	let query = '';
+
 	let playerUID = '';
 	let isScreenExpanded = true;
 
@@ -76,12 +82,14 @@
 
 	// Leaderboard Pagination
 	function nextPage() {
-		// noScroll prevents the page from scrolling to the top
-		let queryParams = `page=${currentPage + 1}`;
-		if (regionFilter && regionFilter !== 'all') queryParams += `&region=${regionFilter}`;
-		if (query) queryParams += `&query=${query}`;
+		if (currentPage < maxPages) {
+			// noScroll prevents the page from scrolling to the top
+			let queryParams = `page=${currentPage + 1}`;
+			if (regionFilter && regionFilter !== 'all') queryParams += `&region=${regionFilter}`;
+			if (query) queryParams += `&query=${query}`;
 
-		goto(`/leaderboard?${queryParams}`, { noScroll: true });
+			goto(`/leaderboard?${queryParams}`, { noScroll: true });
+		}
 	}
 
 	function prevPage() {
@@ -101,10 +109,18 @@
 	$: {
 		if (!data.error) {
 			currentPage = Number($page.url.searchParams.get('page')) || 1;
+			queryCount = data.queryCount || 1;
 			playerScores = data.playerScores;
 			statisticsData = data.regionCount ? data.regionCount : statisticsData;
 			regionFilter = $page.url.searchParams.get('region') || 'all';
 			query = $page.url.searchParams.get('query') || '';
+
+			// Calculate max pages
+			maxPages = Math.ceil(queryCount / paginationLimit);
+
+			// Calculate items currently displaying
+			displayStart = (currentPage - 1) * paginationLimit + 1;
+			displayEnd = Math.min(currentPage * paginationLimit, queryCount);
 		}
 	}
 </script>
@@ -137,7 +153,7 @@
 
 	<!-- Column 2 -->
 	<div class="flex w-full flex-col space-y-6 py-6 xl:w-[1100px]">
-		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} scoreLength={playerScores.length} {currentPage} />
+		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} {queryCount} {displayStart} {displayEnd} />
 
 		<!-- Pagination buttons -->
 		<div class="fixed bottom-16 right-8 z-[3] flex select-none flex-col items-center space-y-2 rounded-xl">

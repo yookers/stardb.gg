@@ -1,3 +1,8 @@
+<svelte:head>
+    <title>Privacy Policy - StarDB.GG</title>
+	<meta name="description" content="Our Privacy Policy for StarDB.GG" />
+</svelte:head>
+
 <main class="flex h-full justify-center py-10">
 	<div class="w-[1100px] rounded-xl border-2 border-galaxy_purple-150/95 bg-galaxy_purple-150 p-10 text-galaxy_purple-750">
 		<h1 class="pb-1 text-3xl font-bold">Privacy Policy</h1>

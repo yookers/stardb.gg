@@ -7,8 +7,9 @@
 	export let rankingFilter: string;
 	export let setRegion: (region: string) => void;
 	export let setRanking: (ranking: string) => void;
-	export let scoreLength: number;
-	export let currentPage: number;
+	export let queryCount: number;
+	export let displayStart: number;
+    export let displayEnd: number;
 
 	let showCard = true;
 </script>
@@ -99,9 +100,9 @@
 				</div>
 			</div>
 			<div class="border-t-2 border-galaxy_purple-650/95">
-				{#key scoreLength}
+				{#key queryCount}
 					<p class="px-6 py-2 text-sm">
-						Filtering <span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>{scoreLength}</span> Players
+						Filtering <span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>{displayStart} <span class="font-normal">-</span> {displayEnd} <span class="font-normal">of</span> {queryCount}</span> Players
 					</p>
 				{/key}
 			</div>

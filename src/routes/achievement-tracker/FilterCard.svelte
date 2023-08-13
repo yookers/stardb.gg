@@ -51,8 +51,8 @@
 						<button
 							class="h-8 w-20 flex-shrink-0 items-center justify-center rounded-full border-2
                             {selectedDifficulty === AchievementDifficulty.ALL
-								? 'border-transparent bg-galaxy_purple-400 text-galaxy_purple-750'
-								: 'border-galaxy_purple-400 bg-galaxy_purple-750 text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-galaxy_purple-750'}"
+								? 'border-transparent bg-galaxy_purple-400 text-galaxy_purple-800'
+								: 'border-galaxy_purple-400 bg-galaxy_purple-750 text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-galaxy_purple-800'}"
 							on:click={() => (selectedDifficulty = AchievementDifficulty.ALL)}
 						>
 							<p>All</p>
