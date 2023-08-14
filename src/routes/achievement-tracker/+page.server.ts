@@ -4,7 +4,7 @@ import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 
 export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 	try {
-		const achievementResponse = await fetch(`${PUBLIC_SERVER_API_URL}/achievements/grouped`);
+		const achievementResponse = await fetch(`${PUBLIC_SERVER_API_URL}/achievements?layout=grouped`);
 
 		if (!achievementResponse.ok) {
 			return { error: { status: 400, message: 'Oops! Something went wrong.' } };

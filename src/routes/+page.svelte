@@ -34,17 +34,15 @@
 </svelte:head>
 
 <main class="flex h-full flex-col items-center justify-center text-off_white">
-	<div
-		class="flex items-center space-x-4 stroke-galaxy_purple-250 py-16 font-dm_sans text-6xl tracking-tighter text-galaxy_purple-250 md:text-8xl"
-	>
-		<Logo class="w-14 overflow-visible fill-none stroke-[8] md:w-24" />
-		<p class="select-none">stardb.gg</p>
+	<div class="flex items-center space-x-3 stroke-galaxy_purple-250 py-8 sm:space-x-4 md:py-16">
+		<Logo class="w-10 overflow-visible fill-none stroke-[8] sm:w-12 md:w-24" />
+		<p class="select-none font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 sm:text-6xl md:text-8xl">stardb.gg</p>
 	</div>
 
-	<div class="mb-24 flex flex-col">
+	<div class="mb-24 flex flex-col px-6">
 		<div class="flex items-center justify-center pb-12">
 			<input
-				class="h-14 w-80 rounded-l-xl border-y-2 border-l-2 border-transparent bg-galaxy_purple-150 px-5 text-lg font-bold text-galaxy_purple-600 outline-none placeholder:text-galaxy_purple-600 hover:border-galaxy_purple-250 md:h-16 md:w-[600px]
+				class="h-12 w-full rounded-l-xl border-y-2 border-l-2 border-transparent bg-galaxy_purple-150 px-5 text-base font-bold text-galaxy_purple-600 outline-none placeholder:text-galaxy_purple-600 hover:border-galaxy_purple-250 sm:h-14 md:h-16 md:w-[600px] md:text-lg
                 {errorMessage ? 'focus:border-neon_pink' : 'focus:border-galaxy_purple-250'}"
 				type="text"
 				id="search"
@@ -54,11 +52,11 @@
 			/>
 
 			<button
-				class="h-14 rounded-r-xl bg-galaxy_purple-250 px-4 text-galaxy_purple-600 hover:scale-105 md:h-16"
+				class="h-12 rounded-r-xl bg-galaxy_purple-250 px-4 text-galaxy_purple-600 hover:scale-105 sm:h-14 md:h-16"
 				aria-label="Search Player UID"
 				on:click={() => searchPlayer(searchQuery)}
 			>
-				<Search class="h-7 w-7" />
+				<Search class="h-6 w-6 md:h-7 md:w-7" />
 			</button>
 		</div>
 		{#if errorMessage}

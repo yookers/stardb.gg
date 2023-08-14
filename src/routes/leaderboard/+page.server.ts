@@ -54,11 +54,3 @@ export const load = (async ({ fetch, url }) => {
 		return { error: { status: 400, message: 'Oops! Something went wrong.' } };
 	}
 }) satisfies PageServerLoad;
-
-/* export const load = async ({ fetch }) => {
-    const response = await fetch(`scores-sample.json`);
-    const data = await response.json();
-    return {
-        achievementsData: data,
-    };
-}; */

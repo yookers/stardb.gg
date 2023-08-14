@@ -1,5 +1,5 @@
 <svelte:head>
-    <title>Privacy Policy - StarDB.GG</title>
+	<title>Privacy Policy - StarDB.GG</title>
 	<meta name="description" content="Our Privacy Policy for StarDB.GG" />
 </svelte:head>
 

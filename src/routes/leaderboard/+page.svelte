@@ -75,7 +75,7 @@
 			const data = await response.json();
 			addPlayerDisplay = true;
 			playerScores = [data];
-            currentPage = 1;
+			currentPage = 1;
 			queryCount = 1;
 			return;
 		} catch (error) {
@@ -112,7 +112,7 @@
 	$: {
 		if (!data.error) {
 			if (!addPlayerDisplay) {
-                currentPage = Number($page.url.searchParams.get('page')) || 1;
+				currentPage = Number($page.url.searchParams.get('page')) || 1;
 				playerScores = data.playerScores;
 				queryCount = data.queryCount || playerScores.length;
 				statisticsData = data.regionCount ? data.regionCount : statisticsData;
@@ -126,6 +126,7 @@
 			displayStart = queryCount > 0 ? (currentPage - 1) * paginationLimit + 1 : 0;
 			displayEnd = Math.min(currentPage * paginationLimit, queryCount);
 
+			// Reset addPlayerUID() display
 			addPlayerDisplay = false;
 		}
 	}
