@@ -14,6 +14,10 @@
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import type { Achievement, AchievementGroup, Series, SeriesSummary, SeriesData, SelectedSeries } from '$types';
 	import { AchievementDifficulty } from '$types';
+	import { languages } from '../store';
+	import { get } from 'svelte/store';
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 
 	// `data` also contains the same information as $page.data
 	export let data;
@@ -26,7 +30,6 @@
 		total_jade_count: 0,
 		current_jade_count: 0
 	};
-
 	let selectedSeries: SelectedSeries = 'Show All';
 	let showCompleted = true;
 	let showIncomplete = true;
@@ -34,6 +37,8 @@
 	let selectedDifficulty = AchievementDifficulty.ALL;
 	let searchQuery = '';
 	let sortOrder: 'default' | 'ascending' | 'descending' = 'default';
+	let selectedLanguageID = data.selectedLanguageID ?? 'en';
+	let selectedLanguageName: string;
 	let isScreenExpanded = true;
 	let userInfoShown = true;
 
@@ -45,38 +50,43 @@
 	let loadMoreElement: HTMLElement | null = null;
 	let observer: { disconnect: () => void } | null = null;
 
-	onMount(() => {
+	onMount(async () => {
+		// Get languages from server and cache them
+		if (get(languages).length === 0) {
+			const response = await fetch(`${PUBLIC_SERVER_API_URL}/languages`);
+			const languageData = await response.json();
+			languages.set(languageData);
+		}
+		selectedLanguageName = $languages.find((lang) => lang.id === selectedLanguageID)?.name ?? 'English';
+        console.log(selectedLanguageName)
+	});
+
+	function loadFromLocalStorage() {
 		// If user is not logged in, get the completed achievements from local storage
-		if (!data.user) {
-			const completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') || '[]');
-
-			achievementsData.forEach((series: Series) => {
-				const seriesSummary = seriesData.series.find((s: SeriesSummary) => s.name === series.series);
-
-				if (!seriesSummary) {
-					return;
-				}
-
-				series.achievements.forEach((group: AchievementGroup) => {
-					group.achievements.forEach((achievement: Achievement) => {
-						if (completedAchievements.includes(achievement.id)) {
-							achievement.completed = true;
-							if (group.achievements.length > 1) {
-								// If the achievement is part of a group
-								group.completed_group_id = achievement.id;
-							}
-							seriesSummary.current_achievement_count++;
-							seriesSummary.current_jade_count += achievement.jades;
-							seriesData.current_achievement_count++;
-							seriesData.current_jade_count += achievement.jades;
+		const completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') || '[]');
+		achievementsData.forEach((series: Series) => {
+			const seriesSummary = seriesData.series.find((s: SeriesSummary) => s.name === series.series);
+			if (!seriesSummary) {
+				return;
+			}
+			series.achievements.forEach((group: AchievementGroup) => {
+				group.achievements.forEach((achievement: Achievement) => {
+					if (completedAchievements.includes(achievement.id)) {
+						achievement.completed = true;
+						if (group.achievements.length > 1) {
+							// If the achievement is part of a group
+							group.completed_group_id = achievement.id;
 						}
-					});
+						seriesSummary.current_achievement_count++;
+						seriesSummary.current_jade_count += achievement.jades;
+						seriesData.current_achievement_count++;
+						seriesData.current_jade_count += achievement.jades;
+					}
 				});
 			});
-			// onMount is not refreshing the data for some reason, so we need to manually update the reactive variables
-			achievementsData = [...achievementsData];
-		}
-	});
+		});
+		// onMount is not refreshing the data for some reason, so we need to manually update the reactive variables
+	}
 
 	// Server/local storage
 	async function storeServerData(achievement: Achievement) {
@@ -187,6 +197,11 @@
 		achievementsData = [...achievementsData];
 	}
 
+	function changeLanguage(language: string) {
+		selectedSeries = 'Show All';
+		goto(`/achievement-tracker?lang=${language}`, { noScroll: true });
+	}
+
 	function sortByPercent(achievementGroups: AchievementGroup[], sortOrder: 'default' | 'ascending' | 'descending') {
 		if (sortOrder === 'default') {
 			return achievementGroups;
@@ -251,6 +266,22 @@
 		selectedDifficulty = AchievementDifficulty.ALL;
 		searchQuery = '';
 		sortOrder = 'default';
+	}
+
+	$: {
+		achievementsData = data.achievementsData ?? [];
+		seriesData = data.seriesData ?? {
+			series: [],
+			user_count: 0,
+			total_achievement_count: 0,
+			current_achievement_count: 0,
+			total_jade_count: 0,
+			current_jade_count: 0
+		};
+		// If user is not logged in, get the completed achievements from local storage
+		if (browser && !data.user) {
+			loadFromLocalStorage();
+		}
 	}
 
 	$: filteredAchievements = sortByPercent(
@@ -320,14 +351,16 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-4 sm:space-y-6 py-4 sm:py-6 xl:w-[1100px]">
+	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-[1100px]">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete
 			bind:showHidden
 			bind:selectedDifficulty
 			bind:sortOrder
+			bind:selectedLanguageName
 			filterLength={filteredAchievements.length}
+			{changeLanguage}
 		/>
 
 		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 pt-3">

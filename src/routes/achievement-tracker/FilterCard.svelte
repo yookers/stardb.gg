@@ -3,6 +3,8 @@
 	import { slide, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { AchievementDifficulty } from '$types';
+	import { languages } from '../store';
+	import type { Language } from '$types';
 
 	export let showCompleted: boolean;
 	export let showIncomplete: boolean;
@@ -10,7 +12,15 @@
 	export let selectedDifficulty: AchievementDifficulty;
 	export let filterLength: number;
 	export let sortOrder: 'default' | 'ascending' | 'descending';
+	export let selectedLanguageName: string;
+	export let changeLanguage: (language: string) => void;
+
 	let showCard = true;
+
+	function handleChangeLanguage(language: Language) {
+		selectedLanguageName = language.name;
+		changeLanguage(language.id);
+	}
 
 	function toggleSortOrder() {
 		if (sortOrder === 'default') {
@@ -24,7 +34,7 @@
 </script>
 
 <div
-	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3
+	class="z-[3] rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3
     transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
 	<!-- Card Title -->
@@ -133,20 +143,41 @@
 							</button>
 							<p class:text-galaxy_purple-300={!showIncomplete}>Incomplete</p>
 						</div>
-						<button
-							class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
-							aria-label="Toggle Sort Order"
-							on:click={() => toggleSortOrder()}
-						>
-							<div class="flex items-center justify-center">
-								<ArrowDownWideNarrow class="absolute left-4 h-4 w-4" />
-								{#key sortOrder}
-									<p class="pl-4 capitalize" in:slide={{ axis: 'y', duration: 200, easing: cubicInOut }}>
-										{sortOrder} %
-									</p>
-								{/key}
-							</div>
+					</div>
+				</div>
+				<div class="flex justify-between font-bold">
+					<button
+						class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
+						aria-label="Toggle Sort Order"
+						on:click={() => toggleSortOrder()}
+					>
+						<div class="flex items-center justify-center">
+							<ArrowDownWideNarrow class="absolute left-4 h-4 w-4" />
+							{#key sortOrder}
+								<p class="pl-4 capitalize" in:slide={{ axis: 'y', duration: 200, easing: cubicInOut }}>
+									{sortOrder} %
+								</p>
+							{/key}
+						</div>
+					</button>
+					<div class="group relative flex h-8 w-32">
+						<button class="flex w-full items-center justify-center overflow-x-hidden rounded-lg bg-galaxy_purple-800 px-1">
+                            {#if selectedLanguageName}
+							<p class="line-clamp-1">{selectedLanguageName}</p>
+                            {/if}
 						</button>
+						<nav
+							tabindex="-1"
+							class="absolute left-0 top-full hidden overflow-hidden rounded-lg border-galaxy_purple-750 bg-galaxy_purple-800 transition-all group-focus-within:flex group-focus-within:translate-y-1 group-focus-within:flex-col"
+							class:border-2={$languages.length > 0}
+						>
+							{#each $languages as language}
+								<button
+									class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750"
+									on:click={() => handleChangeLanguage(language)}><p>{language.name}</p></button
+								>
+							{/each}
+						</nav>
 					</div>
 				</div>
 			</div>

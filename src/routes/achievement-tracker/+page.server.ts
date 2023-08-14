@@ -2,10 +2,27 @@ import type { PageServerLoad } from './$types';
 import type { Achievement, AchievementsGroupedData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 
-export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
+export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => {
 	try {
-		const achievementResponse = await fetch(`${PUBLIC_SERVER_API_URL}/achievements?layout=grouped`);
+		const selectedLanguageID = url.searchParams.get('lang');
+		const apiUrl = selectedLanguageID
+			? `${PUBLIC_SERVER_API_URL}/achievements?layout=grouped&lang=${selectedLanguageID}`
+			: `${PUBLIC_SERVER_API_URL}/achievements?layout=grouped`;
 
+		// Prevent fetch waterfalls by fetching all data in parallel
+		const achievementPromise = fetch(apiUrl);
+
+		let completedPromise: Promise<Response> | undefined;
+		if (locals.user) {
+			const id = cookies.get('id');
+			completedPromise = fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements`, {
+				headers: {
+					cookie: `id=${id}`
+				}
+			});
+		}
+
+		const achievementResponse = await achievementPromise;
 		if (!achievementResponse.ok) {
 			return { error: { status: 400, message: 'Oops! Something went wrong.' } };
 		}
@@ -36,14 +53,8 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 		};
 
 		let completedAchievements: number[] = [];
-		if (locals.user) {
-			const id = cookies.get('id');
-			const completedResponse = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements`, {
-				headers: {
-					cookie: `id=${id}`
-				}
-			});
-
+		if (completedPromise) {
+			const completedResponse = await completedPromise;
 			if (!completedResponse.ok) {
 				return { error: { status: 400, message: 'Oops! Something went wrong.' } };
 			}
@@ -81,7 +92,8 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies }) => {
 			});
 			seriesData.series.push(seriesSummary);
 		});
-		return { achievementsData: achievementsData.series, seriesData };
+
+		return { achievementsData: achievementsData.series, seriesData, selectedLanguageID };
 	} catch (error) {
 		console.log(error);
 		return { error: { status: 400, message: 'Oops! Something went wrong.' } };
