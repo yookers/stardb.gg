@@ -44,10 +44,10 @@
 
 <svelte:head>
 	<title>Login - StarDB.GG</title>
-	<meta name="description" content="Login to your account on StarDB.GG" />
+	<meta name="description" content="Login to your account on StarDB.GG." />
 </svelte:head>
 
-<div class="flex h-full flex-col items-center justify-center py-8">
+<main class="flex h-full flex-col items-center justify-center py-8">
 	<div class="flex w-full flex-col space-y-4 px-4 sm:px-12 md:w-[600px] md:px-0">
 		<p class="pl-2 text-3xl font-bold text-off_white">Login to account</p>
 		<div
@@ -112,7 +112,7 @@
 			>
 		</p>
 	</div>
-</div>
+</main>
 
 <!-- Registration status nofication -->
 {#if showNotification}

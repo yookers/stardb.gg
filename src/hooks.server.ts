@@ -14,7 +14,14 @@ export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// If there is a session, load the user and pass it to the page
-	const id = event.cookies.get('id');
+	let id = event.cookies.get('id');
+
+    // If server doesn't respond to /auth/logout, manually delete the cookie
+	const logOut = event.url.searchParams.has('logout');
+	if (logOut) {
+		event.cookies.delete('id', { path: '/' });
+        id = undefined;
+	}
 
 	if (id) {
 		const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/me`, {

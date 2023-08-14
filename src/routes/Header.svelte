@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import Logo from './Logo.svelte';
 	import { Icon, User } from 'svelte-hero-icons';
-	import { Menu } from 'lucide-svelte';
+	import { Menu, LogIn, LogOut, Settings, ArrowRight } from 'lucide-svelte';
 	import { sidebarState } from './store';
 	import { SidebarState } from '$types';
+	import { goto } from '$app/navigation';
+	const PUBLIC_SERVER_API_URL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 
 	function toggleSidebar() {
 		if ($sidebarState === SidebarState.CLOSED || $sidebarState === SidebarState.COLLAPSED) {
@@ -13,6 +15,20 @@
 			sidebarState.set(SidebarState.CLOSED);
 		}
 	}
+
+	async function logOut() {
+		try {
+			const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/auth/logout`, { method: 'POST' });
+			if (res.ok) {
+				goto('/');
+			}
+			goto('/?logout');
+		} catch (error) {
+			goto('/?logout');
+		}
+	}
+
+	$: accountUsername = $page.data.user?.username;
 </script>
 
 <header
@@ -54,19 +70,54 @@
 				/>
 			</svg>
 		</a>
-		<a
-			href="/login"
-			aria-label="Login Page"
-			class="relative mr-4 flex h-8 items-center justify-center space-x-2 rounded-lg border-2 border-transparent bg-galaxy_purple-550 px-2 text-off_white hover:border-off_white"
+		<div
+			class="group relative mr-4 flex h-8 max-w-[192px] justify-center rounded-lg border-transparent bg-galaxy_purple-550 text-off_white"
 		>
-			<Icon src={User} solid class="h-4 w-4 " />
-
-			{#if $page.data.user}
-				<p class="truncate text-sm font-bold">{$page.data.user.username}</p>
+			{#if accountUsername}
+				<div class="flex items-center space-x-2 overflow-x-hidden px-3">
+					<Icon src={User} solid class="h-4 w-4 shrink-0" />
+					<p class=" select-none truncate text-sm font-bold">{accountUsername}</p>
+				</div>
 			{:else}
-				<p class="text-sm font-bold">Login</p>
+				<a
+					href="/login"
+					class="flex items-center space-x-2 rounded-lg px-3 hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750"
+					aria-label="Login Page"
+					tabindex="0"
+				>
+					<LogIn class="h-4 w-4 " />
+					<p class="text-sm font-bold">Login</p>
+				</a>
 			{/if}
-			<div class="absolute hidden h-48 w-full bg-galaxy_purple-500"></div>
-		</a>
+
+			{#if accountUsername}
+				<div
+					class="item absolute right-0 top-8 hidden w-48 pt-2 group-focus-within:flex group-focus-within:flex-col group-hover:flex group-hover:flex-col"
+				>
+					<div class="overflow-hidden rounded-lg border-2 border-galaxy_purple-450 bg-galaxy_purple-550 text-sm font-bold">
+						<a
+							href="/account"
+							class="flex w-full items-center justify-between px-3 py-3 hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750"
+						>
+							<div class="flex items-center space-x-2">
+								<Settings class="h-4 w-4 " />
+								<p>Account</p>
+							</div>
+							<ArrowRight class="h-4 w-4 " />
+						</a>
+						<button
+							class="flex w-full items-center justify-between px-3 py-3 hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750"
+							on:click={logOut}
+						>
+							<div class="flex items-center space-x-2">
+								<LogOut class="h-4 w-4 " />
+								<p>Logout</p>
+							</div>
+							<ArrowRight class="h-4 w-4 " />
+						</button>
+					</div>
+				</div>
+			{/if}
+		</div>
 	</div>
 </header>

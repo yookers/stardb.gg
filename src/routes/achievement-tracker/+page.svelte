@@ -309,10 +309,10 @@
 	>
 		<h1 class="pb-3 pt-6 text-2xl font-bold md:text-3xl">Achievement Tracker</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
-		<div class={userInfoShown ? 'pb-6' : ''}>
+		<div class={userInfoShown ? 'pb-4 sm:pb-6' : ''}>
 			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />
 		</div>
-		<div class="top-[88px] space-y-6 xl:sticky">
+		<div class="top-[88px] space-y-4 sm:space-y-6 xl:sticky">
 			<SearchAchievementCard bind:searchQuery />
 			<SeriesCard {seriesData} {resetLazyScroll} bind:selectedSeries />
 			<StatisticsCard {seriesData} />
@@ -320,7 +320,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-6 py-6 xl:w-[1100px]">
+	<div class="flex w-full flex-col space-y-4 sm:space-y-6 py-4 sm:py-6 xl:w-[1100px]">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete

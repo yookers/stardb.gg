@@ -2,10 +2,10 @@
 </script>
 
 <svelte:head>
-	<title>Profile Card Generator - Honkai: Star Rail - StarDB.GG</title>
+	<title>Account Details - StarDB.GG</title>
 	<meta
 		name="description"
-		content="Generate a personalized card of your account on Honkai: Star Rail. Show off your units with their stats and relics."
+		content="View and edit your account details on StarDB.GG."
 	/>
 </svelte:head>
 
