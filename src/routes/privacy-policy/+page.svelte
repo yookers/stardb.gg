@@ -389,6 +389,6 @@
 
 		<p>If you have any questions about this Privacy Policy, You can contact us:</p>
 
-		<li>By email: stardb@skiff.com</li>
+		<li class="font-bold">By email: stardb@skiff.com</li>
 	</div>
 </main>

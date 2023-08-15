@@ -204,8 +204,6 @@
 				storeLocalData(achievement, previouslyCompleted);
 			}
 		} catch (error) {
-			console.error('Failed to update data:', error);
-
 			// Rollback UI change on error
 			if (previouslyCompleted) {
 				achievement.completed = true;
@@ -457,5 +455,4 @@
 <PopUpMessage
 	bind:messageType={popUpMessageType}
 	messageContent={'Server did not respond, please try again later'}
-	on:messageTypeChange={(e) => (popUpMessageType = e.detail)}
 />

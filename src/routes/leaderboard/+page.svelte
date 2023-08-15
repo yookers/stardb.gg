@@ -267,15 +267,15 @@
 </main>
 
 {#if data.error}
-	<PopUpMessage messageType={MessageType.FAIL} messageContent={`Error Searching for Player.`} />
+	<PopUpMessage messageType={MessageType.FAIL} messageContent={`Error searching for player`} />
 {/if}
 
 {#if addPlayerPromise}
 	{#await addPlayerPromise}
-		<PopUpMessage messageType={MessageType.LOADING} messageContent={`Attempting to Add ${playerUID} ...`} />
+		<PopUpMessage messageType={MessageType.LOADING} messageContent={`Attempting to add ${playerUID} ...`} />
 	{:then}
-		<PopUpMessage messageType={MessageType.SUCCESS} messageContent={`Successfully Added ${playerUID}!`} />
+		<PopUpMessage messageType={MessageType.SUCCESS} messageContent={`Successfully added ${playerUID}!`} />
 	{:catch}
-		<PopUpMessage messageType={MessageType.FAIL} messageContent={`Failed to Add Player.`} />
+		<PopUpMessage messageType={MessageType.FAIL} messageContent={`Failed to add player`} />
 	{/await}
 {/if}
