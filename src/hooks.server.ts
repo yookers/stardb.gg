@@ -24,7 +24,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 				}
 			});
 			if (res.ok) {
-				const username = await res.text();
+				const username = await res.json();
 				if (username) {
 					event.locals.user = {
 						username: username
