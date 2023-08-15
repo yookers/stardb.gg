@@ -18,7 +18,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if (id) {
 		if (!event.locals.user) {
-			const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/me`, {
+			const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/username`, {
 				headers: {
 					cookie: `id=${id}`
 				}
