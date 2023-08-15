@@ -24,11 +24,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 				}
 			});
 			if (res.ok) {
-				const user = await res.json();
-				if (user) {
+				const username = await res.text();
+				if (username) {
 					event.locals.user = {
-						admin: user.admin,
-						username: user.username
+						username: username
 					};
 				}
 			}

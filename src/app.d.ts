@@ -9,7 +9,6 @@ declare global {
 		interface Locals {
 			user:
 				| {
-						admin: boolean;
 						username: string;
 				  }
 				| undefined;
