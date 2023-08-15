@@ -10,7 +10,7 @@ declare global {
 			user: {
 				admin: boolean;
 				username: string;
-			};
+			} | undefined;
 		}
 	}
 }
@@ -73,15 +73,84 @@ export type SeriesData = {
 
 export type SelectedSeries = SeriesSummary | 'Show All';
 
+export type MihomoCharacterAttribute = {
+	display: number;
+	field: string;
+	icon: string;
+	name: string;
+	percent: boolean;
+	type?: string;
+	value: number;
+    count?:  number;
+    step?:   number;
+};
+
+export type MihomoCharacter = {
+	additions: MihomoCharacterAttribute[];
+	attributes: MihomoCharacterAttribute[];
+	element: {
+		color: string;
+		icon: string;
+		id: string;
+		name: string;
+	};
+	icon: string;
+	id: string;
+	levels: number;
+	light_cone: {
+		attributes: MihomoCharacterAttribute[];
+		icon: string;
+		id: string;
+		level: number;
+		name: string;
+		path: {
+			icon: string;
+			id: string;
+			name: string;
+		};
+		portrait: string;
+		preview: string;
+		promotion: number;
+		properties: MihomoCharacterAttribute[];
+		rank: number;
+		rarity: number;
+	};
+    name: string;
+    path: {
+        icon: string;
+        id: string;
+        name: string;
+    }
+    portrait: string;
+    preview: string;
+    promotion: number;
+    properties: MihomoCharacterAttribute[];
+};
+
+export type MihomoPlayer = {
+	avatar: { icon: string; id: number; name: string };
+	friend_count: number;
+	level: number;
+	nickname: string;
+	signature: string;
+	space_info: { achievement_count: number; avatar_count: number; challenge_data: { pre_maze_group_index: number } };
+};
+
+export type MihomoProfileData = {
+	charaters: MihomoCharacter[];
+	player: MihomoPlayer;
+	updated_at: string;
+};
+
 export type ErrorResponse = {
 	status: number;
 	message: string;
 };
 
 export type Language = {
-    id: string;
-    name: string;
-}
+	id: string;
+	name: string;
+};
 
 export enum AchievementDifficulty {
 	ALL = 'all',

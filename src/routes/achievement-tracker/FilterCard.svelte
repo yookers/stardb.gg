@@ -34,7 +34,7 @@
 </script>
 
 <div
-	class="z-[3] rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3
+	class="z-[4] rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3
     transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
 	<!-- Card Title -->
@@ -145,7 +145,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="flex justify-between font-bold">
+				<div class="flex justify-between font-bold space-x-2">
 					<button
 						class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
 						aria-label="Toggle Sort Order"
@@ -160,11 +160,11 @@
 							{/key}
 						</div>
 					</button>
-					<div class="group relative flex h-8 w-32">
+					<div class="group relative flex h-8 w-32 sm:w-36">
 						<button class="flex w-full items-center justify-center overflow-x-hidden rounded-lg bg-galaxy_purple-800 px-1">
-                            {#if selectedLanguageName}
-							<p class="line-clamp-1">{selectedLanguageName}</p>
-                            {/if}
+							{#if selectedLanguageName}
+								<p class="line-clamp-1">{selectedLanguageName}</p>
+							{/if}
 						</button>
 						<nav
 							tabindex="-1"
@@ -173,7 +173,10 @@
 						>
 							{#each $languages as language}
 								<button
-									class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750"
+									class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750 {language.name ===
+									selectedLanguageName
+										? 'bg-galaxy_purple-200 text-galaxy_purple-750'
+										: ''}"
 									on:click={() => handleChangeLanguage(language)}><p>{language.name}</p></button
 								>
 							{/each}

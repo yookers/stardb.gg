@@ -114,7 +114,7 @@
 					"icon": "icon/property/IconSpeed.png",
 					"name": "SPD",
 					"percent": false,
-					"value": 99
+					"value": 99.0
 				},
 				{
 					"display": "5.0%",
@@ -133,12 +133,7 @@
 					"value": 0.5
 				}
 			],
-			"element": {
-				"color": "#8872F1",
-				"icon": "icon/element/Lightning.png",
-				"id": "Thunder",
-				"name": "Lightning"
-			},
+			"element": { "color": "#8872F1", "icon": "icon/element/Lightning.png", "id": "Thunder", "name": "Lightning" },
 			"icon": "icon/character/1204.png",
 			"id": "1204",
 			"level": 80,
@@ -173,11 +168,7 @@
 				"id": "23010",
 				"level": 80,
 				"name": "Before Dawn",
-				"path": {
-					"icon": "icon/path/Erudition.png",
-					"id": "Mage",
-					"name": "Erudition"
-				},
+				"path": { "icon": "icon/path/Erudition.png", "id": "Mage", "name": "Erudition" },
 				"portrait": "image/light_cone_portrait/23010.png",
 				"preview": "image/light_cone_preview/23010.png",
 				"promotion": 6,
@@ -196,11 +187,7 @@
 				"rarity": 5
 			},
 			"name": "Jing Yuan",
-			"path": {
-				"icon": "icon/path/Erudition.png",
-				"id": "Mage",
-				"name": "Erudition"
-			},
+			"path": { "icon": "icon/path/Erudition.png", "id": "Mage", "name": "Erudition" },
 			"portrait": "image/character_portrait/1204.png",
 			"preview": "image/character_preview/1204.png",
 			"promotion": 6,
@@ -930,12 +917,7 @@
 					"desc": "Jing Yuan deals Lightning DMG equal to 80% of his ATK to a single enemy.",
 					"effect": "SingleAttack",
 					"effect_text": "Single Target",
-					"element": {
-						"color": "#8872F1",
-						"icon": "icon/element/Lightning.png",
-						"id": "Thunder",
-						"name": "Lightning"
-					},
+					"element": { "color": "#8872F1", "icon": "icon/element/Lightning.png", "id": "Thunder", "name": "Lightning" },
 					"icon": "icon/skill/1204_basic_atk.png",
 					"id": "120401",
 					"level": 4,
@@ -949,12 +931,7 @@
 					"desc": "Deals Lightning DMG equal to 87% of Jing Yuan's ATK to all enemies and increases Lightning-Lord's Hits Per Action by 2 for the next turn.",
 					"effect": "AoEAttack",
 					"effect_text": "AoE",
-					"element": {
-						"color": "#8872F1",
-						"icon": "icon/element/Lightning.png",
-						"id": "Thunder",
-						"name": "Lightning"
-					},
+					"element": { "color": "#8872F1", "icon": "icon/element/Lightning.png", "id": "Thunder", "name": "Lightning" },
 					"icon": "icon/skill/1204_skill.png",
 					"id": "120402",
 					"level": 8,
@@ -968,12 +945,7 @@
 					"desc": "Deals Lightning DMG equal to 180% of Jing Yuan's ATK to all enemies and increases Lightning-Lord's Hits Per Action by 3 for the next turn.",
 					"effect": "AoEAttack",
 					"effect_text": "AoE",
-					"element": {
-						"color": "#8872F1",
-						"icon": "icon/element/Lightning.png",
-						"id": "Thunder",
-						"name": "Lightning"
-					},
+					"element": { "color": "#8872F1", "icon": "icon/element/Lightning.png", "id": "Thunder", "name": "Lightning" },
 					"icon": "icon/skill/1204_ultimate.png",
 					"id": "120403",
 					"level": 8,
@@ -987,12 +959,7 @@
 					"desc": "Summons Lightning-Lord at the start of the battle. Lightning-Lord has 60 base SPD and 3 base Hits Per Action. When the Lightning-Lord takes action, its hits are considered as follow-up attacks, with each hit dealing Lightning DMG equal to 66% of Jing Yuan's ATK to a random single enemy, and enemies adjacent to it also receive Lightning DMG equal to 25% of the DMG dealt to the target enemy.\nThe Lightning-Lord's Hits Per Action can reach a max of 10. Every time Lightning-Lord's Hits Per Action increases by 1, its SPD increases by 10. After the Lightning-Lord's action ends, its SPD and Hits Per Action return to their base values.\nWhen Jing Yuan is knocked down, the Lightning-Lord will disappear.\nWhen Jing Yuan is affected by Crowd Control debuff, the Lightning-Lord is unable to take action.",
 					"effect": "Bounce",
 					"effect_text": "Bounce",
-					"element": {
-						"color": "#8872F1",
-						"icon": "icon/element/Lightning.png",
-						"id": "Thunder",
-						"name": "Lightning"
-					},
+					"element": { "color": "#8872F1", "icon": "icon/element/Lightning.png", "id": "Thunder", "name": "Lightning" },
 					"icon": "icon/skill/1204_talent.png",
 					"id": "120404",
 					"level": 10,
@@ -1006,12 +973,7 @@
 					"desc": "",
 					"effect": "MazeAttack",
 					"effect_text": "",
-					"element": {
-						"color": "#8872F1",
-						"icon": "icon/element/Lightning.png",
-						"id": "Thunder",
-						"name": "Lightning"
-					},
+					"element": { "color": "#8872F1", "icon": "icon/element/Lightning.png", "id": "Thunder", "name": "Lightning" },
 					"icon": "icon/skill/1204_basic_atk.png",
 					"id": "120406",
 					"level": 0,
@@ -1151,7 +1113,7 @@
 					"icon": "icon/property/IconSpeed.png",
 					"name": "SPD",
 					"percent": false,
-					"value": 115
+					"value": 115.0
 				},
 				{
 					"display": "5.0%",
@@ -1170,12 +1132,7 @@
 					"value": 0.5
 				}
 			],
-			"element": {
-				"color": "#1C29BA",
-				"icon": "icon/element/Quantum.png",
-				"id": "Quantum",
-				"name": "Quantum"
-			},
+			"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 			"icon": "icon/character/1102.png",
 			"id": "1102",
 			"level": 80,
@@ -1210,11 +1167,7 @@
 				"id": "21010",
 				"level": 80,
 				"name": "Swordplay",
-				"path": {
-					"icon": "icon/path/Hunt.png",
-					"id": "Rogue",
-					"name": "The Hunt"
-				},
+				"path": { "icon": "icon/path/Hunt.png", "id": "Rogue", "name": "The Hunt" },
 				"portrait": "image/light_cone_portrait/21010.png",
 				"preview": "image/light_cone_preview/21010.png",
 				"promotion": 6,
@@ -1223,11 +1176,7 @@
 				"rarity": 4
 			},
 			"name": "Seele",
-			"path": {
-				"icon": "icon/path/Hunt.png",
-				"id": "Rogue",
-				"name": "The Hunt"
-			},
+			"path": { "icon": "icon/path/Hunt.png", "id": "Rogue", "name": "The Hunt" },
 			"portrait": "image/character_portrait/1102.png",
 			"preview": "image/character_preview/1102.png",
 			"promotion": 6,
@@ -1948,12 +1897,7 @@
 					"desc": "Deals Quantum DMG equal to 80% of Seele's ATK to a single enemy.",
 					"effect": "SingleAttack",
 					"effect_text": "Single Target",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1102_basic_atk.png",
 					"id": "110201",
 					"level": 4,
@@ -1967,12 +1911,7 @@
 					"desc": "Increases Seele's SPD by 25% for 2 turn(s) and deals Quantum DMG equal to 220% of Seele's ATK to a single enemy.",
 					"effect": "SingleAttack",
 					"effect_text": "Single Target",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1102_skill.png",
 					"id": "110202",
 					"level": 10,
@@ -1986,12 +1925,7 @@
 					"desc": "Seele enters the buffed state and deals Quantum DMG equal to 403% of her ATK to a single enemy.",
 					"effect": "SingleAttack",
 					"effect_text": "Single Target",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1102_ultimate.png",
 					"id": "110203",
 					"level": 9,
@@ -2019,12 +1953,7 @@
 					"desc": "",
 					"effect": "MazeAttack",
 					"effect_text": "",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1102_basic_atk.png",
 					"id": "110206",
 					"level": 0,
@@ -2164,7 +2093,7 @@
 					"icon": "icon/property/IconSpeed.png",
 					"name": "SPD",
 					"percent": false,
-					"value": 107
+					"value": 107.0
 				},
 				{
 					"display": "5.0%",
@@ -2183,12 +2112,7 @@
 					"value": 0.5
 				}
 			],
-			"element": {
-				"color": "#1C29BA",
-				"icon": "icon/element/Quantum.png",
-				"id": "Quantum",
-				"name": "Quantum"
-			},
+			"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 			"icon": "icon/character/1006.png",
 			"id": "1006",
 			"level": 80,
@@ -2223,11 +2147,7 @@
 				"id": "21015",
 				"level": 80,
 				"name": "Resolution Shines As Pearls of Sweat",
-				"path": {
-					"icon": "icon/path/Nihility.png",
-					"id": "Warlock",
-					"name": "Nihility"
-				},
+				"path": { "icon": "icon/path/Nihility.png", "id": "Warlock", "name": "Nihility" },
 				"portrait": "image/light_cone_portrait/21015.png",
 				"preview": "image/light_cone_preview/21015.png",
 				"promotion": 6,
@@ -2236,11 +2156,7 @@
 				"rarity": 4
 			},
 			"name": "Silver Wolf",
-			"path": {
-				"icon": "icon/path/Nihility.png",
-				"id": "Warlock",
-				"name": "Nihility"
-			},
+			"path": { "icon": "icon/path/Nihility.png", "id": "Warlock", "name": "Nihility" },
 			"portrait": "image/character_portrait/1006.png",
 			"preview": "image/character_preview/1006.png",
 			"promotion": 6,
@@ -2966,12 +2882,7 @@
 					"desc": "Deals Quantum DMG equal to 70% of Silver Wolf's ATK to a single enemy.",
 					"effect": "SingleAttack",
 					"effect_text": "Single Target",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1006_basic_atk.png",
 					"id": "100601",
 					"level": 3,
@@ -2985,12 +2896,7 @@
 					"desc": "There is a 82% base chance to add 1 Weakness of an on-field character's Type to the target enemy. This also reduces the enemy's DMG RES to that Weakness Type by 20% for 2 turn(s). If the enemy already has that Type Weakness, the effect of DMG RES reduction to that Weakness Type will not be triggered.\nEach enemy can only have 1 Weakness implanted by Silver Wolf. When Silver Wolf implants another Weakness to the target, only the most recent implanted Weakness will be kept.\nIn addition, there is a 100% base chance to further reduce the All-Type RES of the enemy by 9.4% for 2 turn(s).\nDeals Quantum DMG equal to 171% of Silver Wolf's ATK to this enemy.",
 					"effect": "Impair",
 					"effect_text": "Impair",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1006_skill.png",
 					"id": "100602",
 					"level": 8,
@@ -3004,12 +2910,7 @@
 					"desc": "There's a 96% base chance to decrease the target enemy's DEF by 42.8% for 3 turn(s). And at the same time, deals Quantum DMG equal to 342% of Silver Wolf's ATK to the target enemy.",
 					"effect": "Impair",
 					"effect_text": "Impair",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1006_ultimate.png",
 					"id": "100603",
 					"level": 8,
@@ -3037,12 +2938,7 @@
 					"desc": "",
 					"effect": "MazeAttack",
 					"effect_text": "",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1006_basic_atk.png",
 					"id": "100606",
 					"level": 0,
@@ -3056,12 +2952,7 @@
 					"desc": "Immediately attacks the enemy. After entering battle, deals Quantum DMG equal to 80% of Silver Wolf's ATK to all enemies, and ignores Weakness Types and reduces Toughness from all enemies. Enemies with their Weakness Broken in this way will trigger the Quantum Weakness Break effect.",
 					"effect": "MazeAttack",
 					"effect_text": "",
-					"element": {
-						"color": "#1C29BA",
-						"icon": "icon/element/Quantum.png",
-						"id": "Quantum",
-						"name": "Quantum"
-					},
+					"element": { "color": "#1C29BA", "icon": "icon/element/Quantum.png", "id": "Quantum", "name": "Quantum" },
 					"icon": "icon/skill/1006_technique.png",
 					"id": "100607",
 					"level": 1,
@@ -3075,28 +2966,21 @@
 		}
 	],
 	"player": {
-		"avatar": {
-			"icon": "icon/avatar/1006.png",
-			"id": "201006",
-			"name": "Silver Wolf"
-		},
-		"friend_count": 46,
+		"avatar": { "icon": "icon/avatar/1006.png", "id": "201006", "name": "Silver Wolf" },
+		"friend_count": 47,
 		"is_display": true,
-		"level": 65,
+		"level": 66,
 		"nickname": "Yuki",
 		"signature": "@yookers ૮ • ﻌ - ა",
 		"space_info": {
-			"achievement_count": 322,
-			"avatar_count": 21,
-			"challenge_data": {
-				"maze_group_id": 0,
-				"maze_group_index": 0,
-				"pre_maze_group_index": 15
-			},
-			"light_cone_count": 576,
+			"achievement_count": 332,
+			"avatar_count": 23,
+			"challenge_data": { "maze_group_id": 0, "maze_group_index": 0, "pre_maze_group_index": 16 },
+			"light_cone_count": 608,
 			"pass_area_progress": 7
 		},
 		"uid": "601449909",
 		"world_level": 6
-	}
+	},
+	"updated_at": "2023-08-15T04:29:56.180332935"
 }

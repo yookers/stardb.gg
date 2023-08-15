@@ -23,7 +23,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         id = undefined;
 	}
 
-	if (id) {
+	if (id && !event.locals.user) {
 		const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/me`, {
 			headers: {
 				cookie: `id=${id}`
@@ -38,7 +38,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 				};
 			}
 		}
-	}
+	} else if (!id) {
+        event.locals.user = undefined;
+    }
 
 	return await resolve(event);
 };
