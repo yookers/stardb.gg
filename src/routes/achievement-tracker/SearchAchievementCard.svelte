@@ -4,7 +4,7 @@
 	import { cubicInOut } from 'svelte/easing';
 
 	export let searchQuery = '';
-	let showCard = false;
+	let showCard = true;
 </script>
 
 <div

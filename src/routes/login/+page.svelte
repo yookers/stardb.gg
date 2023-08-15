@@ -103,14 +103,14 @@
 				</div>
 			</form>
 		</div>
-		<div class=" pl-2">
+		<div class="flex flex-col space-y-1 pl-2">
 			<p class=" text-off_white">
 				Don't have an account? <a
 					href="/register"
 					class=" font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300">Register here!</a
 				>
 			</p>
-			<p class=" font-bold text-dim_green"><a href="/request-token" class="hover:text-neon_green">Forgot Password? </a></p>
+			<p class="font-bold text-dim_green"><a href="/request-token" class="hover:text-neon_green">Forgot Password? </a></p>
 		</div>
 	</div>
 </main>

@@ -9,7 +9,7 @@
 	export let selectedSeries: SelectedSeries;
 	export let resetLazyScroll: () => void;
 
-	let showCard = true;
+	let showCard = false;
 
 	function handleChangeSeries(series: SelectedSeries) {
 		selectedSeries = series;

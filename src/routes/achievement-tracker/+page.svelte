@@ -105,12 +105,12 @@
 		}
 	}
 
-	function storeLocalData(achievement: Achievement, previouslyCompleted: boolean) {
+	function storeLocalData(achievement: Achievement, action: 'ADD' | 'REMOVE' = 'ADD') {
 		let completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') || '[]');
 
 		if (achievement.completed) {
 			completedAchievements.push(achievement.id);
-		} else if (previouslyCompleted) {
+		} else if (action === 'REMOVE') {
 			completedAchievements = completedAchievements.filter((id) => id !== achievement.id);
 		}
 
@@ -138,6 +138,8 @@
 				seriesData.current_jade_count -= jades;
 			}
 		}
+		// Makes achievements reactive, optimistic UI update
+		achievementsData = [...achievementsData];
 	}
 
 	async function handleSingleToggleCompletion(achievement: Achievement) {
@@ -149,78 +151,79 @@
 			if (data.user) {
 				await storeServerData(achievement);
 			} else {
-				storeLocalData(achievement, previouslyCompleted);
+				storeLocalData(achievement, previouslyCompleted ? 'REMOVE' : 'ADD');
 			}
 		} catch (error) {
 			console.error('Failed to update data:', error);
 
-			// Rollback UI change
+			// Rollback UI change on error
 			achievement.completed = previouslyCompleted;
 			updateAchievementAndJadeCount(achievement, previouslyCompleted);
 		}
-		// Makes achievements reactive
-		achievementsData = [...achievementsData];
 	}
 
+	// updateAchievementAndJadeCount automatically updates the achievementsData
 	async function handleGroupToggleCompletion(group: AchievementGroup, achievement: Achievement) {
 		let previouslyCompleted = achievement.completed ?? true;
+		const previouslyCompletedGroupID = group.completed_group_id;
 		// If the clicked achievement is already completed
 		if (achievement.completed) {
 			achievement.completed = false;
 			group.completed_group_id = undefined;
 			updateAchievementAndJadeCount(achievement, false);
-			storeLocalData(achievement, true);
-		} else {
-			// If there is a completed achievement in the group, set it to incomplete
-			if (group.completed_group_id) {
-				const completedAchievement = group.achievements.find((a) => a.id === group.completed_group_id);
 
-				if (completedAchievement) {
-					completedAchievement.completed = false;
-					previouslyCompleted = true;
-
-					if (data.user) {
-						await storeServerData(completedAchievement);
-					} else {
-						storeLocalData(completedAchievement, true);
-					}
+			try {
+				if (data.user) {
+					await storeServerData(achievement);
+				} else {
+					storeLocalData(achievement, 'REMOVE');
 				}
+			} catch (error) {
+				// Rollback UI change on error
+				achievement.completed = true;
+				group.completed_group_id = previouslyCompletedGroupID;
+				updateAchievementAndJadeCount(achievement, true);
 			}
-
+		} else {
 			// Set the clicked achievement to completed
 			achievement.completed = true;
 			group.completed_group_id = achievement.id;
-			// Only update the counts if there was no previously completed achievement
-			if (!previouslyCompleted) {
-				updateAchievementAndJadeCount(achievement, true);
-			}
-		}
 
-		// Handle server/local storage based on user presence
-		try {
-			if (data.user) {
-				await storeServerData(achievement);
-			} else {
-				storeLocalData(achievement, previouslyCompleted);
+			// If there is a completed achievement in the group, set it to incomplete
+			const previouslyCompletedAchievement = group.achievements.find((a) => a.id === previouslyCompletedGroupID);
+			if (previouslyCompletedAchievement) {
+				previouslyCompletedAchievement.completed = false;
+				storeLocalData(previouslyCompletedAchievement, 'REMOVE');
 			}
-		} catch (error) {
-			// Rollback UI change on error
-			if (previouslyCompleted) {
-				achievement.completed = true;
+
+			// Only update the counts if there was no previously completed achievement
+			if (!previouslyCompletedGroupID) {
+				updateAchievementAndJadeCount(achievement, true);
 			} else {
-				achievement.completed = false;
-				if (group.completed_group_id) {
-					const completedAchievement = group.achievements.find((a) => a.id === group.completed_group_id);
-					if (completedAchievement) {
-						completedAchievement.completed = true;
-					}
+				// Makes achievements reactive, optimistic UI update
+				achievementsData = [...achievementsData];
+			}
+
+			try {
+				if (data.user) {
+					await storeServerData(achievement);
+				} else {
+					storeLocalData(achievement, 'ADD');
 				}
-				group.completed_group_id = previouslyCompleted ? achievement.id : undefined;
-				updateAchievementAndJadeCount(achievement, previouslyCompleted);
+			} catch (error) {
+				// Rollback UI change on error
+				achievement.completed = previouslyCompleted;
+				if (previouslyCompletedAchievement) {
+					previouslyCompletedAchievement.completed = true;
+					group.completed_group_id = previouslyCompletedGroupID;
+					// Makes achievements reactive, optimistic UI update
+					achievementsData = [...achievementsData];
+				} else {
+					group.completed_group_id = undefined;
+					updateAchievementAndJadeCount(achievement, previouslyCompleted);
+				}
 			}
 		}
-		// Makes achievements reactive
-		achievementsData = [...achievementsData];
 	}
 
 	function changeLanguage(language: string) {
