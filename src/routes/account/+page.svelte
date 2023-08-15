@@ -3,10 +3,7 @@
 
 <svelte:head>
 	<title>Account Details - StarDB.GG</title>
-	<meta
-		name="description"
-		content="View and edit your account details on StarDB.GG."
-	/>
+	<meta name="description" content="View and edit your account details on StarDB.GG." />
 </svelte:head>
 
 <main class="flex h-full flex-col items-center justify-center space-x-8 space-y-8 text-off_white md:flex-row md:space-y-0">

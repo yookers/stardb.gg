@@ -10,10 +10,11 @@
 	import FilterCard from './FilterCard.svelte';
 	import SingleAchievement from './SingleAchievement.svelte';
 	import GroupAchievement from './GroupAchievement.svelte';
+	import PopUpMessage from '$components/PopUpMessage.svelte';
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import type { Achievement, AchievementGroup, Series, SeriesSummary, SeriesData, SelectedSeries } from '$types';
-	import { AchievementDifficulty } from '$types';
+	import { AchievementDifficulty, MessageType } from '$types';
 	import { languages } from '../store';
 	import { get } from 'svelte/store';
 	import { goto } from '$app/navigation';
@@ -41,6 +42,7 @@
 	let selectedLanguageName: string;
 	let isScreenExpanded = true;
 	let userInfoShown = true;
+	let popUpMessageType = MessageType.NONE;
 
 	// Lazy loading
 	let filteredAchievements: AchievementGroup[];
@@ -58,7 +60,6 @@
 			languages.set(languageData);
 		}
 		selectedLanguageName = $languages.find((lang) => lang.id === selectedLanguageID)?.name ?? 'English';
-        console.log(selectedLanguageName)
 	});
 
 	function loadFromLocalStorage() {
@@ -95,10 +96,12 @@
 			const response = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements/${achievement.id}`, { method });
 
 			if (!response.ok) {
+				popUpMessageType = MessageType.FAIL;
 				throw new Error('Failed to update achievement');
 			}
 		} catch (error) {
-			console.error(error);
+			popUpMessageType = MessageType.FAIL;
+			throw new Error('Failed to update achievement');
 		}
 	}
 
@@ -140,15 +143,21 @@
 	async function handleSingleToggleCompletion(achievement: Achievement) {
 		const previouslyCompleted = achievement.completed ?? true;
 		achievement.completed = !achievement.completed;
-
 		updateAchievementAndJadeCount(achievement, !previouslyCompleted);
 
-		if (data.user) {
-			await storeServerData(achievement);
-		} else {
-			storeLocalData(achievement, previouslyCompleted);
-		}
+		try {
+			if (data.user) {
+				await storeServerData(achievement);
+			} else {
+				storeLocalData(achievement, previouslyCompleted);
+			}
+		} catch (error) {
+			console.error('Failed to update data:', error);
 
+			// Rollback UI change
+			achievement.completed = previouslyCompleted;
+			updateAchievementAndJadeCount(achievement, previouslyCompleted);
+		}
 		// Makes achievements reactive
 		achievementsData = [...achievementsData];
 	}
@@ -188,10 +197,29 @@
 		}
 
 		// Handle server/local storage based on user presence
-		if (data.user) {
-			await storeServerData(achievement);
-		} else {
-			storeLocalData(achievement, previouslyCompleted);
+		try {
+			if (data.user) {
+				await storeServerData(achievement);
+			} else {
+				storeLocalData(achievement, previouslyCompleted);
+			}
+		} catch (error) {
+			console.error('Failed to update data:', error);
+
+			// Rollback UI change on error
+			if (previouslyCompleted) {
+				achievement.completed = true;
+			} else {
+				achievement.completed = false;
+				if (group.completed_group_id) {
+					const completedAchievement = group.achievements.find((a) => a.id === group.completed_group_id);
+					if (completedAchievement) {
+						completedAchievement.completed = true;
+					}
+				}
+				group.completed_group_id = previouslyCompleted ? achievement.id : undefined;
+				updateAchievementAndJadeCount(achievement, previouslyCompleted);
+			}
 		}
 		// Makes achievements reactive
 		achievementsData = [...achievementsData];
@@ -425,3 +453,9 @@
 		<ArrowUp class="h-7 w-7 text-off_white md:h-9 md:w-9" />
 	</button>
 </div>
+
+<PopUpMessage
+	bind:messageType={popUpMessageType}
+	messageContent={'Server did not respond, please try again later'}
+	on:messageTypeChange={(e) => (popUpMessageType = e.detail)}
+/>

@@ -39,7 +39,7 @@
 
 {#if isMobileView && $sidebarState === SidebarState.EXPANDED}
 	<div
-		class="bg-galaxy_purple-800 fixed left-0 top-0 z-[9] h-full w-full opacity-50"
+		class="fixed left-0 top-0 z-[9] h-full w-full bg-galaxy_purple-800 opacity-50"
 		on:click={() => {
 			sidebarState.set(SidebarState.CLOSED);
 		}}

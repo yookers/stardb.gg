@@ -11,7 +11,8 @@ const config = {
 			precompress: true // Enables compression using gzip and brotli
 		}),
 		alias: {
-			$types: 'src/app.d.ts'
+			$types: 'src/app.d.ts',
+			$components: 'src/components'
 		}
 	},
 	preprocess: [

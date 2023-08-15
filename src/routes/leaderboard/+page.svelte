@@ -10,7 +10,7 @@
 	import AddPlayerCard from './AddPlayerCard.svelte';
 	import StatisticsCard from './StatisticsCard.svelte';
 	import FilterCard from './FilterCard.svelte';
-	import PopupMessage from './PopupMessage.svelte';
+	import PopUpMessage from '$components/PopUpMessage.svelte';
 	import { MessageType } from '$types';
 
 	export let data;
@@ -159,7 +159,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-4 sm:space-y-6 py-4 sm:py-6 xl:w-[1100px]">
+	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-[1100px]">
 		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} {queryCount} {displayStart} {displayEnd} />
 
 		<!-- Pagination buttons -->
@@ -267,15 +267,15 @@
 </main>
 
 {#if data.error}
-	<PopupMessage messageType={MessageType.FAIL} messageContent={`Error Searching for Player.`} />
+	<PopUpMessage messageType={MessageType.FAIL} messageContent={`Error Searching for Player.`} />
 {/if}
 
 {#if addPlayerPromise}
 	{#await addPlayerPromise}
-		<PopupMessage messageType={MessageType.LOADING} messageContent={`Attempting to Add ${playerUID} ...`} />
+		<PopUpMessage messageType={MessageType.LOADING} messageContent={`Attempting to Add ${playerUID} ...`} />
 	{:then}
-		<PopupMessage messageType={MessageType.SUCCESS} messageContent={`Successfully Added ${playerUID}!`} />
+		<PopUpMessage messageType={MessageType.SUCCESS} messageContent={`Successfully Added ${playerUID}!`} />
 	{:catch}
-		<PopupMessage messageType={MessageType.FAIL} messageContent={`Failed to Add Player.`} />
+		<PopUpMessage messageType={MessageType.FAIL} messageContent={`Failed to Add Player.`} />
 	{/await}
 {/if}

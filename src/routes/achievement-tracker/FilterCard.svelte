@@ -145,7 +145,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="flex justify-between font-bold space-x-2">
+				<div class="flex justify-between space-x-2 font-bold">
 					<button
 						class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
 						aria-label="Toggle Sort Order"

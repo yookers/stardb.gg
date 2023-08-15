@@ -35,7 +35,8 @@
 						<div
 							class="h-6 w-6 shrink-0 rounded-lg border-2 border-galaxy_purple-900/70"
 							class:bg-neon_green={achievement.completed}
-                            class:bg-galaxy_purple-700={achievementGroup.completed_group_id && achievementGroup.completed_group_id !== achievement.id}
+							class:bg-galaxy_purple-700={achievementGroup.completed_group_id &&
+								achievementGroup.completed_group_id !== achievement.id}
 						></div>
 					</div>
 				</div>

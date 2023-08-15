@@ -24,7 +24,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 
 		const achievementResponse = await achievementPromise;
 		if (!achievementResponse.ok) {
-			return { error: { status: 400, message: 'Oops! Something went wrong.' } };
+			return { error: { status: 400, message: 'Oops! Could not get achievements data from the server.' } };
 		}
 
 		const rawAchievementsData = await achievementResponse.json();
@@ -56,7 +56,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		if (completedPromise) {
 			const completedResponse = await completedPromise;
 			if (!completedResponse.ok) {
-				return { error: { status: 400, message: 'Oops! Something went wrong.' } };
+				return { error: { status: 400, message: "Oops! Could not get the user's completed achievements from the server." } };
 			}
 			completedAchievements = await completedResponse.json();
 		}
@@ -96,6 +96,6 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		return { achievementsData: achievementsData.series, seriesData, selectedLanguageID };
 	} catch (error) {
 		console.log(error);
-		return { error: { status: 400, message: 'Oops! Something went wrong.' } };
+		return { error: { status: 400, message: 'Oops! Something went wrong. Please try again later. :(' } };
 	}
 }) satisfies PageServerLoad;
