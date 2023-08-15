@@ -149,7 +149,7 @@
 		class="w-full text-lg lg:text-xl
     {isScreenExpanded ? 'xl:w-[550px] xl:pt-40' : 'xl:w-[1100px]'}"
 	>
-		<h1 class="pb-3 pt-6 text-2xl font-bold md:text-3xl">Achievement Leaderboard</h1>
+		<h1 class="pb-3 pt-6 text-xl font-bold md:text-3xl">Achievement Leaderboard</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
 		<div class="top-[88px] space-y-4 sm:space-y-6 xl:sticky">
 			<SearchPlayerCard {searchByName} {searchByUID} />
@@ -179,8 +179,8 @@
 		</div>
 
 		<!-- Leaderboard-->
-		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 pt-3 transition-all duration-300">
-			<div class="flex items-center justify-between px-5 pb-3">
+		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 transition-all duration-300">
+			<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 				<div class="flex items-center space-x-4">
 					<Trophy class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 					<p class="text-xl font-bold lg:text-2xl">Leaderboard</p>

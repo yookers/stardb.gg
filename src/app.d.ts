@@ -7,11 +7,7 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 		interface Locals {
-			user:
-				| {
-						username: string;
-				  }
-				| undefined;
+			user: { username: string } | undefined;
 		}
 	}
 }

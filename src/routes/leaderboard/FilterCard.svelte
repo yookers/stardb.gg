@@ -15,10 +15,10 @@
 </script>
 
 <div
-	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 pt-3 transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
+	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
-		<div class="flex items-center justify-between px-5 pb-3">
+		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<ListFilter class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 				<p class="text-xl font-bold lg:text-2xl">Filter</p>

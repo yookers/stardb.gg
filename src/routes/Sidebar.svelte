@@ -141,8 +141,8 @@
 				</a>
 				<!-- Profile icon-->
 				<a
-					href="/profile-card"
-					class:text-off_white={$page.url.pathname === '/profile-card'}
+					href="/profile-card-generator"
+					class:text-off_white={$page.url.pathname === '/profile-card-generator'}
 					on:click={() => {
 						if (isMobileView) {
 							sidebarState.set(SidebarState.CLOSED);

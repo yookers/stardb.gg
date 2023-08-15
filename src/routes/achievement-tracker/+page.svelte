@@ -364,7 +364,7 @@
 		class="w-full text-lg xl:text-xl
     {isScreenExpanded ? 'xl:w-[550px] xl:pt-28' : 'xl:w-[1100px]'}"
 	>
-		<h1 class="pb-3 pt-6 text-2xl font-bold md:text-3xl">Achievement Tracker</h1>
+		<h1 class="pb-3 pt-6 text-xl font-bold md:text-3xl">Achievement Tracker</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
 		<div class={userInfoShown ? 'pb-4 sm:pb-6' : ''}>
 			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />
@@ -389,8 +389,8 @@
 			{changeLanguage}
 		/>
 
-		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 pt-3">
-			<div class="flex items-center justify-between px-5 pb-3">
+		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
+			<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 				<div class="flex items-center space-x-4">
 					<Award class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 					<p class="text-xl font-bold lg:text-2xl">Achievements</p>
@@ -452,7 +452,4 @@
 	</button>
 </div>
 
-<PopUpMessage
-	bind:messageType={popUpMessageType}
-	messageContent={'Server did not respond, please try again later'}
-/>
+<PopUpMessage bind:messageType={popUpMessageType} messageContent={'Server did not respond, please try again later'} />
