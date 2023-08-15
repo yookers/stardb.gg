@@ -14,33 +14,33 @@ export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// If there is a session, load the user and pass it to the page
-	let id = event.cookies.get('id');
+	const id = event.cookies.get('id');
 
-    // If server doesn't respond to /auth/logout, manually delete the cookie
-	const logOut = event.url.searchParams.has('logout');
-	if (logOut) {
-		event.cookies.delete('id', { path: '/' });
-        id = undefined;
-	}
-
-	if (id && !event.locals.user) {
-		const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/me`, {
-			headers: {
-				cookie: `id=${id}`
-			}
-		});
-		if (res.ok) {
-			const user = await res.json();
-			if (user) {
-				event.locals.user = {
-					admin: user.admin,
-					username: user.username
-				};
+	if (id) {
+		if (!event.locals.user) {
+			const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/me`, {
+				headers: {
+					cookie: `id=${id}`
+				}
+			});
+			if (res.ok) {
+				const user = await res.json();
+				if (user) {
+					event.locals.user = {
+						admin: user.admin,
+						username: user.username
+					};
+				}
 			}
 		}
+		// If server doesn't respond to /auth/logout, manually delete the cookie
+		const logOut = event.url.searchParams.has('logout');
+		if (logOut) {
+			event.cookies.delete('id', { path: '/' });
+			event.locals.user = undefined;
+		}
 	} else if (!id) {
-        event.locals.user = undefined;
-    }
-
+		event.locals.user = undefined;
+	}
 	return await resolve(event);
 };
