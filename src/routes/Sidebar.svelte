@@ -73,6 +73,7 @@
 				<!-- Leaderboard icon-->
 				<a
 					href="/leaderboard"
+					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					class:text-off_white={$page.url.pathname === '/leaderboard'}
 					on:click={() => {
 						if (isMobileView) {
@@ -80,22 +81,17 @@
 						}
 					}}
 				>
-					<button
-						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					>
-						<div>
-							<Icon src={ChartBar} solid class="h-6 w-6" />
-						</div>
-						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
-						>
-							<p>Leaderboard</p>
-						</div>
-					</button>
+					<div>
+						<Icon src={ChartBar} solid class="h-6 w-6" />
+					</div>
+					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
+						<p>Leaderboard</p>
+					</div>
 				</a>
 				<!-- Achievement tracker icon -->
 				<a
 					href="/achievement-tracker"
+					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					class:text-off_white={$page.url.pathname === '/achievement-tracker'}
 					on:click={() => {
 						if (isMobileView) {
@@ -103,22 +99,17 @@
 						}
 					}}
 				>
-					<button
-						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					>
-						<div>
-							<Icon src={DocumentCheck} solid class="h-6 w-6" />
-						</div>
-						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
-						>
-							<p>Tracker</p>
-						</div>
-					</button>
+					<div>
+						<Icon src={DocumentCheck} solid class="h-6 w-6" />
+					</div>
+					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
+						<p>Tracker</p>
+					</div>
 				</a>
 				<!-- Database icon -->
 				<a
 					href="/database"
+					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					class:text-off_white={$page.url.pathname === '/database'}
 					on:click={() => {
 						if (isMobileView) {
@@ -126,22 +117,17 @@
 						}
 					}}
 				>
-					<button
-						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					>
-						<div>
-							<Icon src={CircleStack} solid class="h-6 w-6" />
-						</div>
-						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
-						>
-							<p>Database</p>
-						</div>
-					</button>
+					<div>
+						<Icon src={CircleStack} solid class="h-6 w-6" />
+					</div>
+					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
+						<p>Database</p>
+					</div>
 				</a>
 				<!-- Profile icon-->
 				<a
 					href="/profile-card-generator"
+					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					class:text-off_white={$page.url.pathname === '/profile-card-generator'}
 					on:click={() => {
 						if (isMobileView) {
@@ -149,22 +135,17 @@
 						}
 					}}
 				>
-					<button
-						class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					>
-						<div>
-							<Icon src={FaceSmile} solid class="h-6 w-6" />
-						</div>
-						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
-						>
-							<p>Profile Card</p>
-						</div>
-					</button>
+					<div>
+						<Icon src={FaceSmile} solid class="h-6 w-6" />
+					</div>
+					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
+						<p>Profile Card</p>
+					</div>
 				</a>
 				<!-- Articles icon-->
 				<a
 					href="/articles"
+					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
 					class:text-off_white={$page.url.pathname === '/articles'}
 					on:click={() => {
 						if (isMobileView) {
@@ -172,15 +153,11 @@
 						}
 					}}
 				>
-					<div class="flex cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white">
-						<div>
-							<Icon src={BookOpen} solid class="h-6 w-6" />
-						</div>
-						<div
-							class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}"
-						>
-							<p>Articles</p>
-						</div>
+					<div>
+						<Icon src={BookOpen} solid class="h-6 w-6" />
+					</div>
+					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
+						<p>Articles</p>
 					</div>
 				</a>
 			</div>

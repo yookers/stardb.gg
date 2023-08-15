@@ -79,9 +79,6 @@
 						{/if}
 						<div class="flex justify-between pb-2">
 							<p>Password <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
-							<a href="/request-token">
-								<p class="font-bold text-dim_green hover:text-neon_green">Forgot Password?</p>
-							</a>
 						</div>
 						<input
 							class="h-10 w-full rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:text-base"
@@ -94,23 +91,27 @@
 							bind:value={password}
 						/>
 					</div>
-					<div>
-						<button
-							class="mt-1 h-8 w-full rounded-md bg-purple_highlight text-sm font-bold hover:bg-galaxy_purple-500"
-							type="submit"
-							aria-label="Login"
-						>
-							Login
-						</button>
-					</div>
+				</div>
+				<div class="w-full border-t-2 border-galaxy_purple-650 px-10 py-6">
+					<button
+						class="mt-1 h-8 w-full rounded-md bg-purple_highlight text-sm font-bold hover:bg-galaxy_purple-500"
+						type="submit"
+						aria-label="Login"
+					>
+						Login
+					</button>
 				</div>
 			</form>
 		</div>
-		<p class="pl-2 text-off_white">
-			Don't have an account? <a href="/register" class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
-				>Register here!</a
-			>
-		</p>
+		<div class=" pl-2">
+			<p class=" text-off_white">
+				Don't have an account? <a
+					href="/register"
+					class=" font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300">Register here!</a
+				>
+			</p>
+			<p class=" font-bold text-dim_green"><a href="/request-token" class="hover:text-neon_green">Forgot Password? </a></p>
+		</div>
 	</div>
 </main>
 

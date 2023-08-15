@@ -34,7 +34,7 @@
 </script>
 
 <div
-	class="z-[4] rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700
+	class="z-[3] rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700
     transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
 	<!-- Card Title -->
