@@ -33,17 +33,16 @@
 				: ''}"
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}
 		>
-            {#if messageType === MessageType.LOADING}
-                <Loader2 class="h-7 w-7 animate-spin  md:h-8 md:w-8" />
-            {:else if messageType === MessageType.SUCCESS}
-                <Check class="h-7 w-7 md:h-8 md:w-8" />
-            {:else if messageType === MessageType.FAIL}
-                <X class="h-7 w-7 md:h-8 md:w-8" />
-            {/if}
+			{#if messageType === MessageType.LOADING}
+				<Loader2 class="h-7 w-7 animate-spin  md:h-8 md:w-8" />
+			{:else if messageType === MessageType.SUCCESS}
+				<Check class="h-7 w-7 md:h-8 md:w-8" />
+			{:else if messageType === MessageType.FAIL}
+				<X class="h-7 w-7 md:h-8 md:w-8" />
+			{/if}
 			<p class="text-sm font-bold sm:text-base md:text-lg">
 				{messageContent}
 			</p>
 		</div>
-
 	{/if}
 </div>

@@ -27,7 +27,7 @@ export type Achievement = {
 	reference?: string;
 	difficulty?: string;
 	gacha: boolean;
-    set: number;
+	set: number;
 	percent: number;
 	completed?: boolean;
 };

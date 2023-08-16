@@ -70,7 +70,7 @@
 
 				{#each seriesData.series as series}
 					<button
-						class="flex items-center justify-between border-b-2 border-galaxy_purple-550/70 px-5 py-2 text-left text-sm font-bold hover:bg-galaxy_purple-700 md:text-base"
+						class="flex items-center justify-between space-x-2 border-b-2 border-galaxy_purple-550/70 px-5 py-2 text-left text-sm font-bold hover:bg-galaxy_purple-700 md:text-base"
 						class:bg-galaxy_purple-700={isSelectedSeriesSummary(selectedSeries) && selectedSeries.name === series.name}
 						on:click={() => handleChangeSeries(series)}
 					>
@@ -81,7 +81,7 @@
 							></div>
 							<p>{series.name}</p>
 						</div>
-						<div class="flex h-6 w-24 items-center justify-center rounded-full bg-galaxy_purple-300">
+						<div class="flex h-6 w-24 shrink-0 items-center justify-center rounded-full bg-galaxy_purple-300">
 							{#key series.current_achievement_count}
 								<p class="text-xs font-extrabold text-galaxy_purple-750 md:text-sm">
 									<span in:fly={{ y: -20, duration: 400, easing: cubicInOut }}>{series.current_achievement_count}</span>

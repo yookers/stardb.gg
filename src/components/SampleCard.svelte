@@ -12,7 +12,7 @@
 >
 	<!-- Card Title -->
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
-		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
+		<div class="flex items-center justify-between space-x-2 px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<Search class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 				<p class="text-xl font-bold lg:text-2xl">Search Player</p>

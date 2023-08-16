@@ -1,6 +1,6 @@
 <script lang="ts">
 	const PUBLIC_SERVER_API_URL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
-    import { PUBLIC_RES_API_URL } from '$env/static/public';
+	import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
@@ -229,7 +229,7 @@
 
 	function changeLanguage(language: string) {
 		selectedSeries = 'Show All';
-		goto(`/achievement-tracker?lang=${language}`, { noScroll: true });
+		goto(`/achievement-tracker?lang=${language}`, { noScroll: true, replaceState: true });
 	}
 
 	function sortByPercent(achievementGroups: AchievementGroup[], sortOrder: 'default' | 'ascending' | 'descending') {
@@ -420,12 +420,14 @@
 				class="sticky top-16 z-[2] flex justify-between bg-galaxy_purple-750 px-8 pb-1 pt-0.5 text-sm font-bold sm:hidden md:px-12"
 			>
 				<div class="flex items-center space-x-1">
-					<p class="">{seriesData.current_achievement_count} <span class="font-medium">/ {seriesData.total_achievement_count}</span></p>
-                    <Award class="h-3 w-3" />
+					<p class="">
+						{seriesData.current_achievement_count} <span class="font-medium">/ {seriesData.total_achievement_count}</span>
+					</p>
+					<Award class="h-3 w-3" />
 				</div>
 				<div class="flex items-center space-x-1">
 					<p>{seriesData.current_jade_count} <span class="font-medium">/ {seriesData.total_jade_count}</span></p>
-                    <img class="h-3 w-3" src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
+					<img class="h-3 w-3" src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
 				</div>
 			</div>
 			<div class="flex justify-between px-8 pb-2 text-sm font-bold md:px-12">
