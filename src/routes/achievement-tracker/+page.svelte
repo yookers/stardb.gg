@@ -417,7 +417,7 @@
 				</div>
 			</div>
 			<div
-				class="sticky top-16 z-[3] flex justify-between bg-galaxy_purple-750 px-8 pb-1 pt-0.5 text-sm font-bold sm:hidden md:px-12"
+				class="sticky top-16 z-[2] flex justify-between bg-galaxy_purple-750 px-8 pb-1 pt-0.5 text-sm font-bold sm:hidden md:px-12"
 			>
 				<div class="flex items-center space-x-1">
 					<p class="">{seriesData.current_achievement_count} <span class="font-medium">/ {seriesData.total_achievement_count}</span></p>
