@@ -34,9 +34,12 @@
 </svelte:head>
 
 <main class="flex h-full flex-col items-center justify-center text-off_white">
-	<div class="flex items-center space-x-3 stroke-galaxy_purple-250 py-8 sm:space-x-4 md:py-16">
+	<div class="relative flex items-center space-x-3 stroke-galaxy_purple-250 py-8 sm:space-x-4 md:py-16">
 		<Logo class="w-10 overflow-visible fill-none stroke-[8] sm:w-12 md:w-24" />
 		<p class="select-none font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 sm:text-6xl md:text-8xl">stardb.gg</p>
+		<div class="absolute -right-12 top-3 flex w-14 justify-center rounded-full bg-galaxy_purple-250 md:top-8 md:w-16">
+			<p class="text-sm font-bold text-galaxy_purple-750 md:text-base">Beta</p>
+		</div>
 	</div>
 
 	<div class="mb-24 flex flex-col px-6">
@@ -63,4 +66,6 @@
 			<p class="py-2 pl-5 font-bold text-neon_pink">{errorMessage}</p>
 		{/if}
 	</div>
+
+	<a class="absolute bottom-3 left-4 text-sm hover:text-galaxy_purple-250 md:left-20" href="/privacy-policy">Privacy Policy</a>
 </main>

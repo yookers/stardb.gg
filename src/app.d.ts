@@ -17,9 +17,7 @@ export {};
 export type Achievement = {
 	id: number;
 	series: number;
-	series_tag: string;
 	series_name: string;
-	tag: string;
 	name: string;
 	description: string;
 	jades: number;
@@ -29,6 +27,7 @@ export type Achievement = {
 	reference?: string;
 	difficulty?: string;
 	gacha: boolean;
+    set: number;
 	percent: number;
 	completed?: boolean;
 };

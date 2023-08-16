@@ -1,5 +1,6 @@
 <script lang="ts">
 	const PUBLIC_SERVER_API_URL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
+    import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
@@ -415,12 +416,23 @@
 					</button>
 				</div>
 			</div>
-
+			<div
+				class="sticky top-16 z-[3] flex justify-between bg-galaxy_purple-750 px-8 pb-1 pt-0.5 text-sm font-bold sm:hidden md:px-12"
+			>
+				<div class="flex items-center space-x-1">
+					<p class="">{seriesData.current_achievement_count} <span class="font-medium">/ {seriesData.total_achievement_count}</span></p>
+                    <Award class="h-3 w-3" />
+				</div>
+				<div class="flex items-center space-x-1">
+					<p>{seriesData.current_jade_count} <span class="font-medium">/ {seriesData.total_jade_count}</span></p>
+                    <img class="h-3 w-3" src={`${PUBLIC_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
+				</div>
+			</div>
 			<div class="flex justify-between px-8 pb-2 text-sm font-bold md:px-12">
 				<p>Name</p>
 				<p>% Players Obtained</p>
 			</div>
-			<div class="space-y-2 px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
+			<div class="space-y-1.5 px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
 				{#if filteredAchievements.length === 0}
 					<p class="py-4 text-center text-4xl font-bold">(◕︿◕✿)</p>
 				{/if}
