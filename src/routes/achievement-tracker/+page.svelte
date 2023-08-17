@@ -3,7 +3,7 @@
 	import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import { onMount } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import UserInfo from './UserInfo.svelte';
 	import SearchAchievementCard from './SearchAchievementCard.svelte';
 	import SeriesCard from './SeriesCard.svelte';
@@ -53,6 +53,8 @@
 	let loadMoreElement: HTMLElement | null = null;
 	let observer: { disconnect: () => void } | null = null;
 
+	let snapshotScroll: number;
+
 	onMount(async () => {
 		// Get languages from server and cache them
 		if (get(languages).length === 0) {
@@ -60,7 +62,30 @@
 			const languageData = await response.json();
 			languages.set(languageData);
 		}
-		selectedLanguageName = $languages.find((lang) => lang.id === selectedLanguageID)?.name ?? 'English';
+        selectedLanguageName = $languages.find((lang) => lang.id === selectedLanguageID)?.name ?? 'English';
+	});
+
+	// Keep a snapshot when user navigates back from the achievements database
+	export const snapshot = {
+		capture: () => [selectedSeries, showCompleted, showIncomplete, showHidden, selectedDifficulty, searchQuery, sortOrder, shownCount, window.scrollY],
+		restore: (value) => {
+            selectedSeries = value[0];
+            showCompleted = value[1];
+            showIncomplete = value[2];
+            showHidden = value[3];
+            selectedDifficulty = value[4];
+            searchQuery = value[5];
+            sortOrder = value[6];
+            shownCount = value[7];
+            snapshotScroll = value[8];
+		}
+	};
+    
+    afterUpdate(() => {
+		if (snapshotScroll > 0) {
+			window.scrollTo(0, snapshotScroll);
+			snapshotScroll = 0;
+		}
 	});
 
 	function loadFromLocalStorage() {
@@ -368,7 +393,7 @@
 		class="w-full text-lg xl:text-xl
     {isScreenExpanded ? 'xl:w-[550px] xl:pt-28' : 'xl:w-[1100px]'}"
 	>
-		<h1 class="pb-3 pt-6 text-xl font-bold md:text-3xl">Achievement Tracker</h1>
+		<h1 class="pb-3 pt-4 text-xl font-bold sm:pt-6 md:text-3xl">Achievement Tracker</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
 		<div class={userInfoShown ? 'pb-4 sm:pb-6' : ''}>
 			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />

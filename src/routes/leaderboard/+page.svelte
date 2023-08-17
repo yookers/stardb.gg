@@ -149,7 +149,7 @@
 		class="w-full text-lg lg:text-xl
     {isScreenExpanded ? 'xl:w-[550px] xl:pt-40' : 'xl:w-[1100px]'}"
 	>
-		<h1 class="pb-3 pt-6 text-xl font-bold md:text-3xl">Achievement Leaderboard</h1>
+		<h1 class="pb-3 pt-4 sm:pt-6 text-xl font-bold md:text-3xl">Achievement Leaderboard</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
 		<div class="top-[88px] space-y-4 sm:space-y-6 xl:sticky">
 			<SearchPlayerCard {searchByName} {searchByUID} />
