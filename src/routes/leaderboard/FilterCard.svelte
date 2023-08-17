@@ -17,7 +17,7 @@
 <div
 	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
-	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Filter card">
 		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<ListFilter class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
@@ -85,10 +85,10 @@
 				<div
 					class="relative flex h-10 w-40 select-none items-center rounded-full bg-galaxy_purple-200 text-sm font-bold text-galaxy_purple-700"
 				>
-					<button class="h-full w-20 px-4" aria-label="Set Search Type to World" on:click={() => setRanking('World')}
+					<button class="h-full w-20 px-4" aria-label="Set search type to World" on:click={() => setRanking('World')}
 						>World</button
 					>
-					<button class="h-full w-20 px-4" aria-label="Set Search Type to Region" on:click={() => setRanking('Region')}
+					<button class="h-full w-20 px-4" aria-label="Set search type to Region" on:click={() => setRanking('Region')}
 						>Region</button
 					>
 					<span

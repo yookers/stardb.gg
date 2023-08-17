@@ -38,7 +38,7 @@
     transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-550/95"
 >
 	<!-- Card Title -->
-	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Search Player card">
 		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<Search class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
@@ -60,8 +60,8 @@
 			<div
 				class="relative flex h-10 w-32 flex-shrink-0 select-none items-center rounded-full bg-galaxy_purple-700 text-center font-bold text-galaxy_purple-200"
 			>
-				<button class="h-full w-16 px-4" aria-label="Set Search Type to Name" on:click={() => changeSearchType()}>Name</button>
-				<button class="h-full w-16 px-4" aria-label="Set Search Type to UID" on:click={() => changeSearchType()}>UID</button>
+				<button class="h-full w-16 px-4" aria-label="Set search type to Name" on:click={() => changeSearchType()}>Name</button>
+				<button class="h-full w-16 px-4" aria-label="Set search type to UID" on:click={() => changeSearchType()}>UID</button>
 				<span
 					class="absolute flex h-8 w-16 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
                     {searchType === 'Name' ? 'left-1' : 'left-[calc(50%-4px)]'}"
@@ -82,7 +82,7 @@
 					/>
 					<button
 						class="rounded-r-full bg-galaxy_purple-300 px-3 text-galaxy_purple-700 hover:scale-105 hover:bg-galaxy_purple-350 hover:text-galaxy_purple-750"
-						aria-label="Search for Player {searchType}"
+						aria-label="Search for player {searchType}"
 						on:click={() => searchPlayer(searchQuery)}
 					>
 						<Search class="h-5 w-5 lg:h-6 lg:w-6" />

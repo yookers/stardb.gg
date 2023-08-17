@@ -23,7 +23,7 @@
 		transition:slide={{ duration: 300, easing: cubicInOut }}
 	>
 		<!-- Card Title -->
-		<button class="w-full" on:click={closedInfo} aria-label="Show/Hide Card Toggle">
+		<button class="w-full" on:click={closedInfo} aria-label="Close user info card">
 			<div class="flex items-center justify-between px-5">
 				<div class="flex flex-col justify-center text-left text-xs sm:text-sm">
 					{#if user}

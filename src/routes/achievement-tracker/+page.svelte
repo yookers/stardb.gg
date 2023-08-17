@@ -62,26 +62,36 @@
 			const languageData = await response.json();
 			languages.set(languageData);
 		}
-        selectedLanguageName = $languages.find((lang) => lang.id === selectedLanguageID)?.name ?? 'English';
+		selectedLanguageName = $languages.find((lang) => lang.id === selectedLanguageID)?.name ?? 'English';
 	});
 
 	// Keep a snapshot when user navigates back from the achievements database
 	export const snapshot = {
-		capture: () => [selectedSeries, showCompleted, showIncomplete, showHidden, selectedDifficulty, searchQuery, sortOrder, shownCount, window.scrollY],
+		capture: () => [
+			selectedSeries,
+			showCompleted,
+			showIncomplete,
+			showHidden,
+			selectedDifficulty,
+			searchQuery,
+			sortOrder,
+			shownCount,
+			window.scrollY
+		],
 		restore: (value) => {
-            selectedSeries = value[0];
-            showCompleted = value[1];
-            showIncomplete = value[2];
-            showHidden = value[3];
-            selectedDifficulty = value[4];
-            searchQuery = value[5];
-            sortOrder = value[6];
-            shownCount = value[7];
-            snapshotScroll = value[8];
+			selectedSeries = value[0];
+			showCompleted = value[1];
+			showIncomplete = value[2];
+			showHidden = value[3];
+			selectedDifficulty = value[4];
+			searchQuery = value[5];
+			sortOrder = value[6];
+			shownCount = value[7];
+			snapshotScroll = value[8];
 		}
 	};
-    
-    afterUpdate(() => {
+
+	afterUpdate(() => {
 		if (snapshotScroll > 0) {
 			window.scrollTo(0, snapshotScroll);
 			snapshotScroll = 0;
@@ -425,12 +435,12 @@
 					<p class="text-xl font-bold lg:text-2xl">Achievements</p>
 				</div>
 				<div class="flex space-x-4">
-					<button class="hover:scale-110" aria-label="Reset Achievement Filters" on:click={() => resetFilters()}>
+					<button class="hover:scale-110" aria-label="Reset achievement filters" on:click={() => resetFilters()}>
 						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
 					</button>
 					<button
 						class="hidden hover:scale-110 xl:block"
-						aria-label="Expand/Minimize Leaderboard"
+						aria-label="{isScreenExpanded ? 'Minimize' : 'Expand'} leaderboard"
 						on:click={() => (isScreenExpanded = !isScreenExpanded)}
 					>
 						{#if isScreenExpanded}
@@ -487,7 +497,7 @@
 >
 	<button
 		class="flex h-12 w-12 items-center justify-center rounded-lg md:h-14 md:w-14"
-		aria-label="Scroll to Top"
+		aria-label="Scroll to top"
 		on:click={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 	>
 		<ArrowUp class="h-7 w-7 text-off_white md:h-9 md:w-9" />

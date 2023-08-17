@@ -24,7 +24,7 @@
 			<button
 				class="w-full pt-3"
 				on:click={() => handleGroupToggleCompletion(achievementGroup, achievement)}
-				aria-label="Toggle Achievement Completion"
+				aria-label="Toggle achievement completion"
 			>
 				<div class="flex justify-between px-5">
 					<p class="pr-2 text-left text-sm font-bold md:text-base" class:line-through={achievement.completed}>

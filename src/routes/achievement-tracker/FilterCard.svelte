@@ -38,7 +38,7 @@
     transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
 	<!-- Card Title -->
-	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} filter card">
 		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<ListFilter class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
@@ -114,7 +114,7 @@
                             {showCompleted
 								? 'border-galaxy_purple-300 bg-galaxy_purple-550'
 								: 'border-galaxy_purple-300 bg-galaxy_purple-700'}"
-							aria-label="Toggle Show Completed Achievements"
+							aria-label="{showCompleted ? 'Hide' : 'Show'} completed achievements"
 							on:click={() => (showCompleted = !showCompleted)}
 						>
 							<span
@@ -132,7 +132,7 @@
                             {showIncomplete
 									? 'border-galaxy_purple-300 bg-galaxy_purple-550'
 									: 'border-galaxy_purple-300 bg-galaxy_purple-700'}"
-								aria-label="Toggle Show Incomplete Achievements"
+								aria-label="{showIncomplete ? 'Hide' : 'Show'} incomplete achievements"
 								on:click={() => (showIncomplete = !showIncomplete)}
 							>
 								<span
@@ -148,7 +148,7 @@
 				<div class="flex justify-between space-x-2 font-bold">
 					<button
 						class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
-						aria-label="Toggle Sort Order"
+						aria-label="Toggle sort order"
 						on:click={() => toggleSortOrder()}
 					>
 						<div class="flex items-center justify-center">
@@ -161,7 +161,10 @@
 						</div>
 					</button>
 					<div class="group relative flex h-8 w-32 sm:w-36">
-						<button class="flex w-full items-center justify-center overflow-x-hidden rounded-lg bg-galaxy_purple-800 px-1">
+						<button
+							class="flex w-full items-center justify-center overflow-x-hidden rounded-lg bg-galaxy_purple-800 px-1"
+							aria-label="Change language"
+						>
 							{#if selectedLanguageName}
 								<p class="line-clamp-1">{selectedLanguageName}</p>
 							{/if}
@@ -177,6 +180,7 @@
 									selectedLanguageName
 										? 'bg-galaxy_purple-200 text-galaxy_purple-750'
 										: ''}"
+									aria-label="Select language {language.name}"
 									on:click={() => handleChangeLanguage(language)}><p>{language.name}</p></button
 								>
 							{/each}

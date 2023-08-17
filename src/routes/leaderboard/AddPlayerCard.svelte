@@ -27,7 +27,7 @@
     transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-600/95"
 >
 	<!-- Card Title -->
-	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Add Player card">
 		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<UserPlus class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
@@ -59,7 +59,7 @@
 					/>
 					<button
 						class="rounded-r-full bg-galaxy_purple-300 px-2.5 text-galaxy_purple-700 hover:scale-105 hover:bg-galaxy_purple-350 hover:text-galaxy_purple-750"
-						aria-label="Add Player UID"
+						aria-label="Add player UID"
 						on:click={() => handleAddPlayer(playerUID)}
 					>
 						<Plus class="h-6 w-6 lg:h-7 lg:w-7" />

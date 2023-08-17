@@ -13,7 +13,7 @@
     transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-650/95"
 >
 	<!-- Card Title -->
-	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="Show/Hide Card Toggle">
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Statistics card">
 		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<LineChart class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />

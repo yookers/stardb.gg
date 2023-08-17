@@ -37,14 +37,14 @@
 	<div class="flex items-center">
 		<button
 			class="ml-4 flex h-8 w-8 items-center justify-center rounded-lg text-off_white hover:translate-y-0.5 hover:text-galaxy_purple-250 md:hidden"
-			aria-label="Toggle Sidebar"
+			aria-label="Toggle sidebar"
 			on:click={toggleSidebar}
 		>
 			<Menu class="h-6 w-6" />
 		</button>
 		<a
 			href="/"
-			aria-label="Home Page"
+			aria-label="Home page"
 			class="ml-3 flex items-center space-x-1.5 stroke-off_white text-off_white hover:translate-y-0.5 hover:stroke-galaxy_purple-250 hover:text-galaxy_purple-250 md:pl-5"
 		>
 			<Logo class="w-5 overflow-visible fill-off_white stroke-[7]" />
@@ -55,7 +55,7 @@
 	<div class="flex items-center">
 		<a
 			href="https://discord.gg/chives"
-			aria-label="Discord Invite Link"
+			aria-label="Discord invite link"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="mr-4 flex h-8 w-8 items-center justify-center"
@@ -82,7 +82,7 @@
 				<a
 					href="/login"
 					class="flex items-center space-x-2 rounded-lg px-3 hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750"
-					aria-label="Login Page"
+					aria-label="Login page"
 					tabindex="0"
 				>
 					<LogIn class="h-4 w-4 " />

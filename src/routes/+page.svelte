@@ -56,7 +56,7 @@
 
 			<button
 				class="h-12 rounded-r-xl bg-galaxy_purple-250 px-4 text-galaxy_purple-600 hover:scale-105 sm:h-14 md:h-16"
-				aria-label="Search Player UID"
+				aria-label="Search player UID"
 				on:click={() => searchPlayer(searchQuery)}
 			>
 				<Search class="h-6 w-6 md:h-7 md:w-7" />

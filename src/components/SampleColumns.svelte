@@ -8,7 +8,7 @@
 >
 	<!-- Column 1 -->
 	<div
-		class="w-full text-lg xl:text-xl pt-4 sm:pt-6
+		class="w-full pt-4 text-lg sm:pt-6 xl:text-xl
     {isScreenExpanded ? 'xl:w-[550px] xl:pt-28' : 'xl:w-[1100px]'}"
 	></div>
 

@@ -149,7 +149,7 @@
 		class="w-full text-lg lg:text-xl
     {isScreenExpanded ? 'xl:w-[550px] xl:pt-40' : 'xl:w-[1100px]'}"
 	>
-		<h1 class="pb-3 pt-4 sm:pt-6 text-xl font-bold md:text-3xl">Achievement Leaderboard</h1>
+		<h1 class="pb-3 pt-4 text-xl font-bold sm:pt-6 md:text-3xl">Achievement Leaderboard</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
 		<div class="top-[88px] space-y-4 sm:space-y-6 xl:sticky">
 			<SearchPlayerCard {searchByName} {searchByUID} />
@@ -166,14 +166,14 @@
 		<div class="fixed bottom-16 right-8 z-[3] flex select-none flex-col items-center space-y-2 rounded-xl">
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
-				aria-label="Previous Page"
+				aria-label="Previous page"
 				on:click={prevPage}
 				><ChevronUp class="h-8 w-8 md:h-10 md:w-10" />
 			</button>
 			<p class="text-center text-2xl font-bold md:text-3xl">{currentPage}</p>
 			<button
 				class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450 md:h-14 md:w-14"
-				aria-label="Next Page"
+				aria-label="Next page"
 				on:click={nextPage}><ChevronDown class="h-8 w-8 md:h-10 md:w-10" /></button
 			>
 		</div>
@@ -186,12 +186,12 @@
 					<p class="text-xl font-bold lg:text-2xl">Leaderboard</p>
 				</div>
 				<div class="flex space-x-4">
-					<button class="hover:scale-110" aria-label="Reset Leaderboard Filters" on:click={() => resetLeaderboard()}>
+					<button class="hover:scale-110" aria-label="Reset leaderboard filters" on:click={() => resetLeaderboard()}>
 						<RefreshCw class="h-5 w-5 text-off_white hover:animate-spin lg:h-6 lg:w-6" />
 					</button>
 					<button
 						class="hidden hover:scale-110 xl:block"
-						aria-label="Expand/Minimize Leaderboard"
+						aria-label="{isScreenExpanded ? 'Minimize' : 'Expand'} leaderboard"
 						on:click={() => (isScreenExpanded = !isScreenExpanded)}
 					>
 						{#if isScreenExpanded}
