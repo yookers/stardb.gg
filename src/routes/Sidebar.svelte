@@ -110,7 +110,7 @@
 				<a
 					href="/database"
 					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					class:text-off_white={$page.url.pathname === '/database'}
+					class:text-off_white={$page.url.pathname.startsWith('/database')}
 					on:click={() => {
 						if (isMobileView) {
 							sidebarState.set(SidebarState.CLOSED);

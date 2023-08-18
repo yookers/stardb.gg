@@ -5,13 +5,14 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { afterUpdate, onMount } from 'svelte';
 	import UserInfo from './UserInfo.svelte';
-	import SearchAchievementCard from './SearchAchievementCard.svelte';
+	// import SearchAchievementCard from './SearchAchievementCard.svelte';
 	import SeriesCard from './SeriesCard.svelte';
 	import StatisticsCard from './StatisticsCard.svelte';
 	import FilterCard from './FilterCard.svelte';
 	import SingleAchievement from './SingleAchievement.svelte';
 	import GroupAchievement from './GroupAchievement.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
+	import MiniSearchAchievement from './MiniSearchAchievement.svelte';
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import { AchievementDifficulty, MessageType } from '$types';
@@ -415,14 +416,14 @@
 			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />
 		</div>
 		<div class="top-[88px] space-y-4 sm:space-y-6 xl:sticky">
-			<SearchAchievementCard bind:searchQuery />
+			<!-- <SearchAchievementCard bind:searchQuery /> -->
 			<SeriesCard {seriesData} {resetLazyScroll} bind:selectedSeries />
 			<StatisticsCard {seriesData} />
 		</div>
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-main">
+	<div class="xl:w-main flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete
@@ -433,6 +434,7 @@
 			filterLength={filteredAchievements.length}
 			{changeLanguage}
 		/>
+		<MiniSearchAchievement bind:searchQuery />
 
 		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
 			<div class="flex items-center justify-between px-5 py-2 sm:py-3">
