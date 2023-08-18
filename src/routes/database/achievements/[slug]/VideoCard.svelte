@@ -14,7 +14,7 @@
 
 <div
 	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700
-    transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
+    transition-all duration-300 hover:bg-galaxy_purple-700/95"
 >
 	<!-- Card Title -->
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} sample card">
@@ -39,9 +39,9 @@
 				<iframe
 					class="absolute left-0 h-full w-full rounded-xl border-2 border-galaxy_purple-650"
 					src={formatURL(videoURL)}
-					title="Video guide for the achievement"
+					title="Video guide on how to obtain the achievement"
 					frameborder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
 					allowfullscreen
 				></iframe>
 			</div>
