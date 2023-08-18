@@ -9,11 +9,11 @@
 	<!-- Column 1 -->
 	<div
 		class="w-full pt-4 text-lg sm:pt-6 xl:text-xl
-    {isScreenExpanded ? 'xl:w-[550px] xl:pt-28' : 'xl:w-[1100px]'}"
+    {isScreenExpanded ? 'xl:w-side xl:pt-28' : 'xl:w-main'}"
 	></div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-[1100px]">
+	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-main">
 		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
 			<div class="flex items-center justify-between px-5 py-2 sm:py-3"></div>
 		</div>

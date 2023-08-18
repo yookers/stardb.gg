@@ -17,7 +17,7 @@
 </svelte:head>
 
 <main class="flex h-full w-full justify-center px-4 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-24 xl:px-6">
-	<div class="flex w-full flex-col py-2 md:w-[600px]">
+	<div class="flex w-full flex-col py-2 md:w-main">
 		<p class="text-sm">Database > Achievement > <span class="font-bold">{achievementData.id}</span></p>
 		<div class="pb-3 pt-4 sm:pt-6">
 			<h1 class="text-xl font-bold md:text-3xl">{achievementData.name}</h1>

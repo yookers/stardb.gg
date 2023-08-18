@@ -407,7 +407,7 @@
 	<!-- Column 1 -->
 	<div
 		class="w-full text-lg xl:text-xl
-    {isScreenExpanded ? 'xl:w-[550px] xl:pt-28' : 'xl:w-[1100px]'}"
+    {isScreenExpanded ? 'xl:w-side xl:pt-28' : 'xl:w-main'}"
 	>
 		<h1 class="pb-3 pt-4 text-xl font-bold sm:pt-6 md:text-3xl">Achievement Tracker</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
@@ -422,7 +422,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-[1100px]">
+	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-main">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete
