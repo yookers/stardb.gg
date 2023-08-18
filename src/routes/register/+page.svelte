@@ -4,7 +4,9 @@
 	import { MessageType } from '$types';
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import { enhance } from '$app/forms';
 	import type { ErrorResponse } from '$types';
+	import type { ActionData } from './$types';
 
 	let username = '';
 	let password = '';
@@ -15,6 +17,8 @@
 	let errorResponse: ErrorResponse;
 	let importLocalAchievements = false;
 	let agreeToTerms = false;
+
+	export let form: ActionData;
 
 	export const snapshot = {
 		capture: () => [username, password, confirmPassword, email, importLocalAchievements, agreeToTerms],
@@ -28,41 +32,6 @@
 		}
 	};
 
-	async function register() {
-		errorResponse = { status: 0, message: '' }; // Reset error response
-		const payload: { username: string; password: string; email?: string } = {
-			username,
-			password
-		};
-		if (email) {
-			payload.email = email;
-		}
-		try {
-			const response = await fetch(`${apiURL}/users/auth/register`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload)
-			});
-
-			if (response.ok) {
-				notifyUser(MessageType.SUCCESS);
-
-				if (importLocalAchievements) {
-					await putLocalAchievements();
-				}
-
-				goto('achievement-tracker', { invalidateAll: true });
-			} else if (response.status === 409) {
-				errorResponse = { status: 409, message: 'Username already exists' };
-				notifyUser(MessageType.ERROR);
-			} else {
-				notifyUser(MessageType.ERROR);
-			}
-		} catch (error) {
-			notifyUser(MessageType.ERROR);
-		}
-	}
-
 	async function putLocalAchievements() {
 		const completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') ?? '[]');
 		try {
@@ -71,10 +40,11 @@
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(completedAchievements)
 			});
-
 			if (!response.ok) {
 				notifyUser(MessageType.ERROR);
 			}
+			notifyUser(MessageType.SUCCESS);
+			goto('/achievement-tracker');
 		} catch (error) {
 			notifyUser(MessageType.ERROR);
 		}
@@ -87,6 +57,12 @@
 			showNotification = false;
 		}, 2500);
 	};
+
+	$: if (form?.status === 200) {
+		putLocalAchievements();
+	} else if (form?.serverError) {
+		notifyUser(MessageType.ERROR);
+	}
 </script>
 
 <svelte:head>
@@ -100,11 +76,11 @@
 		<div
 			class="w-full rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 text-sm hover:border-galaxy_purple-700 md:text-base"
 		>
-			<form class="flex flex-col items-center text-off_white" on:submit|preventDefault={register}>
+			<form class="flex flex-col items-center text-off_white" action="?/register" method="POST" use:enhance>
 				<div class="flex w-full flex-col space-y-6 px-8 pb-8 pt-8 md:px-10">
 					<div class="flex w-full flex-col">
-						{#if errorResponse?.status === 409}
-							<p class="animate-wiggle font-bold text-neon_pink duration-200">{errorResponse.message}</p>
+						{#if form?.usernameTaken}
+							<p class="animate-wiggle font-bold text-neon_pink duration-200">Username is taken</p>
 						{/if}
 						{#if username.length > 32}
 							<p class="font-bold text-neon_pink">Username exceeds limit</p>
@@ -185,6 +161,7 @@
 							class="h-4 w-4 rounded-full border-2 border-galaxy_purple-300"
 							class:bg-neon_green={importLocalAchievements}
 							type="checkbox"
+							name="importLocalAchievements"
 							aria-label="Import local achievements from tracker"
 							bind:checked={importLocalAchievements}
 						/>
@@ -195,7 +172,6 @@
 							class="h-4 w-4 rounded-full border-2 border-galaxy_purple-300"
 							class:bg-neon_green={agreeToTerms}
 							type="checkbox"
-							id="agree-to-terms"
 							aria-label="Agree to Privacy Policy"
 							required
 							bind:checked={agreeToTerms}
