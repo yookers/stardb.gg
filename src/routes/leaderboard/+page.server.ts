@@ -2,7 +2,6 @@ import type { PageServerLoad } from './$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { PRIVATE_API_KEY, PRIVATE_SERVER_API_URL } from '$env/static/private';
 
-
 export const load = (async ({ fetch, url }) => {
 	// Parse the page query parameter
 	let pageNumber = Number(url.searchParams.get('page'));
@@ -16,9 +15,7 @@ export const load = (async ({ fetch, url }) => {
 	const uid = url.searchParams.get('uid') || '';
 
 	// Create a new URL object
-	const apiURL = new URL(
-		uid ? `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}` : `${PRIVATE_SERVER_API_URL}/leaderboard`
-	);
+	const apiURL = new URL(uid ? `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}` : `${PRIVATE_SERVER_API_URL}/leaderboard`);
 
 	if (!uid) {
 		apiURL.searchParams.set('limit', limit.toString());
@@ -34,9 +31,10 @@ export const load = (async ({ fetch, url }) => {
 
 	try {
 		const response = await fetch(apiURL, {
-            headers: {
-                authorization: `ApiKey ${PRIVATE_API_KEY}`
-        }});
+			headers: {
+				authorization: `ApiKey ${PRIVATE_API_KEY}`
+			}
+		});
 		const data = await response.json();
 
 		if (!response.ok) {

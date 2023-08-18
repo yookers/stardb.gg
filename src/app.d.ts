@@ -15,21 +15,21 @@ declare global {
 export {};
 
 export type DatabaseAchievement = {
-    id: number;
-    series: number;
-    series_name: string;
-    name: string;
-    description: string;
-    jades: number;
-    hidden: boolean;
-    version: string;
-    comment?: string;
-    reference?: string;
-    difficulty?: string;
-    video?: string;
-    gacha: boolean;
-    percent: number;
-}
+	id: number;
+	series: number;
+	series_name: string;
+	name: string;
+	description: string;
+	jades: number;
+	hidden: boolean;
+	version: string;
+	comment?: string;
+	reference?: string;
+	difficulty?: string;
+	video?: string;
+	gacha: boolean;
+	percent: number;
+};
 
 export type TrackerAchievement = {
 	id: number;

@@ -5,12 +5,12 @@ import type { Handle, HandleFetch } from '@sveltejs/kit';
 export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 	const mode = import.meta.env.MODE;
 	if (mode !== 'development') {
-        // Clone the original request, but change the URL
+		// Clone the original request, but change the URL
 		if (request.url.startsWith(PUBLIC_SERVER_API_URL)) {
 			request = new Request(request.url.replace(PUBLIC_SERVER_API_URL, 'http://localhost:8000/api'), request);
 		} else if (request.url.startsWith(PRIVATE_SERVER_API_URL)) {
-            request = new Request(request.url.replace(PRIVATE_SERVER_API_URL, 'http://localhost:8001/private'), request);
-        }
+			request = new Request(request.url.replace(PRIVATE_SERVER_API_URL, 'http://localhost:8001/private'), request);
+		}
 	}
 	return fetch(request);
 };

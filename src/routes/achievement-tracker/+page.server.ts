@@ -12,17 +12,17 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 
 		// Prevent fetch waterfalls by fetching all data in parallel
 		const achievementPromise = fetch(apiUrl, {
-            headers: {
-                authorization: `ApiKey ${PRIVATE_API_KEY}`
-            }
-        });
+			headers: {
+				authorization: `ApiKey ${PRIVATE_API_KEY}`
+			}
+		});
 
 		let completedPromise: Promise<Response> | undefined;
 		if (locals.user) {
 			const id = cookies.get('id');
 			completedPromise = fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements`, {
 				headers: {
-					cookie: `id=${id}`,
+					cookie: `id=${id}`
 				}
 			});
 		}

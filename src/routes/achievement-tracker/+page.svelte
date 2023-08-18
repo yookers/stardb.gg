@@ -19,7 +19,7 @@
 	import { get } from 'svelte/store';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
-    import type { TrackerAchievement, AchievementGroup, Series, SeriesSummary, SeriesData, SelectedSeries } from '$types';
+	import type { TrackerAchievement, AchievementGroup, Series, SeriesSummary, SeriesData, SelectedSeries } from '$types';
 
 	// `data` also contains the same information as $page.data
 	export let data;
@@ -91,11 +91,11 @@
 		}
 	};
 
-    function storeSettings(key: string, value: string | number) {
-        const settings = JSON.parse(localStorage.getItem('settings') || '{}');
-        settings['achievement-tracker'][key] = value;
-        localStorage.setItem('settings', JSON.stringify(settings));
-    }
+	function storeSettings(key: string, value: string | number) {
+		const settings = JSON.parse(localStorage.getItem('settings') || '{}');
+		settings['achievement-tracker'][key] = value;
+		localStorage.setItem('settings', JSON.stringify(settings));
+	}
 
 	afterUpdate(() => {
 		if (snapshotScroll > 0) {

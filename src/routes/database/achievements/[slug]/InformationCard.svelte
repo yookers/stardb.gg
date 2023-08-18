@@ -54,7 +54,7 @@
 				{:else}
 					<p class="font-normal">
 						Missing or no specific pop-cultural reference.
-                        <!--  If you have a suggestion, please leave your comment below. -->
+						<!--  If you have a suggestion, please leave your comment below. -->
 					</p>
 				{/if}
 			</div>

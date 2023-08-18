@@ -10,7 +10,7 @@
 <div class="space-y-2 rounded-xl border-2 border-galaxy_purple-650 p-2 transition-all duration-300 hover:scale-102">
 	{#each achievementGroup.achievements as achievement}
 		<div
-			class="relative z-[1] rounded-xl border-2 border-transparent text-xs sm:text-sm
+			class="relative z-[1] overflow-hidden rounded-xl border-2 border-transparent text-xs sm:text-sm
     {achievement.completed
 				? 'bg-galaxy_purple-650 hover:border-galaxy_purple-650 hover:bg-galaxy_purple-750'
 				: 'bg-galaxy_purple-800 hover:border-galaxy_purple-650 hover:bg-galaxy_purple-750'}"
@@ -86,7 +86,7 @@
 					<a
 						href="/database/achievements/{achievement.id}"
 						class="group flex items-center text-off_white hover:text-galaxy_purple-250"
-                        aria-label={`View the achievement "${achievement.name}" in the database`}
+						aria-label={`View the achievement "${achievement.name}" in the database`}
 					>
 						<Database class="h-4 w-4 sm:h-5 sm:w-5" />
 						<ArrowUpRight class="h-6 w-6 group-hover:-translate-y-0.5" />
