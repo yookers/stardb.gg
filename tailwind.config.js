@@ -58,7 +58,7 @@ export default {
 			},
 			keyframes: {
 				wiggle: {
-					'0%, 100$': { transform: 'translateX(0)' },
+					'0%, 100%': { transform: 'translateX(0)' },
 					'15%, 45%, 75%': { transform: 'translateX(-5px)' },
 					'30%, 60%': { transform: 'translateX(5px)' }
 				}

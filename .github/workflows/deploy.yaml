@@ -7,9 +7,9 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     env:
-      PUBLIC_RES_API_URL: $PUBLIC_RES_API_URL
-      PUBLIC_SERVER_API_URL: $PUBLIC_SERVER_API_URL
-      PRIVATE_SERVER_API_URL: $PRIVATE_SERVER_API_URL
+      PUBLIC_RES_API_URL: ${{ vars.PUBLIC_RES_API_URL }}
+      PUBLIC_SERVER_API_URL: ${{ vars.PUBLIC_SERVER_API_URL }}
+      PRIVATE_SERVER_API_URL: ${{ vars.PRIVATE_SERVER_API_URL }}
       PRIVATE_API_KEY: ${{ secrets.API_KEY }}
 
     steps:

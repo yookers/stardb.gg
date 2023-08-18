@@ -100,7 +100,6 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 
 		return { achievementsData: achievementsData.series, seriesData, selectedLanguageID };
 	} catch (error) {
-		console.log(error);
 		return { error: { status: 400, message: 'Oops! Something went wrong. Please try again later. :(' } };
 	}
 }) satisfies PageServerLoad;
