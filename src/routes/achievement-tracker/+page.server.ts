@@ -1,5 +1,6 @@
 import type { PageServerLoad } from './$types';
 import type { TrackerAchievement, AchievementsGroupedData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
+import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { PRIVATE_API_KEY, PRIVATE_SERVER_API_URL } from '$env/static/private';
 
 export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => {
@@ -10,15 +11,18 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 			: `${PRIVATE_SERVER_API_URL}/achievement-tracker`;
 
 		// Prevent fetch waterfalls by fetching all data in parallel
-		const achievementPromise = fetch(apiUrl);
+		const achievementPromise = fetch(apiUrl, {
+            headers: {
+                authorization: `ApiKey ${PRIVATE_API_KEY}`
+            }
+        });
 
 		let completedPromise: Promise<Response> | undefined;
 		if (locals.user) {
 			const id = cookies.get('id');
-			completedPromise = fetch(`${PRIVATE_SERVER_API_URL}/users/me/achievements`, {
+			completedPromise = fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements`, {
 				headers: {
 					cookie: `id=${id}`,
-                    authorization: `ApiKey ${PRIVATE_API_KEY}`
 				}
 			});
 		}

@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="relative z-[1] rounded-xl border-2 text-xs transition-all duration-300 hover:scale-102 sm:text-sm
+	class="relative z-[1] rounded-xl border-2 text-xs transition-all overflow-hidden duration-300 hover:scale-102 sm:text-sm
     {achievement.completed
 		? 'border-galaxy_purple-650 bg-galaxy_purple-650 hover:border-galaxy_purple-750 hover:bg-galaxy_purple-750'
 		: 'border-galaxy_purple-650 bg-galaxy_purple-800 hover:bg-galaxy_purple-750'}"

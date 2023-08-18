@@ -37,7 +37,6 @@ export const load = (async ({ fetch, url }) => {
             headers: {
                 authorization: `ApiKey ${PRIVATE_API_KEY}`
         }});
-        
 		const data = await response.json();
 
 		if (!response.ok) {
