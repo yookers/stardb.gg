@@ -2,9 +2,9 @@
 	import { Pencil, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import type { Achievement } from '$types';
+	import type { DatabaseAchievement } from '$types';
 
-	export let achievementData: Achievement;
+	export let achievementData: DatabaseAchievement;
 	let showCard = true;
 </script>
 
@@ -40,12 +40,23 @@
 
 			<div class="flex w-full flex-col border-t-2 border-galaxy_purple-600 px-6 pt-2">
 				<p>How to Obtain:</p>
-				<p class="font-normal">{achievementData.comment}</p>
+				{#if achievementData.comment}
+					<p class="font-normal">{achievementData.comment}</p>
+				{:else}
+					<p class="font-normal">Trivial or extremely easy to obtain. Requires no further comment.</p>
+				{/if}
 			</div>
 
 			<div class="flex w-full flex-col border-t-2 border-galaxy_purple-600 px-6 pt-2">
 				<p>Reference:</p>
-				<p class="font-normal">{achievementData.reference}</p>
+				{#if achievementData.reference}
+					<p class="font-normal">{achievementData.reference}</p>
+				{:else}
+					<p class="font-normal">
+						Missing or no specific pop-cultural reference.
+                        <!--  If you have a suggestion, please leave your comment below. -->
+					</p>
+				{/if}
 			</div>
 		</div>
 	{/if}

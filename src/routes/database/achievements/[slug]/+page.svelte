@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Information from './InformationCard.svelte';
+    //import VideoCard from './VideoCard.svelte';
 	import MetadataCard from './MetadataCard.svelte';
-	import type { Achievement } from '$types';
+	import type { DatabaseAchievement } from '$types';
 
 	export let data;
-	const achievementData: Achievement = data.achievementData;
+	const achievementData: DatabaseAchievement = data.achievementData;
 </script>
 
 <svelte:head>
@@ -24,7 +25,7 @@
 		</div>
 		<div class="flex flex-col space-y-4 sm:space-y-6">
 			<Information {achievementData} />
-			<MetadataCard {achievementData} />
+            <MetadataCard {achievementData} />
 		</div>
 	</div>
 </main>

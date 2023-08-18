@@ -2,10 +2,10 @@
 	import { Braces, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import type { Achievement } from '$types';
+	import type { DatabaseAchievement } from '$types';
 
-	export let achievementData: Achievement;
-	let showCard = true;
+	export let achievementData: DatabaseAchievement;
+	let showCard = false;
 </script>
 
 <div

@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
-import type { Achievement } from '$types';
+import type { DatabaseAchievement } from '$types';
 
 export const load = (async ({ fetch, params }) => {
 	try {
@@ -8,7 +8,7 @@ export const load = (async ({ fetch, params }) => {
 		if (!response.ok) {
 			throw new Error('Oops! Something went wrong.');
 		}
-		const achievementData: Achievement = await response.json();
+		const achievementData: DatabaseAchievement = await response.json();
 		return {
 			achievementData
 		};

@@ -6,6 +6,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_RES_API_URL: $PUBLIC_RES_API_URL
 
     steps:
       - name: Checkout Source Code

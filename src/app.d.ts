@@ -14,7 +14,24 @@ declare global {
 
 export {};
 
-export type Achievement = {
+export type DatabaseAchievement = {
+    id: number;
+    series: number;
+    series_name: string;
+    name: string;
+    description: string;
+    jades: number;
+    hidden: boolean;
+    version: string;
+    comment?: string;
+    reference?: string;
+    difficulty?: string;
+    video?: string;
+    gacha: boolean;
+    percent: number;
+}
+
+export type TrackerAchievement = {
 	id: number;
 	series: number;
 	series_name: string;
@@ -23,17 +40,14 @@ export type Achievement = {
 	jades: number;
 	hidden: boolean;
 	version: string;
-	comment?: string;
-	reference?: string;
 	difficulty?: string;
 	gacha: boolean;
-	set: number;
 	percent: number;
 	completed?: boolean;
 };
 
 export type AchievementGroup = {
-	achievements: Achievement[];
+	achievements: TrackerAchievement[];
 	completed_group_id?: number | undefined;
 };
 
