@@ -11,7 +11,7 @@ jobs:
       PUBLIC_SERVER_API_URL: https://stardb.gg/api
       PRIVATE_SERVER_API_URL: https://stardb.gg/private
       PRIVATE_API_KEY: ${{ secrets.API_KEY }}
-      ORIGIN: https://stardb.gg/
+      ORIGIN: https://stardb.gg
 
     steps:
       - name: Checkout Source Code
