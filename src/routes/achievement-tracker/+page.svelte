@@ -14,12 +14,12 @@
 	import PopUpMessage from '$components/PopUpMessage.svelte';
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
-	import type { Achievement, AchievementGroup, Series, SeriesSummary, SeriesData, SelectedSeries } from '$types';
 	import { AchievementDifficulty, MessageType } from '$types';
 	import { languages } from '../store';
 	import { get } from 'svelte/store';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
+    import type { TrackerAchievement, AchievementGroup, Series, SeriesSummary, SeriesData, SelectedSeries } from '$types';
 
 	// `data` also contains the same information as $page.data
 	export let data;
@@ -91,6 +91,12 @@
 		}
 	};
 
+    function storeSettings(key: string, value: string | number) {
+        const settings = JSON.parse(localStorage.getItem('settings') || '{}');
+        settings['achievement-tracker'][key] = value;
+        localStorage.setItem('settings', JSON.stringify(settings));
+    }
+
 	afterUpdate(() => {
 		if (snapshotScroll > 0) {
 			window.scrollTo(0, snapshotScroll);
@@ -107,7 +113,7 @@
 				return;
 			}
 			series.achievements.forEach((group: AchievementGroup) => {
-				group.achievements.forEach((achievement: Achievement) => {
+				group.achievements.forEach((achievement: TrackerAchievement) => {
 					if (completedAchievements.includes(achievement.id)) {
 						achievement.completed = true;
 						if (group.achievements.length > 1) {
@@ -126,7 +132,7 @@
 	}
 
 	// Server/local storage
-	async function storeServerData(achievement: Achievement) {
+	async function storeServerData(achievement: TrackerAchievement) {
 		try {
 			const method = achievement.completed ? 'PUT' : 'DELETE';
 			const response = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements/${achievement.id}`, { method });
@@ -141,7 +147,7 @@
 		}
 	}
 
-	function storeLocalData(achievement: Achievement, action: 'ADD' | 'REMOVE' = 'ADD') {
+	function storeLocalData(achievement: TrackerAchievement, action: 'ADD' | 'REMOVE' = 'ADD') {
 		let completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') || '[]');
 
 		if (achievement.completed) {
@@ -153,7 +159,7 @@
 		localStorage.setItem('completed_achievements', JSON.stringify(completedAchievements));
 	}
 
-	function updateAchievementAndJadeCount(achievement: Achievement, increment: boolean) {
+	function updateAchievementAndJadeCount(achievement: TrackerAchievement, increment: boolean) {
 		// Find the corresponding series
 		const series = seriesData.series.find((s) => s.name === achievement.series_name);
 
@@ -178,7 +184,7 @@
 		achievementsData = [...achievementsData];
 	}
 
-	async function handleSingleToggleCompletion(achievement: Achievement) {
+	async function handleSingleToggleCompletion(achievement: TrackerAchievement) {
 		const previouslyCompleted = achievement.completed ?? true;
 		achievement.completed = !achievement.completed;
 		updateAchievementAndJadeCount(achievement, !previouslyCompleted);
@@ -199,7 +205,7 @@
 	}
 
 	// updateAchievementAndJadeCount automatically updates the achievementsData
-	async function handleGroupToggleCompletion(group: AchievementGroup, achievement: Achievement) {
+	async function handleGroupToggleCompletion(group: AchievementGroup, achievement: TrackerAchievement) {
 		let previouslyCompleted = achievement.completed ?? true;
 		const previouslyCompletedGroupID = group.completed_group_id;
 		// If the clicked achievement is already completed

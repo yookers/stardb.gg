@@ -1,13 +1,13 @@
 import type { PageServerLoad } from './$types';
-import type { Achievement, AchievementsGroupedData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
-import { PUBLIC_SERVER_API_URL } from '$env/static/public';
+import type { TrackerAchievement, AchievementsGroupedData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
+import { PRIVATE_API_KEY, PRIVATE_SERVER_API_URL } from '$env/static/private';
 
 export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => {
 	try {
 		const selectedLanguageID = url.searchParams.get('lang');
 		const apiUrl = selectedLanguageID
-			? `${PUBLIC_SERVER_API_URL}/achievements?layout=grouped&lang=${selectedLanguageID}`
-			: `${PUBLIC_SERVER_API_URL}/achievements?layout=grouped`;
+			? `${PRIVATE_SERVER_API_URL}/achievement-tracker?lang=${selectedLanguageID}`
+			: `${PRIVATE_SERVER_API_URL}/achievement-tracker`;
 
 		// Prevent fetch waterfalls by fetching all data in parallel
 		const achievementPromise = fetch(apiUrl);
@@ -15,9 +15,10 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		let completedPromise: Promise<Response> | undefined;
 		if (locals.user) {
 			const id = cookies.get('id');
-			completedPromise = fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements`, {
+			completedPromise = fetch(`${PRIVATE_SERVER_API_URL}/users/me/achievements`, {
 				headers: {
-					cookie: `id=${id}`
+					cookie: `id=${id}`,
+                    authorization: `ApiKey ${PRIVATE_API_KEY}`
 				}
 			});
 		}
@@ -72,7 +73,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 
 			series.achievements = series.achievements.map((achievementGroup: AchievementGroup) => {
 				let completedGroupID: number | undefined;
-				const updatedAchievements = achievementGroup.achievements.map((achievement: Achievement) => {
+				const updatedAchievements = achievementGroup.achievements.map((achievement: TrackerAchievement) => {
 					if (completedAchievements.includes(achievement.id)) {
 						achievement.completed = true;
 						if (achievementGroup.achievements.length > 1) {

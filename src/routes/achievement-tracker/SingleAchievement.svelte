@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { PUBLIC_RES_API_URL } from '$env/static/public';
 	import { Database, ArrowUpRight } from 'lucide-svelte';
-	import type { Achievement } from '$types';
+	import type { TrackerAchievement } from '$types';
 
-	export let achievement: Achievement;
-	export let handleSingleToggleCompletion: (achievement: Achievement) => void;
+	export let achievement: TrackerAchievement;
+	export let handleSingleToggleCompletion: (achievement: TrackerAchievement) => void;
 </script>
 
 <div
@@ -80,6 +80,7 @@
 			<a
 				href="/database/achievements/{achievement.id}"
 				class="group flex items-center text-off_white hover:text-galaxy_purple-250"
+                aria-label={`View the achievement "${achievement.name}" in the database`}
 			>
 				<Database class="h-4 w-4 sm:h-5 sm:w-5" />
 				<ArrowUpRight class="h-6 w-6 group-hover:-translate-y-0.5" />
