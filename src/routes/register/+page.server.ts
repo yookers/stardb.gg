@@ -22,7 +22,10 @@ const register: Action = async ({ request, fetch, cookies }) => {
 	if (email) {
 		payload.email = email;
 	}
-
+    
+    console.log('payload', payload);
+    console.log('PRIVATE_SERVER_API_URL', PRIVATE_SERVER_API_URL);
+    console.log('PRIVATE_API_KEY', PRIVATE_API_KEY);
 	const response = await fetch(`${PRIVATE_SERVER_API_URL}/register`, {
 		method: 'POST',
 		headers: {
@@ -32,8 +35,10 @@ const register: Action = async ({ request, fetch, cookies }) => {
 		body: JSON.stringify(payload)
 	});
 
+    console.log('response', response);
 	if (response.ok) {
 		const setCookieHeader = response.headers.get('Set-Cookie');
+        console.log(setCookieHeader);
 		if (setCookieHeader) {
 			const parsed = cookie.parse(setCookieHeader);
 			if (parsed.id && parsed['Max-Age']) {

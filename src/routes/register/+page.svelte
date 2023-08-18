@@ -14,7 +14,6 @@
 	let email = '';
 	let showNotification = false;
 	let messageType: MessageType;
-	let errorResponse: ErrorResponse;
 	let importLocalAchievements = false;
 	let agreeToTerms = false;
 
