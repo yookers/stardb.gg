@@ -33,7 +33,10 @@
 	</button>
 	<!-- Card Content-->
 	{#if showCard}
-		<div class="flex items-center justify-start px-3 pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
+		<div
+			class="flex items-center justify-start px-1 pb-1 pt-2 sm:px-3 sm:pb-3"
+			transition:slide={{ duration: 300, easing: cubicInOut }}
+		>
 			<!-- (pb-[56.25%]) 16:9 Aspect ratio  -->
 			<div class="relative flex w-full pb-[56.25%]">
 				<iframe

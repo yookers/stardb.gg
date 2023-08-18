@@ -477,7 +477,7 @@
 				<p>Name</p>
 				<p>% Players Obtained</p>
 			</div>
-			<div class="space-y-1.5 px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
+			<div class="space-y-1.5 px-2 sm:px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
 				{#if filteredAchievements.length === 0}
 					<p class="py-4 text-center text-4xl font-bold">(◕︿◕✿)</p>
 				{/if}
