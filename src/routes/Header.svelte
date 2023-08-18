@@ -21,10 +21,11 @@
 			const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/auth/logout`, { method: 'POST' });
 			if (res.ok) {
 				goto('/');
+			} else {
+				goto('/logout');
 			}
-			goto('/?logout');
 		} catch (error) {
-			goto('/?logout');
+			goto('/logout');
 		}
 	}
 
@@ -44,7 +45,7 @@
 		</button>
 		<a
 			href="/"
-			aria-label="StarDB.GG home page"
+			aria-label="StarDB.GG Home page"
 			class="ml-3 flex items-center space-x-1.5 stroke-off_white text-off_white hover:translate-y-0.5 hover:stroke-galaxy_purple-250 hover:text-galaxy_purple-250 md:pl-5"
 		>
 			<Logo class="w-5 overflow-visible fill-off_white stroke-[7]" />

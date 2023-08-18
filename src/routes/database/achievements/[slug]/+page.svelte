@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Information from './InformationCard.svelte';
-    //import VideoCard from './VideoCard.svelte';
+	import VideoCard from './VideoCard.svelte';
 	import MetadataCard from './MetadataCard.svelte';
 	import type { DatabaseAchievement } from '$types';
 
@@ -25,7 +25,10 @@
 		</div>
 		<div class="flex flex-col space-y-4 sm:space-y-6">
 			<Information {achievementData} />
-            <MetadataCard {achievementData} />
+			{#if achievementData.video}
+				<VideoCard videoURL={achievementData.video} />
+			{/if}
+			<MetadataCard {achievementData} />
 		</div>
 	</div>
 </main>

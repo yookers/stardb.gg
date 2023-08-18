@@ -1,6 +1,6 @@
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { PRIVATE_SERVER_API_URL } from '$env/static/private';
-import type { Handle, HandleFetch } from '@sveltejs/kit';
+import { redirect, type Handle, type HandleFetch } from '@sveltejs/kit';
 
 export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 	const mode = import.meta.env.MODE;
@@ -36,13 +36,15 @@ export const handle: Handle = async ({ event, resolve }) => {
 			}
 		}
 		// If server doesn't respond to /auth/logout, manually delete the cookie
-		const logOut = event.url.searchParams.has('logout');
+		const logOut = event.url.pathname.includes('/logout');
 		if (logOut) {
 			event.cookies.delete('id', { path: '/' });
 			event.locals.user = undefined;
+			throw redirect(301, '/');
 		}
 	} else if (!id) {
 		event.locals.user = undefined;
 	}
+    
 	return await resolve(event);
 };
