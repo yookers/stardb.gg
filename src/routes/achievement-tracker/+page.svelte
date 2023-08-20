@@ -55,6 +55,7 @@
 	let observer: { disconnect: () => void } | null = null;
 
 	let snapshotScroll: number;
+	let isSnapshot = false;
 
 	onMount(async () => {
 		// Get languages from server and cache them
@@ -77,6 +78,7 @@
 			searchQuery,
 			sortOrder,
 			shownCount,
+			shownAchievements,
 			window.scrollY
 		],
 		restore: (value) => {
@@ -88,18 +90,14 @@
 			searchQuery = value[5];
 			sortOrder = value[6];
 			shownCount = value[7];
-			snapshotScroll = value[8];
+			shownAchievements = value[8];
+			snapshotScroll = value[9];
 		}
 	};
 
-	function storeSettings(key: string, value: string | number) {
-		const settings = JSON.parse(localStorage.getItem('settings') || '{}');
-		settings['achievement-tracker'][key] = value;
-		localStorage.setItem('settings', JSON.stringify(settings));
-	}
-
 	afterUpdate(() => {
-		if (snapshotScroll > 0) {
+		if (snapshotScroll) {
+			isSnapshot = true;
 			window.scrollTo(0, snapshotScroll);
 			snapshotScroll = 0;
 		}
@@ -356,22 +354,28 @@
 		}
 	}
 
-	$: filteredAchievements = sortByPercent(
-		flattenAchievements(
-			combinedFilters(
-				achievementsData,
-				showCompleted,
-				showIncomplete,
-				selectedSeries,
-				searchQuery,
-				selectedDifficulty,
-				showHidden
-			)
-		),
-		sortOrder
-	);
-
-	$: shownAchievements = filteredAchievements.slice(0, shownCount);
+	$: {
+		// Hacky way to prevent filteredAchievements from running when coming back from a snapshot (ie. user comes back from the database)
+		// TODO: Replace with pagination in the future
+		if (!isSnapshot) {
+			filteredAchievements = sortByPercent(
+				flattenAchievements(
+					combinedFilters(
+						achievementsData,
+						showCompleted,
+						showIncomplete,
+						selectedSeries,
+						searchQuery,
+						selectedDifficulty,
+						showHidden
+					)
+				),
+				sortOrder
+			);
+			shownAchievements = filteredAchievements.slice(0, shownCount);
+		}
+		isSnapshot = false;
+	}
 
 	// Intersection Observer lazy loading
 	function resetLazyScroll() {
@@ -423,7 +427,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="xl:w-main flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6">
+	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-main">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete
@@ -477,7 +481,7 @@
 				<p>Name</p>
 				<p>% Players Obtained</p>
 			</div>
-			<div class="space-y-1.5 px-2 sm:px-3 pb-3 md:space-y-3 md:px-6 md:pb-6">
+			<div class="space-y-1.5 px-2 pb-3 sm:px-3 md:space-y-3 md:px-6 md:pb-6">
 				{#if filteredAchievements.length === 0}
 					<p class="py-4 text-center text-4xl font-bold">(◕︿◕✿)</p>
 				{/if}
@@ -501,7 +505,7 @@
 </main>
 
 <div
-	class="fixed bottom-16 right-8 z-[3] rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:scale-105 hover:bg-galaxy_purple-450"
+	class="fixed bottom-16 right-8 z-[3] rounded-xl border-2 border-galaxy_purple-500 bg-galaxy_purple-550 hover:bg-galaxy_purple-450"
 >
 	<button
 		class="flex h-12 w-12 items-center justify-center rounded-lg md:h-14 md:w-14"

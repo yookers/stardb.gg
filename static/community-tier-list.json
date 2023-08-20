@@ -1,0 +1,302 @@
+[
+	{
+		"character": 1203,
+		"character_name": "Luocha",
+		"character_path": "Abundance",
+		"character_element": "Imaginary",
+		"eidolon": 0,
+		"average": 9.812121212121212,
+		"variance": 0.2144863266814487,
+		"votes": 165
+	},
+	{
+		"character": 1102,
+		"character_name": "Seele",
+		"character_path": "The Hunt",
+		"character_element": "Quantum",
+		"eidolon": 0,
+		"average": 9.678571428571429,
+		"variance": 0.39905902480752686,
+		"votes": 168
+	},
+	{
+		"character": 1101,
+		"character_name": "Bronya",
+		"character_path": "Harmony",
+		"character_element": "Wind",
+		"eidolon": 0,
+		"average": 9.515337423312884,
+		"variance": 1.0043929409982577,
+		"votes": 163
+	},
+	{
+		"character": 1006,
+		"character_name": "Silver Wolf",
+		"character_path": "Nihility",
+		"character_element": "Quantum",
+		"eidolon": 0,
+		"average": 9.43103448275862,
+		"variance": 0.7206497907115806,
+		"votes": 174
+	},
+	{
+		"character": 1205,
+		"character_name": "Blade",
+		"character_path": "Destruction",
+		"character_element": "Wind",
+		"eidolon": 0,
+		"average": 9.290322580645162,
+		"variance": 0.674905739421868,
+		"votes": 155
+	},
+	{
+		"character": 1005,
+		"character_name": "Kafka",
+		"character_path": "Nihility",
+		"character_element": "Lightning",
+		"eidolon": 0,
+		"average": 9.134751773049645,
+		"variance": 1.3745694022289758,
+		"votes": 141
+	},
+	{
+		"character": 1202,
+		"character_name": "Tingyun",
+		"character_path": "Harmony",
+		"character_element": "Lightning",
+		"eidolon": 4,
+		"average": 8.755102040816327,
+		"variance": 1.0884353741496593,
+		"votes": 196
+	},
+	{
+		"character": 1104,
+		"character_name": "Gepard",
+		"character_path": "Preservation",
+		"character_element": "Ice",
+		"eidolon": 0,
+		"average": 8.58108108108108,
+		"variance": 1.18385732671447,
+		"votes": 148
+	},
+	{
+		"character": 1107,
+		"character_name": "Clara",
+		"character_path": "Destruction",
+		"character_element": "Physical",
+		"eidolon": 0,
+		"average": 7.842465753424658,
+		"variance": 1.8991497401983937,
+		"votes": 146
+	},
+	{
+		"character": 1004,
+		"character_name": "Welt",
+		"character_path": "Nihility",
+		"character_element": "Imaginary",
+		"eidolon": 0,
+		"average": 7.772058823529413,
+		"variance": 1.658769063180828,
+		"votes": 136
+	},
+	{
+		"character": 1008,
+		"character_name": "Arlan",
+		"character_path": "Destruction",
+		"character_element": "Lightning",
+		"eidolon": 4,
+		"average": 7.738219895287958,
+		"variance": 1.8679526040231484,
+		"votes": 191
+	},
+	{
+		"character": 1211,
+		"character_name": "Bailu",
+		"character_path": "Abundance",
+		"character_element": "Lightning",
+		"eidolon": 0,
+		"average": 7.73248407643312,
+		"variance": 1.8125918667319936,
+		"votes": 157
+	},
+	{
+		"character": 1106,
+		"character_name": "Pela",
+		"character_path": "Nihility",
+		"character_element": "Ice",
+		"eidolon": 4,
+		"average": 7.681318681318682,
+		"variance": 1.643737477991621,
+		"votes": 182
+	},
+	{
+		"character": 1204,
+		"character_name": "Jing Yuan",
+		"character_path": "Erudition",
+		"character_element": "Lightning",
+		"eidolon": 0,
+		"average": 7.6075949367088604,
+		"variance": 2.329113924050633,
+		"votes": 158
+	},
+	{
+		"character": 8003,
+		"character_name": "Trailblazer • Fire",
+		"character_path": "Preservation",
+		"character_element": "Fire",
+		"eidolon": 6,
+		"average": 7.459183673469389,
+		"variance": 2.0444793301936164,
+		"votes": 196
+	},
+	{
+		"character": 1201,
+		"character_name": "Qingque",
+		"character_path": "Erudition",
+		"character_element": "Quantum",
+		"eidolon": 4,
+		"average": 7.116564417177914,
+		"variance": 2.9307733090964176,
+		"votes": 163
+	},
+	{
+		"character": 1209,
+		"character_name": "Yanqing",
+		"character_path": "The Hunt",
+		"character_element": "Ice",
+		"eidolon": 0,
+		"average": 7.112676056338028,
+		"variance": 2.2709020077914297,
+		"votes": 142
+	},
+	{
+		"character": 1206,
+		"character_name": "Sushang",
+		"character_path": "The Hunt",
+		"character_element": "Physical",
+		"eidolon": 4,
+		"average": 6.9,
+		"variance": 2.3421383647798746,
+		"votes": 160
+	},
+	{
+		"character": 1105,
+		"character_name": "Natasha",
+		"character_path": "Abundance",
+		"character_element": "Physical",
+		"eidolon": 4,
+		"average": 6.891089108910891,
+		"variance": 2.216935126348455,
+		"votes": 202
+	},
+	{
+		"character": 1207,
+		"character_name": "Yukong",
+		"character_path": "Harmony",
+		"character_element": "Imaginary",
+		"eidolon": 4,
+		"average": 6.784810126582278,
+		"variance": 2.5266467790050786,
+		"votes": 158
+	},
+	{
+		"character": 1111,
+		"character_name": "Luka",
+		"character_path": "Nihility",
+		"character_element": "Physical",
+		"eidolon": 4,
+		"average": 6.725806451612903,
+		"variance": 2.623393653291372,
+		"votes": 124
+	},
+	{
+		"character": 1108,
+		"character_name": "Sampo",
+		"character_path": "Nihility",
+		"character_element": "Wind",
+		"eidolon": 4,
+		"average": 6.566037735849057,
+		"variance": 2.9433962264150946,
+		"votes": 159
+	},
+	{
+		"character": 1001,
+		"character_name": "March 7th",
+		"character_path": "Preservation",
+		"character_element": "Ice",
+		"eidolon": 4,
+		"average": 6.547872340425532,
+		"variance": 2.7837922403003743,
+		"votes": 188
+	},
+	{
+		"character": 1103,
+		"character_name": "Serval",
+		"character_path": "Erudition",
+		"character_element": "Lightning",
+		"eidolon": 4,
+		"average": 6.288235294117647,
+		"variance": 2.3247128437173687,
+		"votes": 170
+	},
+	{
+		"character": 1002,
+		"character_name": "Dan Heng",
+		"character_path": "The Hunt",
+		"character_element": "Wind",
+		"eidolon": 4,
+		"average": 6.203488372093023,
+		"variance": 2.2682918536651684,
+		"votes": 172
+	},
+	{
+		"character": 1003,
+		"character_name": "Himeko",
+		"character_path": "Erudition",
+		"character_element": "Fire",
+		"eidolon": 0,
+		"average": 5.624161073825503,
+		"variance": 2.8848177036096505,
+		"votes": 149
+	},
+	{
+		"character": 1109,
+		"character_name": "Hook",
+		"character_path": "Destruction",
+		"character_element": "Fire",
+		"eidolon": 4,
+		"average": 5.4206896551724135,
+		"variance": 2.6898467432950195,
+		"votes": 145
+	},
+	{
+		"character": 8001,
+		"character_name": "Trailblazer • Physical",
+		"character_path": "Destruction",
+		"character_element": "Physical",
+		"eidolon": 6,
+		"average": 4.72,
+		"variance": 3.7889655172413783,
+		"votes": 175
+	},
+	{
+		"character": 1013,
+		"character_name": "Herta",
+		"character_path": "Erudition",
+		"character_element": "Ice",
+		"eidolon": 4,
+		"average": 4.270440251572327,
+		"variance": 3.8188042353315823,
+		"votes": 159
+	},
+	{
+		"character": 1009,
+		"character_name": "Asta",
+		"character_path": "Harmony",
+		"character_element": "Fire",
+		"eidolon": 4,
+		"average": 3.3846153846153846,
+		"variance": 3.886240520043335,
+		"votes": 143
+	}
+]

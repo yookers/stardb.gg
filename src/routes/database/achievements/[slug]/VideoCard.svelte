@@ -8,7 +8,7 @@
 
 	function formatURL(url: string) {
 		const videoID = url.split('/').pop();
-		return `https://www.youtube-nocookie.com/embed/${videoID}?&modestbranding=1&rel=0&enablejsapi=1`;
+		return `https://www.youtube-nocookie.com/embed/${videoID}?rel=0&enablejsapi=1`;
 	}
 </script>
 

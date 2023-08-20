@@ -18,7 +18,7 @@
 		style="width: {achievement.percent * 100}%"
 	></div>
 	<button
-		class="w-full pt-3"
+		class="w-full pb-2 pt-3"
 		on:click={() => handleSingleToggleCompletion(achievement)}
 		aria-label="Toggle achievement completion"
 	>
@@ -37,7 +37,7 @@
 		</div>
 	</button>
 
-	<div class="px-4 pb-2.5 pt-2">
+	<div class="px-4 pb-2.5">
 		<p class="px-1">{achievement.description}</p>
 
 		<div class="flex justify-between space-x-1 overflow-x-auto pt-4 sm:space-x-2">

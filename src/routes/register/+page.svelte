@@ -5,8 +5,8 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import { enhance } from '$app/forms';
-	import type { ErrorResponse } from '$types';
 	import type { ActionData } from './$types';
+	import { Lock } from 'lucide-svelte';
 
 	let username = '';
 	let password = '';
@@ -71,11 +71,14 @@
 
 <main class="flex h-full flex-col items-center justify-center py-8">
 	<div class="flex w-full flex-col space-y-4 px-4 sm:px-12 md:w-[600px] md:px-0">
-		<p class="pl-2 text-3xl font-bold text-off_white">Register an account</p>
+		<div class="flex items-center text-off_white">
+			<Lock class="mr-2 hidden h-7 w-7 shrink-0 sm:block" />
+			<p class="pl-2 text-3xl font-bold">Register an account</p>
+		</div>
 		<div
 			class="w-full rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 text-sm hover:border-galaxy_purple-700 md:text-base"
 		>
-			<form class="flex flex-col items-center text-off_white" action="?/register" method="POST" use:enhance>
+			<form class="flex flex-col items-center text-off_white" method="POST" use:enhance>
 				<div class="flex w-full flex-col space-y-6 px-8 pb-8 pt-8 md:px-10">
 					<div class="flex w-full flex-col">
 						{#if form?.usernameTaken}

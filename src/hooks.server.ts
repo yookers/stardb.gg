@@ -45,6 +45,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	} else if (!id) {
 		event.locals.user = undefined;
 	}
-    
+
 	return await resolve(event);
 };

@@ -33,7 +33,9 @@
 
 	{#if showCard}
 		<div class="select-none overflow-auto pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
-			<div class="flex flex-col space-y-3 px-5 pb-3 text-base md:flex-row md:justify-between md:space-y-0 lg:text-lg">
+			<div
+				class="flex flex-col space-x-0 space-y-3 px-5 pb-3 text-base md:flex-row md:justify-between md:space-x-2 md:space-y-0 lg:text-lg"
+			>
 				<div class="flex space-x-2">
 					<button
 						class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-galaxy_purple-400 font-extrabold text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-space_dark md:w-20"

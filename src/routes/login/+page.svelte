@@ -3,6 +3,7 @@
 	import { MessageType } from '$types';
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import { KeyRound } from 'lucide-svelte';
 
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	let username = '';
@@ -49,7 +50,11 @@
 
 <main class="flex h-full flex-col items-center justify-center py-8">
 	<div class="flex w-full flex-col space-y-4 px-4 sm:px-12 md:w-[600px] md:px-0">
-		<p class="pl-2 text-3xl font-bold text-off_white">Login to account</p>
+		<div class="flex items-center text-off_white">
+			<KeyRound class="mr-2 hidden h-7 w-7 shrink-0 sm:block" />
+			<p class="pl-2 text-3xl font-bold">Login to account</p>
+		</div>
+
 		<div
 			class="w-full rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 text-sm hover:border-galaxy_purple-600 md:text-base"
 		>

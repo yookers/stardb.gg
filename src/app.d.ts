@@ -218,6 +218,17 @@ export type MihomoProfileData = {
 	updated_at: string; // UTC format
 };
 
+export type TierListCharacter = {
+	character: number;
+	character_name: string;
+	character_path: string;
+	character_element: string;
+	eidolon: number;
+	average: number;
+	variance: number;
+	votes: number;
+};
+
 export type ErrorResponse = {
 	status: number;
 	message: string;

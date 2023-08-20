@@ -96,15 +96,26 @@
 						</button>
 					</div>
 					<div class="hidden px-3 text-lg text-galaxy_purple-650 md:block">|</div>
-					<button
-						class="h-8 w-24 flex-shrink-0 items-center justify-center rounded-full border-2
+					<div class="flex space-x-2">
+						<button
+							class="h-8 w-24 flex-shrink-0 items-center justify-center rounded-full border-2
                         {showHidden
-							? 'border-transparent bg-galaxy_purple-300 text-galaxy_purple-750'
-							: 'border-galaxy_purple-300 bg-galaxy_purple-750 text-galaxy_purple-300'}"
-						on:click={() => (showHidden = !showHidden)}
-					>
-						<p>Hidden</p>
-					</button>
+								? 'border-transparent bg-galaxy_purple-300 text-galaxy_purple-750'
+								: 'border-galaxy_purple-300 bg-galaxy_purple-750 text-galaxy_purple-300'}"
+							on:click={() => (showHidden = !showHidden)}
+						>
+							<p>Hidden</p>
+						</button>
+						<button
+							class="h-8 w-24 flex-shrink-0 items-center justify-center rounded-full border-2
+                    {showHidden
+								? 'border-transparent bg-galaxy_purple-300 text-galaxy_purple-750'
+								: 'border-galaxy_purple-300 bg-galaxy_purple-750 text-galaxy_purple-300'}"
+							on:click={() => (showHidden = !showHidden)}
+						>
+							<p>Group</p>
+						</button>
+					</div>
 				</div>
 
 				<div class="flex flex-col space-y-3 font-bold sm:flex-row sm:items-center sm:space-x-2.5 sm:space-y-0">
