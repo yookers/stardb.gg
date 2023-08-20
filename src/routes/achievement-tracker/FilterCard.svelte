@@ -56,8 +56,9 @@
 	{#if showCard}
 		<div class="flex flex-col pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="flex flex-col space-y-3 px-5 pb-3 text-sm md:text-base">
+				<!-- space-y-1.5 and pb-1.5 to center and accomodate the horizontal scrollbar -->
 				<div class="flex flex-col space-y-3 overflow-auto font-bold md:flex-row md:items-center md:space-y-0">
-					<div class="flex space-x-2">
+					<div class="flex flex-wrap gap-2 gap-y-3">
 						<button
 							class="h-8 w-20 flex-shrink-0 items-center justify-center rounded-full border-2
                             {selectedDifficulty === AchievementDifficulty.ALL
@@ -105,15 +106,6 @@
 							on:click={() => (showHidden = !showHidden)}
 						>
 							<p>Hidden</p>
-						</button>
-						<button
-							class="h-8 w-24 flex-shrink-0 items-center justify-center rounded-full border-2
-                    {showHidden
-								? 'border-transparent bg-galaxy_purple-300 text-galaxy_purple-750'
-								: 'border-galaxy_purple-300 bg-galaxy_purple-750 text-galaxy_purple-300'}"
-							on:click={() => (showHidden = !showHidden)}
-						>
-							<p>Group</p>
 						</button>
 					</div>
 				</div>

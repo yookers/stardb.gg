@@ -18,11 +18,11 @@
 		style="width: {achievement.percent * 100}%"
 	></div>
 	<button
-		class="w-full pb-2 pt-3"
+		class="w-full pt-3"
 		on:click={() => handleSingleToggleCompletion(achievement)}
 		aria-label="Toggle achievement completion"
 	>
-		<div class="flex justify-between px-5">
+		<div class="flex justify-between px-5 pb-2">
 			<p class="pr-2 text-left text-sm font-bold md:text-base" class:line-through={achievement.completed}>
 				{achievement.name}
 			</p>
@@ -35,12 +35,13 @@
 				></div>
 			</div>
 		</div>
+		<div class="px-5 text-left">
+			<p>{achievement.description}</p>
+		</div>
 	</button>
 
-	<div class="px-4 pb-2.5">
-		<p class="px-1">{achievement.description}</p>
-
-		<div class="flex justify-between space-x-1 overflow-x-auto pt-4 sm:space-x-2">
+	<div class="px-4">
+		<div class="flex justify-between space-x-1 overflow-x-auto pb-2.5 pt-4 sm:space-x-2">
 			<div class="flex space-x-1 font-extrabold sm:space-x-2 md:space-x-3">
 				{#if achievement.version}
 					<div class="flex h-6 w-14 items-center justify-center rounded-full bg-galaxy_purple-750 text-off_white">
@@ -79,7 +80,7 @@
 			</div>
 			<a
 				href="/database/achievements/{achievement.id}"
-				class="group flex items-center text-off_white hover:text-galaxy_purple-250"
+				class="group flex items-center pl-1 text-off_white hover:text-galaxy_purple-250"
 				aria-label={`View the achievement "${achievement.name}" in the database`}
 			>
 				<Database class="h-4 w-4 sm:h-5 sm:w-5" />
