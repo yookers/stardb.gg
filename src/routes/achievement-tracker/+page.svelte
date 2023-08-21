@@ -403,6 +403,7 @@
 		name="description"
 		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."
 	/>
+    <link rel="canonical" href="https://stardb.gg/achievement-tracker" />
 </svelte:head>
 
 <main

@@ -138,6 +138,7 @@
 		name="description"
 		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
 	/>
+    <link rel="canonical" href="https://stardb.gg/leaderboard" />
 </svelte:head>
 
 <main
