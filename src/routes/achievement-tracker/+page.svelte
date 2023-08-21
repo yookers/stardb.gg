@@ -78,7 +78,6 @@
 			searchQuery,
 			sortOrder,
 			shownCount,
-			shownAchievements,
 			window.scrollY
 		],
 		restore: (value) => {
@@ -90,8 +89,7 @@
 			searchQuery = value[5];
 			sortOrder = value[6];
 			shownCount = value[7];
-			shownAchievements = value[8];
-			snapshotScroll = value[9];
+			snapshotScroll = value[8];
 		}
 	};
 
