@@ -10,18 +10,11 @@ export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 		if (mode !== 'development') {
 			newUrl = request.url.replace(PRIVATE_SERVER_API_URL, 'http://localhost:8000/api');
 		}
-
-		// Create new headers with the 'x-api-key' included
-		const newHeaders = new Headers(request.headers);
-		newHeaders.set('x-api-key', PRIVATE_API_KEY);
-
+		// Set a new header with the 'x-api-key' included
+		request.headers.set('x-api-key', PRIVATE_API_KEY);
 		// Create a new request with the modified URL and headers
-		request = new Request(newUrl, {
-			...request, // Spread the existing request options
-			headers: newHeaders // Overwrite the headers with the new ones including the 'x-api-key'
-		});
+		request = new Request(newUrl, request);
 	}
-
 	return fetch(request);
 };
 

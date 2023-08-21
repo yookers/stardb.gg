@@ -24,17 +24,15 @@ export const actions = {
 			payload.email = email;
 		}
 
-		const response = await fetch(`${PRIVATE_SERVER_API_URL}/register`, {
+		const response = await fetch(`${PRIVATE_SERVER_API_URL}/users/auth/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(payload)
 		});
-
 		if (response.ok) {
 			const setCookieHeader = response.headers.get('Set-Cookie');
-			console.log(setCookieHeader);
 			if (setCookieHeader) {
 				const parsed = cookie.parse(setCookieHeader);
 				if (parsed.id && parsed['Max-Age']) {

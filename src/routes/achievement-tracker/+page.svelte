@@ -193,8 +193,6 @@
 				storeLocalData(achievement, previouslyCompleted ? 'REMOVE' : 'ADD');
 			}
 		} catch (error) {
-			console.error('Failed to update data:', error);
-
 			// Rollback UI change on error
 			achievement.completed = previouslyCompleted;
 			updateAchievementAndJadeCount(achievement, previouslyCompleted);
