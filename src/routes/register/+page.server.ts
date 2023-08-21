@@ -1,6 +1,6 @@
 import cookie from 'cookie';
 import { fail, redirect } from '@sveltejs/kit';
-import { PRIVATE_SERVER_API_URL, PRIVATE_API_KEY } from '$env/static/private';
+import { PRIVATE_SERVER_API_URL } from '$env/static/private';
 import type { Actions } from './$types';
 
 export const actions = {
@@ -27,8 +27,7 @@ export const actions = {
 		const response = await fetch(`${PRIVATE_SERVER_API_URL}/register`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
-				authorization: `ApiKey ${PRIVATE_API_KEY}`
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(payload)
 		});

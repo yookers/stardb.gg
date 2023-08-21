@@ -1,17 +1,27 @@
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
-import { PRIVATE_SERVER_API_URL } from '$env/static/private';
+import { PRIVATE_SERVER_API_URL, PRIVATE_API_KEY } from '$env/static/private';
 import { redirect, type Handle, type HandleFetch } from '@sveltejs/kit';
 
 export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 	const mode = import.meta.env.MODE;
-	if (mode !== 'development') {
-		// Clone the original request, but change the URL
-		if (request.url.startsWith(PUBLIC_SERVER_API_URL)) {
-			request = new Request(request.url.replace(PUBLIC_SERVER_API_URL, 'http://localhost:8000/api'), request);
-		} else if (request.url.startsWith(PRIVATE_SERVER_API_URL)) {
-			request = new Request(request.url.replace(PRIVATE_SERVER_API_URL, 'http://localhost:8001/private'), request);
+	if (request.url.startsWith(PRIVATE_SERVER_API_URL)) {
+		// Create a new URL based on the environment
+		let newUrl = request.url;
+		if (mode !== 'development') {
+			newUrl = request.url.replace(PRIVATE_SERVER_API_URL, 'http://localhost:8000/api');
 		}
+
+		// Create new headers with the 'x-api-key' included
+		const newHeaders = new Headers(request.headers);
+		newHeaders.set('x-api-key', PRIVATE_API_KEY);
+
+		// Create a new request with the modified URL and headers
+		request = new Request(newUrl, {
+			...request, // Spread the existing request options
+			headers: newHeaders // Overwrite the headers with the new ones including the 'x-api-key'
+		});
 	}
+
 	return fetch(request);
 };
 

@@ -35,7 +35,7 @@
 
 <div
 	class="z-[3] rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700
-    transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-700/95"
+    transition-all duration-300 sm:hover:scale-102 hover:bg-galaxy_purple-700/95"
 >
 	<!-- Card Title -->
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} filter card">

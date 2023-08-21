@@ -9,7 +9,7 @@ jobs:
     env:
       PUBLIC_RES_API_URL: https://stardb.b-cdn.net/static
       PUBLIC_SERVER_API_URL: https://stardb.gg/api
-      PRIVATE_SERVER_API_URL: https://stardb.gg/private
+      PRIVATE_SERVER_API_URL: https://stardb.gg/api
       PRIVATE_API_KEY: ${{ secrets.API_KEY }}
       ORIGIN: https://stardb.gg
 

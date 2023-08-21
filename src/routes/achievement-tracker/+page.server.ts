@@ -1,21 +1,17 @@
 import type { PageServerLoad } from './$types';
 import type { TrackerAchievement, AchievementsGroupedData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
-import { PRIVATE_API_KEY, PRIVATE_SERVER_API_URL } from '$env/static/private';
+import { PRIVATE_SERVER_API_URL } from '$env/static/private';
 
 export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => {
 	try {
 		const selectedLanguageID = url.searchParams.get('lang');
 		const apiUrl = selectedLanguageID
-			? `${PRIVATE_SERVER_API_URL}/achievement-tracker?lang=${selectedLanguageID}`
-			: `${PRIVATE_SERVER_API_URL}/achievement-tracker`;
+			? `${PRIVATE_SERVER_API_URL}/pages/achievement-tracker?lang=${selectedLanguageID}`
+			: `${PRIVATE_SERVER_API_URL}/pages/achievement-tracker`;
 
 		// Prevent fetch waterfalls by fetching all data in parallel
-		const achievementPromise = fetch(apiUrl, {
-			headers: {
-				authorization: `ApiKey ${PRIVATE_API_KEY}`
-			}
-		});
+		const achievementPromise = fetch(apiUrl);
 
 		let completedPromise: Promise<Response> | undefined;
 		if (locals.user) {

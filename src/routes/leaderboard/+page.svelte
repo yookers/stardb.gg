@@ -138,21 +138,21 @@
 		name="description"
 		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
 	/>
-    <link rel="canonical" href="https://stardb.gg/leaderboard" />
+	<link rel="canonical" href="https://stardb.gg/leaderboard" />
 </svelte:head>
 
 <main
-	class="flex w-full flex-col justify-center space-x-0 px-4 text-off_white sm:px-6 lg:px-24
-    {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
+	class="flex w-full flex-col justify-center space-x-0 space-y-3 px-2 text-off_white sm:space-y-4 sm:px-6 lg:px-24
+    {isScreenExpanded ? 'xl:flex-row xl:space-x-4 xl:space-y-6 xl:px-6' : 'xl:items-center xl:space-y-4'}"
 >
 	<!-- Column 1 -->
 	<div
 		class="w-full text-lg lg:text-xl
     {isScreenExpanded ? 'xl:w-side xl:pt-40' : 'xl:w-main'}"
 	>
-		<h1 class="pb-3 pt-4 text-xl font-bold sm:pt-6 md:text-3xl">Achievement Leaderboard</h1>
+		<h1 class="pb-2 pl-2 pt-4 text-xl font-bold sm:pb-3 md:text-3xl">Achievement Leaderboard</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
-		<div class="top-[88px] space-y-4 sm:space-y-6 xl:sticky">
+		<div class="top-[88px] space-y-3 sm:space-y-4 xl:sticky">
 			<SearchPlayerCard {searchByName} {searchByUID} />
 			<AddPlayerCard addPlayerUID={handleAddPlayer} />
 			<StatisticsCard {statisticsData} />
@@ -160,7 +160,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-main">
+	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
 		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} {queryCount} {displayStart} {displayEnd} />
 
 		<!-- Pagination buttons -->
@@ -218,7 +218,7 @@
 					<tbody>
 						{#each playerScores as player (player.uid)}
 							<tr
-								class="cursor-pointer even:bg-galaxy_purple-800/90 hover:text-space_dark"
+								class="cursor-pointer even:bg-galaxy_purple-800/90 hover:text-galaxy_purple-850"
 								class:hover:bg-neon_yellow={player.region === 'na'}
 								class:hover:bg-neon_pink={player.region === 'eu'}
 								class:hover:bg-neon_green={player.region === 'asia'}

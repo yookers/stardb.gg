@@ -401,24 +401,24 @@
 		name="description"
 		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."
 	/>
-    <link rel="canonical" href="https://stardb.gg/achievement-tracker" />
+	<link rel="canonical" href="https://stardb.gg/achievement-tracker" />
 </svelte:head>
 
 <main
-	class="flex w-full flex-col justify-center space-x-0 px-4 text-off_white sm:px-6 lg:px-24
-    {isScreenExpanded ? 'xl:flex-row xl:space-x-6 xl:px-6' : 'xl:items-center'}"
+	class="flex w-full flex-col justify-center space-x-0 space-y-3 px-2 text-off_white sm:space-y-4 sm:px-6 lg:px-24
+    {isScreenExpanded ? 'xl:flex-row xl:space-x-4 xl:space-y-6 xl:px-6' : 'xl:items-center xl:space-y-4'}"
 >
 	<!-- Column 1 -->
 	<div
 		class="w-full text-lg xl:text-xl
     {isScreenExpanded ? 'xl:w-side xl:pt-28' : 'xl:w-main'}"
 	>
-		<h1 class="pb-3 pt-4 text-xl font-bold sm:pt-6 md:text-3xl">Achievement Tracker</h1>
+		<h1 class="pb-2 pl-2 pt-4 text-xl font-bold sm:pb-3 md:text-3xl">Achievement Tracker</h1>
 		<!-- Sticky top-16 + pt-6 = top-[88px]-->
-		<div class={userInfoShown ? 'pb-4 sm:pb-6' : ''}>
+		<div class={userInfoShown ? 'pb-3 sm:pb-4' : ''}>
 			<UserInfo on:closedInfo={() => (userInfoShown = false)} user={data.user?.username} />
 		</div>
-		<div class="top-[88px] space-y-4 sm:space-y-6 xl:sticky">
+		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">
 			<!-- <SearchAchievementCard bind:searchQuery /> -->
 			<SeriesCard {seriesData} {resetLazyScroll} bind:selectedSeries />
 			<StatisticsCard {seriesData} />
@@ -426,7 +426,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-4 py-4 sm:space-y-6 sm:py-6 xl:w-main">
+	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete
@@ -440,8 +440,8 @@
 		<MiniSearchAchievement bind:searchQuery />
 
 		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
-			<div class="flex items-center justify-between px-5 py-2 sm:py-3">
-				<div class="flex items-center space-x-4">
+			<div class="flex flex-wrap items-center justify-between gap-y-2 px-5 py-2 sm:py-3">
+				<div class="flex items-center space-x-4 pr-2">
 					<Award class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
 					<p class="text-xl font-bold lg:text-2xl">Achievements</p>
 				</div>
