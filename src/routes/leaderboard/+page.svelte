@@ -151,8 +151,8 @@
     {isScreenExpanded ? 'xl:w-side xl:pt-40' : 'xl:w-main'}"
 	>
 		<h1 class="pb-2 pl-2 pt-4 text-xl font-bold sm:pb-3 md:text-3xl">Achievement Leaderboard</h1>
-		<!-- Sticky top-16 + pt-6 = top-[88px]-->
-		<div class="top-[88px] space-y-3 sm:space-y-4 xl:sticky">
+		<!-- Sticky top-16 + pt-4 = top-20 -->
+		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">
 			<SearchPlayerCard {searchByName} {searchByUID} />
 			<AddPlayerCard addPlayerUID={handleAddPlayer} />
 			<StatisticsCard {statisticsData} />
@@ -160,7 +160,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
+	<div class="flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6 xl:w-main">
 		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} {queryCount} {displayStart} {displayEnd} />
 
 		<!-- Pagination buttons -->

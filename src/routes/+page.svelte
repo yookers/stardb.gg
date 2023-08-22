@@ -31,7 +31,7 @@
 		name="description"
 		content="The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists."
 	/>
-    <link rel="canonical" href="https://stardb.gg" />
+	<link rel="canonical" href="https://stardb.gg" />
 </svelte:head>
 
 <main class="flex h-full flex-col items-center justify-center text-off_white">

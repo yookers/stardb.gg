@@ -15,7 +15,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
+	<div class="flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6 xl:w-main">
 		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
 			<div class="flex items-center justify-between px-5 py-2 sm:py-3"></div>
 		</div>

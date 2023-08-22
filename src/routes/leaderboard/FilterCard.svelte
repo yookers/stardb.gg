@@ -15,7 +15,7 @@
 </script>
 
 <div
-	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 transition-all duration-300 sm:hover:scale-102 hover:bg-galaxy_purple-700/95"
+	class="rounded-2xl border-2 border-galaxy_purple-650 bg-galaxy_purple-700 transition-all duration-300 hover:bg-galaxy_purple-700/95 sm:hover:scale-102"
 >
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Filter card">
 		<div class="flex items-center justify-between px-5 py-2 sm:py-3">
@@ -101,17 +101,17 @@
 					</span>
 				</div>
 			</div>
-            <div class="border-t-2 border-galaxy_purple-650/95">
-                {#key queryCount}
-                    <p class="px-6 py-2 text-sm">
-                        Filtering <span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}
-                            >{displayStart} <span class="font-normal">-</span>
-                            {displayEnd} <span class="font-normal">of</span>
-                            {queryCount}</span
-                        > Players
-                    </p>
-                {/key}
-            </div>
+			<div class="border-t-2 border-galaxy_purple-650/95">
+				{#key queryCount}
+					<p class="px-6 py-2 text-sm">
+						Filtering <span class="font-bold" in:fly={{ y: -20, duration: 400, easing: cubicInOut }}
+							>{displayStart} <span class="font-normal">-</span>
+							{displayEnd} <span class="font-normal">of</span>
+							{queryCount}</span
+						> Players
+					</p>
+				{/key}
+			</div>
 		</div>
 	{/if}
 </div>

@@ -15,7 +15,9 @@ export const load = (async ({ fetch, url }) => {
 	const uid = url.searchParams.get('uid') || '';
 
 	// Create a new URL object
-	const apiURL = new URL(uid ? `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}` : `${PRIVATE_SERVER_API_URL}/pages/leaderboard`);
+	const apiURL = new URL(
+		uid ? `${PUBLIC_SERVER_API_URL}/scores/achievements/${uid}` : `${PRIVATE_SERVER_API_URL}/pages/leaderboard`
+	);
 
 	if (!uid) {
 		apiURL.searchParams.set('limit', limit.toString());

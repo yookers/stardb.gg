@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div class="px-5 text-left">
-			<p>{achievement.description}</p>
+			<p>{@html achievement.description.replace(/\\n/g, '<br>')}</p>
 		</div>
 	</button>
 

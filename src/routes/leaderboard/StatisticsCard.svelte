@@ -22,7 +22,7 @@
 
 <div
 	class="rounded-2xl border-2 border-galaxy_purple-600 bg-galaxy_purple-650
-    transition-all duration-300 sm:hover:scale-102 hover:bg-galaxy_purple-650/95"
+    transition-all duration-300 hover:bg-galaxy_purple-650/95 sm:hover:scale-102"
 >
 	<!-- Card Title -->
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Statistics card">
@@ -42,7 +42,7 @@
 	{#if showCard && statisticsData}
 		<div class="flex items-center justify-center px-5 pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="relative flex w-full items-center justify-center rounded-xl">
-				<button class="absolute left-10 flex h-10 w-10 items-center justify-center" on:click={prevCard}>
+				<button class="absolute left-8 flex h-10 w-10 items-center justify-center" on:click={prevCard}>
 					<ChevronLeft class="h-6 w-6 text-off_white lg:h-8 lg:w-8" />
 				</button>
 
@@ -64,7 +64,7 @@
 					</p>
 				</div>
 
-				<button class="absolute right-10 flex h-10 w-10 items-center justify-center" on:click={nextCard}>
+				<button class="absolute right-8 flex h-10 w-10 items-center justify-center" on:click={nextCard}>
 					<ChevronRight class="h-6 w-6 text-off_white lg:h-8 lg:w-8" />
 				</button>
 			</div>

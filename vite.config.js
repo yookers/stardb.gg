@@ -9,7 +9,7 @@ export default defineConfig({
 		sveltekit(),
 		partytownVite({
 			// `dest` specifies where files are copied to in production
-			dest: join(process.cwd(), 'static', '~partytown')
+			dest: join(process.cwd(), '.svelte-kit/output/client/~partytown')
 		})
 	],
 	ssr: {

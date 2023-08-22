@@ -7,18 +7,10 @@
 	import { SidebarState } from '$types';
 	import { fly } from 'svelte/transition';
 
-	import { onMount } from 'svelte';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 
 	export let data;
 	let deviceWidth: number;
-	// Add the Partytown script to the DOM head
-	let scriptEl: HTMLScriptElement;
-	onMount(() => {
-		if (scriptEl) {
-			scriptEl.textContent = partytownSnippet();
-		}
-	});
 
 	$: if (deviceWidth > 1536) {
 		currentInterface.set(DeviceInterface.DESKTOP_2XL);
@@ -32,8 +24,6 @@
 		currentInterface.set(DeviceInterface.MOBILE);
 	}
 </script>
-
-<svelte:window bind:innerWidth={deviceWidth} />
 
 <svelte:head>
 	<script>
@@ -58,7 +48,7 @@
 		};
 	</script>
 
-	<script bind:this={scriptEl}></script>
+    {@html '<script>' + partytownSnippet() + '</script>'}
 
 	<script type="text/partytown">
 		(function (w, d, s, l, i) {
@@ -73,6 +63,8 @@
 		})(window, document, 'script', 'dataLayer', 'GTM-WTLKQQV');
 	</script>
 </svelte:head>
+
+<svelte:window bind:innerWidth={deviceWidth} />
 
 <main class="flex h-screen flex-col font-inter">
 	<Sidebar />

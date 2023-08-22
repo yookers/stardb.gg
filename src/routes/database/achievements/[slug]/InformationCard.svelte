@@ -35,7 +35,7 @@
 		>
 			<div class="flex w-full flex-col px-6">
 				<p>Description:</p>
-				<p class="font-normal">{achievementData.description}</p>
+				<p class="font-normal">{@html achievementData.description.replace(/\\n/g, '<br>')}</p>
 			</div>
 
 			<div class="flex w-full flex-col border-t-2 border-galaxy_purple-600 px-6 pt-2">

@@ -14,7 +14,7 @@
 		name="description"
 		content="Full guides, cultural references, and videos on how to obtain {achievementData.name} from the category {achievementData.series_name} in Honkai: Star Rail. StarDB.GG is the best site for achievement hunters."
 	/>
-    <link rel="canonical" href="https://stardb.gg/database/achievements/{achievementData.id}" />
+	<link rel="canonical" href="https://stardb.gg/database/achievements/{achievementData.id}" />
 </svelte:head>
 
 <main class="flex h-full w-full justify-center px-4 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-24 xl:px-6">

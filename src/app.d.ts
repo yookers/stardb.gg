@@ -26,7 +26,7 @@ export type DatabaseAchievement = {
 	comment?: string;
 	reference?: string;
 	difficulty?: string;
-	video?: string;
+	video?: string; // YouTube video URL
 	gacha: boolean;
 	percent: number;
 };
@@ -212,10 +212,19 @@ export type MihomoPlayer = {
 	world_level: number;
 };
 
-export type MihomoProfileData = {
-	characters: MihomoCharacterData[];
-	player: MihomoPlayer;
+export type ProfileDetails = {
+	rank_global: number;
+	rank_regional: number;
+	top_global: number;
+	top_regional: number;
 	updated_at: string; // UTC format
+};
+
+export type ProfileData = ProfileDetails &{
+	mihomo: {
+		characters: MihomoCharacterData[];
+		player: MihomoPlayer;
+	};
 };
 
 export type TierListCharacter = {
