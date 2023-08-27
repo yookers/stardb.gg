@@ -34,7 +34,7 @@
 						Welcome to <span class="font-bold">StarDB.GG's Tier List</span>, a collective ranking created by you, the community!<br
 						/>Instead of just one person's opinion, our data is based on votes gathered through a form. This makes it a true
 						reflection of community wisdom.<br />In this list that caters to F2P and Light Spenders, 5-star units are displayed
-						at Eidolon 0, and 4-star units at Eidolon 4.
+						at <span class="font-bold">Eidolon 0</span>, and 4-star units at <span class="font-bold">Eidolon 4</span>.
 					</p>
 					<div class="flex pt-1">
 						<a

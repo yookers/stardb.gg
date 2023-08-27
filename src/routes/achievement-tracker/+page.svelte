@@ -399,6 +399,27 @@
 		name="description"
 		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."
 	/>
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stardb.gg/achievement-tracker" />
+	<meta property="og:title" content="Achievement Tracker - Honkai: Star Rail - StarDB.GG" />
+	<meta
+		property="og:description"
+		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."
+	/>
+	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://stardb.gg/achievement-tracker" />
+	<meta name="twitter:title" content="Achievement Tracker - Honkai: Star Rail - StarDB.GG" />
+	<meta
+		name="twitter:description"
+		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."
+	/>
+	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+    
 	<link rel="canonical" href="https://stardb.gg/achievement-tracker" />
 </svelte:head>
 

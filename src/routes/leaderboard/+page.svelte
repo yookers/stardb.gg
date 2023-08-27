@@ -138,6 +138,27 @@
 		name="description"
 		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
 	/>
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stardb.gg/leaderboard" />
+	<meta property="og:title" content="Achievement Leaderboard - Honkai: Star Rail - StarDB.GG" />
+	<meta
+		property="og:description"
+		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
+	/>
+	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://stardb.gg/leaderboard" />
+	<meta name="twitter:title" content="Achievement Leaderboard - Honkai: Star Rail - StarDB.GG" />
+	<meta
+		name="twitter:description"
+		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
+	/>
+	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+
 	<link rel="canonical" href="https://stardb.gg/leaderboard" />
 </svelte:head>
 
@@ -160,7 +181,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6 xl:w-main">
+	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
 		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} {queryCount} {displayStart} {displayEnd} />
 
 		<!-- Pagination buttons -->

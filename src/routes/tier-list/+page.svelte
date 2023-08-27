@@ -98,11 +98,32 @@
 </script>
 
 <svelte:head>
-	<title>Tier List - Honkai: Star Rail - StarDB.GG</title>
+	<title>Community Tier List - Honkai: Star Rail - StarDB.GG</title>
 	<meta
 		name="description"
-		content="Discover the most up-to-date tier list for Honkai: Star Rail, aggregated from player votes. Find out which characters reign supreme. StarDB.GG is your go-to source for community-driven game insights."
+		content="Discover the most up-to-date tier list based on the current meta for Honkai: Star Rail, aggregated from player votes. StarDB.GG is your source for data-driven game insights."
 	/>
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stardb.gg/tier-list" />
+	<meta property="og:title" content="Community Tier List - Honkai: Star Rail - StarDB.GG" />
+	<meta
+		property="og:description"
+		content="Discover the most up-to-date tier list based on the current meta for Honkai: Star Rail, aggregated from player votes. StarDB.GG is your source for data-driven game insights."
+	/>
+	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://stardb.gg/tier-list" />
+	<meta name="twitter:title" content="Community Tier List - Honkai: Star Rail - StarDB.GG" />
+	<meta
+		name="twitter:description"
+		content="Discover the most up-to-date tier list based on the current meta for Honkai: Star Rail, aggregated from player votes. StarDB.GG is your source for data-driven game insights."
+	/>
+	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+
 	<link rel="canonical" href="https://stardb.gg/tier-list" />
 </svelte:head>
 
