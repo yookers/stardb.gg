@@ -3,7 +3,7 @@
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 
-	let showCard = false;
+	let showCard = true;
 </script>
 
 <div
@@ -29,12 +29,16 @@
 	{#if showCard}
 		<div class="flex items-center justify-center pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<div class="flex flex-col space-y-3 text-sm sm:text-base">
-				<div class="border-b-2 border-galaxy_purple-750 px-6 pb-3">
+				<div class="space-y-3 border-b-2 border-galaxy_purple-750 px-6 pb-3">
 					<p>
-						Welcome to <span class="font-bold">StarDB.GG's Tier List</span>, a collective ranking created by you, the community!<br
-						/>Instead of just one person's opinion, our data is based on votes gathered through a form. This makes it a true
-						reflection of community wisdom.<br />In this list that caters to F2P and Light Spenders, 5-star units are displayed
-						at <span class="font-bold">Eidolon 0</span>, and 4-star units at <span class="font-bold">Eidolon 4</span>.
+						Welcome to <span class="font-bold">StarDB.GG's Tier List</span>; a ranking created by the community. Results are
+						based on player votes in the current meta, making it a true reflection of the community's opinion.
+					</p>
+					<p>
+						This list caters to <span class="font-bold">F2P</span> and
+						<span class="font-bold">Light Spenders</span> - 5-star units are displayed at
+
+						<span class="font-bold">Eidolon 0</span>, and 4-star units at <span class="font-bold">Eidolon 4</span>.
 					</p>
 					<div class="flex pt-1">
 						<a
@@ -52,8 +56,9 @@
 						character, whereas a low variance indicates a general consensus.
 					</p>
 					<p>
-						<span class="font-bold italic">95% Confidence Interval:</span><br /> This represents a range where we're 95% confident
-						the character's true rank lies. If a character has a rating of +/- 2, they could realistically be between 'S' and 'B'.
+						<span class="font-bold italic">95% Confidence Interval:</span><br /> This range indicates where one can be 95% confident
+						that the character's true rank lies. For example, if a character has a rating of +/- 2, their realistic rank could be
+						between 'S' and 'B'.
 					</p>
 				</div>
 			</div>

@@ -21,7 +21,7 @@
 	const ranks: Rank[] = ['S+', 'S', 'A', 'B', 'C', 'D'];
 
 	let searchQuery = '';
-	let showDetailed = false;
+	let showDetailed = true;
 	let filteredCharacters = tierListCharacters;
 	let isScreenExpanded = true;
 
@@ -43,16 +43,6 @@
 		Lightning: 'border-element_lightning',
 		Quantum: 'border-element_quantum',
 		Imaginary: 'border-element_imaginary'
-	};
-
-	const elementTextColorVariants: Record<CharacterElement, string> = {
-		Physical: 'text-element_physical',
-		Fire: 'text-element_fire',
-		Ice: 'text-element_ice',
-		Wind: 'text-element_wind',
-		Lightning: 'text-element_lightning',
-		Quantum: 'text-element_quantum',
-		Imaginary: 'text-element_imaginary'
 	};
 
 	const getSextileRank = (character: TierListCharacter): Rank => {
