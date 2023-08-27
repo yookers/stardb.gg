@@ -419,7 +419,7 @@
 		content="The best achievement tracker for Honkai: Star Rail, complete with guides, videos, cultural references and player stats."
 	/>
 	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
-    
+
 	<link rel="canonical" href="https://stardb.gg/achievement-tracker" />
 </svelte:head>
 

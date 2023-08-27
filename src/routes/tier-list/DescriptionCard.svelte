@@ -40,7 +40,7 @@
 
 						<span class="font-bold">Eidolon 0</span>, and 4-star units at <span class="font-bold">Eidolon 4</span>.
 					</p>
-					<div class="flex pt-1">
+					<div class="flex">
 						<a
 							class="group flex items-center space-x-1 font-bold text-galaxy_purple-200 underline hover:text-galaxy_purple-300"
 							href="/tier-list/vote"
