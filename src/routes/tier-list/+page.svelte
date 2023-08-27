@@ -122,7 +122,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6 xl:w-main">
+	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
 		<FilterCard bind:showDetailed />
 		<MiniSearchCharacters bind:searchQuery />
 		{#each characterRankGrouped as [rankLabel, sextileRankGroup]}
@@ -148,7 +148,9 @@
 						>
 							<div class="relative flex-col font-bold text-galaxy_purple-800">
 								<img
-									class="rounded-xl border-[3px] {elementBorderColorVariants[character.character_element]}"
+									class="h-24 w-24 rounded-xl border-[3px] md:h-28 md:w-28 {elementBorderColorVariants[
+										character.character_element
+									]}"
 									src="{PUBLIC_RES_API_URL}/StarRailResWebp/icon/character/{character.character}.webp"
 									alt="{character.character} icon"
 								/>

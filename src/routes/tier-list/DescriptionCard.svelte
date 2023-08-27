@@ -3,7 +3,7 @@
 	import { slide } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 
-	let showCard = true;
+	let showCard = false;
 </script>
 
 <div
@@ -28,7 +28,7 @@
 	<!-- Card Content-->
 	{#if showCard}
 		<div class="flex items-center justify-center pb-3 pt-2" transition:slide={{ duration: 300, easing: cubicInOut }}>
-			<div class="flex flex-col space-y-3 text-base">
+			<div class="flex flex-col space-y-3 text-sm sm:text-base">
 				<div class="border-b-2 border-galaxy_purple-750 px-6 pb-3">
 					<p>
 						Welcome to <span class="font-bold">StarDB.GG's Tier List</span>, a collective ranking created by you, the community!<br

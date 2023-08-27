@@ -4,7 +4,7 @@
 	import { cubicInOut } from 'svelte/easing';
 
 	export let totalVotes: number;
-	let showCard = true;
+	let showCard = false;
 </script>
 
 <div
