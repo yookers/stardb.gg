@@ -7,6 +7,7 @@
 	import type { CharacterElement, TierListCharacter } from '$types';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+	import { Maximize2, Minimize2, Swords } from 'lucide-svelte';
 
 	export let data;
 	const tierListCharacters = data.tierListEntries as TierListCharacter[];
@@ -98,7 +99,10 @@
 
 <svelte:head>
 	<title>Tier List - Honkai: Star Rail - StarDB.GG</title>
-	<meta name="description" content="" />
+	<meta
+		name="description"
+		content="Discover the most up-to-date tier list for Honkai: Star Rail, aggregated from player votes. Find out which characters reign supreme. StarDB.GG is your go-to source for community-driven game insights."
+	/>
 	<link rel="canonical" href="https://stardb.gg/tier-list" />
 </svelte:head>
 
@@ -125,74 +129,99 @@
 	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
 		<FilterCard bind:showDetailed />
 		<MiniSearchCharacters bind:searchQuery />
-		{#each characterRankGrouped as [rankLabel, sextileRankGroup]}
-			<div class="flex flex-col md:flex-row">
-				<div
-					class="w-full shrink-0 rounded-t-2xl md:w-14 md:rounded-l-2xl md:rounded-tr-none md:py-3"
-					class:bg-[#EF47A2]={rankLabel === 'S+'}
-					class:bg-[#EF476F]={rankLabel === 'S'}
-					class:bg-[#FFD166]={rankLabel === 'A'}
-					class:bg-[#06D6A0]={rankLabel === 'B'}
-					class:bg-[#20A6D2]={rankLabel === 'C'}
-					class:bg-[#1E61C6]={rankLabel === 'D'}
-				>
-					<h2 class="text-center text-2xl font-extrabold text-galaxy_purple-800">{rankLabel}</h2>
+
+		<div class="space-y-2 rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
+			<div class="flex flex-wrap items-center justify-between px-5 py-2 sm:py-3">
+				<div class="flex items-center space-x-4 pr-2">
+					<Swords class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+					<p class="text-xl font-bold lg:text-2xl">Tier List</p>
 				</div>
-				<div
-					class="flex w-full flex-wrap gap-x-3 gap-y-3 rounded-b-2xl border-b-2 border-l-2 border-r-2 border-galaxy_purple-750 bg-galaxy_purple-800 p-6 hover:bg-galaxy_purple-800/90 md:rounded-r-2xl md:rounded-bl-none md:border-l-0 md:border-t-2"
-				>
-					{#each sextileRankGroup as character (character.character)}
-						<div
-							class="flex h-auto w-24 flex-col text-xs md:w-28 md:text-sm"
-							transition:fly={{ y: 40, duration: 400, easing: cubicInOut }}
-						>
-							<div class="relative flex-col font-bold text-galaxy_purple-800">
-								<img
-									class="h-24 w-24 rounded-xl border-[3px] md:h-28 md:w-28 {elementBorderColorVariants[
-										character.character_element
-									]}"
-									src="{PUBLIC_RES_API_URL}/StarRailResWebp/icon/character/{character.character}.webp"
-									alt="{character.character} icon"
-								/>
-								<p class="absolute top-0 px-2 {elementBgColorVariants[character.character_element]}">
-									E{character.eidolon}
-								</p>
-								<div
-									class="absolute bottom-0 flex px-2 {elementBgColorVariants[character.character_element]} {showDetailed
-										? 'w-full justify-center'
-										: 'right-0'} "
-								>
-									{#if showDetailed}
-										<p in:fly={{ y: 10, duration: 300, easing: cubicInOut }}>
-											{character.average.toFixed(2)} ± {character.confidence_interval_95.toFixed(2)}
-										</p>
-									{:else}
-										<p in:fly={{ y: 10, duration: 300, easing: cubicInOut }}>{character.average.toFixed(2)}</p>
-									{/if}
-								</div>
-							</div>
-							<div class="flex flex-col pl-1 pt-0.5">
-								<div class="flex space-x-1.5">
-									<div
-										class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
-										class:bg-neon_yellow={character.character_rarity === 5}
-										class:bg-galaxy_purple-400={character.character_rarity === 4}
-									></div>
-									<p class="h-full text-sm font-bold">
-										{character.character_name}
-									</p>
-								</div>
-								{#if showDetailed}
-									<div class="flex justify-between" in:fly={{ y: 20, duration: 300, easing: cubicInOut }}>
-										<p>Variance:</p>
-										<p class="font-bold">{character.variance.toFixed(2)}</p>
-									</div>
-								{/if}
-							</div>
-						</div>
-					{/each}
+				<div class="flex space-x-4">
+					<button
+						class="hidden hover:scale-110 xl:block"
+						aria-label="{isScreenExpanded ? 'Minimize' : 'Expand'} leaderboard"
+						on:click={() => (isScreenExpanded = !isScreenExpanded)}
+					>
+						{#if isScreenExpanded}
+							<Minimize2 class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+						{:else}
+							<Maximize2 class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
+						{/if}
+					</button>
 				</div>
 			</div>
-		{/each}
+			<div class="space-y-2 px-2 pb-2 sm:px-3 sm:pb-3">
+				{#each characterRankGrouped as [rankLabel, sextileRankGroup]}
+					<div class="flex flex-col md:flex-row">
+						<div
+							class="w-full shrink-0 rounded-t-2xl md:w-14 md:rounded-l-2xl md:rounded-tr-none md:py-3"
+							class:bg-[#EF47A2]={rankLabel === 'S+'}
+							class:bg-[#EF476F]={rankLabel === 'S'}
+							class:bg-[#FFD166]={rankLabel === 'A'}
+							class:bg-[#06D6A0]={rankLabel === 'B'}
+							class:bg-[#20A6D2]={rankLabel === 'C'}
+							class:bg-[#1E61C6]={rankLabel === 'D'}
+						>
+							<h2 class="text-center text-2xl font-extrabold text-galaxy_purple-800">{rankLabel}</h2>
+						</div>
+
+						<div
+							class="flex w-full flex-wrap gap-x-3 gap-y-3 rounded-b-2xl border-b-2 border-l-2 border-r-2 border-galaxy_purple-650 bg-galaxy_purple-800 p-5 hover:bg-galaxy_purple-750 md:rounded-r-2xl md:rounded-bl-none md:border-l-0 md:border-t-2"
+						>
+							{#each sextileRankGroup as character (character.character)}
+								<div
+									class="flex h-auto w-24 flex-col text-xs md:w-28 md:text-sm"
+									transition:fly={{ y: 40, duration: 400, easing: cubicInOut }}
+								>
+									<div class="relative flex-col font-bold text-galaxy_purple-800">
+										<img
+											class="h-24 w-24 rounded-xl border-[3px] md:h-28 md:w-28 {elementBorderColorVariants[
+												character.character_element
+											]}"
+											src="{PUBLIC_RES_API_URL}/StarRailResWebp/icon/character/{character.character}.webp"
+											alt="{character.character} icon"
+										/>
+										<p class="absolute top-0 px-2 {elementBgColorVariants[character.character_element]}">
+											E{character.eidolon}
+										</p>
+										<div
+											class="absolute bottom-0 flex px-2 {elementBgColorVariants[character.character_element]} {showDetailed
+												? 'w-full justify-center'
+												: 'right-0'} "
+										>
+											{#if showDetailed}
+												<p in:fly={{ y: 10, duration: 300, easing: cubicInOut }}>
+													{character.average.toFixed(2)} ± {character.confidence_interval_95.toFixed(2)}
+												</p>
+											{:else}
+												<p in:fly={{ y: 10, duration: 300, easing: cubicInOut }}>{character.average.toFixed(2)}</p>
+											{/if}
+										</div>
+									</div>
+									<div class="flex flex-col pl-1 pt-0.5">
+										<div class="flex space-x-1.5">
+											<div
+												class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
+												class:bg-neon_yellow={character.character_rarity === 5}
+												class:bg-galaxy_purple-400={character.character_rarity === 4}
+											></div>
+											<p class="h-full text-sm font-bold">
+												{character.character_name}
+											</p>
+										</div>
+										{#if showDetailed}
+											<div class="flex justify-between" in:fly={{ y: 20, duration: 300, easing: cubicInOut }}>
+												<p>Variance:</p>
+												<p class="font-bold">{character.variance.toFixed(2)}</p>
+											</div>
+										{/if}
+									</div>
+								</div>
+							{/each}
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
 	</div>
 </main>
