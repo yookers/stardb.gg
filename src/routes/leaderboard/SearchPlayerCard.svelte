@@ -76,7 +76,7 @@
 						class="h-10 w-full rounded-l-full border-y-2 border-l-2 border-transparent bg-galaxy_purple-650 px-4 text-sm font-bold outline-none placeholder:font-normal placeholder:text-galaxy_purple-250 focus:border-galaxy_purple-400 sm:text-base"
 						class:focus:border-neon_pink={errorMessage}
 						type="text"
-						placeholder="Search {searchType} ..."
+						placeholder="Search by {searchType} ..."
 						bind:value={searchQuery}
 						on:keydown={handleKeyDown}
 					/>

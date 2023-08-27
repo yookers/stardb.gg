@@ -250,7 +250,7 @@
 										class:border-neon_pink={player.region === 'eu'}
 										class:border-neon_green={player.region === 'asia'}
 										class:border-neon_blue={player.region === 'cn'}
-										src={`${PUBLIC_RES_API_URL}/StarRailRes/${player.avatar_icon}`}
+										src={`${PUBLIC_RES_API_URL}/StarRailResWebp/${player.avatar_icon.replace(/\.png$/, '.webp')}`}
 										alt="{player.name}'s Avatar Icon"
 									/>
 									<p class="truncate">{player.name}</p></td

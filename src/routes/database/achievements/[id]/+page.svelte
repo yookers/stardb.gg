@@ -17,14 +17,14 @@
 	<link rel="canonical" href="https://stardb.gg/database/achievements/{achievementData.id}" />
 </svelte:head>
 
-<main class="flex h-full w-full justify-center px-4 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-24 xl:px-6">
+<main class="flex h-full w-full justify-center px-2 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-24 xl:px-6">
 	<div class="flex w-full flex-col py-2 md:w-main">
-		<p class="text-sm">Database > Achievement > <span class="font-bold">{achievementData.id}</span></p>
-		<div class="pb-3 pt-4 sm:pt-6">
+		<p class="pl-2 text-sm">Database > Achievement > <span class="font-bold">{achievementData.id}</span></p>
+		<div class="pb-3 pl-2 pt-4 sm:pt-6">
 			<h1 class="text-xl font-bold md:text-3xl">{achievementData.name}</h1>
 			<h2 class="text-base text-galaxy_purple-150 md:text-lg">{achievementData.series_name}</h2>
 		</div>
-		<div class="flex flex-col space-y-4 sm:space-y-6">
+		<div class="flex flex-col space-y-3 sm:space-y-4">
 			<Information {achievementData} />
 			{#if achievementData.video}
 				<VideoCard videoURL={achievementData.video} />

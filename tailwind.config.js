@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	mode: 'jit',
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		colors: {
 			transparent: 'transparent',
 			current: 'currentColor',
 			space_dark: '#0F0A1F',
-			space_light: '#0B1531',
-			space_gray: '#3A4B75',
 			off_white: '#DCDEFC',
 			warning_red: '#FF1E1E',
 			success_green: '#30F51F',
@@ -42,7 +39,14 @@ export default {
 				850: '#0B0826',
 				900: '#030212',
 				950: '#000002'
-			}
+			},
+			element_physical: '#F4F4F4',
+			element_fire: '#F06458',
+			element_ice: '#75B4E1',
+			element_lightning: '#D794E7',
+			element_wind: '#87D6AE',
+			element_quantum: '#8B8BD7',
+			element_imaginary: '#F4E665'
 		},
 		extend: {
 			width: {

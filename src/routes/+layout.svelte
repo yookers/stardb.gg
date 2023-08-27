@@ -48,7 +48,7 @@
 		};
 	</script>
 
-    {@html '<script>' + partytownSnippet() + '</script>'}
+	{@html '<script>' + partytownSnippet() + '</script>'}
 
 	<script type="text/partytown">
 		(function (w, d, s, l, i) {

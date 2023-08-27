@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Icon, ChartBar, DocumentCheck, CircleStack, FaceSmile, BookOpen } from 'svelte-hero-icons';
+	import { Icon, ChartBar, Fire, DocumentCheck, CircleStack, FaceSmile, BookOpen } from 'svelte-hero-icons';
 	import { sidebarState, currentInterface } from './store';
 	import { SidebarState, DeviceInterface } from '$types';
-	import { page } from '$app/stores';
+	import SidebarNav from './SidebarNav.svelte';
 	import { slide } from 'svelte/transition';
 
 	// Functions to toggle sidebar state
@@ -70,96 +70,35 @@
 			}}
 		>
 			<div class="flex flex-col space-y-4 overflow-y-auto overflow-x-hidden">
-				<!-- Leaderboard icon-->
-				<a
-					href="/leaderboard"
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					class:text-off_white={$page.url.pathname === '/leaderboard'}
-					on:click={() => {
-						if (isMobileView) {
-							sidebarState.set(SidebarState.CLOSED);
-						}
-					}}
-				>
-					<div>
-						<Icon src={ChartBar} solid class="h-6 w-6" />
-					</div>
-					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
-						<p>Leaderboard</p>
-					</div>
-				</a>
+				<!-- Leaderboard icon -->
+				<SidebarNav path="/leaderboard" name="Leaderboard" {isMobileView}>
+					<Icon src={ChartBar} solid class="h-6 w-6" />
+				</SidebarNav>
+
+				<!-- Tier list icon -->
+				<SidebarNav path="/tier-list" name="Tier List" {isMobileView}>
+					<Icon src={Fire} solid class="h-6 w-6" />
+				</SidebarNav>
+
 				<!-- Achievement tracker icon -->
-				<a
-					href="/achievement-tracker"
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					class:text-off_white={$page.url.pathname === '/achievement-tracker'}
-					on:click={() => {
-						if (isMobileView) {
-							sidebarState.set(SidebarState.CLOSED);
-						}
-					}}
-				>
-					<div>
-						<Icon src={DocumentCheck} solid class="h-6 w-6" />
-					</div>
-					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
-						<p>Tracker</p>
-					</div>
-				</a>
+				<SidebarNav path="/achievement-tracker" name="Tracker" {isMobileView}>
+					<Icon src={DocumentCheck} solid class="h-6 w-6" />
+				</SidebarNav>
+
+				<!-- Profile card generator icon -->
+				<SidebarNav path="/profile-card-generator" name="Profile Card" {isMobileView}>
+					<Icon src={FaceSmile} solid class="h-6 w-6" />
+				</SidebarNav>
+
 				<!-- Database icon -->
-				<a
-					href="/database"
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					class:text-off_white={$page.url.pathname.startsWith('/database')}
-					on:click={() => {
-						if (isMobileView) {
-							sidebarState.set(SidebarState.CLOSED);
-						}
-					}}
-				>
-					<div>
-						<Icon src={CircleStack} solid class="h-6 w-6" />
-					</div>
-					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
-						<p>Database</p>
-					</div>
-				</a>
-				<!-- Profile icon-->
-				<a
-					href="/profile-card-generator"
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					class:text-off_white={$page.url.pathname === '/profile-card-generator'}
-					on:click={() => {
-						if (isMobileView) {
-							sidebarState.set(SidebarState.CLOSED);
-						}
-					}}
-				>
-					<div>
-						<Icon src={FaceSmile} solid class="h-6 w-6" />
-					</div>
-					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
-						<p>Profile Card</p>
-					</div>
-				</a>
-				<!-- Articles icon-->
-				<a
-					href="/articles"
-					class="flex w-full cursor-pointer items-center space-x-4 px-5 py-2 hover:bg-galaxy_purple-650 hover:text-off_white"
-					class:text-off_white={$page.url.pathname === '/articles'}
-					on:click={() => {
-						if (isMobileView) {
-							sidebarState.set(SidebarState.CLOSED);
-						}
-					}}
-				>
-					<div>
-						<Icon src={BookOpen} solid class="h-6 w-6" />
-					</div>
-					<div class="transition-opacity duration-200 {$sidebarState === SidebarState.EXPANDED ? 'opacity-100' : 'opacity-0'}">
-						<p>Articles</p>
-					</div>
-				</a>
+				<SidebarNav path="/database" name="Database" {isMobileView}>
+					<Icon src={CircleStack} solid class="h-6 w-6" />
+				</SidebarNav>
+
+				<!-- Articles icon -->
+				<SidebarNav path="/articles" name="Articles" {isMobileView}>
+					<Icon src={BookOpen} solid class="h-6 w-6" />
+				</SidebarNav>
 			</div>
 		</div>
 	</div>

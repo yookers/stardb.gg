@@ -10,7 +10,7 @@
 
 <div
 	class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750
-    transition-all duration-300 hover:scale-102 hover:bg-galaxy_purple-750/95"
+    transition-all duration-300 hover:bg-galaxy_purple-750/95 sm:hover:scale-102"
 >
 	<!-- Card Title -->
 	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Metadata card">

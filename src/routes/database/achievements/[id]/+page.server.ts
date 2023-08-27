@@ -4,7 +4,7 @@ import type { DatabaseAchievement } from '$types';
 
 export const load = (async ({ fetch, params }) => {
 	try {
-		const response = await fetch(`${PUBLIC_SERVER_API_URL}/achievements/${params.slug}`);
+		const response = await fetch(`${PUBLIC_SERVER_API_URL}/achievements/${params.id}`);
 		if (!response.ok) {
 			throw new Error('Oops! Something went wrong.');
 		}

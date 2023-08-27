@@ -1,5 +1,5 @@
 <script lang="ts">
-	let isScreenExpanded = false;
+	let isScreenExpanded = true;
 </script>
 
 <main

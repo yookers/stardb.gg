@@ -220,7 +220,7 @@ export type ProfileDetails = {
 	updated_at: string; // UTC format
 };
 
-export type ProfileData = ProfileDetails &{
+export type ProfileData = ProfileDetails & {
 	mihomo: {
 		characters: MihomoCharacterData[];
 		player: MihomoPlayer;
@@ -229,14 +229,23 @@ export type ProfileData = ProfileDetails &{
 
 export type TierListCharacter = {
 	character: number;
-	character_name: string;
-	character_path: string;
-	character_element: string;
 	eidolon: number;
 	average: number;
 	variance: number;
+	quartile_1: number;
+	quartile_3: number;
+	confidence_interval_95: number;
 	votes: number;
+	character_rarity: number;
+	character_name: string;
+	character_path: string;
+	character_element: CharacterElement;
+	letter_rank: string;
 };
+
+export type CharacterElement = 'Physical' | 'Fire' | 'Ice' | 'Wind' | 'Lightning' | 'Quantum' | 'Imaginary';
+
+export type CharacterPath = 'Abundance' | 'Destruction' | 'Erudition' | 'Harmony' | 'Hunt' | 'Nihility' | 'Preservation';
 
 export type ErrorResponse = {
 	status: number;

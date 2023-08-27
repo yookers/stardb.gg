@@ -12,7 +12,7 @@
 	import SingleAchievement from './SingleAchievement.svelte';
 	import GroupAchievement from './GroupAchievement.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
-	import MiniSearchAchievement from './MiniSearchAchievement.svelte';
+	import MiniSearchAchievements from './MiniSearchAchievements.svelte';
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import { AchievementDifficulty, MessageType } from '$types';
@@ -435,7 +435,7 @@
 			filterLength={filteredAchievements.length}
 			{changeLanguage}
 		/>
-		<MiniSearchAchievement bind:searchQuery />
+		<MiniSearchAchievements bind:searchQuery />
 
 		<div class="rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
 			<div class="flex flex-wrap items-center justify-between gap-y-2 px-5 py-2 sm:py-3">
