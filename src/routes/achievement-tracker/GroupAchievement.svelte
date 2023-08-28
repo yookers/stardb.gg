@@ -5,7 +5,7 @@
 
 	export let achievementGroup: AchievementGroup;
 	export let handleGroupToggleCompletion: (group: AchievementGroup, achievement: TrackerAchievement) => void;
-    export let selectedLanguageID: string;
+	export let selectedLanguageID: string;
 </script>
 
 <div class="space-y-2 rounded-xl border-2 border-galaxy_purple-650 p-2 transition-all duration-300 hover:scale-102">

@@ -181,7 +181,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
+	<div class="flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6 xl:w-main">
 		<FilterCard {regionFilter} {rankingFilter} {setRegion} {setRanking} {queryCount} {displayStart} {displayEnd} />
 
 		<!-- Pagination buttons -->

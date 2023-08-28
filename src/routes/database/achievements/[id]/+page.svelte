@@ -9,7 +9,7 @@
 	export let data;
 	const achievementData: DatabaseAchievement = data.achievementData;
 
-    // TODO: Replace with regular 'goto' or 'href' once settings are stored in local storage
+	// TODO: Replace with regular 'goto' or 'href' once settings are stored in local storage
 	function handleHistoryBack() {
 		window.history.back();
 	}
@@ -33,7 +33,7 @@
 		<button
 			class="group flex items-center pl-2 text-off_white hover:text-galaxy_purple-250"
 			aria-label="Go back to achievement tracker page"
-            on:click={handleHistoryBack}
+			on:click={handleHistoryBack}
 		>
 			<p>Return to Tracker</p>
 			<ArrowUpRight class="h-6 w-6 group-hover:-translate-y-0.5" />

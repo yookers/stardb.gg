@@ -5,7 +5,7 @@
 
 	export let achievement: TrackerAchievement;
 	export let handleSingleToggleCompletion: (achievement: TrackerAchievement) => void;
-    export let selectedLanguageID: string;
+	export let selectedLanguageID: string;
 </script>
 
 <div

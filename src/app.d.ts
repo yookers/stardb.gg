@@ -76,9 +76,9 @@ export type SeriesData = {
 	current_achievement_count: number;
 	total_jade_count: number;
 	current_jade_count: number;
-    user_count: number;
-    language: string;
-    versions: string[];
+	user_count: number;
+	language: string;
+	versions: string[];
 };
 
 export type SelectedSeries = SeriesSummary | 'Show All';

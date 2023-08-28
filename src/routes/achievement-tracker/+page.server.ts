@@ -32,7 +32,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		const achievementsData: AchievementTrackerData = {
 			series: rawAchievementsData.series.map((series: Series) => {
 				return {
-                    ...series,
+					...series,
 					achievements: series.achievements.map((achievementGroup) => {
 						return { achievements: achievementGroup }; // For now, completed_group_id remains undefined
 					})
@@ -48,7 +48,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 			current_jade_count: 0,
 			user_count: rawAchievementsData.user_count,
 			language: rawAchievementsData.language,
-            versions: rawAchievementsData.versions
+			versions: rawAchievementsData.versions
 		};
 
 		let completedAchievements: number[] = [];

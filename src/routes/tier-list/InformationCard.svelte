@@ -11,7 +11,7 @@
     transition-all duration-300 hover:bg-galaxy_purple-800/95 sm:hover:scale-102"
 >
 	<!-- Card Title -->
-	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Description card">
+	<button class="w-full" on:click={() => (showCard = !showCard)} aria-label="{showCard ? 'Hide' : 'Show'} Information card">
 		<div class="flex items-center justify-between space-x-2 px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<Pencil class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />

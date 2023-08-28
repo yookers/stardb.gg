@@ -4,13 +4,13 @@ import type { DatabaseAchievement } from '$types';
 
 export const load = (async ({ fetch, params, url }) => {
 	try {
-        const selectedLanguageID = url.searchParams.get('lang');
-        const apiUrl = selectedLanguageID
+		const selectedLanguageID = url.searchParams.get('lang');
+		const apiUrl = selectedLanguageID
 			? `${PUBLIC_SERVER_API_URL}/achievements/${params.id}?lang=${selectedLanguageID}`
 			: `${PUBLIC_SERVER_API_URL}/achievements/${params.id}`;
 
 		const response = await fetch(apiUrl);
-        
+
 		if (!response.ok) {
 			throw new Error('Oops! Something went wrong.');
 		}

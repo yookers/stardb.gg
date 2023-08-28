@@ -68,7 +68,7 @@
 		</div>
 	</div>
 
-	<div class="mb-24 flex flex-col px-6 pb-12">
+	<!-- 	<div class="mb-24 flex flex-col px-6 pb-12">
 		<div class="relative flex items-center justify-center">
 			<input
 				class="h-12 w-full rounded-l-xl border-y-2 border-l-2 border-transparent bg-galaxy_purple-150 px-5 text-base font-bold text-galaxy_purple-600 outline-none placeholder:text-galaxy_purple-600 hover:border-galaxy_purple-250 sm:h-14 md:h-16 md:w-[600px] md:text-lg
@@ -91,7 +91,7 @@
 				<p class="absolute -bottom-8 left-2 font-bold text-neon_pink">{errorMessage}</p>
 			{/if}
 		</div>
-	</div>
+	</div> -->
 
 	<a class="absolute bottom-3 left-4 text-sm hover:text-galaxy_purple-250 md:left-20" href="/privacy-policy">Privacy Policy</a>
 </main>
