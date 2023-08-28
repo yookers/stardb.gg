@@ -71,6 +71,7 @@
 			selectedDifficulty,
 			searchQuery,
 			sortOrder,
+            selectedVersion,
 			shownCount,
 			window.scrollY
 		],
@@ -82,8 +83,9 @@
 			selectedDifficulty = value[4];
 			searchQuery = value[5];
 			sortOrder = value[6];
-			shownCount = value[7];
-			snapshotScroll = value[8];
+            selectedVersion = value[7];
+			shownCount = value[8];
+			snapshotScroll = value[9];
 		}
 	};
 
