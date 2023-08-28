@@ -5,6 +5,7 @@
 
 	export let achievementGroup: AchievementGroup;
 	export let handleGroupToggleCompletion: (group: AchievementGroup, achievement: TrackerAchievement) => void;
+    export let selectedLanguageID: string;
 </script>
 
 <div class="space-y-2 rounded-xl border-2 border-galaxy_purple-650 p-2 transition-all duration-300 hover:scale-102">
@@ -85,7 +86,7 @@
 						{/if}
 					</div>
 					<a
-						href="/database/achievements/{achievement.id}"
+						href="/database/achievements/{achievement.id}{selectedLanguageID === 'en' ? '' : `?lang=${selectedLanguageID}`}"
 						class="group flex items-center pl-1 text-off_white hover:text-galaxy_purple-250"
 						aria-label={`View the achievement "${achievement.name}" in the database`}
 					>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { sidebarState } from './store';
+	import { sidebarState } from '$store';
 	import { SidebarState } from '$types';
 
 	export let path: string;

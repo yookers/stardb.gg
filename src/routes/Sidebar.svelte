@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Icon, ChartBar, Fire, DocumentCheck, CircleStack, FaceSmile, BookOpen } from 'svelte-hero-icons';
-	import { sidebarState, currentInterface } from './store';
+	import { sidebarState, currentInterface } from '$store';
 	import { SidebarState, DeviceInterface } from '$types';
 	import SidebarNav from './SidebarNav.svelte';
 	import { slide } from 'svelte/transition';

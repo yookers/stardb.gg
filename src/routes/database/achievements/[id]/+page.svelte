@@ -43,9 +43,7 @@
 			<!-- Image names are all lowercase, no special characters (including spaces) -->
 			<img
 				class="h-12 w-12 rounded-full border-2 border-off_white md:h-14 md:w-14"
-				src="{PUBLIC_RES_API_URL}/img/achievement-icons/{achievementData.series_name
-					.toLowerCase()
-					.replace(/[^a-z0-9]/g, '')}.webp"
+				src="{PUBLIC_RES_API_URL}/img/series/{achievementData.series}.webp"
 				alt="{achievementData.series_name} icon"
 			/>
 			<div>

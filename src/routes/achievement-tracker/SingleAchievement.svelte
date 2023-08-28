@@ -5,6 +5,7 @@
 
 	export let achievement: TrackerAchievement;
 	export let handleSingleToggleCompletion: (achievement: TrackerAchievement) => void;
+    export let selectedLanguageID: string;
 </script>
 
 <div
@@ -79,7 +80,7 @@
 				{/if}
 			</div>
 			<a
-				href="/database/achievements/{achievement.id}"
+				href="/database/achievements/{achievement.id}{selectedLanguageID === 'en' ? '' : `?lang=${selectedLanguageID}`}"
 				class="group flex items-center pl-1 text-off_white hover:text-galaxy_purple-250"
 				aria-label={`View the achievement "${achievement.name}" in the database`}
 			>

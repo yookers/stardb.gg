@@ -1,7 +1,7 @@
 <script lang="ts">
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
-	import { searchResults } from './store';
+	import { searchResults } from '$store';
 
 	let searchQuery = '';
 

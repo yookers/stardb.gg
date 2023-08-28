@@ -2,9 +2,15 @@ import type { PageServerLoad } from './$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import type { DatabaseAchievement } from '$types';
 
-export const load = (async ({ fetch, params }) => {
+export const load = (async ({ fetch, params, url }) => {
 	try {
-		const response = await fetch(`${PUBLIC_SERVER_API_URL}/achievements/${params.id}`);
+        const selectedLanguageID = url.searchParams.get('lang');
+        const apiUrl = selectedLanguageID
+			? `${PUBLIC_SERVER_API_URL}/achievements/${params.id}?lang=${selectedLanguageID}`
+			: `${PUBLIC_SERVER_API_URL}/achievements/${params.id}`;
+
+		const response = await fetch(apiUrl);
+        
 		if (!response.ok) {
 			throw new Error('Oops! Something went wrong.');
 		}

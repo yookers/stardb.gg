@@ -3,7 +3,7 @@
 	import Sidebar from './Sidebar.svelte';
 	import './app.css';
 	import { DeviceInterface } from '$types';
-	import { sidebarState, currentInterface } from './store';
+	import { sidebarState, currentInterface } from '$store';
 	import { SidebarState } from '$types';
 	import { fly } from 'svelte/transition';
 

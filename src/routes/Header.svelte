@@ -3,7 +3,7 @@
 	import Logo from './Logo.svelte';
 	import { Icon, User } from 'svelte-hero-icons';
 	import { Menu, LogIn, LogOut, Settings, ArrowRight } from 'lucide-svelte';
-	import { sidebarState } from './store';
+	import { sidebarState } from '$store';
 	import { SidebarState } from '$types';
 	import { goto } from '$app/navigation';
 	const PUBLIC_SERVER_API_URL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;

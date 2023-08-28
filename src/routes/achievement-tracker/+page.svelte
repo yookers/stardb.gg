@@ -16,7 +16,7 @@
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import { AchievementDifficulty, MessageType } from '$types';
-	import { languages } from '../store';
+	import { languages } from '$store';
 	import { get } from 'svelte/store';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
@@ -71,7 +71,7 @@
 			selectedDifficulty,
 			searchQuery,
 			sortOrder,
-            selectedVersion,
+			selectedVersion,
 			shownCount,
 			window.scrollY
 		],
@@ -83,7 +83,7 @@
 			selectedDifficulty = value[4];
 			searchQuery = value[5];
 			sortOrder = value[6];
-            selectedVersion = value[7];
+			selectedVersion = value[7];
 			shownCount = value[8];
 			snapshotScroll = value[9];
 		}
@@ -335,6 +335,7 @@
 	$: {
 		achievementsData = data.achievementsData as Series[];
 		seriesData = data.seriesData as SeriesData;
+        selectedLanguageID = seriesData.language;
 		// If user is not logged in, get the completed achievements from local storage
 		if (browser && !data.user) {
 			loadFromLocalStorage();
@@ -500,9 +501,13 @@
 				{#each shownAchievements as achievementGroup (achievementGroup.achievements[0]?.id)}
 					<div in:fly={{ y: 40, duration: 400, easing: cubicInOut }}>
 						{#if achievementGroup.achievements.length === 1 && achievementGroup.achievements[0]}
-							<SingleAchievement achievement={achievementGroup.achievements[0]} {handleSingleToggleCompletion} />
+							<SingleAchievement
+								achievement={achievementGroup.achievements[0]}
+								{handleSingleToggleCompletion}
+								{selectedLanguageID}
+							/>
 						{:else}
-							<GroupAchievement {achievementGroup} {handleGroupToggleCompletion} />
+							<GroupAchievement {achievementGroup} {handleGroupToggleCompletion} {selectedLanguageID} />
 						{/if}
 					</div>
 				{/each}

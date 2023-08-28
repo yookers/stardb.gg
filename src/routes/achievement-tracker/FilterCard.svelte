@@ -3,7 +3,7 @@
 	import { slide, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { AchievementDifficulty } from '$types';
-	import { languages } from '../store';
+	import { languages } from '$store';
 	import type { Language } from '$types';
 
 	export let showCompleted: boolean;
@@ -226,25 +226,27 @@
 									<p class="line-clamp-1">{selectedLanguageName}</p>
 								{/if}
 							</button>
-							<nav
-								tabindex="-1"
-								class="absolute left-0 top-full hidden overflow-hidden rounded-lg border-galaxy_purple-750 bg-galaxy_purple-800 transition-all group-focus-within:flex group-focus-within:translate-y-1 group-focus-within:flex-col"
-								class:border-2={$languages.length > 0}
-							>
-								{#each $languages as language}
-									<button
-										class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750 {language.name ===
-										selectedLanguageName
-											? 'bg-galaxy_purple-200 text-galaxy_purple-750'
-											: ''}"
-										aria-label="Select language {language.name}"
-										on:click={() => {
-											handleChangeLanguage(language);
-											showLanguageDropdown = false;
-										}}><p>{language.name}</p></button
-									>
-								{/each}
-							</nav>
+							{#if showLanguageDropdown}
+								<nav
+									tabindex="-1"
+									class="absolute left-0 top-full hidden overflow-hidden rounded-lg border-galaxy_purple-750 bg-galaxy_purple-800 transition-all group-focus-within:flex group-focus-within:translate-y-1 group-focus-within:flex-col"
+									class:border-2={$languages.length > 0}
+								>
+									{#each $languages as language}
+										<button
+											class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750 {language.name ===
+											selectedLanguageName
+												? 'bg-galaxy_purple-200 text-galaxy_purple-750'
+												: ''}"
+											aria-label="Select language {language.name}"
+											on:click={() => {
+												handleChangeLanguage(language);
+												showLanguageDropdown = false;
+											}}><p>{language.name}</p></button
+										>
+									{/each}
+								</nav>
+							{/if}
 						</div>
 					</div>
 				</div>
