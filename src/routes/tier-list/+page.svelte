@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_RES_API_URL } from '$env/static/public';
-	import DescriptionCard from './DescriptionCard.svelte';
+	import InformationCard from './InformationCard.svelte';
 	import StatisticsCard from './StatisticsCard.svelte';
 	import FilterCard from './FilterCard.svelte';
 	import MiniSearchCharacters from './MiniSearchCharacters.svelte';
@@ -118,7 +118,7 @@
 </svelte:head>
 
 <main
-	class="flex w-full flex-col justify-center space-x-0 space-y-3 px-2 text-off_white sm:space-y-4 sm:px-6 lg:px-24
+	class="flex w-full flex-col justify-center space-x-0 space-y-3 px-2 text-off_white sm:space-y-4 sm:px-6 lg:px-20
 {isScreenExpanded ? 'xl:flex-row xl:space-x-4 xl:space-y-6 xl:px-6' : 'xl:items-center xl:space-y-4'}"
 >
 	<!-- Column 1 -->
@@ -128,7 +128,7 @@
 	>
 		<div class="space-y-2 pb-3 sm:space-y-3 sm:pb-4">
 			<h1 class="pl-2 pt-4 text-xl font-bold md:text-3xl">Community Tier List</h1>
-			<DescriptionCard />
+			<InformationCard />
 		</div>
 		<!-- Sticky top-16 + pt-4 = top-20 -->
 		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">

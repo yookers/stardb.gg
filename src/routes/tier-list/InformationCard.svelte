@@ -15,7 +15,7 @@
 		<div class="flex items-center justify-between space-x-2 px-5 py-2 sm:py-3">
 			<div class="flex items-center space-x-4">
 				<Pencil class="h-5 w-5 text-off_white lg:h-6 lg:w-6" />
-				<p class="text-xl font-bold lg:text-2xl">Description</p>
+				<p class="text-xl font-bold lg:text-2xl">Information</p>
 			</div>
 
 			{#if showCard}

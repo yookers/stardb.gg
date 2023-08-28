@@ -58,9 +58,7 @@ export type Series = {
 	achievements: AchievementGroup[];
 };
 
-export type AchievementsGroupedData = {
-	achievement_count: number;
-	jade_count: number;
+export type AchievementTrackerData = {
 	series: Series[];
 };
 
@@ -74,11 +72,13 @@ export type SeriesSummary = {
 
 export type SeriesData = {
 	series: SeriesSummary[];
-	user_count: number;
 	total_achievement_count: number;
 	current_achievement_count: number;
 	total_jade_count: number;
 	current_jade_count: number;
+    user_count: number;
+    language: string;
+    versions: string[];
 };
 
 export type SelectedSeries = SeriesSummary | 'Show All';

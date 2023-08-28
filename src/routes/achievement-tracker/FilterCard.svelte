@@ -13,9 +13,13 @@
 	export let filterLength: number;
 	export let sortOrder: 'default' | 'ascending' | 'descending';
 	export let selectedLanguageName: string;
+	export let selectedVersion: string;
+	export let versionList: string[];
 	export let changeLanguage: (language: string) => void;
 
 	let showCard = true;
+	let showVersionDropdown = false;
+	let showLanguageDropdown = false;
 
 	function handleChangeLanguage(language: Language) {
 		selectedLanguageName = language.name;
@@ -58,7 +62,7 @@
 			<div class="flex flex-col space-y-3 px-5 pb-3 text-sm md:text-base">
 				<!-- space-y-1.5 and pb-1.5 to center and accomodate the horizontal scrollbar -->
 				<div class="flex flex-col space-y-3 overflow-auto font-bold md:flex-row md:items-center md:space-y-0">
-					<div class="flex flex-wrap gap-2 gap-y-3">
+					<div class="flex flex-wrap gap-x-2 gap-y-3">
 						<button
 							class="h-8 w-20 flex-shrink-0 items-center justify-center rounded-full border-2
                             {selectedDifficulty === AchievementDifficulty.ALL
@@ -148,7 +152,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="flex justify-between space-x-2 font-bold">
+				<div class="flex flex-wrap justify-between gap-x-2 gap-y-3 font-bold">
 					<button
 						class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
 						aria-label="Toggle sort order"
@@ -163,31 +167,85 @@
 							{/key}
 						</div>
 					</button>
-					<div class="group relative flex h-8 w-32 sm:w-36">
-						<button
-							class="flex w-full items-center justify-center overflow-x-hidden rounded-lg bg-galaxy_purple-800 px-1"
-							aria-label="Change language"
-						>
-							{#if selectedLanguageName}
-								<p class="line-clamp-1">{selectedLanguageName}</p>
-							{/if}
-						</button>
-						<nav
-							tabindex="-1"
-							class="absolute left-0 top-full hidden overflow-hidden rounded-lg border-galaxy_purple-750 bg-galaxy_purple-800 transition-all group-focus-within:flex group-focus-within:translate-y-1 group-focus-within:flex-col"
-							class:border-2={$languages.length > 0}
-						>
-							{#each $languages as language}
+
+					<div class="flex flex-wrap gap-x-6 gap-y-3">
+						<div class="flex items-center space-x-2.5">
+							<p>Version</p>
+							<div class="group relative flex h-8 w-16 sm:w-20">
 								<button
-									class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750 {language.name ===
-									selectedLanguageName
-										? 'bg-galaxy_purple-200 text-galaxy_purple-750'
-										: ''}"
-									aria-label="Select language {language.name}"
-									on:click={() => handleChangeLanguage(language)}><p>{language.name}</p></button
+									class="flex w-full items-center justify-center overflow-x-hidden rounded-lg bg-galaxy_purple-800 px-1"
+									aria-label="Change language"
+									on:click={() => (showVersionDropdown = true)}
 								>
-							{/each}
-						</nav>
+									{#if selectedVersion}
+										<p class="line-clamp-1">{selectedVersion === 'All' ? 'All' : `V${selectedVersion}`}</p>
+									{/if}
+								</button>
+								{#if showVersionDropdown}
+									<nav
+										tabindex="-1"
+										class="absolute left-0 top-full hidden w-full overflow-hidden rounded-lg border-galaxy_purple-750 bg-galaxy_purple-800 transition-all group-focus-within:flex group-focus-within:translate-y-1 group-focus-within:flex-col"
+										class:border-2={versionList.length > 0}
+									>
+										<button
+											class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750 {selectedVersion ===
+											'All'
+												? 'bg-galaxy_purple-200 text-galaxy_purple-750'
+												: ''}"
+											aria-label="Select all versions"
+											on:click={() => {
+												selectedVersion = 'All';
+												showVersionDropdown = false;
+											}}><p>All</p></button
+										>
+										{#each versionList as version}
+											<button
+												class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750 {version ===
+												selectedVersion
+													? 'bg-galaxy_purple-200 text-galaxy_purple-750'
+													: ''}"
+												aria-label="Select version {version}"
+												on:click={() => {
+													selectedVersion = version;
+													showVersionDropdown = false;
+												}}><p>V{version}</p></button
+											>
+										{/each}
+									</nav>
+								{/if}
+							</div>
+						</div>
+
+						<div class="group relative flex h-8 w-32 sm:w-36">
+							<button
+								class="flex w-full items-center justify-center overflow-x-hidden rounded-lg bg-galaxy_purple-800 px-1"
+								aria-label="Change language"
+								on:click={() => (showLanguageDropdown = true)}
+							>
+								{#if selectedLanguageName}
+									<p class="line-clamp-1">{selectedLanguageName}</p>
+								{/if}
+							</button>
+							<nav
+								tabindex="-1"
+								class="absolute left-0 top-full hidden overflow-hidden rounded-lg border-galaxy_purple-750 bg-galaxy_purple-800 transition-all group-focus-within:flex group-focus-within:translate-y-1 group-focus-within:flex-col"
+								class:border-2={$languages.length > 0}
+							>
+								{#each $languages as language}
+									<button
+										class="px-4 py-2 text-left hover:bg-galaxy_purple-200 hover:text-galaxy_purple-750 {language.name ===
+										selectedLanguageName
+											? 'bg-galaxy_purple-200 text-galaxy_purple-750'
+											: ''}"
+										aria-label="Select language {language.name}"
+										on:click={() => {
+											handleChangeLanguage(language);
+											showLanguageDropdown = false;
+										}}><p>{language.name}</p></button
+									>
+								{/each}
+							</nav>
+						</div>
 					</div>
 				</div>
 			</div>

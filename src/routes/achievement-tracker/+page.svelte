@@ -24,15 +24,8 @@
 
 	// `data` also contains the same information as $page.data
 	export let data;
-	let achievementsData: Series[] = data.achievementsData ?? [];
-	let seriesData: SeriesData = data.seriesData ?? {
-		series: [],
-		user_count: 0,
-		total_achievement_count: 0,
-		current_achievement_count: 0,
-		total_jade_count: 0,
-		current_jade_count: 0
-	};
+	let achievementsData = data.achievementsData as Series[];
+	let seriesData = data.seriesData as SeriesData;
 	let selectedSeries: SelectedSeries = 'Show All';
 	let showCompleted = true;
 	let showIncomplete = true;
@@ -40,7 +33,8 @@
 	let selectedDifficulty = AchievementDifficulty.ALL;
 	let searchQuery = '';
 	let sortOrder: 'default' | 'ascending' | 'descending' = 'default';
-	let selectedLanguageID = data.selectedLanguageID ?? 'en';
+	let selectedVersion = 'All';
+	let selectedLanguageID = seriesData.language;
 	let selectedLanguageName: string;
 	let isScreenExpanded = true;
 	let userInfoShown = true;
@@ -300,6 +294,7 @@
 		showCompleted: boolean,
 		showIncomplete: boolean,
 		series: SelectedSeries,
+		version: string,
 		query: string,
 		difficulty: AchievementDifficulty,
 		showHidden: boolean
@@ -313,13 +308,14 @@
 					achievementGroup.achievements.some((achievement) => {
 						const matchesCompletion =
 							achievement.completed || achievementGroup.completed_group_id ? showCompleted : showIncomplete;
+						const matchesVersion = version === 'All' || achievement.version === version;
 						const matchesQuery =
 							!query ||
 							achievement.name.toLowerCase().includes(lowercaseQuery) ||
 							achievement.description.toLowerCase().includes(lowercaseQuery);
 						const matchesDifficulty = difficulty === AchievementDifficulty.ALL || achievement.difficulty === difficulty;
 						const matchesHidden = showHidden || !achievement.hidden;
-						return matchesCompletion && matchesQuery && matchesDifficulty && matchesHidden;
+						return matchesCompletion && matchesVersion && matchesQuery && matchesDifficulty && matchesHidden;
 					})
 				)
 			}));
@@ -335,15 +331,8 @@
 	}
 
 	$: {
-		achievementsData = data.achievementsData ?? [];
-		seriesData = data.seriesData ?? {
-			series: [],
-			user_count: 0,
-			total_achievement_count: 0,
-			current_achievement_count: 0,
-			total_jade_count: 0,
-			current_jade_count: 0
-		};
+		achievementsData = data.achievementsData as Series[];
+		seriesData = data.seriesData as SeriesData;
 		// If user is not logged in, get the completed achievements from local storage
 		if (browser && !data.user) {
 			loadFromLocalStorage();
@@ -361,6 +350,7 @@
 						showCompleted,
 						showIncomplete,
 						selectedSeries,
+						selectedVersion,
 						searchQuery,
 						selectedDifficulty,
 						showHidden
@@ -424,7 +414,7 @@
 </svelte:head>
 
 <main
-	class="flex w-full flex-col justify-center space-x-0 space-y-3 px-2 text-off_white sm:space-y-4 sm:px-6 lg:px-24
+	class="flex w-full flex-col justify-center space-x-0 space-y-3 px-2 text-off_white sm:space-y-4 sm:px-6 lg:px-20
     {isScreenExpanded ? 'xl:flex-row xl:space-x-4 xl:space-y-6 xl:px-6' : 'xl:items-center xl:space-y-4'}"
 >
 	<!-- Column 1 -->
@@ -445,7 +435,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="xl:w-main flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6">
+	<div class="flex w-full flex-col space-y-3 pb-4 sm:space-y-4 sm:pb-6 xl:w-main">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete
@@ -453,6 +443,8 @@
 			bind:selectedDifficulty
 			bind:sortOrder
 			bind:selectedLanguageName
+			bind:selectedVersion
+			versionList={seriesData.versions}
 			filterLength={filteredAchievements.length}
 			{changeLanguage}
 		/>

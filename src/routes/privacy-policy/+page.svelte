@@ -3,7 +3,7 @@
 	<meta name="description" content="Our Privacy Policy for StarDB.GG" />
 </svelte:head>
 
-<main class="flex h-full justify-center px-4 py-10 sm:px-6 lg:px-24 xl:px-6">
+<main class="flex h-full justify-center px-4 py-10 sm:px-6 lg:px-20 xl:px-6">
 	<div class="w-main rounded-xl border-2 border-galaxy_purple-200/95 bg-galaxy_purple-200 p-10 text-galaxy_purple-800">
 		<h1 class="pb-1 text-3xl font-bold">Privacy Policy</h1>
 

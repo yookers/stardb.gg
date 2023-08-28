@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import type { TrackerAchievement, AchievementsGroupedData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
+import type { TrackerAchievement, AchievementTrackerData, Series, SeriesSummary, SeriesData, AchievementGroup } from '$types';
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { PRIVATE_SERVER_API_URL } from '$env/static/private';
 
@@ -29,16 +29,12 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		}
 
 		const rawAchievementsData = await achievementResponse.json();
-		const achievementsData: AchievementsGroupedData = {
-			achievement_count: rawAchievementsData.achievement_count,
-			jade_count: rawAchievementsData.jade_count,
-			series: rawAchievementsData.series.map((s: Series) => {
+		const achievementsData: AchievementTrackerData = {
+			series: rawAchievementsData.series.map((series: Series) => {
 				return {
-					series: s.series,
-					achievement_count: s.achievement_count,
-					jade_count: s.jade_count,
-					achievements: s.achievements.map((ag) => {
-						return { achievements: ag }; // For now, completed_group_id remains undefined
+                    ...series,
+					achievements: series.achievements.map((achievementGroup) => {
+						return { achievements: achievementGroup }; // For now, completed_group_id remains undefined
 					})
 				};
 			})
@@ -46,11 +42,13 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 
 		const seriesData: SeriesData = {
 			series: [],
-			user_count: rawAchievementsData.user_count,
 			total_achievement_count: rawAchievementsData.achievement_count,
 			current_achievement_count: 0,
 			total_jade_count: rawAchievementsData.jade_count,
-			current_jade_count: 0
+			current_jade_count: 0,
+			user_count: rawAchievementsData.user_count,
+			language: rawAchievementsData.language,
+            versions: rawAchievementsData.versions
 		};
 
 		let completedAchievements: number[] = [];
@@ -70,7 +68,6 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 				total_jade_count: series.jade_count,
 				current_jade_count: 0
 			};
-
 			series.achievements = series.achievements.map((achievementGroup: AchievementGroup) => {
 				let completedGroupID: number | undefined;
 				const updatedAchievements = achievementGroup.achievements.map((achievement: TrackerAchievement) => {
@@ -93,8 +90,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 			});
 			seriesData.series.push(seriesSummary);
 		});
-
-		return { achievementsData: achievementsData.series, seriesData, selectedLanguageID };
+		return { achievementsData: achievementsData.series, seriesData };
 	} catch (error) {
 		return { error: { status: 400, message: 'Oops! Something went wrong. Please try again later. :(' } };
 	}

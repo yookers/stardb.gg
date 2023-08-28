@@ -43,7 +43,7 @@
 				{#if achievementData.comment}
 					<p class="font-normal">{achievementData.comment}</p>
 				{:else}
-					<p class="font-normal">Trivial or extremely easy to obtain. Requires no further comment.</p>
+					<p class="font-normal">Either trivial to obtain, extremely new, or not yet updated with specific instructions.</p>
 				{/if}
 			</div>
 

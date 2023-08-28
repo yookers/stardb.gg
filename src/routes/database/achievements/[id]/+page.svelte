@@ -18,7 +18,7 @@
 	<link rel="canonical" href="https://stardb.gg/database/achievements/{achievementData.id}" />
 </svelte:head>
 
-<main class="flex h-full w-full justify-center px-2 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-24 xl:px-6">
+<main class="flex h-full w-full justify-center px-2 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-20 xl:px-6">
 	<div class="flex w-full flex-col py-2 md:w-main">
 		<p class="pl-2 text-sm">Database > Achievement > <span class="font-bold">{achievementData.id}</span></p>
 		<div class="flex items-center space-x-3 pb-3 pl-2 pt-4 sm:pt-6 md:space-x-4">
@@ -30,7 +30,7 @@
 					.replace(/[^a-z0-9]/g, '')}.webp"
 				alt="{achievementData.series_name} icon"
 			/>
-			<div class="">
+			<div>
 				<h1 class="text-xl font-bold md:text-3xl">{achievementData.name}</h1>
 				<h2 class="text-base text-galaxy_purple-150 md:text-lg">{achievementData.series_name}</h2>
 			</div>
