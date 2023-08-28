@@ -152,7 +152,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="flex flex-wrap justify-between gap-x-2 gap-y-3 font-bold">
+				<div class="flex flex-wrap justify-between gap-x-6 gap-y-3 font-bold">
 					<button
 						class="relative h-8 w-44 rounded-full bg-galaxy_purple-800"
 						aria-label="Toggle sort order"
