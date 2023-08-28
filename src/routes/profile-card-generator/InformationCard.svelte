@@ -32,11 +32,11 @@
 				<div class="space-y-3 border-b-2 border-galaxy_purple-750 px-6 pb-3">
 					<p>
 						Welcome to <span class="font-bold">StarDB.GG's Profile Card Generator</span>, a tool that sets a new standard for
-						aesthetic player profiles. Simply input your 9-digit UID and if you wish to personalize your card, add in primary
-						and secondary colors in hex format. Want more privacy? You can also opt to hide your UID on the card.
+						aesthetic player profiles. Simply input your 9-digit UID and if you wish to personalize your card, add in a primary
+						and secondary color in hex format. Want more privacy? You can also opt to hide your UID on the card.
 					</p>
 					<p>
-						Our tool syncs with the game's API to reflect any your current account, offering you a profile card that's always up
+						Our tool syncs with the game's API to reflect the current support characters on your account, offering you a profile card that's always up
 						to date.
 					</p>
 				</div>

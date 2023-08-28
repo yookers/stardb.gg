@@ -70,12 +70,12 @@
 
 			<div class="flex gap-x-2.5 pl-2 text-lg font-bold">
 				<button
-					class="h-10 rounded-full border-2 border-dim_green bg-neon_green px-3 text-galaxy_purple-800 hover:font-extrabold sm:hover:scale-102"
+					class="h-10 rounded-full border-2 border-dim_green bg-neon_green px-3 text-galaxy_purple-800 sm:hover:scale-102"
 					on:click={() => (generateCardPromise = generateImage())}>Generate</button
 				>
 				{#if cachedBlob}
 					<button
-						class="h-10 rounded-full border-2 border-dim_blue bg-neon_blue px-3 text-galaxy_purple-800 hover:font-extrabold sm:hover:scale-102"
+						class="h-10 rounded-full border-2 border-dim_blue bg-neon_blue px-3 text-galaxy_purple-800 sm:hover:scale-102"
 						on:click={downloadImage}>Download</button
 					>
 				{/if}
