@@ -8,6 +8,7 @@
 	let cardImageSource = '';
 	let cachedBlob: Blob | null = null;
 	let generateCardPromise: Promise<void>;
+	let isGeneratingCard = false;
 
 	let playerUID = '';
 	let showUID = true;
@@ -20,7 +21,7 @@
 			const url = window.URL.createObjectURL(cachedBlob);
 			const a = document.createElement('a');
 			a.href = url;
-			a.download = 'profile-card.png';
+			a.download = 'stardb-profile-card.png';
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);
@@ -28,25 +29,34 @@
 	}
 
 	async function generateImage() {
-		// Construct URL
+		if (isGeneratingCard) {
+			return; // Exit the function if a request is already in progress
+		}
+
+		isGeneratingCard = true;
+
 		let params = new URLSearchParams({
 			uid: playerUID,
 			...(characterSelection && { characterselection: (characterSelection - 1).toString() }), // Index starts at 0
 			...(primaryColor && { primarycolor: primaryColor.replace('#', '') }),
 			...(secondaryColor && { secondarycolor: secondaryColor.replace('#', '') }),
 			showuid: showUID.valueOf().toString()
-			// add other optional parameters here
 		});
 
 		const cardGeneratorURL = `${PUBLIC_SERVER_API_URL}/generate?${params.toString()}`;
 
-		const response = await fetch(cardGeneratorURL);
-		if (!response.ok) {
+		try {
+			const response = await fetch(cardGeneratorURL);
+			if (!response.ok) {
+				throw new Error();
+			}
+			cachedBlob = await response.blob();
+			cardImageSource = window.URL.createObjectURL(cachedBlob);
+		} catch (error) {
 			throw new Error();
+		} finally {
+			isGeneratingCard = false; // Reset the flag after the request is complete or if it failed
 		}
-
-		cachedBlob = await response.blob();
-		cardImageSource = window.URL.createObjectURL(cachedBlob);
 	}
 </script>
 
@@ -71,7 +81,8 @@
 			<div class="flex gap-x-2.5 pl-2 text-lg font-bold">
 				<button
 					class="h-10 rounded-full border-2 border-dim_green bg-neon_green px-3 text-galaxy_purple-800 sm:hover:scale-102"
-					on:click={() => (generateCardPromise = generateImage())}>Generate</button
+					on:click={() => (generateCardPromise = generateImage())}
+					disabled={isGeneratingCard}>Generate</button
 				>
 				{#if cachedBlob}
 					<button
