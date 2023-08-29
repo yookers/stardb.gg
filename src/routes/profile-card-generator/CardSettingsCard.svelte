@@ -79,6 +79,12 @@ transition-all duration-300 hover:bg-galaxy_purple-700/95 sm:hover:scale-102"
 						bind:value={secondaryColor}
 					/>
 				</label>
+
+                {#if (primaryColor && !secondaryColor) || (!primaryColor && secondaryColor)}
+                <p class="text-neon_pink text-sm">
+                    Please fill out both primary and secondary colors or leave both blank.
+                </p>
+                {/if}
 			</div>
 		</div>
 	{/if}

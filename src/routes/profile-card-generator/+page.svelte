@@ -33,6 +33,11 @@
 			return; // Exit the function if a request is already in progress
 		}
 
+		// Check if either primaryColor or secondaryColor is provided but not both
+		if ((primaryColor && !secondaryColor) || (!primaryColor && secondaryColor)) {
+			throw new Error();
+		}
+
 		isGeneratingCard = true;
 
 		let params = new URLSearchParams({
