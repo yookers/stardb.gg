@@ -23,23 +23,7 @@ jobs:
           npm run build
           mv node_modules/ build/
           echo '{"type": "module"}' > build/package.json
-          mv build stardb
-
-      - name: Stop Service
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: systemctl stop stardb
-
-      - name: Delete Old Files
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: rm -rf stardb
+          mv build stardb-new
 
       - name: Copy New Files
         uses: appleboy/scp-action@v0.1.4
@@ -47,13 +31,16 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: stardb
+          source: stardb-new
           target: /root/
 
-      - name: Start Service
+      - name: Restart Service
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: systemctl start stardb
+          script: |
+            rm -rf stardb
+            mv stardb-new stardb
+            systemctl restart stardb
