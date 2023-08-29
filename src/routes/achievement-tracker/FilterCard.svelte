@@ -230,7 +230,6 @@
 								<nav
 									tabindex="-1"
 									class="absolute left-0 top-full hidden overflow-hidden rounded-lg border-galaxy_purple-750 bg-galaxy_purple-800 transition-all group-focus-within:flex group-focus-within:translate-y-1 group-focus-within:flex-col"
-									class:border-2={$languages.length > 0}
 								>
 									{#each $languages as language}
 										<button

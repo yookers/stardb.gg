@@ -336,6 +336,10 @@
 		achievementsData = data.achievementsData as Series[];
 		seriesData = data.seriesData as SeriesData;
 		selectedLanguageID = seriesData.language;
+	}
+
+    // Had to separate this from the above $: block because it was getting run twice
+	$: {
 		// If user is not logged in, get the completed achievements from local storage
 		if (browser && !data.user) {
 			loadFromLocalStorage();
