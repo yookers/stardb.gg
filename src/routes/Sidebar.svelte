@@ -52,7 +52,7 @@
 {#if !isMobileView || $sidebarState === SidebarState.EXPANDED}
 	<!-- Prevent sidebar from expanding when viewport is too small -->
 	<div
-		class="fixed left-0 top-0 z-10 flex h-full w-16 items-center whitespace-nowrap pt-16 font-bold duration-300"
+		class="fixed left-0 top-0 z-10 flex h-full items-center whitespace-nowrap pt-16 font-bold duration-300"
 		class:w-16={$sidebarState === SidebarState.COLLAPSED}
 		class:w-48={$sidebarState === SidebarState.EXPANDED}
 		transition:slide={{ axis: 'x', duration: 300 }}
