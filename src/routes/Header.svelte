@@ -5,7 +5,7 @@
 	import { Menu, LogIn, LogOut, Settings, ArrowRight } from 'lucide-svelte';
 	import { sidebarState } from '$store';
 	import { SidebarState } from '$types';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	const PUBLIC_SERVER_API_URL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 
 	function toggleSidebar() {
@@ -20,7 +20,7 @@
 		try {
 			const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/auth/logout`, { method: 'POST' });
 			if (res.ok) {
-				goto('/');
+				goto('/', { invalidateAll: true });
 			} else {
 				goto('/logout');
 			}
