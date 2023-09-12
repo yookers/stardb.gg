@@ -96,7 +96,7 @@
 				</SidebarNav>
 
 				<!-- Articles icon -->
-				<SidebarNav path="/articles" name="Articles" {isMobileView}>
+				<SidebarNav path="/articles/" name="Articles" {isMobileView}>
 					<Icon src={BookOpen} solid class="h-6 w-6" />
 				</SidebarNav>
 			</div>
