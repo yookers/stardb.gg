@@ -4,18 +4,32 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import { KeyRound } from 'lucide-svelte';
+	import { onMount } from 'svelte';
 
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 	let username = '';
 	let password = '';
+	let token = '';
 	let showNotification = false;
 	let messageType: MessageType;
 
+	onMount(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		token = urlParams.get('token') ?? '';
+        if (token) {
+            login();
+        }
+	});
+
 	async function login() {
-		const payload = {
-			username,
-			password
-		};
+		let payload;
+
+		if (token) {
+			payload = { token };
+		} else {
+			payload = { username, password };
+		}
+
 		try {
 			const response = await fetch(`${apiURL}/users/auth/login`, {
 				method: 'POST',
