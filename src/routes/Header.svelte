@@ -100,7 +100,7 @@
 			</button>
 			{#if isLanguageDropdownOpen}
 				<div
-					class="absolute left-0 top-16 flex w-full sm:w-auto overflow-hidden flex-col border-galaxy_purple-450 bg-galaxy_purple-550 text-off_white sm:top-[38px] sm:-left-12 sm:rounded-xl sm:border-2"
+					class="absolute left-0 top-16 flex w-full sm:w-auto overflow-hidden flex-col border-galaxy_purple-550 border-b-2 bg-galaxy_purple-650 text-off_white sm:top-[38px] sm:-left-12 sm:rounded-xl sm:border-2"
 				>
 					{#each languages as language}
 						<button

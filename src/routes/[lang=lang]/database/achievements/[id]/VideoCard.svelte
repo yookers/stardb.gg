@@ -14,8 +14,7 @@
 	<div slot="icon">
 		<Youtube class="h-5 w-5 text-off_white" />
 	</div>
-    <div slot="content">
-        <div class="px-3 pb-3">
+    <div slot="content" class="p-1.5 sm:p-3">
         <!-- (pb-[56.25%]) 16:9 Aspect ratio  -->
 			<div class="relative flex w-full pb-[56.25%]">
 				<iframe
@@ -27,6 +26,5 @@
 					allowfullscreen
 				></iframe>
 			</div>
-        </div>
     </div>
 </BaseCard>

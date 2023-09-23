@@ -58,7 +58,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	// If the URL doesn't start with a valid language, redirect to the default language
 	if (!languages.some((language) => language.id === lang)) {
-		throw redirect(307, `/${locale}${event.url.pathname}${event.url.search}`);
+		throw redirect(301, `/${locale}${event.url.pathname}${event.url.search}`);
 	}
 
 	return await resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', locale) });
