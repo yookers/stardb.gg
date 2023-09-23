@@ -4,7 +4,7 @@
 </script>
 
 <div
-	class="overflow-clip rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 text-off_white transition-all duration-300 hover:border-galaxy_purple-600 sm:hover:translate-y-1"
+	class="overflow-clip rounded-xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 text-off_white transition-all duration-300 hover:border-galaxy_purple-600 sm:hover:translate-y-1"
 >
 	<!-- Card Title -->
 

@@ -95,7 +95,7 @@
 
 		<!-- Change language -->
 		<div class="static flex sm:relative" on:focusout={handleDropdownFocusLoss}>
-			<button on:click={() => (isLanguageDropdownOpen = !isLanguageDropdownOpen)}>
+			<button aria-label="Change language" on:click={() => (isLanguageDropdownOpen = !isLanguageDropdownOpen)}>
 				<Globe class="mr-4 h-6 w-6 text-off_white hover:translate-y-0.5 hover:text-galaxy_purple-250 md:h-7 md:w-7" />
 			</button>
 			{#if isLanguageDropdownOpen}

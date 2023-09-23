@@ -149,7 +149,7 @@
 		<FilterCard bind:showDetailed />
 		<MiniSearchCharacters bind:searchQuery />
 
-		<div class="space-y-2 rounded-2xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
+		<div class="space-y-2 rounded-xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
 			<div class="flex flex-wrap items-center justify-between px-5 py-2 sm:py-3">
 				<div class="flex items-center space-x-4 pr-2">
 					<Swords class="h-5 w-5 text-off_white" />
