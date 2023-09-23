@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { Search } from 'lucide-svelte';
 	import Logo from '../Logo.svelte';
-    import NewsCard from './NewsCard.svelte';
+	import NewsCard from './NewsCard.svelte';
 
 	let searchQuery = '';
 	let errorMessage = '';
@@ -57,7 +57,7 @@
 	<link rel="canonical" href="https://stardb.gg" />
 </svelte:head>
 
-<main class="relative flex h-full flex-col items-center justify-center text-off_white px-4 lg:px-20">
+<main class="relative flex h-full flex-col items-center justify-center px-4 text-off_white lg:px-20">
 	<a href="https://ko-fi.com/stardb" aria-label="Ko-fi link" target="_blank" rel="noopener noreferrer">
 		<img class="absolute right-4 top-4 h-auto w-56 rounded-lg" src="/images/kofi-button.webp" alt="Ko-fi icon" />
 	</a>
@@ -67,7 +67,7 @@
 		<p class="select-none font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 sm:text-6xl md:text-8xl">stardb.gg</p>
 	</div>
 
-<!-- 	<div class="flex w-full md:w-[600px] flex-col pb-12">
+	<!-- 	<div class="flex w-full md:w-[600px] flex-col pb-12">
         <NewsCard />
 	</div> -->
 

@@ -139,7 +139,7 @@
 
 		<!-- Sticky top-16 + pt-4 = top-20 -->
 		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">
-            <InformationCard />
+			<InformationCard />
 			<StatisticsCard {totalVotes} />
 		</div>
 	</div>

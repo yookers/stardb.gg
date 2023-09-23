@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_CDN_RES_API_URL } from '$env/static/public';
 	import { Database, ArrowUpRight } from 'lucide-svelte';
-    import { locale } from '$store';
+	import { locale } from '$store';
 	import type { TrackerAchievement } from '$types';
 
 	export let achievement: TrackerAchievement;
@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="relative z-[1] overflow-hidden rounded-xl border-2 text-xs transition-all duration-300 sm:hover:scale-102 sm:text-sm
+	class="relative z-[1] overflow-hidden rounded-xl border-2 text-xs transition-all duration-300 sm:text-sm sm:hover:scale-102
     {achievement.completed
 		? 'border-galaxy_purple-650 bg-galaxy_purple-650 hover:border-galaxy_purple-750 hover:bg-galaxy_purple-750'
 		: 'border-galaxy_purple-650 bg-galaxy_purple-800 hover:bg-galaxy_purple-750'}"

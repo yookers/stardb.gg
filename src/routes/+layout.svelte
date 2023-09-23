@@ -1,13 +1,12 @@
 <script lang="ts">
 	import Header from './Header.svelte';
 	import Sidebar from './Sidebar.svelte';
-    import { page } from '$app/stores';
-    import { onMount } from 'svelte';
-    import './app.css';
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import './app.css';
 	import { DeviceInterface } from '$types';
-	import { sidebarState, currentInterface, locale } from '$store';
-	import { SidebarState } from '$types';
-    import { getLocaleFromURL } from '$lib/utils';
+	import { currentInterface, locale } from '$store';
+	import { getLocaleFromURL } from '$lib/utils';
 	import { fly } from 'svelte/transition';
 
 	import { partytownSnippet } from '@builder.io/partytown/integration';
@@ -27,14 +26,14 @@
 		currentInterface.set(DeviceInterface.MOBILE);
 	}
 
-    $: locale.set(getLocaleFromURL($page.url));
+	$: locale.set(getLocaleFromURL($page.url));
 
-    // If no locale set in cookies, set to 'en'
-    onMount(() => {
-        if (!document.cookie.includes('locale')) {
-            document.cookie = 'locale=en; path=/; max-age=31536000'; // 1 year
-        }
-    }); 
+	// If no locale set in cookies, set to 'en'
+	onMount(() => {
+		if (!document.cookie.includes('locale')) {
+			document.cookie = 'locale=en; path=/; max-age=31536000'; // 1 year
+		}
+	});
 </script>
 
 <svelte:head>
@@ -86,7 +85,7 @@
 	{#key data.currentPath}
 		<div
 			class="flex-grow bg-space_dark pt-16 duration-300"
-            class:pl-16={$currentInterface !== DeviceInterface.MOBILE}
+			class:pl-16={$currentInterface !== DeviceInterface.MOBILE}
 			in:fly={{ y: -30, duration: 200, delay: 100 }}
 		>
 			<slot />

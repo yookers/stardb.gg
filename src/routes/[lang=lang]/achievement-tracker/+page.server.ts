@@ -6,8 +6,8 @@ import { PRIVATE_SERVER_API_URL } from '$env/static/private';
 
 export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => {
 	try {
-        const locale = getLocaleFromURL(url);
-		const apiUrl = `${PRIVATE_SERVER_API_URL}/pages/achievement-tracker?lang=${locale}`
+		const locale = getLocaleFromURL(url);
+		const apiUrl = `${PRIVATE_SERVER_API_URL}/pages/achievement-tracker?lang=${locale}`;
 
 		// Prevent fetch waterfalls by fetching all data in parallel
 		const achievementPromise = fetch(apiUrl);

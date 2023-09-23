@@ -5,8 +5,8 @@ import type { DatabaseAchievement } from '$types';
 
 export const load = (async ({ fetch, params, url }) => {
 	try {
-        const locale = getLocaleFromURL(url);
-		const apiUrl = `${PUBLIC_SERVER_API_URL}/achievements/${params.id}?lang=${locale}`
+		const locale = getLocaleFromURL(url);
+		const apiUrl = `${PUBLIC_SERVER_API_URL}/achievements/${params.id}?lang=${locale}`;
 
 		const response = await fetch(apiUrl);
 

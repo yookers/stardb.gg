@@ -85,9 +85,9 @@
 			Profile Card Generator
 		</h1>
 		<h2 class="pb-2 pl-2 text-xs sm:pb-3 md:text-sm" in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>
-                Welcome to <span class="font-bold">StarDB.GG's Profile Card Generator</span>, a tool that sets a new standard for
-                aesthetic player profiles. Simply input your 9-digit UID and if you wish to personalize your card, add in a primary
-                and secondary color in hex format. Want more privacy? You can also opt to hide your UID on the card.
+			Welcome to <span class="font-bold">StarDB.GG's Profile Card Generator</span>, a tool that sets a new standard for
+			aesthetic player profiles. Simply input your 9-digit UID and if you wish to personalize your card, add in a primary and
+			secondary color in hex format. Want more privacy? You can also opt to hide your UID on the card.
 		</h2>
 		<div class="flex flex-col space-y-3 sm:space-y-4">
 			<InformationCard />
@@ -95,13 +95,13 @@
 
 			<div class="flex gap-x-2.5 pl-2 text-lg font-bold">
 				<button
-					class="h-10 rounded-full border-2 border-dim_green sm:hover:translate-y-0.5 bg-dim_green hover:bg-neon_green px-3 text-galaxy_purple-800"
+					class="h-10 rounded-full border-2 border-dim_green bg-dim_green px-3 text-galaxy_purple-800 hover:bg-neon_green sm:hover:translate-y-0.5"
 					on:click={() => (generateCardPromise = generateImage())}
 					disabled={isGeneratingCard}>Generate</button
 				>
 				{#if cachedBlob}
 					<button
-						class="h-10 rounded-full border-2 border-dim_blue sm:hover:translate-y-0.5 bg-dim_blue hover:bg-neon_blue px-3 text-galaxy_purple-800"
+						class="h-10 rounded-full border-2 border-dim_blue bg-dim_blue px-3 text-galaxy_purple-800 hover:bg-neon_blue sm:hover:translate-y-0.5"
 						on:click={downloadImage}>Download</button
 					>
 				{/if}

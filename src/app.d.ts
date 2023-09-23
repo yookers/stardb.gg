@@ -239,9 +239,9 @@ export type TierListCharacter = {
 	character_rarity: number;
 	character_name: string;
 	character_path: string;
-    character_path_id: CharacterPath;
+	character_path_id: CharacterPath;
 	character_element: string;
-    character_element_id: CharacterElement;
+	character_element_id: CharacterElement;
 	letter_rank: string;
 };
 

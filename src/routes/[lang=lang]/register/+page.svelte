@@ -1,6 +1,6 @@
 <script lang="ts">
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
-    import { locale } from '$store';
+	import { locale } from '$store';
 	import { goto } from '$app/navigation';
 	import { MessageType } from '$types';
 	import { cubicInOut } from 'svelte/easing';
@@ -197,8 +197,9 @@
 			</form>
 		</div>
 		<p class="pl-2 text-off_white">
-			Have an account already? <a href="/{$locale}/login" class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
-				>Login here!</a
+			Have an account already? <a
+				href="/{$locale}/login"
+				class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300">Login here!</a
 			>
 		</p>
 	</div>

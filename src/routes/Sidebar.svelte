@@ -3,8 +3,8 @@
 	import { sidebarState, currentInterface } from '$store';
 	import { SidebarState, DeviceInterface } from '$types';
 	import SidebarNav from './SidebarNav.svelte';
-    import { locale } from '$store';
-    import { page } from '$app/stores';
+	import { locale } from '$store';
+	import { page } from '$app/stores';
 	import { slide } from 'svelte/transition';
 
 	// Functions to toggle sidebar state
@@ -87,7 +87,7 @@
 					<Icon src={DocumentCheck} solid class="h-6 w-6" />
 				</SidebarNav>
 
-<!--                 Warp tracker import icon
+				<!--                 Warp tracker import icon
                 <SidebarNav path="/{$locale}/warp-import" name="Warp Import" {isMobileView}>
                     <Icon src={Cube} solid class="h-6 w-6" />
                 </SidebarNav>

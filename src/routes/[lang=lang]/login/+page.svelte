@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-    import { locale } from '$store';
+	import { locale } from '$store';
 	import { MessageType } from '$types';
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
@@ -17,9 +17,9 @@
 	onMount(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		token = urlParams.get('token') ?? '';
-        if (token) {
-            login();
-        }
+		if (token) {
+			login();
+		}
 	});
 
 	async function login() {
@@ -130,7 +130,9 @@
 					class=" font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300">Register here!</a
 				>
 			</p>
-			<p class="font-bold text-dim_green"><a href="/{$locale}/request-token" class="hover:text-neon_green">Forgot Password? </a></p>
+			<p class="font-bold text-dim_green">
+				<a href="/{$locale}/request-token" class="hover:text-neon_green">Forgot Password? </a>
+			</p>
 		</div>
 	</div>
 </main>

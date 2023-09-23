@@ -22,13 +22,13 @@ export function replaceLocaleInUrl(url: URL, locale: string, full = false): stri
 // ----------------------------------------------------------------------------
 
 export function getLocaleFromURL(url: URL): string {
-    const [, locale] = getPathnameWithoutBase(url).split('/');
-    return locale || 'en';
+	const [, locale] = getPathnameWithoutBase(url).split('/');
+	return locale || 'en';
 }
 
 export function prependLocaleToURL(url: URL, relativeURL: string): string {
-    const [, locale] = getPathnameWithoutBase(url).split('/');
-    return `/${locale}${relativeURL}`;
+	const [, locale] = getPathnameWithoutBase(url).split('/');
+	return `/${locale}${relativeURL}`;
 }
 
 const REGEX_START_WITH_BASE = new RegExp(`^${base}`);

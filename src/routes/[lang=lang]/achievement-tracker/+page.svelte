@@ -309,7 +309,7 @@
 		showIncomplete = true;
 		showHidden = true;
 		selectedDifficulty = AchievementDifficulty.ALL;
-        selectedVersions = [];
+		selectedVersions = [];
 		searchQuery = '';
 		sortOrder = 'default';
 	}

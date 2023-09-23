@@ -11,7 +11,7 @@
 	export let selectedDifficulty: AchievementDifficulty;
 	export let filterLength: number;
 	export let sortOrder: 'default' | 'ascending' | 'descending';
-    export let selectedVersions: string[] = [];
+	export let selectedVersions: string[] = [];
 	export let versionList: string[];
 
 	let showCard = true;
@@ -154,23 +154,24 @@
 					<div class="flex items-center space-x-2.5">
 						<div class="relative">
 							<!-- Button to toggle dropdown -->
-							<button on:click={() => (showVersionDropdown = !showVersionDropdown)} class="border p-2">
+							<button
+								on:click={() => (showVersionDropdown = !showVersionDropdown)}
+								class="h-8 rounded-full border-2 border-galaxy_purple-600 bg-galaxy_purple-700 px-4"
+							>
 								Select Versions
 							</button>
 
 							<!-- Dropdown content -->
 							{#if showVersionDropdown}
-								<div class="mt-2 w-64 rounded border p-4">
-									<ul>
-										{#each versionList as version}
-											<li>
-												<label class="inline-flex items-center">
-													<input type="checkbox" class="form-checkbox" on:change={() => toggleVersion(version)} />
-													<span class="ml-2">{version}</span>
-												</label>
-											</li>
-										{/each}
-									</ul>
+								<div
+									class="mt-2 flex flex-col space-y-1.5 rounded-xl border-2 border-galaxy_purple-600 bg-galaxy_purple-700 px-3 py-2"
+								>
+									{#each versionList as version}
+										<label class="flex items-center">
+											<input type="checkbox" class="h-4 w-4" on:change={() => toggleVersion(version)} />
+											<span class="pl-2">V{version}</span>
+										</label>
+									{/each}
 								</div>
 							{/if}
 						</div>

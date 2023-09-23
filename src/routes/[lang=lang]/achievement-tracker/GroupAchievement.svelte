@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_CDN_RES_API_URL } from '$env/static/public';
 	import { Database, ArrowUpRight } from 'lucide-svelte';
-    import { locale } from '$store';
+	import { locale } from '$store';
 	import type { TrackerAchievement, AchievementGroup } from '$types';
 
 	export let achievementGroup: AchievementGroup;
@@ -34,7 +34,7 @@
 
 					<div class="flex items-center justify-center space-x-4">
 						<p class="textsm font-bold md:text-base">{(achievement.percent * 100).toFixed(2)}%</p>
-                        <!-- Checkmark button -->
+						<!-- Checkmark button -->
 						<div
 							class="h-6 w-6 shrink-0 rounded-lg border-2 border-galaxy_purple-600"
 							class:bg-neon_green={achievement.completed}
@@ -43,11 +43,10 @@
 						></div>
 					</div>
 				</div>
-            </button>
-				<div class="px-5 text-left">
-					<p>{@html achievement.description.replace(/\\n/g, '<br>')}</p>
-				</div>
-
+			</button>
+			<div class="px-5 text-left">
+				<p>{@html achievement.description.replace(/\\n/g, '<br>')}</p>
+			</div>
 
 			<div class="px-4">
 				<div class="flex justify-between space-x-1 overflow-x-auto pb-2.5 pt-4 sm:space-x-2">

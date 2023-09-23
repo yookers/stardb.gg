@@ -26,7 +26,7 @@
 
 			<div class="space-y-3 pt-6 text-sm md:text-base">
 				<div class="flex items-center space-x-2">
-                    <img class="h-5 w-5" src={`${PUBLIC_CDN_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
+					<img class="h-5 w-5" src={`${PUBLIC_CDN_RES_API_URL}/img/jade-currency-small.webp`} alt="Jade Icon" />
 					<p class="font-bold">Oneiric Shard Giveaway - Achievement Marathon</p>
 				</div>
 				<p>

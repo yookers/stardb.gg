@@ -11,7 +11,7 @@ export const actions = {
 		const password = form.get('password');
 		const email = form.get('email');
 		const importLocalAchievements = form.get('importLocalAchievements');
-        const locale = getLocaleFromURL(url);
+		const locale = getLocaleFromURL(url);
 
 		const payload: {
 			username: FormDataEntryValue | null;

@@ -50,7 +50,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		event.locals.user = undefined;
 	}
 
-    // Get the locale from the cookie
+	// Get the locale from the cookie
 	const locale = event.cookies.get('locale') || 'en';
 
 	// Get the language from the URL

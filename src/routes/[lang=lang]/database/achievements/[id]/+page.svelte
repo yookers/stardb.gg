@@ -49,10 +49,12 @@
 				alt="{achievementData.series_name} icon"
 			/>
 			<div class="pl-2">
-				<h1 class="text-xl font-bold md:text-3xl"
-                in:fly={{ y: 20, duration: 300, delay: 150, easing: cubicInOut }}>{achievementData.name}</h1>
-				<h2 class="text-sm md:text-base"
-                in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>{achievementData.series_name}</h2>
+				<h1 class="text-xl font-bold md:text-3xl" in:fly={{ y: 20, duration: 300, delay: 150, easing: cubicInOut }}>
+					{achievementData.name}
+				</h1>
+				<h2 class="text-sm md:text-base" in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>
+					{achievementData.series_name}
+				</h2>
 			</div>
 		</div>
 		<div class="flex flex-col space-y-3 sm:space-y-4">

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { locale } from '$store';
+	import { locale } from '$store';
 	import { MessageType } from '$types';
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
@@ -19,7 +19,7 @@
 				body: JSON.stringify({ username: username })
 			});
 			if (response.ok) {
-                notifyUser(MessageType.SUCCESS);
+				notifyUser(MessageType.SUCCESS);
 			}
 		} catch (err) {}
 	}

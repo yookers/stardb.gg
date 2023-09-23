@@ -6,7 +6,7 @@
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { Trophy, Minimize2, Maximize2, ChevronDown, ChevronUp, RefreshCw } from 'lucide-svelte';
-    import { locale } from '$store';
+	import { locale } from '$store';
 	import SearchPlayerCard from './SearchPlayerCard.svelte';
 	import AddPlayerCard from './AddPlayerCard.svelte';
 	import StatisticsCard from './StatisticsCard.svelte';
@@ -107,8 +107,8 @@
 	}
 
 	function resetLeaderboard() {
-        searchQuery = '';
-        playerUID = '';
+		searchQuery = '';
+		playerUID = '';
 		goto(`/${$locale}/leaderboard?`, { noScroll: true, replaceState: true });
 	}
 

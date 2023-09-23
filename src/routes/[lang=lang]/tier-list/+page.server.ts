@@ -4,7 +4,7 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async ({ fetch, url }) => {
 	try {
-        const locale = getLocaleFromURL(url);
+		const locale = getLocaleFromURL(url);
 		const res = await fetch(`${PUBLIC_SERVER_API_URL}/pages/community-tier-list?lang=${locale}`);
 
 		if (!res.ok) {
