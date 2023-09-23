@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { Icon, ChartBar, Fire, DocumentCheck, CircleStack, FaceSmile, BookOpen } from 'svelte-hero-icons';
+	import { Icon, ChartBar, Fire, DocumentCheck, Cube, CircleStack, FaceSmile, BookOpen } from 'svelte-hero-icons';
 	import { sidebarState, currentInterface } from '$store';
 	import { SidebarState, DeviceInterface } from '$types';
 	import SidebarNav from './SidebarNav.svelte';
+    import { locale } from '$store';
+    import { page } from '$app/stores';
 	import { slide } from 'svelte/transition';
 
 	// Functions to toggle sidebar state
@@ -59,7 +61,7 @@
 	>
 		<!-- Sidebar content -->
 		<div
-			class="flex h-full w-full flex-col border-r-2 border-galaxy_purple-750 bg-space_dark pb-4 pt-20 text-galaxy_purple-300/80 hover:border-galaxy_purple-650 md:h-4/5 md:rounded-r-2xl md:border-b-2 md:border-t-2"
+			class="flex h-full w-full flex-col border-r-2 border-galaxy_purple-750 bg-space_dark pb-4 pt-20 text-galaxy_purple-300/80 hover:border-galaxy_purple-650 md:h-4/5 md:rounded-r-xl md:border-b-2 md:border-t-2"
 			role="navigation"
 			aria-label="Sidebar"
 			on:mouseenter={() => {
@@ -71,27 +73,32 @@
 		>
 			<div class="flex flex-col space-y-4 overflow-y-auto overflow-x-hidden">
 				<!-- Leaderboard icon -->
-				<SidebarNav path="/leaderboard" name="Leaderboard" {isMobileView}>
+				<SidebarNav path="/{$locale}/leaderboard" name="Leaderboard" {isMobileView}>
 					<Icon src={ChartBar} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Tier list icon -->
-				<SidebarNav path="/tier-list" name="Tier List" {isMobileView}>
+				<SidebarNav path="/{$locale}/tier-list" name="Tier List" {isMobileView}>
 					<Icon src={Fire} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Achievement tracker icon -->
-				<SidebarNav path="/achievement-tracker" name="Tracker" {isMobileView}>
+				<SidebarNav path="/{$locale}/achievement-tracker" name="Tracker" {isMobileView}>
 					<Icon src={DocumentCheck} solid class="h-6 w-6" />
 				</SidebarNav>
 
+<!--                 Warp tracker import icon
+                <SidebarNav path="/{$locale}/warp-import" name="Warp Import" {isMobileView}>
+                    <Icon src={Cube} solid class="h-6 w-6" />
+                </SidebarNav>
+ -->
 				<!-- Profile card generator icon -->
-				<SidebarNav path="/profile-card-generator" name="Profile Card" {isMobileView}>
+				<SidebarNav path="/{$locale}/profile-card-generator" name="Profile Card" {isMobileView}>
 					<Icon src={FaceSmile} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Database icon -->
-				<SidebarNav path="/database" name="Database" {isMobileView}>
+				<SidebarNav path="/{$locale}/database" name="Database" {isMobileView}>
 					<Icon src={CircleStack} solid class="h-6 w-6" />
 				</SidebarNav>
 

@@ -7,7 +7,8 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     env:
-      PUBLIC_RES_API_URL: https://stardb.b-cdn.net/static
+      PUBLIC_CDN_RES_API_URL: https://stardb.b-cdn.net/static
+      PUBLIC_STATIC_RES_API_URL: https://stardb.gg/static/HSR-Assets/assets/asbres
       PUBLIC_SERVER_API_URL: https://stardb.gg/api
       PRIVATE_SERVER_API_URL: https://stardb.gg/api
       PRIVATE_API_KEY: ${{ secrets.API_KEY }}

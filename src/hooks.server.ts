@@ -1,6 +1,8 @@
 import { PUBLIC_SERVER_API_URL } from '$env/static/public';
 import { PRIVATE_SERVER_API_URL, PRIVATE_API_KEY } from '$env/static/private';
 import { redirect, type Handle, type HandleFetch } from '@sveltejs/kit';
+import languages from '$lib/languages.json';
+import { getPathnameWithoutBase } from '$lib/utils';
 
 export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 	const mode = import.meta.env.MODE;
@@ -21,10 +23,9 @@ export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 export const handle: Handle = async ({ event, resolve }) => {
 	// If there is a session, load the user and pass it to the page
 	const id = event.cookies.get('id');
-
 	if (id) {
 		if (!event.locals.user) {
-			const res = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/username`, {
+			const res = await event.fetch(`${PUBLIC_SERVER_API_URL}/users/me/username`, {
 				headers: {
 					cookie: `id=${id}`
 				}
@@ -49,5 +50,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 		event.locals.user = undefined;
 	}
 
-	return await resolve(event);
+    // Get the locale from the cookie
+	const locale = event.cookies.get('locale') || 'en';
+
+	// Get the language from the URL
+	const [, lang] = getPathnameWithoutBase(event.url).split('/');
+
+	// If the URL doesn't start with a valid language, redirect to the default language
+	if (!languages.some((language) => language.id === lang)) {
+		throw redirect(307, `/${locale}${event.url.pathname}${event.url.search}`);
+	}
+
+	return await resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', locale) });
 };
