@@ -254,11 +254,6 @@ export type ErrorResponse = {
 	message: string;
 };
 
-export type Language = {
-	id: string;
-	name: string;
-};
-
 export enum AchievementDifficulty {
 	ALL = 'all',
 	EASY = 'easy',

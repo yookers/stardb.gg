@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProfileCard from './ProfileCard.svelte';
+	import MetadataCard from './MetadataCard.svelte';
 	import CharactersCard from './CharactersCard.svelte';
 	import { PUBLIC_CDN_RES_API_URL } from '$env/static/public';
 	import type { MihomoPlayer, MihomoCharacterData, ProfileDetails } from '$types';
@@ -56,15 +56,25 @@
 </svelte:head>
 
 <main class="flex h-full w-full justify-center px-4 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-20 xl:px-6">
-	<div class="flex w-full flex-col md:w-main">
-		<img
-			class="h-16 w-16 rounded-full border-4"
-			src="{PUBLIC_CDN_RES_API_URL}/StarRailResWebp/{playerData.avatar.icon.replace(/\.png$/, '.webp')}"
-			alt="Avatar icon"
-		/>
+	<div class="flex w-full flex-col md:w-main pt-4">
+
+        <h2 class="font-bold text-2xl pb-3 pl-2">{parsedNickname}</h2>
+<!-- 		<div class="flex items-center">
+			<img
+				class="h-16 w-16 rounded-full border-4"
+				src="{PUBLIC_CDN_RES_API_URL}/StarRailResWebp/{playerData.avatar.icon.replace(/\.png$/, '.webp')}"
+				alt="Avatar icon"
+			/>
+            <div>
+                <h1>{parsedNickname}</h1>
+                <p>UID: {playerData.uid}</p>
+            </div>
+		</div>
 		<p>Top {(profileDetails.top_global * 100).toFixed(2)}%</p>
 		<p>Top {(profileDetails.top_regional * 100).toFixed(2)}%</p>
 		<p>Last Updated: {lastUpdatedTimeAgo(profileDetails.updated_at)}</p>
 		<p>{stripHtmlTags(parsedNickname)}</p>
+ -->
+		<MetadataCard {playerData} />
 	</div>
 </main>

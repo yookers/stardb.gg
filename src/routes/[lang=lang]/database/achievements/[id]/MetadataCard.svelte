@@ -11,35 +11,30 @@
 	<div slot="icon">
 		<Braces class="h-5 w-5 text-off_white" />
 	</div>
-	<div slot="content" class="space-y-2 truncate px-12 pb-3 pt-4">
-		<div class="flex w-full items-baseline justify-between">
-			<p class="font-normal">ID</p>
-			<div class="mx-3 w-full border border-dashed border-galaxy_purple-550"></div>
-			<p>{achievementData.id}</p>
+	<div slot="content" class="truncate pb-3 pt-4 px-3">
+		<div class="flex w-full  justify-between px-10 py-1.5 md:px-16 lg:px-20">
+			<p>ID</p>
+			<p class="font-semibold">{achievementData.id}</p>
 		</div>
 
-		<div class="flex w-full items-baseline justify-between">
-			<p class="font-normal">Version</p>
-			<div class="mx-3 w-full border border-dashed border-galaxy_purple-550"></div>
-			<p>{achievementData.version}</p>
+		<div class="flex w-full bg-galaxy_purple-700 justify-between px-10 py-1.5 md:px-16 lg:px-20">
+			<p>Version</p>
+			<p class="font-semibold">{achievementData.version}</p>
 		</div>
 
-		<div class="flex w-full items-baseline justify-between">
-			<p class="font-normal">Hidden</p>
-			<div class="mx-3 w-full border border-dashed border-galaxy_purple-550"></div>
-			<p>{achievementData.hidden ? 'Yes' : 'No'}</p>
+		<div class="flex w-full  justify-between px-10 py-1.5 md:px-16 lg:px-20">
+			<p>Hidden</p>
+			<p class="font-semibold">{achievementData.hidden ? 'Yes' : 'No'}</p>
 		</div>
 
-		<div class="flex w-full items-baseline justify-between">
-			<p class="font-normal">Jade Value</p>
-			<div class="mx-3 w-full border border-dashed border-galaxy_purple-550"></div>
-			<p>{achievementData.jades}</p>
+		<div class="flex w-full bg-galaxy_purple-700 justify-between px-10 py-1.5 md:px-16 lg:px-20">
+			<p>Jade Value</p>
+			<p class="font-semibold">{achievementData.jades}</p>
 		</div>
 
-		<div class="flex w-full items-baseline justify-between">
-			<p class="font-normal">% Obtained</p>
-			<div class="mx-3 w-full border border-dashed border-galaxy_purple-550"></div>
-			<p>{(achievementData.percent * 100).toFixed(4)}%</p>
+		<div class="flex w-full  justify-between px-10 py-1.5 md:px-16 lg:px-20">
+			<p>% Obtained</p>
+			<p class="font-semibold">{(achievementData.percent * 100).toFixed(4)}%</p>
 		</div>
 	</div>
 </BaseCard>

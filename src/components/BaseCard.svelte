@@ -34,7 +34,7 @@
 
 	<!-- Card Content-->
 	{#if showCard}
-		<div class="flex flex-col overflow-visible" transition:slide={{ duration: 300, easing: cubicInOut }}>
+		<div class="flex flex-col overflow-auto" transition:slide={{ duration: 300, easing: cubicInOut }}>
 			<slot name="content" />
 		</div>
 	{/if}
