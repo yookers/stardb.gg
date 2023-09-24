@@ -87,7 +87,7 @@
 						{/if}
 					</div>
 					<a
-						href="/{$locale}/database/achievements/{achievement.id}}"
+						href="/{$locale}/database/achievements/{achievement.id}"
 						class="group flex items-center pl-1 text-off_white hover:text-galaxy_purple-250"
 						aria-label={`View the achievement "${achievement.name}" in the database`}
 					>
