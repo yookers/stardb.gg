@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { Search } from 'lucide-svelte';
-    import { locale } from '$store';
+	import { locale } from '$store';
 	import Logo from '../Logo.svelte';
 	import NewsCard from './NewsCard.svelte';
 
@@ -72,5 +72,10 @@
         <NewsCard />
 	</div> -->
 
-	<a class="absolute bottom-3 left-4 text-sm hover:text-galaxy_purple-250 md:left-20" href="/{$locale}/privacy-policy">Privacy Policy</a>
+	<div class="flex space-x-2">
+		<a class="absolute bottom-3 left-4 text-sm hover:text-galaxy_purple-250 md:left-20" href="/{$locale}/privacy-policy"
+			>Privacy Policy</a
+		>
+		<span data-ccpa-link="1"></span>
+	</div>
 </main>
