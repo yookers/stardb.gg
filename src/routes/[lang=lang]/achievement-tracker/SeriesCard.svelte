@@ -27,7 +27,7 @@
 	}
 </script>
 
-<BaseCard label="Search player" title="Search Player">
+<BaseCard label="Series" title="Series">
 	<div slot="icon">
 		<Scroll class="h-5 w-5 text-off_white" />
 	</div>
