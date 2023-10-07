@@ -31,7 +31,7 @@
 	let selectedDifficulty = AchievementDifficulty.ALL;
 	let searchQuery = '';
 	let sortOrder: 'default' | 'ascending' | 'descending' = 'default';
-	let selectedVersions: string[] = [];
+	let selectedVersions = new Set<string>();
 	let isScreenExpanded = true;
 	let userInfoShown = true;
 	let popUpMessageType = MessageType.NONE;
@@ -277,7 +277,7 @@
 		showCompleted: boolean,
 		showIncomplete: boolean,
 		series: SelectedSeries,
-		versions: string[],
+		versions: Set<string>,
 		query: string,
 		difficulty: AchievementDifficulty,
 		showHidden: boolean
@@ -291,7 +291,7 @@
 					achievementGroup.achievements.some((achievement) => {
 						const matchesCompletion =
 							achievement.completed || achievementGroup.completed_group_id ? showCompleted : showIncomplete;
-						const matchesVersion = !versions?.length || versions.includes(achievement.version);
+						const matchesVersion = versions.size === 0 || versions.has(achievement.version);
 						const matchesQuery =
 							!query ||
 							achievement.name.toLowerCase().includes(lowercaseQuery) ||
@@ -309,7 +309,8 @@
 		showIncomplete = true;
 		showHidden = true;
 		selectedDifficulty = AchievementDifficulty.ALL;
-		selectedVersions = [];
+		selectedVersions.clear();
+        selectedVersions = selectedVersions;
 		searchQuery = '';
 		sortOrder = 'default';
 	}

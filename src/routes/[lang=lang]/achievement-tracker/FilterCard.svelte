@@ -11,18 +11,18 @@
 	export let selectedDifficulty: AchievementDifficulty;
 	export let filterLength: number;
 	export let sortOrder: 'default' | 'ascending' | 'descending';
-	export let selectedVersions: string[] = [];
+	export let selectedVersions: Set<string>;
 	export let versionList: string[];
 
-	let showCard = true;
 	let showVersionDropdown = false;
 
 	function toggleVersion(version: string) {
-		if (selectedVersions.includes(version)) {
-			selectedVersions = selectedVersions.filter((v) => v !== version);
+		if (selectedVersions.has(version)) {
+			selectedVersions.delete(version);
 		} else {
-			selectedVersions = [...selectedVersions, version];
+			selectedVersions.add(version);
 		}
+        selectedVersions = selectedVersions;
 	}
 
 	function toggleSortOrder() {
@@ -168,7 +168,7 @@
 								>
 									{#each versionList as version}
 										<label class="flex items-center">
-											<input type="checkbox" class="h-4 w-4" on:change={() => toggleVersion(version)} />
+											<input type="checkbox" class="h-4 w-4" on:change={() => toggleVersion(version)} checked={selectedVersions.has(version)}/>
 											<span class="pl-2">V{version}</span>
 										</label>
 									{/each}
