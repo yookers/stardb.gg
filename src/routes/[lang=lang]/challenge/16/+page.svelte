@@ -10,8 +10,8 @@
 	let questions = [
 		'What is the name of the book?',
 		'In Crossword Clue Number Ascending Order, align the corresponding true relationships from Logic Grid to get your next password. Priority: Lower Number, Top to Bottom, Left to Right. No repeats!',
-		'Not quite right… Try again 📅📈',
-		'Ok, the princess is not in this castle. Surely the next one? 🇷🇺🪞'
+		'Not quite right… Try again',
+		'Ok, the princess is not in this castle. Surely the next one?'
 	];
 	let currentPasswordIndex = 0;
 	let inputValue = '';
@@ -51,6 +51,15 @@
 					target="_blank"
 					rel="noopener noreferrer">> Link to Logic Puzzle</a
 				>
+
+			{:else if currentPasswordIndex === 2}
+				<p class="text-lg font-semibold">{questions[currentPasswordIndex]}</p>
+				<img src="/images/hint3.png" alt="Hint for password #3" />
+
+			{:else if currentPasswordIndex === 3}
+				<p class="text-lg font-semibold">{questions[currentPasswordIndex]}</p>
+				<img src="/images/hint4.png" alt="Hint for password #4" />
+                
 			{:else}
 				<p class="text-lg font-semibold">{questions[currentPasswordIndex]}</p>
 			{/if}
@@ -71,7 +80,7 @@
 				{message}
 			</div>
 		{:else}
-			<p class="text-2xl font-bold">Congrats on completing the challenge!</p>
+			<p class="text-center text-2xl font-bold">Congrats on completing the challenge!</p>
 			<div>{completionTime}</div>
 		{/if}
 	</div>
