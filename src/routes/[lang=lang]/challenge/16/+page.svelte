@@ -2,11 +2,12 @@
 	import { MessageType } from '$types';
 
 	let passwords = [
-		hashCode('Clara Protection Society Is Seeking New Members!'),
-		hashCode('AOODUOINETMA'),
-		hashCode('WacqIsland15754Star32'),
-		hashCode('23aдзевз45751ккaBвopтcO')
+        1528012270,
+        -44872763,
+        1813796886,
+        1298835991,
 	];
+    
 	let questions = [
 		'What is the name of the book?',
 		'In Crossword Clue Number Ascending Order, align the corresponding true relationships from Logic Grid to get your next password. Priority: Lower Number, Top to Bottom, Left to Right. No repeats!',
