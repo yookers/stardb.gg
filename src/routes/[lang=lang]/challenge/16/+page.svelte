@@ -2,10 +2,10 @@
 	import { MessageType } from '$types';
 
 	let passwords = [
-		'Clara Protection Society is Seeking New Members!',
-		'AOODUOINETMA',
-		'WacqIsland15754Star32',
-		'23aдзев345751ккaBвopтcO'
+		hashCode('Clara Protection Society Is Seeking New Members!'),
+		hashCode('AOODUOINETMA'),
+		hashCode('WacqIsland15754Star32'),
+		hashCode('23aдзевз45751ккaBвopтcO')
 	];
 	let questions = [
 		'What is the name of the book?',
@@ -20,8 +20,18 @@
 	let message = '';
 	let messageType: MessageType;
 
+	function hashCode(str: string) {
+		let hash = 0;
+		for (let i = 0, len = str.length; i < len; i++) {
+			let chr = str.charCodeAt(i);
+			hash = (hash << 5) - hash + chr;
+			hash |= 0; // Convert to 32bit integer
+		}
+		return hash;
+	}
+
 	function checkPassword() {
-		if (inputValue === passwords[currentPasswordIndex]) {
+		if (hashCode(inputValue) === passwords[currentPasswordIndex]) {
 			currentPasswordIndex++;
 			messageType = MessageType.SUCCESS;
 			message = 'Correct! Please enter the next password.';
@@ -51,15 +61,12 @@
 					target="_blank"
 					rel="noopener noreferrer">> Link to Logic Puzzle</a
 				>
-
 			{:else if currentPasswordIndex === 2}
 				<p class="text-lg font-semibold">{questions[currentPasswordIndex]}</p>
 				<img src="/images/hint3.png" alt="Hint for password #3" />
-
 			{:else if currentPasswordIndex === 3}
 				<p class="text-lg font-semibold">{questions[currentPasswordIndex]}</p>
 				<img src="/images/hint4.png" alt="Hint for password #4" />
-                
 			{:else}
 				<p class="text-lg font-semibold">{questions[currentPasswordIndex]}</p>
 			{/if}
