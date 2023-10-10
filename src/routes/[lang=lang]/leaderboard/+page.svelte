@@ -12,7 +12,6 @@
 	import StatisticsCard from './StatisticsCard.svelte';
 	import FilterCard from './FilterCard.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
-    import BannerAd from '$components/BannerAd.svelte';
 	import { MessageType } from '$types';
 
 	export let data;
@@ -213,7 +212,6 @@
 			>
 		</div>
 
-        <BannerAd />
 		<!-- Leaderboard-->
 		<div
 			class="rounded-xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 transition-all duration-300 hover:border-galaxy_purple-650"

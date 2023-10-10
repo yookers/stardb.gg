@@ -3,7 +3,6 @@
 	import InformationCard from './InformationCard.svelte';
 	import CardSettingsCard from './CardSettingsCard.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
-    import BannerAd from '$components/BannerAd.svelte';
 	import { MessageType } from '$types';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
@@ -92,7 +91,6 @@
 		</h2>
 
 		<div class="flex flex-col space-y-3 sm:space-y-4">
-            <BannerAd />
 			<InformationCard />
 			<CardSettingsCard bind:playerUID bind:showUID bind:characterSelection bind:primaryColor bind:secondaryColor />
 
