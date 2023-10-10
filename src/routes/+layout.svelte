@@ -37,6 +37,22 @@
 </script>
 
 <svelte:head>
+	<script data-cfasync="false">
+		window.nitroAds = window.nitroAds || {
+			createAd: function () {
+				return new Promise((e) => {
+					window.nitroAds.queue.push(['createAd', arguments, e]);
+				});
+			},
+			addUserToken: function () {
+				window.nitroAds.queue.push(['addUserToken', arguments]);
+			},
+			queue: []
+		};
+	</script>
+
+	<script data-cfasync="false" async src="https://s.nitropay.com/ads-1701.js"></script>
+
 	<script>
 		// Config options
 		// Forward the necessary functions to the web worker layer
@@ -80,7 +96,6 @@
 <main class="flex h-screen flex-col font-inter">
 	<Sidebar />
 	<Header />
-
 	<!-- Main content needs to account for header height and sidebar width. -->
 	{#key data.currentPath}
 		<div

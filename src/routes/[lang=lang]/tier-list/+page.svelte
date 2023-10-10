@@ -7,6 +7,7 @@
 	import type { CharacterElement, TierListCharacter } from '$types';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+    import BannerAd from '$components/BannerAd.svelte';
 	import { Maximize2, Minimize2, Swords } from 'lucide-svelte';
 
 	export let data;
@@ -149,6 +150,8 @@
 		<FilterCard bind:showDetailed />
 		<MiniSearchCharacters bind:searchQuery />
 
+        <BannerAd />
+        <!-- Tier List -->
 		<div class="space-y-2 rounded-xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750">
 			<div class="flex flex-wrap items-center justify-between px-5 py-2 sm:py-3">
 				<div class="flex items-center space-x-4 pr-2">

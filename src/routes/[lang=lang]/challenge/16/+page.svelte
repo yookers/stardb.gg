@@ -7,13 +7,14 @@
         1813796886,
         1298835991,
 	];
-    
+
 	let questions = [
 		'What is the name of the book?',
 		'In Crossword Clue Number Ascending Order, align the corresponding true relationships from Logic Grid to get your next password. Priority: Lower Number, Top to Bottom, Left to Right. No repeats!',
 		'Not quite right… Try again',
 		'Ok, the princess is not in this castle. Surely the next one?'
 	];
+    
 	let currentPasswordIndex = 0;
 	let inputValue = '';
 	let challengeCompleted = false;

@@ -3,6 +3,7 @@
 	import InformationCard from './InformationCard.svelte';
 	import CardSettingsCard from './CardSettingsCard.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
+    import BannerAd from '$components/BannerAd.svelte';
 	import { MessageType } from '$types';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
@@ -89,7 +90,9 @@
 			aesthetic player profiles. Simply input your 9-digit UID and if you wish to personalize your card, add in a primary and
 			secondary color in hex format. Want more privacy? You can also opt to hide your UID on the card.
 		</h2>
+
 		<div class="flex flex-col space-y-3 sm:space-y-4">
+            <BannerAd />
 			<InformationCard />
 			<CardSettingsCard bind:playerUID bind:showUID bind:characterSelection bind:primaryColor bind:secondaryColor />
 

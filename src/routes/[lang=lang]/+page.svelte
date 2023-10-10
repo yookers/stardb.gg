@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { Search } from 'lucide-svelte';
 	import { locale } from '$store';
+    import BannerAd from '$components/BannerAd.svelte';
 	import Logo from '../Logo.svelte';
 	import NewsCard from './NewsCard.svelte';
 
@@ -68,6 +69,7 @@
 		<p class="select-none font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 sm:text-6xl md:text-8xl">stardb.gg</p>
 	</div>
 
+    <BannerAd />
 	<!-- 	<div class="flex w-full md:w-[600px] flex-col pb-12">
         <NewsCard />
 	</div> -->
