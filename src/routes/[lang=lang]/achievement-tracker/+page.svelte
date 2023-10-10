@@ -13,6 +13,7 @@
 	import GroupAchievement from './GroupAchievement.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
 	import MiniSearchAchievements from './MiniSearchAchievements.svelte';
+	import BannerAd from '$components/BannerAd.svelte';
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import { AchievementDifficulty, MessageType } from '$types';
@@ -310,7 +311,7 @@
 		showHidden = true;
 		selectedDifficulty = AchievementDifficulty.ALL;
 		selectedVersions.clear();
-        selectedVersions = selectedVersions;
+		selectedVersions = selectedVersions;
 		searchQuery = '';
 		sortOrder = 'default';
 	}
@@ -446,10 +447,11 @@
 		/>
 		<MiniSearchAchievements bind:searchQuery />
 
+		<BannerAd />
+		<!-- Achievement tracker -->
 		<div
 			class="rounded-xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 transition-all duration-300 hover:border-galaxy_purple-650"
 		>
-			<!-- Achievement section -->
 			<div class="flex flex-wrap items-center justify-between gap-y-2 px-5 py-2 sm:py-3">
 				<div class="flex items-center space-x-4 pr-2">
 					<Award class="h-5 w-5 text-off_white" />
