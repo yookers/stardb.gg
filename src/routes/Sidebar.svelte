@@ -87,11 +87,11 @@
 					<Icon src={DocumentCheck} solid class="h-6 w-6" />
 				</SidebarNav>
 
-				<!--                 Warp tracker import icon
-                <SidebarNav path="/{$locale}/warp-import" name="Warp Import" {isMobileView}>
-                    <Icon src={Cube} solid class="h-6 w-6" />
-                </SidebarNav>
- -->
+				<!-- Warp tracker import icon -->
+				<SidebarNav path="/warps/" name="Warp Import" {isMobileView}>
+					<Icon src={Cube} solid class="h-6 w-6" />
+				</SidebarNav>
+
 				<!-- Profile card generator icon -->
 				<SidebarNav path="/{$locale}/profile-card-generator" name="Profile Card" {isMobileView}>
 					<Icon src={FaceSmile} solid class="h-6 w-6" />
