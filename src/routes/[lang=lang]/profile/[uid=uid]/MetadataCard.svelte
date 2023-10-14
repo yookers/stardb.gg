@@ -53,12 +53,12 @@
 
 		<div class="flex w-full flex-wrap justify-between px-10 py-1.5 sm:flex-nowrap md:px-16 lg:px-20">
 			<p>Memory of Chaos Floor:</p>
-			<p class="font-semibold">{playerData.space_info.challenge_data.maze_group_id}</p>
+			<p class="font-semibold">{playerData.space_info.challenge_data.maze_group_index}</p>
 		</div>
 
 		<div class="flex w-full flex-wrap justify-between bg-galaxy_purple-700 px-10 py-1.5 sm:flex-nowrap md:px-16 lg:px-20">
 			<p>Regular Memory Floor:</p>
-			<p class="font-semibold">{playerData.space_info.challenge_data.maze_group_index}</p>
+			<p class="font-semibold">{playerData.space_info.challenge_data.pre_maze_group_index}</p>
 		</div>
 	</div>
 </BaseCard>

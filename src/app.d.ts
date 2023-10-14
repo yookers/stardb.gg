@@ -205,6 +205,7 @@ export type MihomoPlayer = {
 		achievement_count: number;
 		avatar_count: number;
 		challenge_data: { maze_group_id: number; maze_group_index: number; pre_maze_group_index: number };
+		memory_data: { chaos_id: number; chaos_level: number; level: number };
 		light_cone_count: number;
 		pass_area_progress: number;
 	};
