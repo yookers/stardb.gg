@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	let adLoaded = false;
 
@@ -35,7 +36,7 @@
 		});
 	});
 
-	if (window['nitroAds'].queue.length === 0) {
+	if (browser && window['nitroAds'].queue.length === 0) {
 		adLoaded = true;
 	}
 </script>
