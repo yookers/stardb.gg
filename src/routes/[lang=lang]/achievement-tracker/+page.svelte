@@ -69,7 +69,7 @@
 			selectedDifficulty = value[4];
 			searchQuery = value[5];
 			sortOrder = value[6];
-			selectedVersions = value[7] ? value[7] : new Set<string>();
+			// selectedVersions = value[7];
 			shownCount = value[8];
 			snapshotScroll = value[9];
 		}
