@@ -33,15 +33,15 @@
 				position: 'top-right'
 			}
 		});
-
-		if (window['nitroAds'].queue.length === 0) {
-			adLoaded = true;
-		}
 	});
+
+	if (window['nitroAds'].queue.length === 0) {
+		adLoaded = true;
+	}
 </script>
 
 {#if adLoaded}
-	<div id="stardb-banner" class="hidden md:block"></div>
+	<div id="stardb-banner" class="hidden py-2 md:block"></div>
 
-	<div id="stardb-mobile-banner" class="md:hidden"></div>
+	<div id="stardb-mobile-banner" class="py-2 md:hidden"></div>
 {/if}
