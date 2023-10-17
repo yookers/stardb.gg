@@ -57,7 +57,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const [, lang] = getPathnameWithoutBase(event.url).split('/');
 
 	// If the URL doesn't start with a valid language, redirect to the default language
-	if (!languages.some((language) => language.id === lang)) {
+	if (!("_app" === lang) && !languages.some((language) => language.id === lang)) {
 		throw redirect(301, `/${locale}${event.url.pathname}${event.url.search}`);
 	}
 
