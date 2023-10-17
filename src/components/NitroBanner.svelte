@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	let adLoaded = false;
 
 	onMount(() => {
-		window['nitroAds' as keyof typeof window].createAd('stardb-banner', {
+		window['nitroAds'].createAd('stardb-banner', {
 			refreshLimit: 20,
 			refreshTime: 30,
 			renderVisibleOnly: false,
@@ -14,11 +15,9 @@
 				wording: 'Report Ad',
 				position: 'top-right'
 			}
-			// ,
-			// demo: true
 		});
 
-		window['nitroAds' as keyof typeof window].createAd('stardb-mobile-banner', {
+		window['nitroAds'].createAd('stardb-mobile-banner', {
 			refreshLimit: 20,
 			refreshTime: 30,
 			renderVisibleOnly: false,
@@ -33,12 +32,16 @@
 				wording: 'Report Ad',
 				position: 'top-right'
 			}
-			// ,
-			// demo: true
 		});
+
+		if (window['nitroAds'].queue.length === 0) {
+			adLoaded = true;
+		}
 	});
 </script>
 
-<div id="stardb-banner" class="hidden px-2 py-2 md:block"></div>
+{#if adLoaded}
+	<div id="stardb-banner" class="hidden md:block"></div>
 
-<div id="stardb-mobile-banner" class="px-2 py-2 md:hidden"></div>
+	<div id="stardb-mobile-banner" class="md:hidden"></div>
+{/if}
