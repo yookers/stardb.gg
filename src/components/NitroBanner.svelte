@@ -14,7 +14,8 @@
 				wording: 'Report Ad',
 				position: 'top-right'
 			}
-			//demo: true
+			// ,
+			// demo: true
 		});
 
 		window['nitroAds' as keyof typeof window].createAd('stardb-mobile-banner', {
@@ -32,7 +33,8 @@
 				wording: 'Report Ad',
 				position: 'top-right'
 			}
-			//demo: true
+			// ,
+			// demo: true
 		});
 	});
 </script>

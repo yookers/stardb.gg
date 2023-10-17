@@ -13,6 +13,7 @@
 	import GroupAchievement from './GroupAchievement.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
 	import MiniSearchAchievements from './MiniSearchAchievements.svelte';
+	import NitroBanner from '$components/NitroBanner.svelte';
 	import { lazyScroll } from './LazyScroll';
 	import { Award, Minimize2, Maximize2, ArrowUp, Loader2, RefreshCw } from 'lucide-svelte';
 	import { AchievementDifficulty, MessageType } from '$types';
@@ -444,6 +445,8 @@
 			filterLength={filteredAchievements.length}
 		/>
 		<MiniSearchAchievements bind:searchQuery />
+
+		<NitroBanner />
 
 		<!-- Achievement tracker -->
 		<div

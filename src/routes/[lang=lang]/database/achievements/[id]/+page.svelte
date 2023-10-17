@@ -3,6 +3,7 @@
 	import Information from './InformationCard.svelte';
 	import VideoCard from './VideoCard.svelte';
 	import MetadataCard from './MetadataCard.svelte';
+	import NitroBanner from '$components/NitroBanner.svelte';
 	import type { DatabaseAchievement } from '$types';
 	import { ArrowUpRight } from 'lucide-svelte';
 	import { cubicInOut } from 'svelte/easing';
@@ -40,6 +41,8 @@
 			<p>Return to Tracker</p>
 			<ArrowUpRight class="h-6 w-6 group-hover:-translate-y-0.5" />
 		</button>
+
+		<NitroBanner />
 
 		<div class="flex items-center space-x-3 pb-3 pl-2 pt-4 sm:pt-6 md:space-x-4">
 			<!-- Image names are all lowercase, no special characters (including spaces) -->

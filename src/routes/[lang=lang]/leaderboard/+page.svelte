@@ -12,6 +12,7 @@
 	import StatisticsCard from './StatisticsCard.svelte';
 	import FilterCard from './FilterCard.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
+	import NitroBanner from '$components/NitroBanner.svelte';
 	import { MessageType } from '$types';
 
 	export let data;
@@ -211,6 +212,8 @@
 				on:click={nextPage}><ChevronDown class="h-8 w-8 md:h-10 md:w-10" /></button
 			>
 		</div>
+
+		<NitroBanner />
 
 		<!-- Leaderboard-->
 		<div

@@ -3,6 +3,7 @@
 	import InformationCard from './InformationCard.svelte';
 	import CardSettingsCard from './CardSettingsCard.svelte';
 	import PopUpMessage from '$components/PopUpMessage.svelte';
+	import NitroBanner from '$components/NitroBanner.svelte';
 	import { MessageType } from '$types';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
@@ -91,6 +92,8 @@
 		</h2>
 
 		<div class="flex flex-col space-y-3 sm:space-y-4">
+			<NitroBanner />
+
 			<InformationCard />
 			<CardSettingsCard bind:playerUID bind:showUID bind:characterSelection bind:primaryColor bind:secondaryColor />
 

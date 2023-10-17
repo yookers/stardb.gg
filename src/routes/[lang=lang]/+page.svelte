@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { Search } from 'lucide-svelte';
 	import { locale } from '$store';
+	import NitroBanner from '$components/NitroBanner.svelte';
 	import Logo from '../Logo.svelte';
 	import NewsCard from './NewsCard.svelte';
 
@@ -67,6 +68,8 @@
 		<Logo class="w-10 overflow-visible fill-none stroke-[8] sm:w-12 md:w-24" />
 		<p class="select-none font-dm_sans text-5xl tracking-tighter text-galaxy_purple-250 sm:text-6xl md:text-8xl">stardb.gg</p>
 	</div>
+
+	<NitroBanner />
 
 	<!-- 	<div class="flex w-full md:w-[600px] flex-col pb-12">
         <NewsCard />

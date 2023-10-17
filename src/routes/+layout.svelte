@@ -51,6 +51,8 @@
 		};
 	</script>
 
+	<script data-cfasync="false" async src="https://s.nitropay.com/ads-1701.js"></script>
+
 	<script>
 		// Config options
 		// Forward the necessary functions to the web worker layer
