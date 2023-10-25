@@ -11,14 +11,14 @@ declare global {
 			user: { username: string } | undefined;
 		}
 	}
-    
-    interface Window {
-        nitroAds: {
-            createAd: (...args: any[]) => Promise<any>;
-            addUserToken: (...args: any[]) => void;
-            queue: any[];
-          };
-    }
+
+	interface Window {
+		nitroAds: {
+			createAd: (...args: any[]) => Promise<any>;
+			addUserToken: (...args: any[]) => void;
+			queue: any[];
+		};
+	}
 }
 
 export {};
@@ -253,6 +253,22 @@ export type TierListCharacter = {
 	character_element: string;
 	character_element_id: CharacterElement;
 	letter_rank: string;
+};
+
+export type WarpItem = {
+	id: number;
+	type: string;
+	name: string;
+	rarity: 3 | 4 | 5;
+	timestamp: string;
+};
+
+export type WarpData = {
+	count: number;
+	standard: WarpItem[];
+	departure: WarpItem[];
+	special: WarpItem[];
+	lc: WarpItem[];
 };
 
 export type CharacterElement = 'Physical' | 'Fire' | 'Ice' | 'Wind' | 'Lightning' | 'Quantum' | 'Imaginary';

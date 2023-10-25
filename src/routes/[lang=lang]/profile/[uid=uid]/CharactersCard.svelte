@@ -1,4 +1,3 @@
 <script lang="ts">
-    import BaseCard from "$components/BaseCard.svelte";
-
+	import BaseCard from '$components/BaseCard.svelte';
 </script>

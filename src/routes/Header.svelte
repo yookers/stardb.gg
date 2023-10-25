@@ -45,6 +45,7 @@
 	function changeLanguage(newLocale: string) {
 		document.cookie = `locale=${newLocale}; path=/; max-age=31536000`; // 1 year
 		isLanguageDropdownOpen = false;
+		locale.set(newLocale);
 		const newURL = replaceLocaleInUrl($page.url, newLocale);
 		goto(newURL, { replaceState: true, noScroll: true });
 	}

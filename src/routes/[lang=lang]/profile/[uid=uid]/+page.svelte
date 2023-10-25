@@ -56,10 +56,9 @@
 </svelte:head>
 
 <main class="flex h-full w-full justify-center px-4 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-20 xl:px-6">
-	<div class="flex w-full flex-col md:w-main pt-4">
-
-        <h2 class="font-bold text-2xl pb-3 pl-2">{parsedNickname}</h2>
-<!-- 		<div class="flex items-center">
+	<div class="flex w-full flex-col pt-4 md:w-main">
+		<h2 class="pb-3 pl-2 text-2xl font-bold">{parsedNickname}</h2>
+		<!-- 		<div class="flex items-center">
 			<img
 				class="h-16 w-16 rounded-full border-4"
 				src="{PUBLIC_CDN_RES_API_URL}/StarRailResWebp/{playerData.avatar.icon.replace(/\.png$/, '.webp')}"

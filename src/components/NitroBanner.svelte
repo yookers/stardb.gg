@@ -32,7 +32,8 @@
 				icon: true,
 				wording: 'Report Ad',
 				position: 'top-right'
-			}
+			},
+			mediaQuery: '(min-width: 320px) and (max-width: 768px)'
 		});
 	});
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ListFilter, ChevronDown, ChevronUp, ArrowDownWideNarrow } from 'lucide-svelte';
+	import { ListFilter, ArrowDownWideNarrow } from 'lucide-svelte';
 	import { slide, fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
 	import { AchievementDifficulty } from '$types';
@@ -22,7 +22,7 @@
 		} else {
 			selectedVersions.add(version);
 		}
-        selectedVersions = selectedVersions;
+		selectedVersions = selectedVersions;
 	}
 
 	function toggleSortOrder() {
@@ -168,7 +168,12 @@
 								>
 									{#each versionList as version}
 										<label class="flex items-center">
-											<input type="checkbox" class="h-4 w-4" on:change={() => toggleVersion(version)} checked={selectedVersions.has(version)}/>
+											<input
+												type="checkbox"
+												class="h-4 w-4"
+												on:change={() => toggleVersion(version)}
+												checked={selectedVersions.has(version)}
+											/>
 											<span class="pl-2">V{version}</span>
 										</label>
 									{/each}

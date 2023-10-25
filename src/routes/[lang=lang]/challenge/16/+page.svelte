@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { MessageType } from '$types';
 
-	let passwords = [
-        1528012270,
-        -44872763,
-        1813796886,
-        1298835991,
-	];
+	let passwords = [1528012270, -44872763, 1813796886, 1298835991];
 
 	let questions = [
 		'What is the name of the book?',
@@ -14,7 +9,7 @@
 		'Not quite right… Try again',
 		'Ok, the princess is not in this castle. Surely the next one?'
 	];
-    
+
 	let currentPasswordIndex = 0;
 	let inputValue = '';
 	let challengeCompleted = false;
