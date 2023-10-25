@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		window['nitroAds'].createAd('stardb-banner', {
+		window['nitroAds'].createAd('stardb-anchor', {
 			refreshLimit: 20,
 			refreshTime: 30,
 			format: 'anchor',
@@ -14,9 +14,7 @@
 				wording: 'Report Ad',
 				position: 'top-right'
 			},
-			mediaQuery: '(min-width: 1025px), (min-width: 320px) and (max-width: 767px)'
+			mediaQuery: '(min-width: 1025px), (min-width: 768px) and (max-width: 1024px), (min-width: 320px) and (max-width: 767px)',
 		});
 	});
 </script>
-
-<div class="stardb-banner"></div>

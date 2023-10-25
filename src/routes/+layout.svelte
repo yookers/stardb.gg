@@ -3,6 +3,7 @@
 	import Sidebar from './Sidebar.svelte';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+    import NitroAnchor from '$components/NitroAnchor.svelte';
 	import './app.css';
 	import { DeviceInterface } from '$types';
 	import { currentInterface, locale } from '$store';
@@ -96,6 +97,7 @@
 <main class="flex h-screen flex-col font-inter">
 	<Sidebar />
 	<Header />
+    <NitroAnchor />
 	<!-- Main content needs to account for header height and sidebar width. -->
 	{#key data.currentPath}
 		<div
