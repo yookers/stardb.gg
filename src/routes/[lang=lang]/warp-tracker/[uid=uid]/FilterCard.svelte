@@ -92,8 +92,8 @@
 				<button
 					class="h-8 w-16 flex-shrink-0 items-center justify-center rounded-full border-2
         {warpRarity.includes(3)
-						? 'border-transparent bg-neon_blue text-galaxy_purple-750 hover:bg-galaxy_purple-750 hover:text-neon_blue'
-						: 'border-neon_blue bg-galaxy_purple-750 text-neon_blue hover:bg-neon_blue hover:text-galaxy_purple-750'}"
+						? 'border-transparent bg-neon_blue text-galaxy_purple-750 sm:hover:bg-galaxy_purple-750 sm:hover:text-neon_blue'
+						: 'border-neon_blue bg-galaxy_purple-750 text-neon_blue sm:hover:bg-neon_blue sm:hover:text-galaxy_purple-750'}"
 					on:click={() => changeWarpRarity(3)}
 				>
 					<p>3 ★</p>
@@ -101,8 +101,8 @@
 				<button
 					class="h-8 w-16 flex-shrink-0 items-center justify-center rounded-full border-2
         {warpRarity.includes(4)
-						? 'border-transparent bg-galaxy_purple-400 text-galaxy_purple-750 hover:bg-galaxy_purple-750 hover:text-galaxy_purple-400'
-						: 'border-galaxy_purple-400 bg-galaxy_purple-750 text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-galaxy_purple-750'}"
+						? 'border-transparent bg-galaxy_purple-400 text-galaxy_purple-750 sm:hover:bg-galaxy_purple-750 sm:hover:text-galaxy_purple-400'
+						: 'border-galaxy_purple-400 bg-galaxy_purple-750 text-galaxy_purple-400 sm:hover:bg-galaxy_purple-400 sm:hover:text-galaxy_purple-750'}"
 					on:click={() => changeWarpRarity(4)}
 				>
 					<p>4 ★</p>
@@ -110,8 +110,8 @@
 				<button
 					class="h-8 w-16 flex-shrink-0 items-center justify-center rounded-full border-2
         {warpRarity.includes(5)
-						? 'border-transparent bg-neon_yellow text-galaxy_purple-750 hover:bg-galaxy_purple-750 hover:text-neon_yellow'
-						: 'border-neon_yellow bg-galaxy_purple-750 text-neon_yellow hover:bg-neon_yellow hover:text-galaxy_purple-750'}"
+						? 'border-transparent bg-neon_yellow text-galaxy_purple-750 sm:hover:bg-galaxy_purple-750 sm:hover:text-neon_yellow'
+						: 'border-neon_yellow bg-galaxy_purple-750 text-neon_yellow sm:hover:bg-neon_yellow sm:hover:text-galaxy_purple-750'}"
 					on:click={() => changeWarpRarity(5)}
 				>
 					<p>5 ★</p>
