@@ -256,10 +256,11 @@ export type TierListCharacter = {
 };
 
 export type WarpItem = {
-	id: number;
+	id: string;
 	type: string;
 	name: string;
 	rarity: 3 | 4 | 5;
+    item_id: number;
 	timestamp: string;
 };
 
@@ -269,6 +270,34 @@ export type WarpData = {
 	departure: WarpItem[];
 	special: WarpItem[];
 	lc: WarpItem[];
+};
+
+export type BookItem = {
+	id: number;
+	series: number;
+	series_name: string;
+	series_world: number;
+	series_world_name: string;
+	icon: number;
+	name: string;
+	comment: string;
+	percent: number;
+};
+
+export type BookSeries = {
+	series: string;
+	book_count: number;
+	books: BookItem[];
+};
+
+export type BookTrackerData = {
+	book_count: number;
+	user_count: number;
+	worlds: {
+		world: string;
+		book_count: number;
+		series: BookSeries[];
+	}[];
 };
 
 export type CharacterElement = 'Physical' | 'Fire' | 'Ice' | 'Wind' | 'Lightning' | 'Quantum' | 'Imaginary';

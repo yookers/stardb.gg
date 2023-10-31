@@ -56,9 +56,14 @@
 		});
 
 		return filtered.sort((a, b) => {
-			const dateA = new Date(a.timestamp) as any;
-			const dateB = new Date(b.timestamp) as any;
-			return sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
+			const dateA = new Date(a.timestamp).getTime();
+			const dateB = new Date(b.timestamp).getTime();
+
+			if (dateA !== dateB) {
+				return sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
+			} else {
+				return a.id.localeCompare(b.id);
+			}
 		});
 	}
 
@@ -204,13 +209,13 @@
 						{#if warps.type === 'light_cone'}
 							<img
 								class="h-24 w-24 shrink-0 -translate-x-4"
-								src="{PUBLIC_CDN_RES_API_URL}/StarRailResWebp/image/light_cone_preview/{warps.id}.webp"
+								src="{PUBLIC_CDN_RES_API_URL}/StarRailResWebp/image/light_cone_preview/{warps.item_id}.webp"
 								alt=""
 							/>
 						{:else if warps.type === 'character'}
 							<img
 								class="h-24 w-24 shrink-0 -translate-x-4"
-								src="{PUBLIC_CDN_RES_API_URL}/StarRailResWebp/icon/character/{warps.id}.webp"
+								src="{PUBLIC_CDN_RES_API_URL}/StarRailResWebp/icon/character/{warps.item_id}.webp"
 								alt=""
 							/>
 						{/if}
