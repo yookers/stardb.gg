@@ -62,7 +62,13 @@
 			if (dateA !== dateB) {
 				return sortOrder === 'ascending' ? dateA - dateB : dateB - dateA;
 			} else {
-                return sortOrder === 'ascending' ? a.id.localeCompare(b.id) : b.id.localeCompare(a.id);
+				if (a.id < b.id) {
+					return sortOrder === 'ascending' ? -1 : 1;
+				} else if (a.id > b.id) {
+					return sortOrder === 'ascending' ? 1 : -1;
+				} else {
+					return 0;
+				}
 			}
 		});
 	}
