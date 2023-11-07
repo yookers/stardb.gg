@@ -1,5 +1,16 @@
 <script lang="ts">
-	import { Icon, ChartBar, Fire, DocumentCheck, Cube, CircleStack, FaceSmile, BookOpen } from 'svelte-hero-icons';
+	import {
+		Icon,
+		ChartBar,
+		Fire,
+		DocumentCheck,
+		Cube,
+		CircleStack,
+		FaceSmile,
+		WrenchScrewdriver,
+		BellAlert,
+		Map
+	} from 'svelte-hero-icons';
 	import { sidebarState, currentInterface } from '$store';
 	import { SidebarState, DeviceInterface } from '$types';
 	import SidebarNav from './SidebarNav.svelte';
@@ -98,13 +109,28 @@
 				</SidebarNav>
 
 				<!-- Database icon -->
-				<SidebarNav path="/{$locale}/database" name="Database" {isMobileView}>
+				<!-- <SidebarNav path="/{$locale}/database" name="Database" {isMobileView}>
 					<Icon src={CircleStack} solid class="h-6 w-6" />
-				</SidebarNav>
+				</SidebarNav> -->
 
 				<!-- Articles icon -->
-				<SidebarNav path="/articles/" name="Articles" {isMobileView}>
+				<!-- <SidebarNav path="/articles/" name="Articles" {isMobileView}>
 					<Icon src={BookOpen} solid class="h-6 w-6" />
+				</SidebarNav> -->
+
+				<!-- Build icon -->
+				<SidebarNav path="/articles/unit-builds/" name="Guoba Builds" {isMobileView}>
+					<Icon src={WrenchScrewdriver} solid class="h-6 w-6" />
+				</SidebarNav>
+
+				<!-- Free Jade Alerts icon -->
+				<SidebarNav path="/articles/free-stellar-jade-alerts/" name="Jade Alerts" {isMobileView}>
+					<Icon src={BellAlert} solid class="h-6 w-6" />
+				</SidebarNav>
+
+				<!-- Daily Farm Route icon -->
+				<SidebarNav path="/articles/daily-farm-route/" name="Farm Route" {isMobileView}>
+					<Icon src={Map} solid class="h-6 w-6" />
 				</SidebarNav>
 			</div>
 		</div>
