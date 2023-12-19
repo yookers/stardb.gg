@@ -14,7 +14,7 @@
 		<div class="flex flex-col items-center justify-center font-bold">
 			<p class="pb-1 text-6xl text-galaxy_purple-350 md:text-7xl">{totalVotes}</p>
 			<p class="line-clamp-1 text-xl font-medium">
-				<span class="font-bold text-galaxy_purple-350">Total</span> voters
+				<span class="font-bold text-galaxy_purple-350">Total</span> votes
 			</p>
 		</div>
 	</div>
