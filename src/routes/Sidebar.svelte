@@ -14,8 +14,6 @@
 	import { sidebarState, currentInterface } from '$store';
 	import { SidebarState, DeviceInterface } from '$types';
 	import SidebarNav from './SidebarNav.svelte';
-	import { locale } from '$store';
-	import { page } from '$app/stores';
 	import { slide } from 'svelte/transition';
 
 	// Functions to toggle sidebar state
@@ -67,7 +65,7 @@
 	<div
 		class="fixed left-0 top-0 z-10 flex h-full items-center whitespace-nowrap pt-16 font-bold duration-300"
 		class:w-16={$sidebarState === SidebarState.COLLAPSED}
-		class:w-48={$sidebarState === SidebarState.EXPANDED}
+		class:w-52={$sidebarState === SidebarState.EXPANDED}
 		transition:slide={{ axis: 'x', duration: 300 }}
 	>
 		<!-- Sidebar content -->
@@ -82,36 +80,37 @@
 				if (!isMobileView) collapseSidebar();
 			}}
 		>
-			<div class="flex flex-col space-y-4 overflow-y-auto overflow-x-hidden">
+			<nav class="flex flex-col space-y-4 overflow-y-auto overflow-x-hidden">
 				<!-- Leaderboard icon -->
-				<SidebarNav path="/{$locale}/leaderboard" name="Leaderboard" {isMobileView}>
+				<SidebarNav path="/leaderboard" name="Leaderboard" {isMobileView}>
 					<Icon src={ChartBar} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Tier list icon -->
-				<SidebarNav path="/{$locale}/tier-list" name="Tier List" {isMobileView}>
-					<Icon src={Fire} solid class="h-6 w-6" />
+				<SidebarNav path="/tier-list" name="Tier List" {isMobileView}>
+                        <Icon src={Fire} solid class="h-6 w-6" />
 				</SidebarNav>
 
-				<!-- Achievement tracker icon -->
-				<SidebarNav path="/{$locale}/achievement-tracker" name="Tracker" {isMobileView}>
+				<!-- Tracker icon -->
+                <!-- subCategories={[{path: "/achievement-tracker", name: "Achievements", includeLocale: true}, {path: "/book-tracker", name: "Books", includeLocale: true}]} -->
+				<SidebarNav path="/achievement-tracker" name="Tracker" {isMobileView}>
 					<Icon src={DocumentCheck} solid class="h-6 w-6" />
 				</SidebarNav>
 
-				<!-- Warp tracker import icon -->
-				<SidebarNav path="/warps/" name="Warp Import" {isMobileView}>
+				<!-- Warp icon -->
+				<SidebarNav path="/warp-tracker" name="Warps" subCategories={[{path: "/warp-tracker", name: "Import", includeLocale: true}, {path: "/warp-tracker", name: "Viewer", includeLocale: true}]} {isMobileView}>
 					<Icon src={Cube} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Profile card generator icon -->
-				<SidebarNav path="/{$locale}/profile-card-generator" name="Profile Card" {isMobileView}>
+				<SidebarNav path="/profile-card-generator" name="Profile Card" {isMobileView}>
 					<Icon src={FaceSmile} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Database icon -->
-				<!-- <SidebarNav path="/{$locale}/database" name="Database" {isMobileView}>
+				<SidebarNav path="/database" name="Database" {isMobileView}>
 					<Icon src={CircleStack} solid class="h-6 w-6" />
-				</SidebarNav> -->
+				</SidebarNav>
 
 				<!-- Articles icon -->
 				<!-- <SidebarNav path="/articles/" name="Articles" {isMobileView}>
@@ -132,7 +131,7 @@
 				<SidebarNav path="/articles/daily-farm-route/" name="Farm Route" {isMobileView}>
 					<Icon src={Map} solid class="h-6 w-6" />
 				</SidebarNav>
-			</div>
+			</nav>
 		</div>
 	</div>
 {/if}

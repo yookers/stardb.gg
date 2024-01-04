@@ -16,6 +16,6 @@
 				<h2 class="text-base text-galaxy_purple-150 md:text-lg">Subtitle</h2>
 			</div>
 		</div>
-		<div class="flex flex-col space-y-3 sm:space-y-4">></div>
+		<div class="flex flex-col space-y-3 sm:space-y-4"></div>
 	</div>
 </main>

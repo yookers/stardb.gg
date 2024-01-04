@@ -1,15 +1,20 @@
 import type { PageServerLoad } from './$types';
 import { PRIVATE_SERVER_API_URL } from '$env/static/private';
 import type { ProfileData } from '$types';
+import { error } from '@sveltejs/kit';
 
 export const load = (async ({ fetch, params }) => {
-	try {
 		const response = await fetch(`${PRIVATE_SERVER_API_URL}/pages/profiles/${params.uid}`);
 		if (!response.ok) {
 			return { error: { status: 400, message: 'Oops! Something went wrong.' } };
 		}
 
 		const profileData: ProfileData = await response.json();
+
+        // Temporary fix for queue timeout
+        if (profileData.mihomo.detail === 'Queue timeout') {
+            throw error(400, 'Oops! Something went wrong.');
+        }
 
 		return {
 			playerData: profileData.mihomo.player,
@@ -22,7 +27,4 @@ export const load = (async ({ fetch, params }) => {
 				updated_at: profileData.updated_at
 			}
 		};
-	} catch (error) {
-		return { error: { status: 400, message: 'Oops! Something went wrong.' } };
-	}
 }) satisfies PageServerLoad;

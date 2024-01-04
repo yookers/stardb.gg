@@ -44,7 +44,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		if (logOut) {
 			event.cookies.delete('id', { path: '/' });
 			event.locals.user = undefined;
-			throw redirect(301, '/');
+			redirect(301, '/');
 		}
 	} else if (!id) {
 		event.locals.user = undefined;
@@ -58,7 +58,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	// If the URL doesn't start with a valid language, redirect to the default language
 	if (!('_app' === lang) && !languages.some((language) => language.id === lang)) {
-		throw redirect(301, `/${locale}${event.url.pathname}${event.url.search}`);
+		redirect(301, `/${locale}${event.url.pathname}${event.url.search}`);
 	}
 
 	return await resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', locale) });

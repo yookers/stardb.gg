@@ -213,10 +213,10 @@ export type MihomoPlayer = {
 	space_info: {
 		achievement_count: number;
 		avatar_count: number;
-		challenge_data: { maze_group_id: number; maze_group_index: number; pre_maze_group_index: number };
 		memory_data: { chaos_id: number; chaos_level: number; level: number };
 		light_cone_count: number;
 		pass_area_progress: number;
+        universe_level: number;
 	};
 	uid: number;
 	world_level: number;
@@ -232,6 +232,7 @@ export type ProfileDetails = {
 
 export type ProfileData = ProfileDetails & {
 	mihomo: {
+        detail: string;
 		characters: MihomoCharacterData[];
 		player: MihomoPlayer;
 	};

@@ -98,6 +98,7 @@
 <main class="flex h-screen flex-col font-inter">
 	<Sidebar />
 	<Header />
+    <!-- NitroAds -->
     <NitroVideoFloat />
     <NitroAnchor />
 	<!-- Main content needs to account for header height and sidebar width. -->
