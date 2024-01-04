@@ -42,7 +42,7 @@ export const actions = {
 					if (importLocalAchievements) {
 						return { status: 200 };
 					} else {
-						throw redirect(301, `/${locale}/achievement-tracker`);
+						redirect(301, `/${locale}/achievement-tracker`);
 					}
 				}
 			}
