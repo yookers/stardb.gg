@@ -118,17 +118,17 @@
 				</SidebarNav> -->
 
 				<!-- Build icon -->
-				<SidebarNav path="/articles/unit-builds/" name="Guoba Builds" {isMobileView}>
+				<SidebarNav path="/articles/unit-builds/" name="Guoba Builds" includeLocale={false} {isMobileView}>
 					<Icon src={WrenchScrewdriver} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Free Jade Alerts icon -->
-				<SidebarNav path="/articles/free-stellar-jade-alerts/" name="Jade Alerts" {isMobileView}>
+				<SidebarNav path="/articles/free-stellar-jade-alerts/" name="Jade Alerts" includeLocale={false} {isMobileView}>
 					<Icon src={BellAlert} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Daily Farm Route icon -->
-				<SidebarNav path="/articles/daily-farm-route/" name="Farm Route" {isMobileView}>
+				<SidebarNav path="/articles/daily-farm-route/" name="Farm Route" includeLocale={false} {isMobileView}>
 					<Icon src={Map} solid class="h-6 w-6" />
 				</SidebarNav>
 			</nav>
