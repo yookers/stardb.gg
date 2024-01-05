@@ -45,7 +45,7 @@
 
 					if (importStatus === 'finished') {
 						clearInterval(pollingInterval);
-						goto(`/${$locale}/warp-viewer/${uid}`);
+						goto(`/${$locale}/warps/${uid}`);
 						// Handle the finished state, e.g., display results
 					}
 				} else {
