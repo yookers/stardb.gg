@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install And Build
         run: |
@@ -27,7 +27,7 @@ jobs:
           mv build stardb-new
 
       - name: Copy New Files
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -36,7 +36,7 @@ jobs:
           target: /root/
 
       - name: Restart Service
-        uses: appleboy/ssh-action@v0.1.10
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
