@@ -433,7 +433,7 @@
 	</div>
 
 	<!-- Column 2 -->
-	<div class="flex w-full flex-col space-y-3 pb-96 sm:space-y-4 xl:w-main">
+	<div class="flex w-full flex-col space-y-3 pb-[50vh] sm:space-y-4 xl:w-main">
 		<FilterCard
 			bind:showCompleted
 			bind:showIncomplete
