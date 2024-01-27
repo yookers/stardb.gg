@@ -66,8 +66,9 @@
 		</div>
 		<div class="flex flex-col space-y-3 sm:space-y-4">
 			{#each uids as uid}
-				<p>
-					{uid}: <a class="underline" href="/warps/{uid}" target="_blank">Viewer</a>
+				<p class="flex items-center space-x-4">
+					<span>{uid}:</span>
+					<a class="underline" href="/warps/{uid}" target="_blank">Viewer</a>
 					<a class="underline" href="/{$locale}/warp-viewer/{uid}" target="_blank">Beta Viewer</a>
 					<button on:click={() => deleteUid(uid)}><X /></button>
 				</p>
