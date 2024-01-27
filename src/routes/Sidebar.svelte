@@ -88,17 +88,25 @@
 
 				<!-- Tier list icon -->
 				<SidebarNav path="/tier-list" name="Tier List" {isMobileView}>
-                        <Icon src={Fire} solid class="h-6 w-6" />
+					<Icon src={Fire} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Tracker icon -->
-                <!-- subCategories={[{path: "/achievement-tracker", name: "Achievements", includeLocale: true}, {path: "/book-tracker", name: "Books", includeLocale: true}]} -->
+				<!-- subCategories={[{path: "/achievement-tracker", name: "Achievements", includeLocale: true}, {path: "/book-tracker", name: "Books", includeLocale: true}]} -->
 				<SidebarNav path="/achievement-tracker" name="Tracker" {isMobileView}>
 					<Icon src={DocumentCheck} solid class="h-6 w-6" />
 				</SidebarNav>
 
 				<!-- Warp icon -->
-				<SidebarNav path="/warp-tracker" name="Warps" subCategories={[{path: "/warp-tracker", name: "Import", includeLocale: true}, {path: "/warp-tracker", name: "Viewer", includeLocale: true}]} {isMobileView}>
+				<SidebarNav
+					path="/warp-tracker"
+					name="Warps"
+					subCategories={[
+						{ path: '/warp-tracker', name: 'Import', includeLocale: true },
+						{ path: '/warp-viewer', name: 'Viewer', includeLocale: true }
+					]}
+					{isMobileView}
+				>
 					<Icon src={Cube} solid class="h-6 w-6" />
 				</SidebarNav>
 
