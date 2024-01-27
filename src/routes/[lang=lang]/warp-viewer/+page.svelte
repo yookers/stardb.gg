@@ -23,8 +23,6 @@
 
 		uids.add(uid);
 
-		console.log(uids);
-
 		localStorage.setItem('uids', JSON.stringify(Array.from(uids)));
 
 		uid = null;

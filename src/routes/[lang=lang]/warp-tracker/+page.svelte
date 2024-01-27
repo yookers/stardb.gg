@@ -33,6 +33,18 @@
 	}
 
 	function startPolling(uid: number) {
+		let uidsString = localStorage.getItem('uids');
+
+		if (uidsString == null) {
+			uidsString = '[]';
+		}
+
+		const uids = new Set(JSON.parse(uidsString));
+
+		uids.add(uid);
+
+		localStorage.setItem('uids', JSON.stringify(Array.from(uids)));
+
 		pollingInterval = setInterval(async () => {
 			try {
 				const response = await fetch(`${apiURL}/warps-import/${uid}`);
