@@ -15,6 +15,8 @@
 	function handleChangeSeries(series: SelectedSeries) {
 		selectedSeries = series;
 		resetLazyScroll();
+
+		localStorage.setItem('selectedSeries', JSON.stringify(selectedSeries));
 	}
 
 	const isSelectedSeriesSummary = (item: SelectedSeries): item is SeriesSummary => {
@@ -24,6 +26,7 @@
 	$: if (isSelectedSeriesSummary(selectedSeries)) {
 		const seriesName = selectedSeries.name;
 		selectedSeries = seriesData.series.find((s) => s.name === seriesName) || selectedSeries;
+		localStorage.setItem('selectedSeries', JSON.stringify(selectedSeries));
 	}
 </script>
 

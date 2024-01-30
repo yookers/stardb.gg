@@ -3,7 +3,7 @@
 	import { PUBLIC_CDN_RES_API_URL } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import { afterUpdate } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import UserInfo from './UserInfo.svelte';
 	// import SearchAchievementCard from './SearchAchievementCard.svelte';
 	import SeriesCard from './SeriesCard.svelte';
@@ -35,6 +35,17 @@
 	let isScreenExpanded = true;
 	let userInfoShown = true;
 	let popUpMessageType = MessageType.NONE;
+
+	onMount(() => {
+		showCompleted = JSON.parse(localStorage.getItem('showCompleted') || 'true');
+		showIncomplete = JSON.parse(localStorage.getItem('showIncomplete') || 'true');
+		selectedSeries = JSON.parse(localStorage.getItem('selectedSeries') || '"Show All"');
+		selectedVersions = new Set(JSON.parse(localStorage.getItem('selectedVersions') || '[]'));
+		searchQuery = JSON.parse(localStorage.getItem('searchQuery') || '');
+		selectedDifficulty = JSON.parse(localStorage.getItem('selectedDifficulty') || 'all');
+		showHidden = JSON.parse(localStorage.getItem('showHidden') || 'true');
+		sortOrder = JSON.parse(localStorage.getItem('sortOrder') || '"default"');
+	});
 
 	// Lazy loading
 	let filteredAchievements: AchievementGroup[];
@@ -313,6 +324,14 @@
 		selectedVersions = selectedVersions;
 		searchQuery = '';
 		sortOrder = 'default';
+
+		localStorage.setItem('showCompleted', JSON.stringify(showCompleted));
+		localStorage.setItem('showIncomplete', JSON.stringify(showIncomplete));
+		localStorage.setItem('showHidden', JSON.stringify(showHidden));
+		localStorage.setItem('selectedDifficulty', JSON.stringify(selectedDifficulty));
+		localStorage.setItem('selectedVersions', JSON.stringify(Array.from(selectedVersions)));
+		localStorage.setItem('searchQuery', JSON.stringify(searchQuery));
+		localStorage.setItem('sortOrder', JSON.stringify(sortOrder));
 	}
 
 	$: {

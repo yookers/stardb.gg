@@ -13,11 +13,7 @@
 			return;
 		}
 
-		let uidsString = localStorage.getItem('uids');
-
-		if (uidsString == null) {
-			uidsString = '[]';
-		}
+		let uidsString = localStorage.getItem('uids') || '[]';
 
 		uids = new Set(JSON.parse(uidsString));
 
@@ -38,11 +34,7 @@
 	}
 
 	onMount(() => {
-		let uidsString = localStorage.getItem('uids');
-
-		if (uidsString == null) {
-			uidsString = '[]';
-		}
+		let uidsString = localStorage.getItem('uids') || '[]';
 
 		uids = new Set(JSON.parse(uidsString));
 	});

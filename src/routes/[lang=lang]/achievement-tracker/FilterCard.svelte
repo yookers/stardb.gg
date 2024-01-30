@@ -23,6 +23,8 @@
 			selectedVersions.add(version);
 		}
 		selectedVersions = selectedVersions;
+
+		localStorage.setItem('selectedVersions', JSON.stringify(Array.from(selectedVersions)));
 	}
 
 	function toggleSortOrder() {
@@ -33,6 +35,8 @@
 		} else {
 			sortOrder = 'default';
 		}
+
+		localStorage.setItem('sortOrder', JSON.stringify(sortOrder));
 	}
 </script>
 
@@ -50,7 +54,10 @@
                     {selectedDifficulty === AchievementDifficulty.ALL
 							? 'border-transparent bg-galaxy_purple-400 text-galaxy_purple-750'
 							: 'border-galaxy_purple-400 bg-galaxy_purple-750 text-galaxy_purple-400 hover:bg-galaxy_purple-400 hover:text-galaxy_purple-750'}"
-						on:click={() => (selectedDifficulty = AchievementDifficulty.ALL)}
+						on:click={() => {
+							selectedDifficulty = AchievementDifficulty.ALL;
+							localStorage.setItem('selectedDifficulty', JSON.stringify(selectedDifficulty));
+						}}
 					>
 						<p>All</p>
 					</button>
@@ -59,7 +66,10 @@
                 {selectedDifficulty === AchievementDifficulty.EASY
 							? 'border-transparent bg-neon_green text-galaxy_purple-750'
 							: 'border-neon_green bg-galaxy_purple-750 text-neon_green hover:bg-neon_green hover:text-galaxy_purple-750'}"
-						on:click={() => (selectedDifficulty = AchievementDifficulty.EASY)}
+						on:click={() => {
+							selectedDifficulty = AchievementDifficulty.EASY;
+							localStorage.setItem('selectedDifficulty', JSON.stringify(selectedDifficulty));
+						}}
 					>
 						<p>Easy</p>
 					</button>
@@ -68,7 +78,10 @@
                 {selectedDifficulty === AchievementDifficulty.MEDIUM
 							? 'border-transparent bg-neon_yellow text-galaxy_purple-750'
 							: 'border-neon_yellow bg-galaxy_purple-750 text-neon_yellow hover:bg-neon_yellow hover:text-galaxy_purple-750'}"
-						on:click={() => (selectedDifficulty = AchievementDifficulty.MEDIUM)}
+						on:click={() => {
+							selectedDifficulty = AchievementDifficulty.MEDIUM;
+							localStorage.setItem('selectedDifficulty', JSON.stringify(selectedDifficulty));
+						}}
 					>
 						<p>Med.</p>
 					</button>
@@ -77,7 +90,10 @@
                 {selectedDifficulty === AchievementDifficulty.HARD
 							? 'border-transparent bg-neon_pink text-galaxy_purple-750'
 							: 'border-neon_pink bg-galaxy_purple-750 text-neon_pink hover:bg-neon_pink hover:text-galaxy_purple-750'}"
-						on:click={() => (selectedDifficulty = AchievementDifficulty.HARD)}
+						on:click={() => {
+							selectedDifficulty = AchievementDifficulty.HARD;
+							localStorage.setItem('selectedDifficulty', JSON.stringify(selectedDifficulty));
+						}}
 					>
 						<p>Hard</p>
 					</button>
@@ -89,7 +105,10 @@
                 {showHidden
 							? 'border-transparent bg-galaxy_purple-300 text-galaxy_purple-750'
 							: 'border-galaxy_purple-300 bg-galaxy_purple-750 text-galaxy_purple-300'}"
-						on:click={() => (showHidden = !showHidden)}
+						on:click={() => {
+							showHidden = !showHidden;
+							localStorage.setItem('showHidden', JSON.stringify(showHidden));
+						}}
 					>
 						<p>Hidden</p>
 					</button>
@@ -104,7 +123,10 @@
 							? 'border-galaxy_purple-300 bg-galaxy_purple-550'
 							: 'border-galaxy_purple-300 bg-galaxy_purple-700'}"
 						aria-label="{showCompleted ? 'Hide' : 'Show'} completed achievements"
-						on:click={() => (showCompleted = !showCompleted)}
+						on:click={() => {
+							showCompleted = !showCompleted;
+							localStorage.setItem('showCompleted', JSON.stringify(showCompleted));
+						}}
 					>
 						<span
 							class="absolute flex h-6 w-6 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
@@ -122,7 +144,10 @@
 								? 'border-galaxy_purple-300 bg-galaxy_purple-550'
 								: 'border-galaxy_purple-300 bg-galaxy_purple-700'}"
 							aria-label="{showIncomplete ? 'Hide' : 'Show'} incomplete achievements"
-							on:click={() => (showIncomplete = !showIncomplete)}
+							on:click={() => {
+								showIncomplete = !showIncomplete;
+								localStorage.setItem('showIncomplete', JSON.stringify(showIncomplete));
+							}}
 						>
 							<span
 								class="absolute flex h-6 w-6 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
