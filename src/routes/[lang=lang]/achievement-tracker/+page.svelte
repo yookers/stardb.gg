@@ -41,8 +41,8 @@
 		showIncomplete = JSON.parse(localStorage.getItem('showIncomplete') || 'true');
 		selectedSeries = JSON.parse(localStorage.getItem('selectedSeries') || '"Show All"');
 		selectedVersions = new Set(JSON.parse(localStorage.getItem('selectedVersions') || '[]'));
-		searchQuery = JSON.parse(localStorage.getItem('searchQuery') || '\"\"');
-		selectedDifficulty = JSON.parse(localStorage.getItem('selectedDifficulty') || 'all');
+		searchQuery = JSON.parse(localStorage.getItem('searchQuery') || '""');
+		selectedDifficulty = JSON.parse(localStorage.getItem('selectedDifficulty') || '"all"');
 		showHidden = JSON.parse(localStorage.getItem('showHidden') || 'true');
 		sortOrder = JSON.parse(localStorage.getItem('sortOrder') || '"default"');
 	});
