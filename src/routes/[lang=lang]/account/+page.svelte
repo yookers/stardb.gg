@@ -22,6 +22,8 @@
 		} else {
 			notifyUser(MessageType.ERROR);
 		}
+
+		password = '';
 	}
 
 	const notifyUser = (type: MessageType) => {
@@ -32,8 +34,6 @@
 		}, 2500);
 	};
 </script>
-
-import {MessageType} from '$types';
 
 <main class="flex h-full w-full justify-center px-2 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-20 xl:px-6">
 	<div class="flex w-full flex-col py-2 md:w-main">
