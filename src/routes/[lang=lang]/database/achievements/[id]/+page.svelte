@@ -8,14 +8,10 @@
 	import { ArrowUpRight } from 'lucide-svelte';
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import { locale } from '$store';
 
 	export let data;
 	const achievementData: DatabaseAchievement = data.achievementData;
-
-	// TODO: Replace with regular 'goto' or 'href' once settings are stored in local storage
-	function handleHistoryBack() {
-		window.history.back();
-	}
 </script>
 
 <svelte:head>
@@ -30,17 +26,17 @@
 <main class="flex h-full w-full justify-center px-2 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-20 xl:px-6">
 	<div class="flex w-full flex-col py-2 md:w-main">
 		<p class="pl-2 text-sm">
-			Database / <button on:click={handleHistoryBack}>Achievement</button> / <span class="font-bold">{achievementData.id}</span>
+			Database / <a href="/{$locale}/achievement-tracker">Achievement</a> / <span class="font-bold">{achievementData.id}</span>
 		</p>
 
-		<button
+		<a
+			href="/{$locale}/achievement-tracker"
 			class="group flex items-center pl-2 text-off_white hover:text-galaxy_purple-250"
 			aria-label="Go back to achievement tracker page"
-			on:click={handleHistoryBack}
 		>
 			<p>Return to Tracker</p>
 			<ArrowUpRight class="h-6 w-6 group-hover:-translate-y-0.5" />
-		</button>
+	</a>
 
 		<NitroBanner />
 
