@@ -33,7 +33,7 @@
 			</div>
 
 			<label class="flex items-center space-x-3">
-				<p>Support Character Selection (1-4):</p>
+				<p>Support Character Selection (1-8):</p>
 				<input
 					class="h-8 w-20 truncate rounded-full border-2 border-transparent bg-galaxy_purple-200 px-3 text-galaxy_purple-600 outline-none placeholder:text-galaxy_purple-400 focus:border-galaxy_purple-300"
 					type="number"
