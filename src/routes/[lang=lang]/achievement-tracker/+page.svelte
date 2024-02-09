@@ -302,7 +302,7 @@
 					achievementGroup.achievements.some((achievement) => {
 						const matchesCompletion =
 							achievement.completed || achievementGroup.completed_group_id ? showCompleted : showIncomplete;
-						const matchesVersion = versions.size === 0 || versions.has(achievement.version);
+						const matchesVersion = versions.size === 0 || versions.has(achievement.version || "");
 						const matchesQuery =
 							!query ||
 							achievement.name.toLowerCase().includes(lowercaseQuery) ||

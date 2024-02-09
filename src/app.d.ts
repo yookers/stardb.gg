@@ -48,8 +48,9 @@ export type TrackerAchievement = {
 	description: string;
 	jades: number;
 	hidden: boolean;
-	version: string;
+	version?: string;
 	difficulty?: string;
+	video?: string;
 	gacha: boolean;
 	percent: number;
 	completed?: boolean;

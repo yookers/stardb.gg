@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_CDN_RES_API_URL } from '$env/static/public';
-	import { Database, ArrowUpRight } from 'lucide-svelte';
+	import { Database, ArrowUpRight, Youtube } from 'lucide-svelte';
 	import { locale } from '$store';
 	import type { TrackerAchievement } from '$types';
 
@@ -80,14 +80,26 @@
 					</div>
 				{/if}
 			</div>
-			<a
-				href="/{$locale}/database/achievements/{achievement.id}"
-				class="group flex items-center pl-1 text-off_white hover:text-galaxy_purple-250"
-				aria-label={`View the achievement "${achievement.name}" in the database`}
-			>
-				<Database class="h-4 w-4 sm:h-5 sm:w-5" />
-				<ArrowUpRight class="h-6 w-6 group-hover:-translate-y-0.5" />
-			</a>
+			<div class="flex space-x-2">
+				{#if achievement.video}
+					<a
+						href="{achievement.video}"
+						target="_blank"
+						class="group flex items-center pl-1 text-off_white hover:text-galaxy_purple-250"
+						aria-label={`View the tutorial video for "${achievement.name}" on youtube`}
+					>
+						<Youtube class="h-4 w-4 sm:h-5 sm:w-5" />
+					</a>
+				{/if}
+				<a
+					href="/{$locale}/database/achievements/{achievement.id}"
+					class="group flex items-center pl-1 text-off_white hover:text-galaxy_purple-250"
+					aria-label={`View the achievement "${achievement.name}" in the database`}
+				>
+					<Database class="h-4 w-4 sm:h-5 sm:w-5" />
+					<ArrowUpRight class="h-6 w-6 group-hover:-translate-y-0.5" />
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
