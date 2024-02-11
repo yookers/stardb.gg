@@ -293,7 +293,7 @@
 		difficulty: AchievementDifficulty,
 		showHidden: boolean
 	): Series[] {
-		const lowercaseQuery = query.toLowerCase().replace(/[^\w\s]/gi, '');
+		const lowercaseQuery = query.toLowerCase();
 		return achievements
 			.filter((item) => series === 'Show All' || item.series === series.name)
 			.map((item) => ({
@@ -305,8 +305,8 @@
 						const matchesVersion = versions.size === 0 || versions.has(achievement.version || "");
 						const matchesQuery =
 							!query ||
-							achievement.name.toLowerCase().replace(/[^\w\s]/gi, '').includes(lowercaseQuery) ||
-							achievement.description.toLowerCase().replace(/[^\w\s]/gi, '').includes(lowercaseQuery);
+							achievement.name.toLowerCase().includes(lowercaseQuery) ||
+							achievement.description.toLowerCase().includes(lowercaseQuery);
 						const matchesDifficulty = difficulty === AchievementDifficulty.ALL || achievement.difficulty === difficulty;
 						const matchesHidden = showHidden || !achievement.hidden;
 						return matchesCompletion && matchesVersion && matchesQuery && matchesDifficulty && matchesHidden;
