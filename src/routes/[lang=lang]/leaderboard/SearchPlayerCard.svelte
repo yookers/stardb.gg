@@ -62,20 +62,20 @@
 		vi: 'Tên'
 	};
 
-	const uidText = {
-		chs: 'UID',
-		cht: 'UID',
-		de: 'Eizigartige Identifikationsnummer',
-		en: 'UID',
-		es: 'UID',
-		fr: 'UID',
-		id: 'UID',
-		jp: 'UID',
-		kr: 'UID',
-		pt: 'UID',
-		ru: 'UID',
-		th: 'UID',
-		vi: 'UID'
+	const searchText = {
+		chs: 'Search',
+		cht: 'Search',
+		de: 'Search',
+		en: 'Search',
+		es: 'Search',
+		fr: 'Search',
+		id: 'Search',
+		jp: 'Search',
+		kr: 'Search',
+		pt: 'Search',
+		ru: 'Search',
+		th: 'Search',
+		vi: 'Search'
 	};
 </script>
 
@@ -91,14 +91,12 @@
 			<button class="h-full w-16 px-4" aria-label="Set search type to Name" on:click={() => changeSearchType()}
 				>{nameText[$locale]}</button
 			>
-			<button class="h-full w-16 px-4" aria-label="Set search type to UID" on:click={() => changeSearchType()}
-				>{uidText[$locale]}</button
-			>
+			<button class="h-full w-16 px-4" aria-label="Set search type to UID" on:click={() => changeSearchType()}>UID</button>
 			<span
 				class="absolute flex h-8 w-16 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
                     {searchType === 'Name' ? 'left-1' : 'left-[calc(50%-4px)]'}"
 			>
-				{searchType}
+				{searchType === 'Name' ? nameText[$locale] : 'UID'}
 			</span>
 		</div>
 
@@ -108,7 +106,7 @@
 					class="h-10 w-full rounded-l-full border-y-2 border-l-2 border-transparent bg-galaxy_purple-700 px-5 text-sm font-bold outline-none placeholder:font-normal placeholder:text-galaxy_purple-250 focus:border-galaxy_purple-300 sm:text-base"
 					class:focus:border-neon_pink={errorMessage}
 					type="text"
-					placeholder="Search by {searchType} ..."
+					placeholder={searchText[$locale]}
 					bind:value={searchQuery}
 					on:keydown={handleKeyDown}
 				/>
