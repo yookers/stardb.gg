@@ -44,7 +44,7 @@
 		ru: 'Найти игрока',
 		th: 'ค้นหาผู้เล่น',
 		vi: 'Tìm người chơi'
-	};
+	} as any;
 
 	const nameText = {
 		chs: '名称',
@@ -60,23 +60,23 @@
 		ru: 'Имя',
 		th: 'ชื่อ',
 		vi: 'Tên'
-	};
+	} as any;
 
 	const searchText = {
 		chs: 'Search',
 		cht: 'Search',
-		de: 'Search',
+		de: 'Suche',
 		en: 'Search',
 		es: 'Search',
 		fr: 'Search',
-		id: 'Search',
+		id: 'Cari',
 		jp: 'Search',
 		kr: 'Search',
 		pt: 'Search',
-		ru: 'Search',
+		ru: 'Поиск',
 		th: 'Search',
-		vi: 'Search'
-	};
+		vi: 'Tìm kiếm'
+	} as any;
 </script>
 
 <BaseCard label={searchPlayerText[$locale]} title={searchPlayerText[$locale]}>
