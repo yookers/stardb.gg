@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BaseCard from '$components/BaseCard.svelte';
 	import { Search } from 'lucide-svelte';
+	import { locale } from '$store';
 	export let searchByName: (query: string) => void;
 	export let searchByUID: (query: string) => void;
 
@@ -28,9 +29,57 @@
 		searchType === 'Name' ? (searchType = 'UID') : (searchType = 'Name');
 		errorMessage = '';
 	}
+
+	const searchPlayerText = {
+		chs: '搜索玩家',
+		cht: '搜索玩家',
+		de: 'Suche Spieler',
+		en: 'Search Player',
+		es: 'Buscar Jugador',
+		fr: 'Rechercher un joueur',
+		id: 'Cari Pemain',
+		jp: 'プレイヤー検索',
+		kr: '플레이어 검색',
+		pt: 'Procurar Jogador',
+		ru: 'Найти игрока',
+		th: 'ค้นหาผู้เล่น',
+		vi: 'Tìm người chơi'
+	};
+
+	const nameText = {
+		chs: '名称',
+		cht: '玩家名稱',
+		de: 'Name',
+		en: 'Name',
+		es: 'Nombre',
+		fr: 'Nom',
+		id: 'Nama',
+		jp: '名前',
+		kr: '이름',
+		pt: 'Nome',
+		ru: 'Имя',
+		th: 'ชื่อ',
+		vi: 'Tên'
+	};
+
+	const uidText = {
+		chs: 'UID',
+		cht: 'UID',
+		de: 'Eizigartige Identifikationsnummer',
+		en: 'UID',
+		es: 'UID',
+		fr: 'UID',
+		id: 'UID',
+		jp: 'UID',
+		kr: 'UID',
+		pt: 'UID',
+		ru: 'UID',
+		th: 'UID',
+		vi: 'UID'
+	};
 </script>
 
-<BaseCard label="Search player" title="Search Player">
+<BaseCard label={searchPlayerText[$locale]} title={searchPlayerText[$locale]}>
 	<div slot="icon">
 		<Search class="h-5 w-5 text-off_white" />
 	</div>
@@ -39,8 +88,12 @@
 		<div
 			class="relative flex h-10 w-32 flex-shrink-0 select-none items-center rounded-full bg-galaxy_purple-700 text-center font-bold text-galaxy_purple-200"
 		>
-			<button class="h-full w-16 px-4" aria-label="Set search type to Name" on:click={() => changeSearchType()}>Name</button>
-			<button class="h-full w-16 px-4" aria-label="Set search type to UID" on:click={() => changeSearchType()}>UID</button>
+			<button class="h-full w-16 px-4" aria-label="Set search type to Name" on:click={() => changeSearchType()}
+				>{nameText[$locale]}</button
+			>
+			<button class="h-full w-16 px-4" aria-label="Set search type to UID" on:click={() => changeSearchType()}
+				>{uidText[$locale]}</button
+			>
 			<span
 				class="absolute flex h-8 w-16 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
                     {searchType === 'Name' ? 'left-1' : 'left-[calc(50%-4px)]'}"

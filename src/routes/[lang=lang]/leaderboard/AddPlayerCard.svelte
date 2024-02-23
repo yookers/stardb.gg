@@ -21,6 +21,22 @@
 			handleAddPlayer(playerUID);
 		}
 	}
+
+	const addPlayerText = {
+		chs: '搜索玩家',
+		cht: '搜索玩家',
+		de: 'Suche Spieler',
+		en: 'Search Player',
+		es: 'Buscar Jugador',
+		fr: 'Rechercher un joueur',
+		id: 'Cari Pemain',
+		jp: 'プレイヤー検索',
+		kr: '플레이어 검색',
+		pt: 'Procurar Jogador',
+		ru: 'Найти игрока',
+		th: 'ค้นหาผู้เล่น',
+		vi: 'Tìm người chơi'
+	};
 </script>
 
 <BaseCard label="Add player" title="Add Player">

@@ -134,6 +134,38 @@
 			addPlayerDisplay = false;
 		}
 	}
+
+	const achievementLeaderboard = {
+		chs: '成就排行榜',
+		cht: '成就排行榜',
+		de: 'Erfolgs-Bestenliste',
+		en: 'Achievement Leaderboard',
+		es: 'Tabla de Clasificación de Logros',
+		fr: 'Classement de Succès',
+		id: 'Peringkat Achievement',
+		jp: 'アチーブメント・リーダーボード',
+		kr: '업적 랭킹',
+		pt: 'Tabela de Conquistas',
+		ru: 'Таблица лидеров достижений',
+		th: 'ตารางอันดับความสำเร็จ',
+		vi: 'Bảng xếp hạng thành tựu'
+	};
+
+	const discover = {
+		chs: '探索<span class="font-bold">StarDB.GG</span>的全球各服排行榜，认识《崩坏：星穹铁道》的顶尖玩家，并查看你的排名！',
+		cht: '用<span class="font-bold">StarDB.GG</span> 的全球及各詞服器排行榜，找出《崩壞：星穹鐵道》的頂尖玩家，並查處你的排名！',
+		de: 'Entdecke die besten Spieler von Honkai: Star Rail auf <span class="font-bold">StarDB.GG</span>. Erkunde unsere umfangreiche Rangliste, welche alle Regionen abdeckt, und finde heraus, wo du stehst!',
+		en: 'Discover the top players of Honkai: Star Rail at <span class="font-bold">StarDB.GG</span>. Explore our comprehensive leaderboard, spanning every region, and see where you rank!',
+		es: 'Descubre a los mejores jugadores de Honkai: Star Rail en <span class="font-bold">StarDB.GG</span>. Explora nuestra tabla de clasificación integral, que abarca todas las regiones, y descubre donde te posicionas!',
+		fr: 'Découvrez les meilleurs joueurs d\'Honkai: Star Rail sur <span class="font-bold">StarDB.GG</span>. Explorez notre classement complet, couvrant toutes les régions, et voyez où vous vous classez !',
+		id: 'Temukan pemain Honkai: Star Rail terbaik di <span class="font-bold">StarDB.GG</span>! Jelajahi papan peringkat kami yang (lengkap || menyeluruh) dan menjangkau semua (wilayah || daerah), dan cari peringkatmu!',
+		jp: '<span class="font-bold">StarDB.GG</span> で世界中のトップランカーに出逢いましょう～　リーダーボードや各地域のプレイヤー順位を簡易に検索可能！自分のも特定し、実力を試そう！',
+		kr: '붕괴: 스타레일의 최고 플레이어를 <span class="font-bold">StarDB.GG</span>에서 찾아보세요.  모든 지역을 걸친 포괄적인 랭킹보드를 통해 나의 순위를 확인할 수 있습니다!',
+		pt: 'Descubra os melhores jogadores de Honkai: Star Rail em <span class="font-bold">StarDB.GG</span>. Explore nossa tabela de classificação compreensiva, incluindo todas as regiões, e confira seu rank!',
+		ru: 'Узнайте о лучших игроках Honkai: Star Rail на <span class="font-bold">StarDB.GG</span>. Изучите нашу обширную таблицу лидеров, охватывающую каждый регион, и узнайте, на каком вы месте!',
+		th: 'ค้นพบผู้เล่นชั้นยอดแห่ง Honkai: Star Rail ได้ที่ <span class="font-bold">StarDB.GG</span> สำรวจไปกับตารางอันดับของเราที่ครอบคลุมทุกภูมิภาค และมาดูกันว่าคุณอยู่ในอันดับใดกัน!',
+		vi: 'Gặp gỡ những người chơi Honkai: Star Rail giỏi nhất tại <span class="font-bold">StarDB.GG</span>. Khám phá bảng xếp hạng toàn diện, phủ khắp toàn cầu và so tài bản thân!'
+	};
 </script>
 
 <svelte:head>
@@ -179,11 +211,10 @@
 			class="pb-2 pl-2 pt-4 text-xl font-bold sm:pb-3 md:text-3xl"
 			in:fly={{ y: 20, duration: 300, delay: 150, easing: cubicInOut }}
 		>
-			Achievement Leaderboard
+			{achievementLeaderboard[$locale]}
 		</h1>
 		<h2 class="pb-2 pl-2 text-xs sm:pb-3 md:text-sm" in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>
-			Discover the top players of Honkai: Star Rail at <span class="font-bold">StarDB.GG</span>. Explore our comprehensive
-			leaderboard, spanning every region, and see where you rank!
+			{@html discover[$locale]}
 		</h2>
 		<!-- Sticky top-16 + pt-4 = top-20 -->
 		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">

@@ -4,7 +4,7 @@
 	import NitroBanner from '$components/NitroBanner.svelte';
 	import Logo from '../Logo.svelte';
 
-	const titles = {
+	const titlesText = {
 		chs: 'StarDB.GG - 星穹铁道工具以及排名',
 		cht: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
 		de: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
@@ -20,7 +20,7 @@
 		vi: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard'
 	};
 
-	const descriptions = {
+	const descriptionsText = {
 		chs: '最棒的星穹铁道网站，我们提供最好的排名，帮助你查看你拥有和缺少的成就，各种指南以及很多有用的工具',
 		cht: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
 		de: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
@@ -39,20 +39,20 @@
 
 <svelte:head>
 	<title>StarDB.GG - Honkai: Star Rail Tools and Leaderboard</title>
-	<meta name="description" content={descriptions[$locale]} />
+	<meta name="description" content={descriptionsText[$locale]} />
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://stardb.gg" />
-	<meta property="og:title" content={titles[$locale]} />
-	<meta property="og:description" content={descriptions[$locale]} />
+	<meta property="og:title" content={titlesText[$locale]} />
+	<meta property="og:description" content={descriptionsText[$locale]} />
 	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://stardb.gg" />
-	<meta name="twitter:title" content={titles[$locale]} />
-	<meta name="twitter:description" content={descriptions[$locale]} />
+	<meta name="twitter:title" content={titlesText[$locale]} />
+	<meta name="twitter:description" content={descriptionsText[$locale]} />
 	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 
 	<link rel="canonical" href="https://stardb.gg" />
