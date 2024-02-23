@@ -135,6 +135,22 @@
 		}
 	}
 
+	const titleText = {
+		chs: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		cht: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		de: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		en: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		es: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		fr: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		id: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		jp: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		kr: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		pt: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		ru: 'Таблица лидеров достижений - Honkai: Star Rail - StarDB.GG',
+		th: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
+		vi: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG'
+	} as any;
+
 	const achievementLeaderboardText = {
 		chs: '成就排行榜',
 		cht: '成就排行榜',
@@ -230,33 +246,40 @@
 		th: 'ลายเซ็น',
 		vi: 'Hồ sơ giới thiệu'
 	} as any;
+
+	const achievementsText = {
+		chs: '成就',
+		cht: '成就',
+		de: 'Erfolge',
+		en: 'Achievements',
+		es: 'Logros',
+		fr: 'Succès',
+		id: 'Pencapaian',
+		jp: 'アチーブメント',
+		kr: '업적',
+		pt: 'Conquistas',
+		ru: 'Достижения',
+		th: 'ความสำเร็จ',
+		vi: 'Thành tựu'
+	} as any;
 </script>
 
 <svelte:head>
-	<title>Achievement Leaderboard - Honkai: Star Rail - StarDB.GG</title>
-	<meta
-		name="description"
-		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
-	/>
+	<title>{titleText[$locale]}</title>
+	<meta name="description" content={discoverText[$locale]} />
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://stardb.gg/leaderboard" />
-	<meta property="og:title" content="Achievement Leaderboard - Honkai: Star Rail - StarDB.GG" />
-	<meta
-		property="og:description"
-		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
-	/>
+	<meta property="og:title" content={titleText[$locale]} />
+	<meta property="og:description" content={discoverText[$locale]} />
 	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://stardb.gg/leaderboard" />
-	<meta name="twitter:title" content="Achievement Leaderboard - Honkai: Star Rail - StarDB.GG" />
-	<meta
-		name="twitter:description"
-		content="Discover the top players of Honkai: Star Rail at StarDB.GG. Explore our comprehensive leaderboard, spanning every region, and see where you rank!"
-	/>
+	<meta name="twitter:title" content={titleText[$locale]} />
+	<meta name="twitter:description" content={discoverText[$locale]} />
 	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 
 	<link rel="canonical" href="https://stardb.gg/leaderboard" />
@@ -346,7 +369,7 @@
 						<th class="w-14 py-2 pl-10 sm:w-20 sm:pl-11 md:w-40 md:pl-16 xl:w-44">{nameText[$locale]}</th>
 						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">{signatureText[$locale]}</th>
 						<th class="hidden w-16 truncate px-2 py-2 text-center xl:table-cell">Level</th>
-						<th class="sm:w-30 w-10 truncate px-4 py-2 text-center md:w-40">Achievements</th>
+						<th class="sm:w-30 w-10 truncate px-4 py-2 text-center md:w-40">{achievementsText[$locale]}</th>
 					</thead>
 					<tbody>
 						{#each playerScores as player (player.uid)}
