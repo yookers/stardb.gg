@@ -1,59 +1,58 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { Search } from 'lucide-svelte';
 	import { locale } from '$store';
 	import NitroBanner from '$components/NitroBanner.svelte';
 	import Logo from '../Logo.svelte';
-	import NewsCard from './NewsCard.svelte';
 
-	let searchQuery = '';
-	let errorMessage = '';
+	const titles = {
+		chs: 'StarDB.GG - 星穹铁道工具以及排名',
+		cht: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		de: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		en: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		es: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		fr: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		id: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		jp: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		kr: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		pt: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		ru: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		th: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		vi: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard'
+	};
 
-	function searchPlayer(UID: string) {
-		// Check if it's an UID (9 digits)
-		const isUID = /^\d{9}$/.test(UID);
-
-		if (!isUID) {
-			errorMessage = 'UID must be 9 digits.';
-			return;
-		}
-
-		goto(`/profile/${UID}`);
-	}
-
-	function handleKeyDown(e: KeyboardEvent) {
-		errorMessage = ''; // Reset error message
-		if (e.key === 'Enter') {
-			searchPlayer(searchQuery);
-		}
-	}
+	const descriptions = {
+		chs: '最棒的星穹铁道网站，我们提供最好的排名，帮助你查看你拥有和缺少的成就，各种指南以及很多有用的工具',
+		cht: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		de: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		en: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		es: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		fr: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		id: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		jp: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		kr: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		pt: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		ru: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		th: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		vi: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.'
+	};
 </script>
 
 <svelte:head>
 	<title>StarDB.GG - Honkai: Star Rail Tools and Leaderboard</title>
-	<meta
-		name="description"
-		content="The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists."
-	/>
+	<meta name="description" content={descriptions[$locale]} />
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://stardb.gg" />
-	<meta property="og:title" content="StarDB.GG - Honkai: Star Rail Tools and Leaderboard" />
-	<meta
-		property="og:description"
-		content="The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists."
-	/>
+	<meta property="og:title" content={titles[$locale]} />
+	<meta property="og:description" content={descriptions[$locale]} />
 	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://stardb.gg" />
-	<meta name="twitter:title" content="StarDB.GG - Honkai: Star Rail Tools and Leaderboard" />
-	<meta
-		name="twitter:description"
-		content="The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists."
-	/>
+	<meta name="twitter:title" content={titles[$locale]} />
+	<meta name="twitter:description" content={descriptions[$locale]} />
 	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 
 	<link rel="canonical" href="https://stardb.gg" />
@@ -70,10 +69,6 @@
 	</div>
 
 	<NitroBanner />
-
-	<!-- 	<div class="flex w-full md:w-[600px] flex-col pb-12">
-        <NewsCard />
-	</div> -->
 
 	<div class="flex space-x-2">
 		<a class="absolute bottom-3 left-4 text-sm hover:text-galaxy_purple-250 md:left-20" href="/{$locale}/privacy-policy"
