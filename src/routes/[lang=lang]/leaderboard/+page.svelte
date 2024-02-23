@@ -135,7 +135,7 @@
 		}
 	}
 
-	const achievementLeaderboard = {
+	const achievementLeaderboardText = {
 		chs: '成就排行榜',
 		cht: '成就排行榜',
 		de: 'Erfolgs-Bestenliste',
@@ -151,7 +151,7 @@
 		vi: 'Bảng xếp hạng thành tựu'
 	} as any;
 
-	const discover = {
+	const discoverText = {
 		chs: '探索<span class="font-bold">StarDB.GG</span>的全球各服排行榜，认识《崩坏：星穹铁道》的顶尖玩家，并查看你的排名！',
 		cht: '用<span class="font-bold">StarDB.GG</span> 的全球及各詞服器排行榜，找出《崩壞：星穹鐵道》的頂尖玩家，並查處你的排名！',
 		de: 'Entdecke die besten Spieler von Honkai: Star Rail auf <span class="font-bold">StarDB.GG</span>. Erkunde unsere umfangreiche Rangliste, welche alle Regionen abdeckt, und finde heraus, wo du stehst!',
@@ -165,6 +165,22 @@
 		ru: 'Узнайте о лучших игроках Honkai: Star Rail на <span class="font-bold">StarDB.GG</span>. Изучите нашу обширную таблицу лидеров, охватывающую каждый регион, и узнайте, на каком вы месте!',
 		th: 'ค้นพบผู้เล่นชั้นยอดแห่ง Honkai: Star Rail ได้ที่ <span class="font-bold">StarDB.GG</span> สำรวจไปกับตารางอันดับของเราที่ครอบคลุมทุกภูมิภาค และมาดูกันว่าคุณอยู่ในอันดับใดกัน!',
 		vi: 'Gặp gỡ những người chơi Honkai: Star Rail giỏi nhất tại <span class="font-bold">StarDB.GG</span>. Khám phá bảng xếp hạng toàn diện, phủ khắp toàn cầu và so tài bản thân!'
+	} as any;
+
+	const leaderboardText = {
+		chs: '排行榜',
+		cht: '排行榜',
+		de: 'Bestenliste',
+		en: 'Leaderboard',
+		es: 'Tabla de Clasificación',
+		fr: 'Classement',
+		id: 'Papan Peringkat',
+		jp: 'リーダーボード',
+		kr: '랭킹',
+		pt: 'Tabela de Classificação',
+		ru: 'Таблица лидеров',
+		th: 'ตารางอันดับ',
+		vi: 'Bảng xếp hạng'
 	} as any;
 </script>
 
@@ -211,10 +227,10 @@
 			class="pb-2 pl-2 pt-4 text-xl font-bold sm:pb-3 md:text-3xl"
 			in:fly={{ y: 20, duration: 300, delay: 150, easing: cubicInOut }}
 		>
-			{achievementLeaderboard[$locale]}
+			{achievementLeaderboardText[$locale]}
 		</h1>
 		<h2 class="pb-2 pl-2 text-xs sm:pb-3 md:text-sm" in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>
-			{@html discover[$locale]}
+			{@html discoverText[$locale]}
 		</h2>
 		<!-- Sticky top-16 + pt-4 = top-20 -->
 		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">
@@ -253,7 +269,7 @@
 			<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 				<div class="flex items-center space-x-4">
 					<Trophy class="h-5 w-5 text-off_white" />
-					<p class="text-xl font-bold">Leaderboard</p>
+					<p class="text-xl font-bold">{leaderboardText[$locale]}</p>
 				</div>
 				<div class="flex space-x-4">
 					<button class="hover:scale-110" aria-label="Reset leaderboard filters" on:click={() => resetLeaderboard()}>
