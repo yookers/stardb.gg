@@ -182,6 +182,54 @@
 		th: 'ตารางอันดับ',
 		vi: 'Bảng xếp hạng'
 	} as any;
+
+	const rankText = {
+		chs: '排名',
+		cht: '排名',
+		de: 'Rang',
+		en: 'Rank',
+		es: 'Rango',
+		fr: 'Classement',
+		id: 'Peringkat',
+		jp: 'ランキング順位',
+		kr: '순위',
+		pt: 'Classificação',
+		ru: 'Место',
+		th: 'อันดับ',
+		vi: 'Hạng'
+	} as any;
+
+	const nameText = {
+		chs: '名称',
+		cht: '玩家名稱',
+		de: 'Name',
+		en: 'Name',
+		es: 'Nombre',
+		fr: 'Nom',
+		id: 'Nama',
+		jp: '名前',
+		kr: '이름',
+		pt: 'Nome',
+		ru: 'Имя',
+		th: 'ชื่อ',
+		vi: 'Tên'
+	} as any;
+
+	const signatureText = {
+		chs: '简介',
+		cht: '個人簡介',
+		de: 'Signatur',
+		en: 'Signature',
+		es: 'Firma',
+		fr: 'Signature',
+		id: 'Bio',
+		jp: 'プロフィール',
+		kr: '소개문',
+		pt: 'Biografia',
+		ru: 'Описание',
+		th: 'ลายเซ็น',
+		vi: 'Hồ sơ giới thiệu'
+	} as any;
 </script>
 
 <svelte:head>
@@ -291,12 +339,12 @@
 			<div class="flex px-2 pb-3 pt-2 md:px-6">
 				<table class="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
 					<thead class="sticky top-[62px] z-[2] bg-galaxy_purple-750 text-galaxy_purple-250">
-						<th class="w-8 py-2 pl-4 text-center md:w-16 md:pl-6">Rank</th>
+						<th class="w-8 py-2 pl-4 text-center md:w-16 md:pl-6">{rankText[$locale]}</th>
 						<!-- Region indicator -->
 						<th class="hidden w-6 py-2 md:table-cell" scope="col" abbr="Region Indicator" />
 						<!-- Player avatar -->
-						<th class="w-14 py-2 pl-10 sm:w-20 sm:pl-11 md:w-40 md:pl-16 xl:w-44">Name</th>
-						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">Signature</th>
+						<th class="w-14 py-2 pl-10 sm:w-20 sm:pl-11 md:w-40 md:pl-16 xl:w-44">{nameText[$locale]}</th>
+						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">{signatureText[$locale]}</th>
 						<th class="hidden w-16 truncate px-2 py-2 text-center xl:table-cell">Level</th>
 						<th class="sm:w-30 w-10 truncate px-4 py-2 text-center md:w-40">Achievements</th>
 					</thead>

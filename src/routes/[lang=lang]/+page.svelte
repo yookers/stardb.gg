@@ -11,14 +11,14 @@
 		en: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
 		es: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
 		fr: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
-		id: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		id: 'StarDB,GG - Peralatan dan Papan Peringkat Honkai: Star Rail',
 		jp: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
 		kr: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
 		pt: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
-		ru: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
+		ru: 'StarDB.GG - Инструменты для Honkai: Star Rail и таблица лидеров',
 		th: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard',
 		vi: 'StarDB.GG - Honkai: Star Rail Tools and Leaderboard'
-	};
+	} as any;
 
 	const descriptionsText = {
 		chs: '最棒的星穹铁道网站，我们提供最好的排名，帮助你查看你拥有和缺少的成就，各种指南以及很多有用的工具',
@@ -31,10 +31,10 @@
 		jp: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
 		kr: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
 		pt: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
-		ru: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
+		ru: 'Лучший сайт для отслеживания достижений с таблицами лидеров для Honkai: Star Rail. Инструменты, руководства и тир листы сообщества.',
 		th: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.',
 		vi: 'The best achievement tracker and leaderboards for Honkai: Star Rail. Featuring Tools, Guides, and community Tier Lists.'
-	};
+	} as any;
 </script>
 
 <svelte:head>
