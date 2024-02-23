@@ -3,6 +3,7 @@
 	import { ListFilter } from 'lucide-svelte';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
+	import { locale } from '$store';
 
 	export let regionFilter: string;
 	export let rankingFilter: string;
@@ -13,9 +14,105 @@
 	export let displayEnd: number;
 
 	let showCard = true;
+
+	const filterText = {
+		chs: '筛选',
+		cht: '篩選',
+		de: 'Filter',
+		en: 'Filter',
+		es: 'Filtrar',
+		fr: 'Filtre',
+		id: 'Sortir',
+		jp: 'フィルター',
+		kr: '필터',
+		pt: 'Filtro',
+		ru: 'Фильтр',
+		th: 'ตัวกรอง',
+		vi: 'Lọc'
+	} as any;
+
+	const allText = {
+		chs: '全部',
+		cht: '所有',
+		de: 'Alle',
+		en: 'ALL',
+		es: 'TODOS',
+		fr: 'TOUS',
+		id: 'Semua',
+		jp: '全',
+		kr: '전체',
+		pt: 'Todos',
+		ru: 'ВСЕ',
+		th: 'ทั้งหมด',
+		vi: 'Tất cả'
+	} as any;
+
+	const naText = {
+		chs: '美服',
+		cht: '美服',
+		de: 'NA',
+		en: 'NA',
+		es: 'NA',
+		fr: 'NA',
+		id: 'NA',
+		jp: 'アメリカ',
+		kr: '북미',
+		pt: 'NA',
+		ru: 'Северная Америка',
+		th: 'NA',
+		vi: 'America'
+	} as any;
+
+	const euText = {
+		chs: '欧服',
+		cht: '歐服',
+		de: 'EU',
+		en: 'EU',
+		es: 'EU',
+		fr: 'EU',
+		id: 'EU',
+		jp: 'ヨーロッパ',
+		kr: '유럽',
+		pt: 'EU',
+		ru: 'Европа',
+		th: 'EU',
+		vi: 'Europe'
+	} as any;
+
+	const asiaText = {
+		chs: '亚服',
+		cht: '亞服',
+		de: 'ASIA',
+		en: 'ASIA',
+		es: 'ASIA',
+		fr: 'ASIA',
+		id: 'ASIA',
+		jp: 'アジア',
+		kr: '아시아',
+		pt: 'ASIA',
+		ru: 'Азия',
+		th: 'ASIA',
+		vi: 'Asia'
+	} as any;
+
+	const cnText = {
+		chs: '国服',
+		cht: '國服',
+		de: 'CN',
+		en: 'CN',
+		es: 'CN',
+		fr: 'CN',
+		id: 'CN',
+		jp: '中国',
+		kr: '중국',
+		pt: 'CN',
+		ru: 'Китай',
+		th: 'CN',
+		vi: 'Trung Quốc'
+	} as any;
 </script>
 
-<BaseCard label="Filter" title="Filter">
+<BaseCard label={filterText[$locale]} title={filterText[$locale]}>
 	<div slot="icon">
 		<ListFilter class="h-5 w-5 text-off_white" />
 	</div>
@@ -33,7 +130,7 @@
 					aria-label="Filter by ALL regions"
 					on:click={() => setRegion('all')}
 				>
-					<p>ALL</p>
+					<p>{allText[$locale]}</p>
 				</button>
 				<button
 					class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_yellow bg-galaxy_purple-750 font-extrabold text-neon_yellow hover:bg-neon_yellow hover:text-space_dark md:w-20"
@@ -42,7 +139,7 @@
 					aria-label="Filter by NA region"
 					on:click={() => setRegion('na')}
 				>
-					<p>NA</p>
+					<p>{naText[$locale]}</p>
 				</button>
 				<button
 					class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_pink bg-galaxy_purple-750 font-extrabold text-neon_pink hover:bg-neon_pink hover:text-space_dark md:w-20"
@@ -51,7 +148,7 @@
 					aria-label="Filter by EU region"
 					on:click={() => setRegion('eu')}
 				>
-					<p>EU</p>
+					<p>{euText[$locale]}</p>
 				</button>
 				<button
 					class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_green bg-galaxy_purple-750 font-extrabold text-neon_green hover:bg-neon_green hover:text-space_dark md:w-20"
@@ -60,7 +157,7 @@
 					aria-label="Filter by ASIA region"
 					on:click={() => setRegion('asia')}
 				>
-					<p>ASIA</p>
+					<p>{asiaText[$locale]}</p>
 				</button>
 				<button
 					class="flex h-10 w-16 flex-shrink-0 items-center justify-center rounded-full border-2 border-neon_blue bg-galaxy_purple-750 font-extrabold text-neon_blue hover:bg-neon_blue hover:text-space_dark md:w-20"
@@ -69,7 +166,7 @@
 					aria-label="Filter by CN region"
 					on:click={() => setRegion('cn')}
 				>
-					<p>CN</p>
+					<p>{cnText[$locale]}</p>
 				</button>
 			</div>
 			<div
