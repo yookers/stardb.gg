@@ -37,7 +37,7 @@
 		ru: 'Добавить игрока',
 		th: 'เพิ่มผู้เล่น',
 		vi: 'Thêm người chơi'
-	};
+	} as any;
 
 	const uidInfoText = {
 		chs: '找不到玩家？在下面添加ta的UID！',
@@ -53,7 +53,7 @@
 		ru: 'Не можете найти игрока? Добавьте его UID в поле ниже!',
 		th: 'หาผู้เล่นไม่เจอเหรอ? เพิ่ม UID ด้านล่างเลย!',
 		vi: 'Không thể tìm thấy người chơi? Thêm UID của họ vào dưới đây!'
-	};
+	} as any;
 
 	const addUidText = {
 		chs: '添加玩家UID',
@@ -69,7 +69,7 @@
 		ru: 'Добавить UID игрока',
 		th: 'เพิ่ม UID ของผู้เล่น',
 		vi: 'Thêm UID người chơi'
-	};
+	} as any;
 </script>
 
 <BaseCard label={addPlayerText[$locale]} title={addPlayerText[$locale]}>

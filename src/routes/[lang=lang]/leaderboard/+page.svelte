@@ -149,7 +149,7 @@
 		ru: 'Таблица лидеров достижений',
 		th: 'ตารางอันดับความสำเร็จ',
 		vi: 'Bảng xếp hạng thành tựu'
-	};
+	} as any;
 
 	const discover = {
 		chs: '探索<span class="font-bold">StarDB.GG</span>的全球各服排行榜，认识《崩坏：星穹铁道》的顶尖玩家，并查看你的排名！',
@@ -165,7 +165,7 @@
 		ru: 'Узнайте о лучших игроках Honkai: Star Rail на <span class="font-bold">StarDB.GG</span>. Изучите нашу обширную таблицу лидеров, охватывающую каждый регион, и узнайте, на каком вы месте!',
 		th: 'ค้นพบผู้เล่นชั้นยอดแห่ง Honkai: Star Rail ได้ที่ <span class="font-bold">StarDB.GG</span> สำรวจไปกับตารางอันดับของเราที่ครอบคลุมทุกภูมิภาค และมาดูกันว่าคุณอยู่ในอันดับใดกัน!',
 		vi: 'Gặp gỡ những người chơi Honkai: Star Rail giỏi nhất tại <span class="font-bold">StarDB.GG</span>. Khám phá bảng xếp hạng toàn diện, phủ khắp toàn cầu và so tài bản thân!'
-	};
+	} as any;
 </script>
 
 <svelte:head>
