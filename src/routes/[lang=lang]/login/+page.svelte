@@ -6,8 +6,11 @@
 	import { fly } from 'svelte/transition';
 	import { KeyRound } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import translations from '$lib/translations/translations';
 
 	const apiURL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
+
 	let username = '';
 	let password = '';
 	let token = '';
@@ -67,7 +70,7 @@
 	<div class="flex w-full flex-col space-y-4 px-4 sm:px-12 md:w-[600px] md:px-0">
 		<div class="flex items-center text-off_white">
 			<KeyRound class="mr-2 hidden h-7 w-7 shrink-0 sm:block" />
-			<p class="pl-2 text-3xl font-bold">Login to account</p>
+			<p class="pl-2 text-3xl font-bold">{translations[lang].login_to_account}</p>
 		</div>
 
 		<div
@@ -80,7 +83,7 @@
 							<p class="font-bold text-neon_pink">Username exceeds limit</p>
 						{/if}
 						<p class="pb-2">
-							Username <span class="text-neon_pink" class:hidden={username !== ''}>*</span>
+							{translations[lang].username} <span class="text-neon_pink" class:hidden={username !== ''}>*</span>
 						</p>
 						<input
 							class="h-10 w-full rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:text-base"
@@ -98,7 +101,7 @@
 							<p class="font-bold text-neon_pink">Password exceeds limit</p>
 						{/if}
 						<div class="flex justify-between pb-2">
-							<p>Password <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
+							<p>{translations[lang].password} <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
 						</div>
 						<input
 							class="h-10 w-full rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:text-base"
@@ -118,20 +121,20 @@
 						type="submit"
 						aria-label="Login"
 					>
-						Login
+						{translations[lang].login}
 					</button>
 				</div>
 			</form>
 		</div>
 		<div class="flex flex-col space-y-1 pl-2">
 			<p class=" text-off_white">
-				Don't have an account? <a
-					href="/{$locale}/register"
-					class=" font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300">Register here!</a
+				{translations[lang].no_account}
+				<a href="/{$locale}/register" class=" font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
+					>{translations[lang].register_here}</a
 				>
 			</p>
 			<p class="font-bold text-dim_green">
-				<a href="/{$locale}/request-token" class="hover:text-neon_green">Forgot Password? </a>
+				<a href="/{$locale}/request-token" class="hover:text-neon_green">{translations[lang].forgot_password} </a>
 			</p>
 		</div>
 	</div>

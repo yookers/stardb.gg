@@ -8,6 +8,9 @@
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 	import { Lock } from 'lucide-svelte';
+	import translations from '$lib/translations/translations';
+
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	let username = '';
 	let password = '';
@@ -74,7 +77,7 @@
 	<div class="flex w-full flex-col space-y-4 px-4 sm:px-12 md:w-[600px] md:px-0">
 		<div class="flex items-center text-off_white">
 			<Lock class="mr-2 hidden h-7 w-7 shrink-0 sm:block" />
-			<p class="pl-2 text-3xl font-bold">Register an account</p>
+			<p class="pl-2 text-3xl font-bold">{translations[lang].register_an_account}</p>
 		</div>
 		<div
 			class="w-full rounded-xl border-2 border-galaxy_purple-650 bg-galaxy_purple-750 text-sm hover:border-galaxy_purple-700 md:text-base"
@@ -127,7 +130,7 @@
 							<p class=" font-bold text-neon_pink">Passwords do not match</p>
 						{/if}
 						<p class="pb-2">
-							Confirm Password <span class="text-neon_pink" class:hidden={confirmPassword !== ''}>*</span>
+							{translations[lang].confirm_password} <span class="text-neon_pink" class:hidden={confirmPassword !== ''}>*</span>
 						</p>
 						<input
 							class="h-10 w-full rounded-md border-2 border-galaxy_purple-650 bg-space_dark px-3 text-sm text-off_white focus:border-galaxy_purple-600 focus:outline-none md:text-base"
@@ -155,7 +158,7 @@
 							aria-label="Email Address"
 							bind:value={email}
 						/>
-						<p class="w-full pt-2 text-xs font-bold">The optional email is used for resetting password</p>
+						<p class="w-full pt-2 text-xs font-bold">{translations[lang].email_optional}</p>
 					</div>
 				</div>
 				<div class="w-full space-y-3 border-t-2 border-galaxy_purple-650 px-10 py-6 text-sm">
@@ -168,7 +171,7 @@
 							aria-label="Import local achievements from tracker"
 							bind:checked={importLocalAchievements}
 						/>
-						<p>Import local achievements from tracker</p>
+						<p>{translations[lang].import_local_achievements}</p>
 					</div>
 					<div class="flex items-center space-x-3">
 						<input
@@ -180,8 +183,7 @@
 							bind:checked={agreeToTerms}
 						/>
 						<p>
-							I agree to the <a href="/privacy-policy" class="font-bold text-galaxy_purple-200 underline">Privacy Policy</a> of
-							StarDB.GG <span class="text-neon_pink" class:hidden={agreeToTerms}>*</span>
+							{translations[lang].agree_privacy_policy} <span class="text-neon_pink" class:hidden={agreeToTerms}>*</span>
 						</p>
 					</div>
 					<div>
@@ -190,16 +192,16 @@
 							type="submit"
 							aria-label="Register"
 						>
-							Register
+							{translations[lang].register}
 						</button>
 					</div>
 				</div>
 			</form>
 		</div>
 		<p class="pl-2 text-off_white">
-			Have an account already? <a
-				href="/{$locale}/login"
-				class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300">Login here!</a
+			{translations[lang].yes_account}
+			<a href="/{$locale}/login" class="font-bold text-galaxy_purple-400 underline hover:text-galaxy_purple-300"
+				>{translations[lang].login_here}</a
 			>
 		</p>
 	</div>
