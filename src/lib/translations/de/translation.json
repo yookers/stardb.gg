@@ -2,7 +2,7 @@
     "leaderboard": "Rangliste",
     "achievement_leaderboard": "Erfolgs-Rangliste",
     "leaderboard_discover": "Entdecke die besten Spieler von Honkai: Star Rail auf <span class=\"font-bold\"> StarDB.GG</span>. Erkunde unsere umfangreiche Rangliste, welche alle Regionen abdeckt, und finde heraus, wo du stehst!",
-    "search_player": "Suche Spieler",
+    "search_player": "Spieler suchen",
     "name": "Name",
     "search": "Suche",
     "add_player": "Spieler hinzufügen",
@@ -27,7 +27,7 @@
     "title": "StarDB.GG - Werkzeuge und Ranglisten für Honkai: Star Rail",
     "description": "Der beste Tracker für Erfolge und Ranglisten für Honkai: Star Rail. Mit Tools, Guides und Community-Tier-Listen.",
     "achievement_leaderboard_title": "Erfolgs-Rangliste - Honkai: Star Rail - StarDB.GG",
-    "login_to_account": "Account anmelden",
+    "login_to_account": "Beim Konto anmelden",
     "username": "Benutzername",
     "password": "Passwort",
     "login": "Anmeldung",
@@ -44,5 +44,5 @@
     "yes_account": "Haben Sie bereits einen Account?",
     "login_here": "Hier anmelden!",
     "level": "Level",
-    "cant_find_player": "Can't find a player? Add their UID below!"
+    "cant_find_player": "Keinen Spieler gefunden? Füge seine UID unten hinzu!"
 }

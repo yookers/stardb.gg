@@ -1,6 +1,6 @@
 {
-    "leaderboard": "Ranking",
-    "achievement_leaderboard": "Ranking de Conquistas",
+    "leaderboard": "Classificação",
+    "achievement_leaderboard": "Classificação de Conquistas",
     "leaderboard_discover": "Descubra os melhores jogadores de Honkai: Star Rail no StarDB.GG. Explore o nosso ranking abrangente, incluindo todas as regiões, e confira a sua posição!",
     "search_player": "Procurar Jogador",
     "name": "Nome",
@@ -44,5 +44,5 @@
     "yes_account": "Já possui uma conta?",
     "login_here": "Faça o login aqui!",
     "level": "Nível",
-    "cant_find_player": "Can't find a player? Add their UID below!"
+    "cant_find_player": "Não consegue encontrar um jogador? Adicione o seu UID abaixo!"
 }

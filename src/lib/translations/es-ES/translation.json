@@ -16,7 +16,7 @@
     "all": "Todos",
     "na": "Norteaméricas",
     "eu": "Europa",
-    "asia": "Asiático",
+    "asia": "ASIA",
     "cn": "China",
     "world": "Mundo",
     "region": "Región",
@@ -44,5 +44,5 @@
     "yes_account": "¿Ya tiene una cuenta?",
     "login_here": "¡Inicie sesión aquí!",
     "level": "Nivel",
-    "cant_find_player": "Can't find a player? Add their UID below!"
+    "cant_find_player": "¿No encuentras a un jugador? ¡Agrega su UID abajo!"
 }
