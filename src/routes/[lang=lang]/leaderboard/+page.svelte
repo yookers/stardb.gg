@@ -14,6 +14,9 @@
 	import PopUpMessage from '$components/PopUpMessage.svelte';
 	import NitroBanner from '$components/NitroBanner.svelte';
 	import { MessageType } from '$types';
+	import translations from '$lib/translations/translations';
+
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	export let data;
 	let currentPage = 1;
@@ -134,152 +137,24 @@
 			addPlayerDisplay = false;
 		}
 	}
-
-	const titleText = {
-		chs: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		cht: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		de: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		en: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		es: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		fr: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		id: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		jp: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		kr: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		pt: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		ru: 'Таблица лидеров достижений - Honkai: Star Rail - StarDB.GG',
-		th: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG',
-		vi: 'Achievement Leaderboard - Honkai: Star Rail - StarDB.GG'
-	} as any;
-
-	const achievementLeaderboardText = {
-		chs: '成就排行榜',
-		cht: '成就排行榜',
-		de: 'Erfolgs-Bestenliste',
-		en: 'Achievement Leaderboard',
-		es: 'Tabla de Clasificación de Logros',
-		fr: 'Classement de Succès',
-		id: 'Peringkat Achievement',
-		jp: 'アチーブメント・リーダーボード',
-		kr: '업적 랭킹',
-		pt: 'Tabela de Conquistas',
-		ru: 'Таблица лидеров достижений',
-		th: 'ตารางอันดับความสำเร็จ',
-		vi: 'Bảng xếp hạng thành tựu'
-	} as any;
-
-	const discoverText = {
-		chs: '探索<span class="font-bold">StarDB.GG</span>的全球各服排行榜，认识《崩坏：星穹铁道》的顶尖玩家，并查看你的排名！',
-		cht: '用<span class="font-bold">StarDB.GG</span> 的全球及各詞服器排行榜，找出《崩壞：星穹鐵道》的頂尖玩家，並查處你的排名！',
-		de: 'Entdecke die besten Spieler von Honkai: Star Rail auf <span class="font-bold">StarDB.GG</span>. Erkunde unsere umfangreiche Rangliste, welche alle Regionen abdeckt, und finde heraus, wo du stehst!',
-		en: 'Discover the top players of Honkai: Star Rail at <span class="font-bold">StarDB.GG</span>. Explore our comprehensive leaderboard, spanning every region, and see where you rank!',
-		es: 'Descubre a los mejores jugadores de Honkai: Star Rail en <span class="font-bold">StarDB.GG</span>. Explora nuestra tabla de clasificación integral, que abarca todas las regiones, y descubre donde te posicionas!',
-		fr: 'Découvrez les meilleurs joueurs d\'Honkai: Star Rail sur <span class="font-bold">StarDB.GG</span>. Explorez notre classement complet, couvrant toutes les régions, et voyez où vous vous classez !',
-		id: 'Temukan pemain Honkai: Star Rail terbaik di <span class="font-bold">StarDB.GG</span>! Jelajahi papan peringkat kami yang (lengkap || menyeluruh) dan menjangkau semua (wilayah || daerah), dan cari peringkatmu!',
-		jp: '<span class="font-bold">StarDB.GG</span> で世界中のトップランカーに出逢いましょう～　リーダーボードや各地域のプレイヤー順位を簡易に検索可能！自分のも特定し、実力を試そう！',
-		kr: '붕괴: 스타레일의 최고 플레이어를 <span class="font-bold">StarDB.GG</span>에서 찾아보세요.  모든 지역을 걸친 포괄적인 랭킹보드를 통해 나의 순위를 확인할 수 있습니다!',
-		pt: 'Descubra os melhores jogadores de Honkai: Star Rail em <span class="font-bold">StarDB.GG</span>. Explore nossa tabela de classificação compreensiva, incluindo todas as regiões, e confira seu rank!',
-		ru: 'Узнайте о лучших игроках Honkai: Star Rail на <span class="font-bold">StarDB.GG</span>. Изучите нашу обширную таблицу лидеров, охватывающую каждый регион, и узнайте, на каком вы месте!',
-		th: 'ค้นพบผู้เล่นชั้นยอดแห่ง Honkai: Star Rail ได้ที่ <span class="font-bold">StarDB.GG</span> สำรวจไปกับตารางอันดับของเราที่ครอบคลุมทุกภูมิภาค และมาดูกันว่าคุณอยู่ในอันดับใดกัน!',
-		vi: 'Gặp gỡ những người chơi Honkai: Star Rail giỏi nhất tại <span class="font-bold">StarDB.GG</span>. Khám phá bảng xếp hạng toàn diện, phủ khắp toàn cầu và so tài bản thân!'
-	} as any;
-
-	const leaderboardText = {
-		chs: '排行榜',
-		cht: '排行榜',
-		de: 'Bestenliste',
-		en: 'Leaderboard',
-		es: 'Tabla de Clasificación',
-		fr: 'Classement',
-		id: 'Papan Peringkat',
-		jp: 'リーダーボード',
-		kr: '랭킹',
-		pt: 'Tabela de Classificação',
-		ru: 'Таблица лидеров',
-		th: 'ตารางอันดับ',
-		vi: 'Bảng xếp hạng'
-	} as any;
-
-	const rankText = {
-		chs: '排名',
-		cht: '排名',
-		de: 'Rang',
-		en: 'Rank',
-		es: 'Rango',
-		fr: 'Classement',
-		id: 'Peringkat',
-		jp: 'ランキング順位',
-		kr: '순위',
-		pt: 'Classificação',
-		ru: 'Место',
-		th: 'อันดับ',
-		vi: 'Hạng'
-	} as any;
-
-	const nameText = {
-		chs: '名称',
-		cht: '玩家名稱',
-		de: 'Name',
-		en: 'Name',
-		es: 'Nombre',
-		fr: 'Nom',
-		id: 'Nama',
-		jp: '名前',
-		kr: '이름',
-		pt: 'Nome',
-		ru: 'Имя',
-		th: 'ชื่อ',
-		vi: 'Tên'
-	} as any;
-
-	const signatureText = {
-		chs: '简介',
-		cht: '個人簡介',
-		de: 'Signatur',
-		en: 'Signature',
-		es: 'Firma',
-		fr: 'Signature',
-		id: 'Bio',
-		jp: 'プロフィール',
-		kr: '소개문',
-		pt: 'Biografia',
-		ru: 'Описание',
-		th: 'ลายเซ็น',
-		vi: 'Hồ sơ giới thiệu'
-	} as any;
-
-	const achievementsText = {
-		chs: '成就',
-		cht: '成就',
-		de: 'Erfolge',
-		en: 'Achievements',
-		es: 'Logros',
-		fr: 'Succès',
-		id: 'Pencapaian',
-		jp: 'アチーブメント',
-		kr: '업적',
-		pt: 'Conquistas',
-		ru: 'Достижения',
-		th: 'ความสำเร็จ',
-		vi: 'Thành tựu'
-	} as any;
 </script>
 
 <svelte:head>
-	<title>{titleText[$locale]}</title>
-	<meta name="description" content={discoverText[$locale]} />
+	<title>{translations[lang].title}</title>
+	<meta name="description" content={translations[lang].leaderboard_discover} />
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://stardb.gg/leaderboard" />
-	<meta property="og:title" content={titleText[$locale]} />
-	<meta property="og:description" content={discoverText[$locale]} />
+	<meta property="og:title" content={translations[lang].title} />
+	<meta property="og:description" content={translations[lang].leaderboard_discover} />
 	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://stardb.gg/leaderboard" />
-	<meta name="twitter:title" content={titleText[$locale]} />
-	<meta name="twitter:description" content={discoverText[$locale]} />
+	<meta name="twitter:title" content={translations[lang].title} />
+	<meta name="twitter:description" content={translations[lang].leaderboard_discover} />
 	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 
 	<link rel="canonical" href="https://stardb.gg/leaderboard" />
@@ -298,10 +173,10 @@
 			class="pb-2 pl-2 pt-4 text-xl font-bold sm:pb-3 md:text-3xl"
 			in:fly={{ y: 20, duration: 300, delay: 150, easing: cubicInOut }}
 		>
-			{achievementLeaderboardText[$locale]}
+			{translations[lang].achievement_leaderboard}
 		</h1>
 		<h2 class="pb-2 pl-2 text-xs sm:pb-3 md:text-sm" in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>
-			{@html discoverText[$locale]}
+			{@html translations[lang].leaderboard_discover}
 		</h2>
 		<!-- Sticky top-16 + pt-4 = top-20 -->
 		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">
@@ -340,7 +215,7 @@
 			<div class="flex items-center justify-between px-5 py-2 sm:py-3">
 				<div class="flex items-center space-x-4">
 					<Trophy class="h-5 w-5 text-off_white" />
-					<p class="text-xl font-bold">{leaderboardText[$locale]}</p>
+					<p class="text-xl font-bold">{translations[lang].leaderboard}</p>
 				</div>
 				<div class="flex space-x-4">
 					<button class="hover:scale-110" aria-label="Reset leaderboard filters" on:click={() => resetLeaderboard()}>
@@ -362,14 +237,14 @@
 			<div class="flex px-2 pb-3 pt-2 md:px-6">
 				<table class="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
 					<thead class="sticky top-[62px] z-[2] bg-galaxy_purple-750 text-galaxy_purple-250">
-						<th class="w-8 py-2 pl-4 text-center md:w-16 md:pl-6">{rankText[$locale]}</th>
+						<th class="w-8 py-2 pl-4 text-center md:w-16 md:pl-6">{translations[lang].rank}</th>
 						<!-- Region indicator -->
 						<th class="hidden w-6 py-2 md:table-cell" scope="col" abbr="Region Indicator" />
 						<!-- Player avatar -->
-						<th class="w-14 py-2 pl-10 sm:w-20 sm:pl-11 md:w-40 md:pl-16 xl:w-44">{nameText[$locale]}</th>
-						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">{signatureText[$locale]}</th>
-						<th class="hidden w-16 truncate px-2 py-2 text-center xl:table-cell">Level</th>
-						<th class="sm:w-30 w-10 truncate px-4 py-2 text-center md:w-40">{achievementsText[$locale]}</th>
+						<th class="w-14 py-2 pl-10 sm:w-20 sm:pl-11 md:w-40 md:pl-16 xl:w-44">{translations[lang].name}</th>
+						<th class="hidden w-28 truncate px-2 py-2 sm:table-cell md:w-full">{translations[lang].signature}</th>
+						<th class="hidden w-16 truncate px-2 py-2 text-center xl:table-cell">{translations[lang].level}</th>
+						<th class="sm:w-30 w-10 truncate px-4 py-2 text-center md:w-40">{translations[lang].achievements}</th>
 					</thead>
 					<tbody>
 						{#each playerScores as player (player.uid)}

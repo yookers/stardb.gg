@@ -2,8 +2,11 @@
 	import BaseCard from '$components/BaseCard.svelte';
 	import { Search } from 'lucide-svelte';
 	import { locale } from '$store';
+	import translations from '$lib/translations/translations';
 	export let searchByName: (query: string) => void;
 	export let searchByUID: (query: string) => void;
+
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	let searchType = 'Name'; // 'Name' or 'UID'
 	let searchQuery = '';
@@ -29,57 +32,9 @@
 		searchType === 'Name' ? (searchType = 'UID') : (searchType = 'Name');
 		errorMessage = '';
 	}
-
-	const searchPlayerText = {
-		chs: '搜索玩家',
-		cht: '搜索玩家',
-		de: 'Suche Spieler',
-		en: 'Search Player',
-		es: 'Buscar Jugador',
-		fr: 'Rechercher un joueur',
-		id: 'Cari Pemain',
-		jp: 'プレイヤー検索',
-		kr: '플레이어 검색',
-		pt: 'Procurar Jogador',
-		ru: 'Найти игрока',
-		th: 'ค้นหาผู้เล่น',
-		vi: 'Tìm người chơi'
-	} as any;
-
-	const nameText = {
-		chs: '名称',
-		cht: '玩家名稱',
-		de: 'Name',
-		en: 'Name',
-		es: 'Nombre',
-		fr: 'Nom',
-		id: 'Nama',
-		jp: '名前',
-		kr: '이름',
-		pt: 'Nome',
-		ru: 'Имя',
-		th: 'ชื่อ',
-		vi: 'Tên'
-	} as any;
-
-	const searchText = {
-		chs: 'Search',
-		cht: 'Search',
-		de: 'Suche',
-		en: 'Search',
-		es: 'Search',
-		fr: 'Search',
-		id: 'Cari',
-		jp: 'Search',
-		kr: 'Search',
-		pt: 'Search',
-		ru: 'Поиск',
-		th: 'Search',
-		vi: 'Tìm kiếm'
-	} as any;
 </script>
 
-<BaseCard label={searchPlayerText[$locale]} title={searchPlayerText[$locale]}>
+<BaseCard label={translations[lang].search_player} title={translations[lang].search_player}>
 	<div slot="icon">
 		<Search class="h-5 w-5 text-off_white" />
 	</div>
@@ -89,14 +44,14 @@
 			class="relative flex h-10 w-32 flex-shrink-0 select-none items-center rounded-full bg-galaxy_purple-700 text-center font-bold text-galaxy_purple-200"
 		>
 			<button class="h-full w-16 px-4" aria-label="Set search type to Name" on:click={() => changeSearchType()}
-				>{nameText[$locale]}</button
+				>{translations[lang].name}</button
 			>
 			<button class="h-full w-16 px-4" aria-label="Set search type to UID" on:click={() => changeSearchType()}>UID</button>
 			<span
 				class="absolute flex h-8 w-16 items-center justify-center rounded-full bg-galaxy_purple-200 text-galaxy_purple-700 duration-300
                     {searchType === 'Name' ? 'left-1' : 'left-[calc(50%-4px)]'}"
 			>
-				{searchType === 'Name' ? nameText[$locale] : 'UID'}
+				{searchType === 'Name' ? translations[lang].name : 'UID'}
 			</span>
 		</div>
 
@@ -106,7 +61,7 @@
 					class="h-10 w-full rounded-l-full border-y-2 border-l-2 border-transparent bg-galaxy_purple-700 px-5 text-sm font-bold outline-none placeholder:font-normal placeholder:text-galaxy_purple-250 focus:border-galaxy_purple-300 sm:text-base"
 					class:focus:border-neon_pink={errorMessage}
 					type="text"
-					placeholder={searchText[$locale]}
+					placeholder={translations[lang].search}
 					bind:value={searchQuery}
 					on:keydown={handleKeyDown}
 				/>
