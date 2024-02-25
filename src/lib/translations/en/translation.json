@@ -44,5 +44,6 @@
     "yes_account": "Have an account already?",
     "login_here": "Login here!",
     "level": "Level",
-    "cant_find_player": "Can't find a player? Add their UID below!"
+    "cant_find_player": "Can't find a player? Add their UID below!",
+    "locale_language": "Locale Language"
 }

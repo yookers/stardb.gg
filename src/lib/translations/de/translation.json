@@ -44,5 +44,6 @@
     "yes_account": "Haben Sie bereits einen Account?",
     "login_here": "Hier anmelden!",
     "level": "Level",
-    "cant_find_player": "Keinen Spieler gefunden? Füge seine UID unten hinzu!"
+    "cant_find_player": "Keinen Spieler gefunden? Füge seine UID unten hinzu!",
+    "locale_language": "Deutsch"
 }

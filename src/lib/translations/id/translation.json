@@ -44,5 +44,6 @@
     "yes_account": "Sudah memiliki akun?",
     "login_here": "Masuk di sini!",
     "level": "Level",
-    "cant_find_player": "Pemain tidak ditemukan? Tambahkan UID mereka di bawah!"
+    "cant_find_player": "Pemain tidak ditemukan? Tambahkan UID mereka di bawah!",
+    "locale_language": "Bahasa Indonesia"
 }

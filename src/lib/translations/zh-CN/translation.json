@@ -44,5 +44,6 @@
     "yes_account": "已拥有一个账号？",
     "login_here": "在这里登录！",
     "level": "等级",
-    "cant_find_player": "Can't find a player? Add their UID below!"
+    "cant_find_player": "Can't find a player? Add their UID below!",
+    "locale_language": "简体中文"
 }
