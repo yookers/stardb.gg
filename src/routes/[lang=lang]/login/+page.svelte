@@ -62,8 +62,8 @@
 </script>
 
 <svelte:head>
-	<title>Login - StarDB.GG</title>
-	<meta name="description" content="Login to your account on StarDB.GG." />
+	<title>{translations[lang].login_title}</title>
+	<meta name="description" content={translations[lang].login_description} />
 </svelte:head>
 
 <main class="flex h-full flex-col items-center justify-center py-8">
@@ -80,7 +80,7 @@
 				<div class="flex w-full flex-col space-y-6 px-8 pb-8 pt-8 md:px-10">
 					<div>
 						{#if username.length > 32}
-							<p class="font-bold text-neon_pink">Username exceeds limit</p>
+							<p class="font-bold text-neon_pink">{translations[lang].username_exceeds_limit}</p>
 						{/if}
 						<p class="pb-2">
 							{translations[lang].username} <span class="text-neon_pink" class:hidden={username !== ''}>*</span>
@@ -98,7 +98,7 @@
 					</div>
 					<div>
 						{#if password.length > 64}
-							<p class="font-bold text-neon_pink">Password exceeds limit</p>
+							<p class="font-bold text-neon_pink">{translations[lang].password_exceeds_limit}</p>
 						{/if}
 						<div class="flex justify-between pb-2">
 							<p>{translations[lang].password} <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
@@ -151,9 +151,9 @@
 			transition:fly={{ y: 40, easing: cubicInOut, duration: 400 }}
 		>
 			{#if messageType === MessageType.SUCCESS}
-				Sucessfully logged in!
+				{translations[lang].login_success}
 			{:else}
-				Failed to login.
+				{translations[lang].login_fail}
 			{/if}
 		</div>
 	</div>
