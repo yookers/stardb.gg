@@ -17,7 +17,7 @@
 			searchByName(searchQuery);
 		} else if (searchType === 'UID') {
 			// Check if UID is 9 digits
-			/^\d{9}$/.test(searchQuery) ? searchByUID(searchQuery) : (errorMessage = 'UID must be 9 digits.');
+			/^\d{9}$/.test(searchQuery) ? searchByUID(searchQuery) : (errorMessage = translations[lang].uid_must_be_9_digits);
 		}
 	}
 

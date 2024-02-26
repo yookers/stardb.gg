@@ -9,8 +9,10 @@
 	import { goto } from '$app/navigation';
 	import languages from '$lib/languages.json';
 	import { replaceLocaleInUrl } from '$lib/utils';
+	import translations from '$lib/translations/translations';
 	const PUBLIC_SERVER_API_URL = import.meta.env.VITE_PUBLIC_SERVER_API_URL;
 
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 	let isLanguageDropdownOpen = false;
 
 	function toggleSidebar() {
@@ -135,7 +137,7 @@
 					tabindex="0"
 				>
 					<LogIn class="h-4 w-4 " />
-					<p class="text-sm font-bold">Login</p>
+					<p class="text-sm font-bold">{translations[lang].login}</p>
 				</a>
 			{/if}
 

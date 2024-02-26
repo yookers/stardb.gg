@@ -16,7 +16,7 @@
 
 	function handleAddPlayer(playerUID: string) {
 		// Check if UID is 9 digits
-		/^\d{9}$/.test(playerUID) ? addPlayerUID(playerUID) : (errorMessage = 'UID must be 9 digits.');
+		/^\d{9}$/.test(playerUID) ? addPlayerUID(playerUID) : (errorMessage = translations[lang].uid_must_be_9_digits);
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {

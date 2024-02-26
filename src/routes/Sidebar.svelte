@@ -11,10 +11,13 @@
 		BellAlert,
 		Map
 	} from 'svelte-hero-icons';
-	import { sidebarState, currentInterface } from '$store';
+	import { sidebarState, currentInterface, locale } from '$store';
 	import { SidebarState, DeviceInterface } from '$types';
 	import SidebarNav from './SidebarNav.svelte';
 	import { slide } from 'svelte/transition';
+	import translations from '$lib/translations/translations';
+
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	// Functions to toggle sidebar state
 	const expandSidebar = () => {
@@ -82,7 +85,7 @@
 		>
 			<nav class="flex flex-col space-y-4 overflow-y-auto overflow-x-hidden">
 				<!-- Leaderboard icon -->
-				<SidebarNav path="/leaderboard" name="Leaderboard" {isMobileView}>
+				<SidebarNav path="/leaderboard" name={translations[lang].leaderboard} {isMobileView}>
 					<Icon src={ChartBar} solid class="h-6 w-6" />
 				</SidebarNav>
 
