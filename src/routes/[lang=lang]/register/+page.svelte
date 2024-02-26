@@ -89,10 +89,10 @@
 							<p class="animate-wiggle font-bold text-neon_pink duration-200">{translations[lang].username_taken}</p>
 						{/if}
 						{#if username.length > 32}
-							<p class="font-bold text-neon_pink">Username exceeds limit</p>
+							<p class="font-bold text-neon_pink">{translations[lang].username_exceeds_limit}</p>
 						{/if}
 						<div class="flex w-full items-center justify-between pb-2">
-							<p>Username <span class="text-neon_pink" class:hidden={username !== ''}>*</span></p>
+							<p>{translations[lang].username} <span class="text-neon_pink" class:hidden={username !== ''}>*</span></p>
 							<p class="text-xs italic">{translations[lang].max_32_characters}</p>
 						</div>
 						<input
@@ -111,7 +111,7 @@
 							<p class=" font-bold text-neon_pink">{translations[lang].password_exceeds_limit}</p>
 						{/if}
 						<div class="flex w-full items-center justify-between pb-2">
-							<p>Password <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
+							<p>{translations[lang].password} <span class="text-neon_pink" class:hidden={password !== ''}>*</span></p>
 							<p class="text-xs italic">{translations[lang].max_64_characters}</p>
 						</div>
 						<input
@@ -183,7 +183,7 @@
 							bind:checked={agreeToTerms}
 						/>
 						<p>
-							{translations[lang].agree_privacy_policy} <span class="text-neon_pink" class:hidden={agreeToTerms}>*</span>
+							{@html translations[lang].agree_privacy_policy} <span class="text-neon_pink" class:hidden={agreeToTerms}>*</span>
 						</p>
 					</div>
 					<div>
