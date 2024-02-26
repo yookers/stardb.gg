@@ -47,7 +47,7 @@
     "cant_find_player": "Không thể tìm thấy người chơi? Thêm UID người chơi vào bên dưới!",
     "locale_language": "Tiếng Việt",
     "login_title": "Đăng nhập - StarDB.GG",
-    "login_description": "Đăng nhập tài khoảng trên StarDB.GG.",
+    "login_description": "Đăng nhập tài khoản trên StarDB.GG.",
     "username_exceeds_limit": "Tên đăng nhập bị giới hạn ký tự",
     "password_exceeds_limit": "Mật khẩu bị giới hạn ký tự",
     "login_success": "Đăng nhập thành công!",
@@ -63,7 +63,9 @@
     "register_fail": "Đăng ký người dùng thất bại.",
     "uid_must_be_9_digits": "UID phải có 9 chữ số.",
     "error_searching_for_player": "Không thể tìm thấy người chơi",
-    "attempting_to_add_uid": "Đang thêm UID ${playerUID} ...",
-    "successfully_added_uid": "Đã thêm UID ${playerUID} thành công!",
-    "failed_to_add_player": "Không thể thêm người chơi"
+    "attempting_to_add_uid": "Đang thêm UID {playerUID} ...",
+    "successfully_added_uid": "Đã thêm UID {playerUID} thành công!",
+    "failed_to_add_player": "Không thể thêm người chơi",
+    "account": "Tài khoản",
+    "logout": "Đăng xuất"
 }

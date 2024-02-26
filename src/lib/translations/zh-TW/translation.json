@@ -63,7 +63,9 @@
     "register_fail": "帳號註冊失敗。",
     "uid_must_be_9_digits": "UID 必須為 9 位數字。",
     "error_searching_for_player": "搜索玩家時出錯",
-    "attempting_to_add_uid": "正在添加 ${playerUID} ...",
-    "successfully_added_uid": "成功添加 ${playerUID}!",
-    "failed_to_add_player": "新增玩家失敗"
+    "attempting_to_add_uid": "Attempting to add {playerUID} ...",
+    "successfully_added_uid": "Successfully added {playerUID}!",
+    "failed_to_add_player": "新增玩家失敗",
+    "account": "Account",
+    "logout": "Logout"
 }

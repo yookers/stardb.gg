@@ -63,7 +63,9 @@
     "register_fail": "Échec à l'inscription de l'utilisateur.",
     "uid_must_be_9_digits": "L'UID doit avoir 9 chiffres.",
     "error_searching_for_player": "Erreur lors de la recherche du joueur",
-    "attempting_to_add_uid": "Tentative d'ajout de ${playerUID} ...",
-    "successfully_added_uid": "${playerUID} ajouté avec succès !",
-    "failed_to_add_player": "Échec de l'ajout du joueur"
+    "attempting_to_add_uid": "Attempting to add {playerUID} ...",
+    "successfully_added_uid": "Successfully added {playerUID}!",
+    "failed_to_add_player": "Échec de l'ajout du joueur",
+    "account": "Account",
+    "logout": "Logout"
 }

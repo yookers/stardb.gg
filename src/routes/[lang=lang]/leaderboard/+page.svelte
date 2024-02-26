@@ -306,12 +306,12 @@
 	{#await addPlayerPromise}
 		<PopUpMessage
 			messageType={MessageType.LOADING}
-			messageContent={translations[lang].attempting_to_add_uid.replace('${playerUID}', playerUID)}
+			messageContent={translations[lang].attempting_to_add_uid.replace('{playerUID}', playerUID)}
 		/>
 	{:then}
 		<PopUpMessage
 			messageType={MessageType.SUCCESS}
-			messageContent={translations[lang].successfully_added_uid.replace('${playerUID}', playerUID)}
+			messageContent={translations[lang].successfully_added_uid.replace('{playerUID}', playerUID)}
 		/>
 	{:catch}
 		<PopUpMessage messageType={MessageType.FAIL} messageContent={translations[lang].failed_to_add_player} />

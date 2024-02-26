@@ -63,7 +63,9 @@
     "register_fail": "Fehler beim Registrieren.",
     "uid_must_be_9_digits": "UID muss 9 Zeichen lang sein.",
     "error_searching_for_player": "Fehler beim Suchen des Spielers",
-    "attempting_to_add_uid": "Versuche ${playerUID} hinzuzufügen...",
-    "successfully_added_uid": "${playerUID} Erfolgreich hinzugefügt!",
-    "failed_to_add_player": "Fehler beim Hinzufügen des Spielers"
+    "attempting_to_add_uid": "Attempting to add {playerUID} ...",
+    "successfully_added_uid": "Successfully added {playerUID}!",
+    "failed_to_add_player": "Fehler beim Hinzufügen des Spielers",
+    "account": "Account",
+    "logout": "Logout"
 }

@@ -63,7 +63,9 @@
     "register_fail": "ลงทะเบียนบัญชีไม่สำเร็จ",
     "uid_must_be_9_digits": "UID จำเป็นจะต้องเป็นตัวเลข 9 หลัก",
     "error_searching_for_player": "เกิดข้อผิดพลาดในการค้นหาผู้เล่น",
-    "attempting_to_add_uid": "กำลังเพิ่ม ${playerUID} ...",
-    "successfully_added_uid": "เพิ่ม ${playerUID} สำเร็จ!",
-    "failed_to_add_player": "เพิ่มผู้เล่นไม่สำเร็จ"
+    "attempting_to_add_uid": "กำลังพยายามเพิ่ม {playerUID} ...",
+    "successfully_added_uid": "เพิ่ม {playerUID} สำเร็จ!",
+    "failed_to_add_player": "เพิ่มผู้เล่นไม่สำเร็จ",
+    "account": "บัญชี",
+    "logout": "ออกจากระบบ"
 }
