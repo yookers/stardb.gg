@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { ListFilter } from 'lucide-svelte';
 	import BaseCard from '$components/BaseCard.svelte';
+	import translations from '$lib/translations/translations';
+	import { locale } from '$store';
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	export let showDetailed: boolean;
 	let showCard = true;
@@ -26,7 +29,7 @@
 				>
 				</span>
 			</button>
-			<p class="pr-4" class:text-galaxy_purple-300={!showDetailed}>Show details</p>
+			<p class="pr-4" class:text-galaxy_purple-300={!showDetailed}>{translations[lang].show_details}</p>
 		</div>
 	</div>
 </BaseCard>

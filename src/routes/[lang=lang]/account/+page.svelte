@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_SERVER_API_URL } from '$env/static/public';
+	import translations from '$lib/translations/translations';
+	import { locale } from '$store';
 	import { MessageType } from '$types';
 	import { cubicInOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	let password: string;
 	let showNotification = false;
@@ -39,8 +43,8 @@
 	<div class="flex w-full flex-col py-2 md:w-main">
 		<div class="flex items-center space-x-3 pb-3 pl-2 pt-4 sm:pt-6 md:space-x-4">
 			<div class="">
-				<h1 class="text-xl font-bold md:text-3xl">Account</h1>
-				<h2 class="text-base text-galaxy_purple-150 md:text-lg">Set a new password</h2>
+				<h1 class="text-xl font-bold md:text-3xl">{translations[lang].account}</h1>
+				<h2 class="text-base text-galaxy_purple-150 md:text-lg">{translations[lang].set_a_new_password}</h2>
 			</div>
 		</div>
 		<div class="flex flex-col space-y-3 sm:space-y-4">
@@ -49,7 +53,7 @@
 					class="h-8 w-full bg-off_white text-galaxy_purple-700"
 					type="password"
 					required
-					placeholder="Password"
+					placeholder={translations[lang].password}
 					bind:value={password}
 				/>
 				<button
@@ -72,9 +76,9 @@
 			transition:fly={{ y: 40, easing: cubicInOut, duration: 400 }}
 		>
 			{#if messageType === MessageType.SUCCESS}
-				Sucessfully set password!
+				{translations[lang].set_password_success}
 			{:else}
-				Error setting password.
+				{translations[lang].set_password_fail}
 			{/if}
 		</div>
 	</div>

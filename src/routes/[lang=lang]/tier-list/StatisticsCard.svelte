@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { LineChart } from 'lucide-svelte';
 	import BaseCard from '$components/BaseCard.svelte';
+	import translations from '$lib/translations/translations';
+	import { locale } from '$store';
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	export let totalVotes: number;
 	let showCard = false;
@@ -14,7 +17,7 @@
 		<div class="flex flex-col items-center justify-center font-bold">
 			<p class="pb-1 text-6xl text-galaxy_purple-350 md:text-7xl">{totalVotes}</p>
 			<p class="line-clamp-1 text-xl font-medium">
-				<span class="font-bold text-galaxy_purple-350">Total</span> votes
+				{@html translations[lang].total_votes}
 			</p>
 		</div>
 	</div>

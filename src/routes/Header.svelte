@@ -152,7 +152,7 @@
 						>
 							<div class="flex items-center space-x-2">
 								<Settings class="h-4 w-4 " />
-								<p>Account</p>
+								<p>{translations[lang].account}</p>
 							</div>
 							<ArrowRight class="h-4 w-4 " />
 						</a>
@@ -162,7 +162,7 @@
 						>
 							<div class="flex items-center space-x-2">
 								<LogOut class="h-4 w-4 " />
-								<p>Logout</p>
+								<p>{translations[lang].logout}</p>
 							</div>
 							<ArrowRight class="h-4 w-4 " />
 						</button>

@@ -90,7 +90,7 @@
 				</SidebarNav>
 
 				<!-- Tier list icon -->
-				<SidebarNav path="/tier-list" name="Tier List" {isMobileView}>
+				<SidebarNav path="/tier-list" name={translations[lang].tier_list} {isMobileView}>
 					<Icon src={Fire} solid class="h-6 w-6" />
 				</SidebarNav>
 

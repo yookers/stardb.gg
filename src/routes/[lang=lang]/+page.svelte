@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>StarDB.GG - Honkai: Star Rail Tools and Leaderboard</title>
+	<title>{translations[lang].title}</title>
 	<meta name="description" content={translations[lang].description} />
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />

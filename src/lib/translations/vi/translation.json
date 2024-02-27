@@ -1,7 +1,7 @@
 {
     "leaderboard": "Bảng xếp hạng",
     "achievement_leaderboard": "Bảng xếp hạng thành tựu",
-    "leaderboard_discover": "Gặp gỡ những người chơi Honkai: Star Rail giỏi nhất tại <span class=\"font-bold\">StarDB.GG</span>. Khám phá bảng xếp hạng toàn diện, phủ khắp toàn cầu và so tài bản thân!",
+    "leaderboard_description": "Gặp gỡ những người chơi Honkai: Star Rail giỏi nhất tại <span class=\"font-bold\">StarDB.GG</span>. Khám phá bảng xếp hạng toàn diện, phủ khắp toàn cầu và so tài bản thân!",
     "search_player": "Tìm kiếm Nhà Khai Phá",
     "name": "Tên",
     "search": "Tìm Kiếm",
@@ -67,5 +67,21 @@
     "successfully_added_uid": "Đã thêm UID {playerUID} thành công!",
     "failed_to_add_player": "Không thể thêm người chơi",
     "account": "Tài khoản",
-    "logout": "Đăng xuất"
+    "logout": "Đăng xuất",
+    "privacy_policy": "Privacy Policy",
+    "set_a_new_password": "Set a new password",
+    "set_password_success": "Sucessfully set password!",
+    "set_password_fail": "Error setting password.",
+    "loading": "Loading…",
+    "go_back_to_the_tier_list": "Go back to the tier list",
+    "community_tier_list_title": "Community Tier List - Honkai: Star Rail - StarDB.GG",
+    "community_tier_list_description": "Discover the most up-to-date tier list based on the current meta for Honkai: Star Rail, aggregated from player votes. StarDB.GG is your source for data-driven game insights.",
+    "community_tier_list_welcome": "Welcome to <span class=\"font-bold\">StarDB.GG's Tier List</span>; a ranking created by the community. Results are based on player votes in the current meta, making it a true reflection of the community's opinion.",
+    "community_tier_list_information": "This list caters to <span class=\"font-bold\">F2P</span> and <span class=\"font-bold\">Light Spenders</span> - 5-star units are displayed at <span class=\"font-bold\">Eidolon 0</span>, and 4-star units at <span class=\"font-bold\">Eidolon 4</span>.",
+    "click_here_to_vote": "Click here to vote",
+    "community_tier_list_variance": "<span class=\"font-bold italic\">Variance:</span><br /> A high variance suggests a broad range of opinions regarding a character, whereas a low variance indicates a general consensus.",
+    "community_tier_list_95_confidence": "<span class=\"font-bold italic\">95% Confidence Interval:</span><br /> This range indicates where one can be 95% confident that the character's true rank lies. For example, if a character has a rating of +/- 2, their realistic rank could be between 'S' and 'B'.",
+    "show_details": "Show details",
+    "total_votes": "<span class=\"font-bold text-galaxy_purple-350\">Total</span> votes",
+    "tier_list": "Tier List"
 }

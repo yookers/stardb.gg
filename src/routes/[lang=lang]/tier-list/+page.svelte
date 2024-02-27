@@ -9,6 +9,9 @@
 	import { cubicInOut } from 'svelte/easing';
 	import NitroBanner from '$components/NitroBanner.svelte';
 	import { Maximize2, Minimize2, Swords } from 'lucide-svelte';
+	import translations from '$lib/translations/translations';
+	import { locale } from '$store';
+	const lang = $locale as 'de' | 'en' | 'es' | 'fr' | 'id' | 'jp' | 'kr' | 'pt' | 'ru' | 'th' | 'vi' | 'chs' | 'cht';
 
 	export let data;
 	const tierListCharacters = data.tierListEntries as TierListCharacter[];
@@ -89,19 +92,13 @@
 </script>
 
 <svelte:head>
-	<title>Community Tier List - Honkai: Star Rail - StarDB.GG</title>
-	<meta
-		name="description"
-		content="Discover the most up-to-date tier list based on the current meta for Honkai: Star Rail, aggregated from player votes. StarDB.GG is your source for data-driven game insights."
-	/>
+	<title>{translations[lang].community_tier_list_title}</title>
+	<meta name="description" content={translations[lang].community_tier_list_description} />
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://stardb.gg/tier-list" />
 	<meta property="og:title" content="Community Tier List - Honkai: Star Rail - StarDB.GG" />
-	<meta
-		property="og:description"
-		content="Discover the most up-to-date tier list based on the current meta for Honkai: Star Rail, aggregated from player votes. StarDB.GG is your source for data-driven game insights."
-	/>
+	<meta property="og:description" content={translations[lang].community_tier_list_description} />
 	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
@@ -109,10 +106,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://stardb.gg/tier-list" />
 	<meta name="twitter:title" content="Community Tier List - Honkai: Star Rail - StarDB.GG" />
-	<meta
-		name="twitter:description"
-		content="Discover the most up-to-date tier list based on the current meta for Honkai: Star Rail, aggregated from player votes. StarDB.GG is your source for data-driven game insights."
-	/>
+	<meta name="twitter:description" content={translations[lang].community_tier_list_description} />
 	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 
 	<link rel="canonical" href="https://stardb.gg/tier-list" />
@@ -134,8 +128,7 @@
 			Community Tier List
 		</h1>
 		<h2 class="pb-2 pl-2 text-xs sm:pb-3 md:text-sm" in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>
-			Welcome to <span class="font-bold">StarDB.GG's Tier List</span>; a ranking created by the community. Results are based on
-			player votes in the current meta, making it a true reflection of the community's opinion.
+			{@html translations[lang].community_tier_list_welcome}
 		</h2>
 
 		<!-- Sticky top-16 + pt-4 = top-20 -->

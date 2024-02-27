@@ -141,12 +141,12 @@
 
 <svelte:head>
 	<title>{translations[lang].title}</title>
-	<meta name="description" content={translations[lang].leaderboard_discover} />
+	<meta name="description" content={translations[lang].leaderboard_description} />
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://stardb.gg/leaderboard" />
 	<meta property="og:title" content={translations[lang].title} />
-	<meta property="og:description" content={translations[lang].leaderboard_discover} />
+	<meta property="og:description" content={translations[lang].leaderboard_description} />
 	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
@@ -154,7 +154,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content="https://stardb.gg/leaderboard" />
 	<meta name="twitter:title" content={translations[lang].title} />
-	<meta name="twitter:description" content={translations[lang].leaderboard_discover} />
+	<meta name="twitter:description" content={translations[lang].leaderboard_description} />
 	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
 
 	<link rel="canonical" href="https://stardb.gg/leaderboard" />
@@ -176,7 +176,7 @@
 			{translations[lang].achievement_leaderboard}
 		</h1>
 		<h2 class="pb-2 pl-2 text-xs sm:pb-3 md:text-sm" in:fly={{ y: 20, duration: 300, delay: 250, easing: cubicInOut }}>
-			{@html translations[lang].leaderboard_discover}
+			{@html translations[lang].leaderboard_description}
 		</h2>
 		<!-- Sticky top-16 + pt-4 = top-20 -->
 		<div class="top-20 space-y-3 sm:space-y-4 xl:sticky">
