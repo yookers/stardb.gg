@@ -79,7 +79,7 @@
     "community_tier_list_welcome": "Bienvenidos a la <span class=\"font-bold\">Tier List de StarDB.GG</span>; una clasificación creada por la comunidad. Los resultados están basados en los votos de los jugadores en el meta actual, convirtiéndola en un verdadero reflejo de la opinión de la comunidad.",
     "community_tier_list_information": "Esta lista cubre <span class=\"font-bold\">F2P</span> y <span class=\"font-bold\">Light Spenders</span> - Las unidades 5 estrellas se muestran en <span class=\"font-bold\">Eidolon 0</span>, y las unidades de 4 estrellas en <span class=\"font-bold\">Eidolon 4</span>.",
     "click_here_to_vote": "Haz clic aquí para votar",
-    "community_tier_list_variance": "<span class=\"font-bold italic\">Variancia:</span><br /> Una gran variación sugiere un amplio rango de opiniones sobre un personaje, mientras que una baja varianza indica un consenso general.",
+    "community_tier_list_variance": "<span class=\"font-bold italic\">Varianza:</span><br /> Una gran varianza sugiere un amplio rango de opiniones sobre un personaje, mientras que una baja varianza indica un consenso general.",
     "community_tier_list_95_confidence": "<span class=\"font-bold italic\">Intervalo de Confianza del 95%:</span><br /> Este rango indica dónde se puede tener un 95% de confianza en que se encuentra el verdadero rango del personaje. Por ejemplo, Si un personaje tiene una calificación de +/- 2, su rango realista podría estar entre 'S' y 'B'.",
     "show_details": "Mostrar detalles",
     "total_votes": "Votos <span class=\"font-bold text-galaxy_purple-350\">totales</span>",
