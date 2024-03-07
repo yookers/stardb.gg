@@ -81,7 +81,7 @@
     "click_here_to_vote": "点击此处投票",
     "community_tier_list_variance": "<span class=\"font-bold italic\">Variance:</span><br /> A high variance suggests a broad range of opinions regarding a character, whereas a low variance indicates a general consensus.",
     "community_tier_list_95_confidence": "<span class=\"font-bold italic\">95% Confidence Interval:</span><br /> This range indicates where one can be 95% confident that the character's true rank lies. For example, if a character has a rating of +/- 2, their realistic rank could be between 'S' and 'B'.",
-    "show_details": "Show details",
-    "total_votes": "<span class=\"font-bold text-galaxy_purple-350\">Total</span> votes",
+    "show_details": "显示详情",
+    "total_votes": "投票<span class=\"font-bold text-galaxy_purple-350\">统计</span>",
     "tier_list": "角色强度表"
 }
