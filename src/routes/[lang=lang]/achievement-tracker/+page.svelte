@@ -102,7 +102,7 @@
 			if (!seriesSummary) {
 				return;
 			}
-			series.achievements.forEach((group: AchievementGroup) => {
+			series.achievement_groups.forEach((group: AchievementGroup) => {
 				group.achievements.forEach((achievement: TrackerAchievement) => {
 					if (completedAchievements.includes(achievement.id)) {
 						achievement.completed = true;
@@ -276,7 +276,7 @@
 	function flattenAchievements(data: Series[]): AchievementGroup[] {
 		let flatList: AchievementGroup[] = [];
 		data.forEach((item) => {
-			item.achievements.forEach((group) => {
+			item.achievement_groups.forEach((group) => {
 				flatList.push(group);
 			});
 		});
@@ -298,7 +298,7 @@
 			.filter((item) => series === 'Show All' || item.series === series.name)
 			.map((item) => ({
 				...item,
-				achievements: item.achievements.filter((achievementGroup) =>
+				achievements: item.achievement_groups.filter((achievementGroup) =>
 					achievementGroup.achievements.some((achievement) => {
 						const matchesCompletion =
 							achievement.completed || achievementGroup.completed_group_id ? showCompleted : showIncomplete;

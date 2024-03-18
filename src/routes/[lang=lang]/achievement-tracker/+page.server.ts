@@ -32,6 +32,8 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 			series: rawAchievementsData.series
 		};
 
+		console.log(achievementsData);
+
 		const seriesData: SeriesData = {
 			series: [],
 			total_achievement_count: rawAchievementsData.achievement_count,
@@ -60,7 +62,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 				total_jade_count: series.jade_count,
 				current_jade_count: 0
 			};
-			series.achievements = series.achievements.map((achievementGroup: AchievementGroup) => {
+			series.achievement_groups = series.achievement_groups.map((achievementGroup: AchievementGroup) => {
 				let completedGroupID: number | undefined;
 				const updatedAchievements = achievementGroup.achievements.map((achievement: TrackerAchievement) => {
 					if (completedAchievements.includes(achievement.id)) {

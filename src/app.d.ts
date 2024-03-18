@@ -65,7 +65,7 @@ export type Series = {
 	series: string;
 	achievement_count: number;
 	jade_count: number;
-	achievements: AchievementGroup[];
+	achievement_groups: AchievementGroup[];
 };
 
 export type AchievementTrackerData = {
@@ -217,7 +217,7 @@ export type MihomoPlayer = {
 		memory_data: { chaos_id: number; chaos_level: number; level: number };
 		light_cone_count: number;
 		pass_area_progress: number;
-        universe_level: number;
+		universe_level: number;
 	};
 	uid: number;
 	world_level: number;
@@ -233,7 +233,7 @@ export type ProfileDetails = {
 
 export type ProfileData = ProfileDetails & {
 	mihomo: {
-        detail: string;
+		detail: string;
 		characters: MihomoCharacterData[];
 		player: MihomoPlayer;
 	};
@@ -262,7 +262,7 @@ export type WarpItem = {
 	type: string;
 	name: string;
 	rarity: 3 | 4 | 5;
-    item_id: number;
+	item_id: number;
 	timestamp: string;
 };
 
