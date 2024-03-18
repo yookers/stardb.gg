@@ -3,7 +3,7 @@
 	import { PUBLIC_CDN_RES_API_URL } from '$env/static/public';
 	import { fly } from 'svelte/transition';
 	import { cubicInOut } from 'svelte/easing';
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import UserInfo from './UserInfo.svelte';
 	// import SearchAchievementCard from './SearchAchievementCard.svelte';
 	import SeriesCard from './SeriesCard.svelte';
@@ -54,45 +54,6 @@
 	let shownCount = LOAD_COUNT;
 	let loadMoreElement: HTMLElement | null = null;
 	let observer: { disconnect: () => void } | null = null;
-
-	let snapshotScroll: number;
-	let isSnapshot = false;
-
-	// Keep a snapshot when user navigates back from the achievements database
-	export const snapshot = {
-		capture: () => [
-			selectedSeries,
-			showCompleted,
-			showIncomplete,
-			showHidden,
-			selectedDifficulty,
-			searchQuery,
-			sortOrder,
-			selectedVersions,
-			shownCount,
-			window.scrollY
-		],
-		restore: (value) => {
-			selectedSeries = value[0];
-			showCompleted = value[1];
-			showIncomplete = value[2];
-			showHidden = value[3];
-			selectedDifficulty = value[4];
-			searchQuery = value[5];
-			sortOrder = value[6];
-			// selectedVersions = value[7];
-			shownCount = value[8];
-			snapshotScroll = value[9];
-		}
-	};
-
-	afterUpdate(() => {
-		if (snapshotScroll) {
-			isSnapshot = true;
-			window.scrollTo(0, snapshotScroll);
-			snapshotScroll = 0;
-		}
-	});
 
 	function loadFromLocalStorage() {
 		// If user is not logged in, get the completed achievements from local storage
@@ -276,7 +237,7 @@
 	function flattenAchievements(data: Series[]): AchievementGroup[] {
 		let flatList: AchievementGroup[] = [];
 		data.forEach((item) => {
-			item.achievement_groups.forEach((group) => {
+			item.achievements.forEach((group) => {
 				flatList.push(group);
 			});
 		});
@@ -297,12 +258,11 @@
 		return achievements
 			.filter((item) => series === 'Show All' || item.series === series.name)
 			.map((item) => ({
-				...item,
 				achievements: item.achievement_groups.filter((achievementGroup) =>
 					achievementGroup.achievements.some((achievement) => {
 						const matchesCompletion =
 							achievement.completed || achievementGroup.completed_group_id ? showCompleted : showIncomplete;
-						const matchesVersion = versions.size === 0 || versions.has(achievement.version || "");
+						const matchesVersion = versions.size === 0 || versions.has(achievement.version || '');
 						const matchesQuery =
 							!query ||
 							achievement.name.toLowerCase().includes(lowercaseQuery) ||
@@ -311,7 +271,8 @@
 						const matchesHidden = showHidden || !achievement.hidden;
 						return matchesCompletion && matchesVersion && matchesQuery && matchesDifficulty && matchesHidden;
 					})
-				)
+				),
+                ...item
 			}));
 	}
 
@@ -350,25 +311,22 @@
 	$: {
 		// Hacky way to prevent filteredAchievements from running when coming back from a snapshot (ie. user comes back from the database)
 		// TODO: Replace with pagination in the future
-		if (!isSnapshot) {
-			filteredAchievements = sortByPercent(
-				flattenAchievements(
-					combinedFilters(
-						achievementsData,
-						showCompleted,
-						showIncomplete,
-						selectedSeries,
-						selectedVersions,
-						searchQuery,
-						selectedDifficulty,
-						showHidden
-					)
-				),
-				sortOrder
-			);
-			shownAchievements = filteredAchievements.slice(0, shownCount);
-		}
-		isSnapshot = false;
+		filteredAchievements = sortByPercent(
+			flattenAchievements(
+				combinedFilters(
+					achievementsData,
+					showCompleted,
+					showIncomplete,
+					selectedSeries,
+					selectedVersions,
+					searchQuery,
+					selectedDifficulty,
+					showHidden
+				)
+			),
+			sortOrder
+		);
+		shownAchievements = filteredAchievements.slice(0, shownCount);
 	}
 
 	// Intersection Observer lazy loading

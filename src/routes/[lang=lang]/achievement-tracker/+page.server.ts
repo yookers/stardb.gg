@@ -32,8 +32,6 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 			series: rawAchievementsData.series
 		};
 
-		console.log(achievementsData);
-
 		const seriesData: SeriesData = {
 			series: [],
 			total_achievement_count: rawAchievementsData.achievement_count,
