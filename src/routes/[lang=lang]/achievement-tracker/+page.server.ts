@@ -29,14 +29,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 
 		const rawAchievementsData = await achievementResponse.json();
 		const achievementsData: AchievementTrackerData = {
-			series: rawAchievementsData.series.map((series: Series) => {
-				return {
-					...series,
-					achievements: series.achievements.map((achievementGroup) => {
-						return { achievements: achievementGroup }; // For now, completed_group_id remains undefined
-					})
-				};
-			})
+			series: rawAchievementsData.series
 		};
 
 		const seriesData: SeriesData = {
