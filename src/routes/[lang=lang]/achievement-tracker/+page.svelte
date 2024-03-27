@@ -426,7 +426,6 @@
 		<NitroBanner />
 
 		<!-- Achievement tracker -->
-        <span class="text-dim_pink text-sm">Currently 2.1 achievements are broken and don't save properly. Will be fixed soon!</span>
 		<div
 			class="rounded-xl border-2 border-galaxy_purple-700 bg-galaxy_purple-750 transition-all duration-300 hover:border-galaxy_purple-650"
 		>
