@@ -237,7 +237,7 @@
 	function flattenAchievements(data: Series[]): AchievementGroup[] {
 		let flatList: AchievementGroup[] = [];
 		data.forEach((item) => {
-			item.achievement_groups.forEach((group) => {
+			item.achievements.forEach((group) => {
 				flatList.push(group);
 			});
 		});
