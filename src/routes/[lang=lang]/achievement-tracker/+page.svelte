@@ -86,7 +86,7 @@
 	async function storeServerData(achievement: TrackerAchievement) {
 		try {
 			const method = achievement.completed ? 'PUT' : 'DELETE';
-			const response = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements/${achievement.id}`, { method });
+			const response = await fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements/completed/${achievement.id}`, { method });
 
 			if (!response.ok) {
 				popUpMessageType = MessageType.FAIL;

@@ -15,7 +15,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		let completedPromise: Promise<Response> | undefined;
 		if (locals.user) {
 			const id = cookies.get('id');
-			completedPromise = fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements`, {
+			completedPromise = fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements/completed`, {
 				headers: {
 					cookie: `id=${id}`
 				}

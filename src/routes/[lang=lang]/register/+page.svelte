@@ -38,7 +38,7 @@
 	async function putLocalAchievements() {
 		const completedAchievements: number[] = JSON.parse(localStorage.getItem('completed_achievements') ?? '[]');
 		try {
-			const response = await fetch(`${apiURL}/users/me/achievements`, {
+			const response = await fetch(`${apiURL}/users/me/achievements/completed`, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(completedAchievements)
