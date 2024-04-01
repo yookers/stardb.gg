@@ -10,11 +10,15 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		const apiUrl = `${PRIVATE_SERVER_API_URL}/pages/achievement-tracker?lang=${locale}`;
 
 		// Prevent fetch waterfalls by fetching all data in parallel
-		const achievementPromise = fetch(apiUrl);
+		const id = cookies.get('id');
+		const achievementPromise = fetch(apiUrl, {
+			headers: {
+				cookie: `id=${id}`
+			}
+		});
 
 		let completedPromise: Promise<Response> | undefined;
 		if (locals.user) {
-			const id = cookies.get('id');
 			completedPromise = fetch(`${PUBLIC_SERVER_API_URL}/users/me/achievements/completed`, {
 				headers: {
 					cookie: `id=${id}`
@@ -28,6 +32,7 @@ export const load: PageServerLoad = (async ({ fetch, locals, cookies, url }) => 
 		}
 
 		const rawAchievementsData = await achievementResponse.json();
+
 		const achievementsData: AchievementTrackerData = {
 			series: rawAchievementsData.series
 		};
