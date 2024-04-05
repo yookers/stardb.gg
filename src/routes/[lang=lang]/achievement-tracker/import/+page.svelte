@@ -44,6 +44,7 @@
 
 		<div class="flex flex-col space-y-2">
 			<span class="pt-8">Import from Achievement Scanner (JSON)</span>
+            <p class="text-sm text-neon_pink">Warning: Importing from scanner will overwrite your current saved achievements.</p>
 			<div class="flex gap-x-3">
 				<input type="file" bind:this={fileInput} accept=".json" />
 				<button
