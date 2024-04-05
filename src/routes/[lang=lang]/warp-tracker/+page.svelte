@@ -84,15 +84,16 @@
 				<h2 class="text-base text-galaxy_purple-150 md:text-lg">Import your warps here.</h2>
 			</div>
 		</div>
-		<div class="flex flex-col space-y-3 sm:space-y-4">
+		<div class="flex flex-col space-y-2">
 			<InstructionCard />
 
+			<span>Import from PowerShell</span>
 			<div class="flex gap-x-3">
-				<input class="h-8 w-full bg-off_white text-galaxy_purple-700" type="text" required bind:value={warpURL} />
+				<input class="w-full bg-off_white text-galaxy_purple-700" type="text" required bind:value={warpURL} />
 				<button
-					class="text-white w-8 rounded-xl bg-galaxy_purple-650 px-4 py-2 text-sm font-bold hover:bg-galaxy_purple-600"
-					on:click={() => postWarpsImport(warpURL)}
-				></button>
+					class="text-white h-fit w-fit rounded-xl bg-galaxy_purple-650 px-4 py-2 text-sm font-bold hover:bg-galaxy_purple-600"
+					on:click={() => postWarpsImport(warpURL)}>Import</button
+				>
 			</div>
 		</div>
 	</div>

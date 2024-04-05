@@ -27,10 +27,10 @@
             {messageType === MessageType.LOADING
 				? 'bg-galaxy_purple-250 text-galaxy_purple-550'
 				: messageType === MessageType.SUCCESS
-				? 'bg-[#87FCE0] px-4 text-[#039A82]'
-				: messageType === MessageType.FAIL
-				? 'bg-[#FF8ECF] px-4 text-[#9E3073]'
-				: ''}"
+					? 'bg-[#87FCE0] px-4 text-[#039A82]'
+					: messageType === MessageType.FAIL
+						? 'bg-[#FF8ECF] px-4 text-[#9E3073]'
+						: ''}"
 			transition:fly={{ y: 70, easing: cubicInOut, duration: 400 }}
 		>
 			{#if messageType === MessageType.LOADING}
