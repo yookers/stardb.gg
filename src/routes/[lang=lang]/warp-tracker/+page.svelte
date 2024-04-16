@@ -71,9 +71,33 @@
 </script>
 
 <svelte:head>
-	<title></title>
-	<meta name="description" content="" />
-	<link rel="canonical" href="" />
+	<title>Warp Tracker for Honkai: Star Rail | stardb.gg</title>
+	<meta
+		name="description"
+		content="The best warp tracker for Honkai: Star Rail. Import your warp history and view your pity counter."
+	/>
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://stardb.gg/warp-tracker" />
+	<meta property="og:title" content="Warp Tracker for Honkai: Star Rail | stardb.gg" />
+	<meta
+		property="og:description"
+		content="The best warp tracker for Honkai: Star Rail. Import your warp history and view your pity counter."
+	/>
+	<meta property="og:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:url" content="https://stardb.gg/warp-tracker" />
+	<meta name="twitter:title" content="Warp Tracker for Honkai: Star Rail | stardb.gg" />
+	<meta
+		name="twitter:description"
+		content="The best warp tracker for Honkai: Star Rail. Import your warp history and view your pity counter."
+	/>
+	<meta name="twitter:image" content="https://stardb.gg/images/StarDB.GG_Featured_Image.webp" />
+
+	<link rel="canonical" href="https://stardb.gg/warp-tracker" />
 </svelte:head>
 
 <main class="flex h-full w-full justify-center px-2 pb-4 text-off_white sm:px-6 sm:pb-6 lg:px-20 xl:px-6">
