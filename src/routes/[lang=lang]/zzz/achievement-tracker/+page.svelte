@@ -28,7 +28,7 @@
 	<link rel="canonical" href="https://stardb.gg/zzz/achievement-tracker" />
 </svelte:head>
 
-<div class="mx-8 flex h-full flex-col items-center justify-center space-y-4 text-off_white">
+<div class="m-8 flex h-full flex-col items-center justify-center space-y-4 text-off_white">
 	<h1 class="text-3xl font-bold">Zenless Zone Zero Achievement Tracker tool by stardb.gg.</h1>
 
 	<p>
