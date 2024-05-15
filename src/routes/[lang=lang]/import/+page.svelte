@@ -38,7 +38,9 @@
 
 		<div class="flex flex-col space-y-2">
 			<span class="pt-8"
-				>Import from <a href="https://github.com/juliuskreutz/stardb-exporter" target="_blank">Stardb Exporter</a></span
+				>Import from <a class="text-purple_highlight" href="https://github.com/juliuskreutz/stardb-exporter" target="_blank"
+					>Stardb Exporter</a
+				></span
 			>
 			<p class="text-sm text-neon_pink">
 				Warning: Importing from exporter will overwrite your current saved achievements and books.
