@@ -27,7 +27,7 @@
 		}
 	}
 
-	async function postScannerImport() {
+	async function postImportFile() {
 		// Request body is a file.
 		if (!fileInput) {
 			return;
@@ -36,7 +36,7 @@
 		formData.append('file', fileInput.files[0]);
 
 		try {
-			const response = await fetch(`${apiURL}/users/me/import`, {
+			const response = await fetch(`${apiURL}/users/me/import-file`, {
 				method: 'PUT',
 				body: formData
 			});
@@ -91,7 +91,7 @@
 				<input type="file" bind:this={fileInput} accept=".json" />
 				<button
 					class="h-fit w-fit rounded-xl bg-galaxy_purple-650 px-4 py-2 text-sm font-bold text-off_white hover:bg-galaxy_purple-600"
-					on:click={postScannerImport}>Import</button
+					on:click={postImportFile}>Import</button
 				>
 			</div>
 		</div>
