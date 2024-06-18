@@ -10,7 +10,7 @@ export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 		// Create a new URL based on the environment
 		let newUrl = request.url;
 		if (mode !== 'development') {
-			newUrl = request.url.replace(PRIVATE_SERVER_API_URL, 'http://localhost:8000/api');
+			newUrl = request.url.replace(PRIVATE_SERVER_API_URL, 'https://stardb.gg/api');
 		}
 		// Set a new header with the 'x-api-key' included
 		request.headers.set('x-api-key', PRIVATE_API_KEY);
